@@ -1,0 +1,12 @@
+{
+	"id": "synthb",
+	"name": "SynthB",
+	"display_name": "SynthB",
+	"author": ["Foo54"],
+	"description": "Vocaloid Themed Balatro Mod",
+	"prefix": "synthb",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "D94169",
+	"version": "1.0.0-260426a"
+}
