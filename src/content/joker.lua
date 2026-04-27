@@ -308,7 +308,7 @@ SMODS.Joker{
 				if not _card.debuff then
 					local hand = card.ability.immutable.hands[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_toast_hand or "High Card"
 					if hand == "Last Played" then hand = (SMODS.last_hand or {}).scoring_name or "High Card" end
-					if not G.GAME.hands[hand].visible then
+					if not SMODS.is_poker_hand_visible(hand) then
 						hand = card.ability.immutable.if_hidden[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_toast_hand_hidden or "High Card"
 					end
 					hands[#hands+1] = hand
@@ -349,5 +349,90 @@ SMODS.Joker{
 				colour = G.C.MULT
 			}
 		end
+	end
+}
+
+-- Triple Baka
+SMODS.Joker{
+	key = "triple_baka",
+	atlas = "placeholder",
+	pos = {x = 0, y = 0},
+	config = {
+		immutable = {
+			hand = nil,
+			tarot = "c_fool"
+		}
+	},
+	cost = 4,
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	attributes = {"hand_type", "generation", "tarot", "song", "vocaloid song", "Teto", "Miku"},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot]
+		SynthB.song_info(info_queue, "triple_baka")
+		return {vars = {card.ability.immutable.hand and localize(card.ability.immutable.hand, "poker_hands") or "[Random Poker Hand]", localize{type = "name_text", set = "Tarot", key = card.ability.immutable.tarot}}}
+	end,
+	calculate = function(self, card, context)
+		if context.before and context.scoring_name == card.ability.immutable.hand then
+			if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+				G.E_MANAGER:add_event(Event({
+					func = (function()
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								SMODS.add_card{key = card.ability.immutable.tarot}
+								G.GAME.consumeable_buffer = 0
+								return true
+							end
+						}))
+						SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.PURPLE }, context.blueprint_card or card)
+						return true
+					end)
+				}))
+				return nil, true
+			end
+		end
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			local _poker_hands = {}
+			for handname, _ in pairs(G.GAME.hands) do
+				if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.immutable.hand then
+					_poker_hands[#_poker_hands + 1] = handname
+				end
+			end
+			card.ability.immutable.hand = pseudorandom_element(_poker_hands, 'synthb_triple_baka')
+			return {
+				message = localize('k_reset')
+			}
+		end
+	end,
+	set_ability = function(self, card, initial, delay_sprites)
+		local _poker_hands = {}
+		for handname, _ in pairs(G.GAME.hands) do
+			if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.immutable.hand then
+				_poker_hands[#_poker_hands + 1] = handname
+			end
+		end
+		card.ability.immutable.hand = pseudorandom_element(_poker_hands, 'synthb_triple_baka')
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.joker_display_values", ref_value = "tarots", retrigger_type = "mult" },
+			},
+			text_config = { colour = G.C.SECONDARY_SET.Tarot },
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "poker_hand", colour = G.C.ORANGE },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				local text, _, _ = JokerDisplay.evaluate_hand()
+				card.joker_display_values.tarots = text == card.ability.immutable.hand and 1 or 0
+				card.joker_display_values.poker_hand = localize(card.ability.immutable.hand, 'poker_hands')
+			end
+		}
 	end
 }

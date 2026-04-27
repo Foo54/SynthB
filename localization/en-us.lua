@@ -49,7 +49,7 @@ local descriptions = {
 				}
 			},
 			j_synthb_burnt_toast = {
-				name = {"{f:5}temp", "My Bread was Burnt to a Crisp"},
+				name = {"{f:5}temp", "{s:0.7}My Bread was Burnt to a Crisp"},
 				text = {
 					"{C:red}Destroying{} playing cards",
 					"upgrades a {C:attention}poker hand",
@@ -65,6 +65,16 @@ local descriptions = {
 					"{C:mult}+#1#{} mult when scored",
 					"Resets when discarded",
 					"{C:inactive,s:0.8}Can you teach me to be real?"
+				}
+			},
+			j_synthb_triple_baka = {
+				name = {"{f:5}temp", "{s:0.7}Triple Baka"},
+				text = {
+					"Create a {C:tarot}#2#",
+					"if played hand",
+					"is a {C:attention}#1#{}",
+					"{C:inactive}[Must have room]",
+					"{C:inactive,s:0.8,f:5}lyrics"
 				}
 			}
 		},
@@ -150,6 +160,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
+			triple_baka = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Triple Baka",
+					"{C:attention}Producer:",
+					"{f:5}idk",
+					"{C:inactive,s:0.8}idk",
+					"{C:attention}Voice:",
+					"{f:5}重音テト{} & {f:5}初音ミク",
+					"{C:inactive,s:0.8}Kasane Teto & Hatsune Miku"
+				}
+			}
 		}
 	}
 }

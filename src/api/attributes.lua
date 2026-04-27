@@ -1,13 +1,15 @@
---- attributes defined by this mod
---= idk if i'll use any of them but their good to have
+--- attributes defined by this mod (or others)
+--- idk if i'll use any of them but their good to have
 
 --#region GENERAL
 SMODS.Attribute{key = "debuff"}
 SMODS.Attribute{key = "song"}
 SMODS.Attribute{key = "vocaloid song"}
 
+
 --#region CROSSMOD
 SMODS.Attribute{key = "music", alias = {"song"}} -- paperback
+
 
 --#region VOICEBANKS
 SMODS.Attribute{key = "Teto"}
