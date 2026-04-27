@@ -4,7 +4,7 @@ SMODS.Joker{
 	key = "antani_itten_no",
 	atlas = "placeholder",
 	pos = {x = 0, y = 0},
-	attributes = {"mult", "suit", "clubs", "Teto", "song", "ぴーなた"},
+	attributes = {"mult", "suit", "clubs", "Teto", "song", "ぴーなた", "vocaloid song"},
 	config = {
 		extra = {
 			suit = "Clubs",
@@ -54,7 +54,7 @@ SMODS.Joker{
 	key = "cadmium_colors",
 	atlas = "placeholder",
 	pos = {x = 0, y = 0},
-	attributes = {"suit", "hearts", "diamonds", "economy", "song", "Jamie Paige", "Teto"},
+	attributes = {"suit", "hearts", "diamonds", "economy", "song", "Jamie Paige", "Teto", "vocaloid song"},
 	config = {
 		extra = {
 			suits = {"Hearts", "Diamonds"},
@@ -132,7 +132,7 @@ SMODS.Joker{
 			suit = "Spades"
 		}
 	},
-	attributes = {"chips", "suit", "spades", "scaling", "song", "ryo", "Miku"},
+	attributes = {"chips", "suit", "spades", "scaling", "song", "ryo", "Miku", "vocaloid song"},
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
@@ -185,7 +185,7 @@ SMODS.Joker{
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
-	attributes = {"chance", "enhancements", "modify_card", "song", "Mai", "Choir", "Copykeys"},
+	attributes = {"chance", "enhancements", "modify_card", "song", "Mai", "Choir", "Copykeys", "vocaloid song"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.extra.enhancement]
 		SynthB.song_info(info_queue, "caramel_airfryer", {"#1"})
@@ -227,7 +227,7 @@ SMODS.Joker{
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
-	attributes = {"debuff"},
+	attributes = {"debuff", "song", "MonochroMenace", "Teto", "vocaloid song"},
 	config = {
 		immutable = {
 			active = false
@@ -297,7 +297,7 @@ SMODS.Joker{
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-	attributes = {"rank", "song", "Rei", "Picdo"},
+	attributes = {"rank", "song", "Rei", "Picdo", "vocaloid song"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "burnt_toast")
 	end,
@@ -335,7 +335,7 @@ SMODS.Joker{
 			mult = 1
 		}
 	},
-	attributes = {"modify_card", "mult", "perma_bonus", "reset", "discard", "song", "Teto", "Jamie Paige"},
+	attributes = {"modify_card", "mult", "perma_bonus", "reset", "discard", "song", "Teto", "Jamie Paige", "vocaloid song"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "machine_love")
 		return {vars = {card.ability.extra.mult}}

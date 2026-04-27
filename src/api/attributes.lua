@@ -4,7 +4,10 @@
 --#region GENERAL
 SMODS.Attribute{key = "debuff"}
 SMODS.Attribute{key = "song"}
+SMODS.Attribute{key = "vocaloid song"}
 
+--#region CROSSMOD
+SMODS.Attribute{key = "music", alias = {"song"}} -- paperback
 
 --#region VOICEBANKS
 SMODS.Attribute{key = "Teto"}
@@ -19,5 +22,5 @@ SMODS.Attribute{key = "ぴーなた"}
 SMODS.Attribute{key = "Jamie Paige"}
 SMODS.Attribute{key = "ryo"}
 SMODS.Attribute{key = "Copykeys"}
-SMODS.Attribute{key = "MonocheoMenace"}
+SMODS.Attribute{key = "MonochroMenace"}
 SMODS.Attribute{key = "Picdo"}
