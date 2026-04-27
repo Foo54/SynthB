@@ -49,12 +49,12 @@ local descriptions = {
 				}
 			},
 			j_synthb_burnt_toast = {
-				name = {"{f:5}temp", "{s:0.7}My Bread was Burnt to a Crisp"},
+				name = {"{f:5}パンこげこげになっちゃった", "{s:0.7}My Bread was Burnt to a Crisp"},
 				text = {
 					"{C:red}Destroying{} playing cards",
 					"upgrades a {C:attention}poker hand",
 					"based on the cards rank",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}もっと美味しく出来るハズだから"
 				}
 			},
 			j_synthb_machine_love = {
@@ -68,7 +68,7 @@ local descriptions = {
 				}
 			},
 			j_synthb_triple_baka = {
-				name = {"{f:5}temp", "{s:0.7}Triple Baka"},
+				name = {"{f:5}驫麤～とりぷるばか～", "{s:0.7}Triple Baka"},
 				text = {
 					"Create a {C:tarot}#2#",
 					"if played hand",
@@ -76,22 +76,25 @@ local descriptions = {
 					"poker hand changes",
 					"at end of round",
 					"{C:inactive}[Must have room]",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}バカ! バカ! バカ!"
 				}
 			},
 			j_synthb_rolling_girl = {
-				name = {"{f:5}temp", "{s:0.7}Rolling Girl"},
+				name = {"{f:5}ローリンガール", "{s:0.7}Rolling Girl"},
 				text = {
-					"do something when its destroyed"
+					"Retrigger {C:attention}last{} played",
+					"card used in scoring",
+					"{C:attention}#1#{} additional times",
+					"{C:inactive,s:0.8,f:5}もう一回、もう一回。"
 				}
 			},
 			j_synthb_self_destructive_girl = {
-				name = {"{f:5}temp", "{s:0.7}Self Destructive Girl"},
+				name = "Self Destructive Girl",
 				text = {
 					"Sell this card to",
 					"{C:red}destroy{} adjacent jokers",
 					"{C:inactive}[Bypasses {C:attention}Eternal{C:inactive}]",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}バイバイ、壊してあげるね"
 				}
 			}
 		},
@@ -157,12 +160,12 @@ local descriptions = {
 			burnt_toast = {
 				text = {
 					"{C:attention}Title:",
-					"{f:5}temp",
+					"{f:5}パンこげこげになっちゃった",
 					"{C:inactive,s:0.8}My Bread was Burnt to a Crisp",
 					"{C:attention}Producer:",
 					"Picdo",
 					"{C:attention}Voice:",
-					"{f:5}temp",
+					"{f:5}足立レイ",
 					"{C:inactive,s:0.8}Adachi Rei"
 				}
 			},
@@ -180,11 +183,10 @@ local descriptions = {
 			triple_baka = {
 				text = {
 					"{C:attention}Title:",
-					"{f:5}temp",
+					"{f:5}驫麤～とりぷるばか～",
 					"{C:inactive,s:0.8}Triple Baka",
 					"{C:attention}Producer:",
-					"{f:5}idk",
-					"{C:inactive,s:0.8}idk",
+					"LamazeP",
 					"{C:attention}Voice:",
 					"{f:5}重音テト{} & {f:5}初音ミク",
 					"{C:inactive,s:0.8}Kasane Teto & Hatsune Miku"
@@ -193,7 +195,7 @@ local descriptions = {
 			rolling_girl = {
 				text = {
 					"{C:attention}Title:",
-					"{f:5}temp",
+					"{f:5}ローリンガール",
 					"{C:inactive,s:0.8}Rolling Girl",
 					"{C:attention}Producer:",
 					"Wowaka",
@@ -205,11 +207,9 @@ local descriptions = {
 			self_destructive_girl = {
 				text = {
 					"{C:attention}Title:",
-					"{f:5}temp",
-					"{C:inactive,s:0.8}Self Destructive Girl",
+					"Self Destructive Girl",
 					"{C:attention}Producer:",
-					"{f:5}idk",
-					"{C:inactive,s:0.8}idk",
+					"EMIRI",
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"

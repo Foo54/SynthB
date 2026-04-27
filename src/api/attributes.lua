@@ -30,3 +30,5 @@ SMODS.Attribute{key = "Copykeys"}
 SMODS.Attribute{key = "MonochroMenace"}
 SMODS.Attribute{key = "Picdo"}
 SMODS.Attribute{key = "Wowaka"}
+SMODS.Attribute{key = "EMIRI"}
+SMODS.Attribute{key = "LamazeP"}

@@ -367,7 +367,7 @@ SMODS.Joker{
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
-	attributes = {"hand_type", "generation", "tarot", "song", "vocaloid song", "Teto", "Miku"},
+	attributes = {"hand_type", "generation", "tarot", "song", "vocaloid song", "Teto", "Miku", "LamazeP"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot]
 		SynthB.song_info(info_queue, "triple_baka")
@@ -442,9 +442,25 @@ SMODS.Joker{
 	key = "rolling_girl",
 	atlas = "placeholder",
 	pos = {x = 0, y = 0},
+	cost = 4,
 	attributes = {"song", "vocaloid song", "Miku", "Wowaka"},
+	config = {
+		extra = {
+			retriggers = 2
+		}
+	},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "rolling_girl")
+		return {vars = {card.ability.extra.retriggers}}
+	end,
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play then
+			if context.other_card == context.scoring_hand[#context.scoring_hand] then
+				return {
+					repetitions = card.ability.extra.retriggers
+				}
+			end
+		end
 	end
 }
 
@@ -457,7 +473,7 @@ SMODS.Joker{
 	cost = 7,
 	perishable_compat = true,
 	eternal_compat = false,
-	attributes = {"on_sell", "destroy_card", "song", "vocaloid song", "Miku"},
+	attributes = {"on_sell", "destroy_card", "song", "vocaloid song", "Miku", "EMIRI"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "self_destructive_girl")
 	end,
