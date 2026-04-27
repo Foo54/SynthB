@@ -19,4 +19,4 @@ SynthB.debug("Loading Utility Files")
 SynthB.debug("Loading API Files")
 
 SynthB.debug("Loading Content Files")
-SynthB.load_file("files/content/joker.lua")
+SynthB.load_file("src/content/joker.lua")

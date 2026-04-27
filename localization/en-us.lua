@@ -1,7 +1,7 @@
 return {
-	description = {
+	descriptions = {
 		Joker = {
-			j_synthb_anataniittenno = {
+			j_synthb_antani_itten_no = {
 				name = {"{f:5}アンタに言ってんの!!!", "{s:0.9}I'm Talking to You!!!"},
 				text = {
 					"{C:Clubs}#1#{} held in hand",
