@@ -7,6 +7,7 @@ SMODS.Joker{
 		}
 	},
 	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "antani_itten_no")
 		return {vars = {card.ability.extra.suit, card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)

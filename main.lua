@@ -15,8 +15,10 @@ function SynthB.load_file (file_name) assert(SMODS.load_file(file_name))() end
 
 SynthB.debug("Loading Files")
 SynthB.debug("Loading Utility Files")
+SynthB.load_file("src/util/util.lua")
 
 SynthB.debug("Loading API Files")
+SynthB.load_file("src/api/mod_object.lua")
 
 SynthB.debug("Loading Content Files")
 SynthB.load_file("src/content/joker.lua")
