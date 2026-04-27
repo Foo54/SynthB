@@ -11,15 +11,16 @@ function SynthB.debug(...)
 end
 
 --- wrap load_file with assert
-function SynthB.load_file (file_name) assert(SMODS.load_file("src/" .. file_name))() end
+function SynthB.load_file (file_name) assert(SMODS.load_file("src/" .. file_name .. ".lua"))() end
 
 SynthB.debug("Loading Files")
 SynthB.debug("Loading Utility Files")
-SynthB.load_file("util/util.lua")
+SynthB.load_file("util/util")
 
 SynthB.debug("Loading API Files")
-SynthB.load_file("api/mod_object.lua")
+SynthB.load_file("api/attributes")
+SynthB.load_file("api/atlas")
+SynthB.load_file("api/mod_object")
 
 SynthB.debug("Loading Content Files")
-SynthB.load_file("content/atlas.lua")
-SynthB.load_file("content/joker.lua")
+SynthB.load_file("content/joker")

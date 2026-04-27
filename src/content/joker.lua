@@ -2,6 +2,7 @@ SMODS.Joker{
 	key = "antani_itten_no",
 	atlas = "placeholder",
 	pos = {x = 0, y = 0},
+	attributes = {"mult", "suit", "clubs", "Teto", "song", "ぴーなた"},
 	config = {
 		extra = {
 			suit = "Clubs",
