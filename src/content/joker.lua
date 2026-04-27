@@ -263,7 +263,7 @@ SMODS.Joker{
 	end
 }
 
--- My Toast was Burnt to a Crisp
+-- My Bread was Burnt to a Crisp
 SMODS.Joker{
 	key = "burnt_toast",
 	atlas = "placeholder",
@@ -296,7 +296,7 @@ SMODS.Joker{
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-	attributes = {},
+	attributes = {"rank", "song", "Rei", "Picdo"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "burnt_toast")
 	end,
