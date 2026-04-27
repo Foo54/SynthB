@@ -1,7 +1,7 @@
 SynthB = SynthB or {}
 
 SynthB.mod = SMODS.current_mod
-SynthB.DEBUG = false
+SynthB.DEBUG = true
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
 function SynthB.debug(...) 
