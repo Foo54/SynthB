@@ -1,5 +1,5 @@
 SMODS.Joker{
-	key = "anataniiteno",
+	key = "anataniittenno",
 	config = {
 		extra = {
 			suit = "Clubs",
