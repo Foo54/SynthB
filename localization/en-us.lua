@@ -5,7 +5,9 @@ local descriptions = {
 				name = {"{f:5}アンタに言ってんの!!!", "{s:0.7}I'm Talking to You!!!"},
 				text = {
 					"{C:clubs}#1#{} held in hand",
-					"give {C:mult}+#2#{} mult"
+					"give {C:mult}+#2#{} mult",
+					"{C:inactive,s:0.8,f:5}泣いちゃいたいくらい",
+					"{C:inactive,s:0.8,f:5}に素敵な月ですね(笑)",
 				}
 			},
 			j_synthb_cadmium_colors = {
@@ -13,7 +15,9 @@ local descriptions = {
 				text = {
 					"{C:hearts}#1#{} and {C:diamonds}#2#",
 					"Earn {C:money}$#3#{} when scored,",
-					"but lose {C:money}$#3#{} when held in hand"
+					"but lose {C:money}$#3#{} when held in hand",
+					"{C:inactive,s:0.8}How could anybody ever",
+					"{C:inactive,s:0.8}live like me?",
 				}
 			}
 		},
