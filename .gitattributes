@@ -1,0 +1,2 @@
+# commit aseprite files, but don't release them
+/aseprite export-ignore
