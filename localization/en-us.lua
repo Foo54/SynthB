@@ -37,6 +37,16 @@ local descriptions = {
 					"{C:inactive,s:0.8}Oh, when all my emptiness turns pink,",
 					"{C:inactive,s:0.8}will you even care?"
 				}
+			},
+			j_synthb_regret_rock = {
+				name = "Regret Rock",
+				text = {
+					"{C:attention}Once{} per round,",
+					"{C:attention}Undebuff{} all playing cards in view",
+					"if {C:attention}played{} hand contains",
+					"only {C:red}debuffed{} cards",
+					"{C:inactive,s:0.8}R - E - G - R - E - T!"
+				}
 			}
 		},
 		SongInfo = {
@@ -57,7 +67,6 @@ local descriptions = {
 				text = {
 					"{C:attention}Title:",
 					"Cadmium Colors",
-					"{C:attention}",
 					"{C:attention}Producer:",
 					"Jamie Paige",
 					"{C:attention}Voice:",
@@ -81,14 +90,24 @@ local descriptions = {
 				text = {
 					"{C:attention}Title:",
 					"lump of caramel in the air fryer",
-					"{C:attention}",
 					"{C:attention}Producer:",
 					"Copykeys",
 					"{C:attention}Voice:",
 					"{f:5}舞{} & Choir Voices #1#",
 					"{C:inactive,s:0.8}Mai"
 				}
-			}
+			},
+			regret_rock = {
+				text = {
+					"{C:attention}Title:",
+					"Regret Rock",
+					"{C:attention}Producer:",
+					"MonochroMenace",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
 		}
 	}
 }

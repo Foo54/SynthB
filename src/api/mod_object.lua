@@ -14,3 +14,11 @@ function SynthB.mod.config_tab()
 		}}
 	}}
 end
+
+function SynthB.mod.calculate(self, context)
+	if context.round_eval then
+		for _, card in ipairs(G.playing_cards) do
+			SMODS.debuff_card(card, nil, "regret_rock")
+		end
+	end
+end

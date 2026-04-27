@@ -17,7 +17,7 @@ SMODS.Joker{
 		return {vars = {card.ability.extra.suit, card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.hand then
+		if context.individual and context.cardarea == G.hand and not context.end_of_round then
 			if context.other_card:is_suit(card.ability.extra.suit) then
 				return {
 					mult = card.ability.extra.mult
@@ -168,6 +168,7 @@ SMODS.Joker{
 	end
 }
 
+-- lump of caramel in the air fryer
 SMODS.Joker{
 	key = "caramel_airfryer",
 	atlas = "placeholder",
@@ -211,6 +212,52 @@ SMODS.Joker{
 					message = "Drained!",
 					colour = G.C.GREY
 				}
+			end
+		end
+	end
+}
+
+-- Regret Rock
+SMODS.Joker{
+	key = "regret_rock",
+	atlas = "placeholder",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 7,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"debuff"},
+	config = {
+		immutable = {
+			active = false
+		}
+	},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "regret_rock")
+	end,
+	add_to_deck = function (self, card, from_debuff)
+		card.ability.immutable.active = true
+	end,
+	calculate = function(self, card, context)
+		if context.setting_blind and not context.blueprint then
+			card.ability.immutable.active = true
+			juice_card_until(card, function() return card.ability.immutable.active and not G.RESET_JIGGLES end, true)
+		end
+		if context.press_play and not context.blueprint then
+			if card.ability.immutable.active then
+				if G.hand and G.hand.highlighted then
+					local debuffed = 0
+					for _, _card in ipairs(G.hand.highlighted) do
+						if _card.debuff then debuffed = debuffed + 1 end
+					end
+					if debuffed == #G.hand.highlighted then
+						card.ability.immutable.active = false
+						for _, _card in ipairs(G.hand.cards) do
+							SMODS.debuff_card(_card, "prevent_debuff", "regret_rock")
+						end
+					end
+				end
 			end
 		end
 	end
