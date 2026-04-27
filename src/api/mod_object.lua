@@ -16,9 +16,18 @@ function SynthB.mod.config_tab()
 end
 
 function SynthB.mod.calculate(self, context)
+	-- Remove prevent debuff from cards undebuffed by regret rock
 	if context.round_eval then
 		for _, card in ipairs(G.playing_cards) do
 			SMODS.debuff_card(card, nil, "regret_rock")
+		end
+	end
+
+	-- Remove permamult from cards boosted by machine love
+	if context.discard then
+		if context.other_card.ability.SynthB_machine_love_mult then
+			context.other_card.ability.perma_mult = context.other_card.ability.perma_mult - context.other_card.ability.SynthB_machine_love_mult
+			context.other_card.ability.SynthB_machine_love_mult = nil
 		end
 	end
 end

@@ -292,6 +292,7 @@ SMODS.Joker{
 			}
 		}
 	},
+	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
 	rarity = 3,
@@ -320,4 +321,33 @@ SMODS.Joker{
 			}
 		end
 	end,
+}
+
+-- Machine Love
+SMODS.Joker{
+	key = "machine_love",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 6,
+	config = {
+		extra = {
+			mult = 1
+		}
+	},
+	attributes = {"modify_card", "mult", "perma_bonus", "reset", "discard", "song", "Teto", "Jamie Paige"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "machine_love")
+		return {vars = {card.ability.extra.mult}}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+			context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
+			context.other_card.ability.SynthB_machine_love_mult = (context.other_card.ability.SynthB_machine_love_mult or 0) + card.ability.extra.mult
+			return {
+				message = localize('k_upgrade_ex'),
+				colour = G.C.MULT
+			}
+		end
+	end
 }

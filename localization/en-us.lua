@@ -56,6 +56,16 @@ local descriptions = {
 					"based on the cards rank",
 					"{C:inactive,s:0.8,f:5}lyrics"
 				}
+			},
+			j_synthb_machine_love = {
+				name = "Machine Love",
+				text = {
+					"Every played {C:attention}card{}",
+					"permanently gains",
+					"{C:mult}+#1#{} mult when scored",
+					"Resets when discarded",
+					"{C:inactive,s:0.8}Can you teach me to be real?"
+				}
 			}
 		},
 		SongInfo = {
@@ -127,6 +137,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}temp",
 					"{C:inactive,s:0.8}Adachi Rei"
+				}
+			},
+			machine_love = {
+				text = {
+					"{C:attention}Title:",
+					"Machine Love",
+					"{C:attention}Producer:",
+					"Jamie Paige",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
 		}
