@@ -187,7 +187,7 @@ SMODS.Joker{
 	attributes = {"chance", "enhancements", "modify_card", "song", "Mai", "Choir", "Copykeys"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.extra.enhancement]
-		SynthB.song_info(info_queue, "caramel_airfryer")
+		SynthB.song_info(info_queue, "caramel_airfryer", {"#1"})
 		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_airfryer_stone")
 		return {vars = {num, dem}}
 	end,

@@ -85,7 +85,7 @@ local descriptions = {
 					"{C:attention}Producer:",
 					"Copykeys",
 					"{C:attention}Voice:",
-					"{f:5}舞{} & Choir Voices #1",
+					"{f:5}舞{} & Choir Voices #1#",
 					"{C:inactive,s:0.8}Mai"
 				}
 			}
