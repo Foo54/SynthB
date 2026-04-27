@@ -11,6 +11,7 @@ SMODS.Attribute{key = "Teto"}
 SMODS.Attribute{key = "Miku"}
 SMODS.Attribute{key = "Mai"}
 SMODS.Attribute{key = "Choir"}
+SMODS.Attribute{key = "Rei"}
 
 
 --#region ARTISTS

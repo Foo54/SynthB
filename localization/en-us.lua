@@ -47,6 +47,15 @@ local descriptions = {
 					"only {C:red}debuffed{} cards",
 					"{C:inactive,s:0.8}R - E - G - R - E - T!"
 				}
+			},
+			j_synthb_burnt_toast = {
+				name = {"{f:5}temp", "My Toast was Burnt to a Crisp"},
+				text = {
+					"{C:red}Destroying{} playing cards",
+					"upgrades a {C:attention}poker hand",
+					"based on the cards rank",
+					"{C:inactive,s:0.8,f:5}lyrics"
+				}
 			}
 		},
 		SongInfo = {
@@ -106,6 +115,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			burnt_toast = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}My Toast was Burnt to a Crisp",
+					"{C:attention}Producer:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}I forgor",
+					"{C:attention}Voice:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Adachi Rei"
 				}
 			},
 		}

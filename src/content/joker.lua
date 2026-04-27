@@ -263,3 +263,61 @@ SMODS.Joker{
 	end
 }
 
+-- My Toast was Burnt to a Crisp
+SMODS.Joker{
+	key = "burnt_toast",
+	atlas = "placeholder",
+	pos = {x = 2, y = 0},
+	config = {
+		immutable = {
+			hands = {
+				["2"] = "High Card",
+				["3"] = "Pair",
+				["4"] = "Two Pair",
+				["5"] = "Three of a Kind",
+				["6"] = "Straight",
+				["7"] = "Flush",
+				["8"] = "Full House",
+				["9"] = "Four of a Kind",
+				["10"] = "Straight Flush",
+				Jack = "Five of a Kind",
+				Queen = "Flush House",
+				King = "Flush Five",
+				Ace = "Last Played"
+			},
+			if_hidden = {
+				Jack = "Full House",
+				Queen = "Four of a Kind",
+				King = "Straight Flush"
+			}
+		}
+	},
+	eternal_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+	attributes = {},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "burnt_toast")
+	end,
+	calculate = function(self, card, context)
+		if context.remove_playing_cards then
+			local hands = {}
+			for _, _card in ipairs(context.removed) do
+				if not _card.debuff then
+					local hand = card.ability.immutable.hands[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_toast_hand or "High Card"
+					if hand == "Last Played" then hand = (SMODS.last_hand or {}).scoring_name or "High Card" end
+					if not G.GAME.hands[hand].visible then
+						hand = card.ability.immutable.if_hidden[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_toast_hand_hidden or "High Card"
+					end
+					hands[#hands+1] = hand
+				end
+			end
+			SynthB.debug(hands)
+			SMODS.upgrade_poker_hands{
+				hands = hands,
+				from = card
+			}
+		end
+	end,
+}
