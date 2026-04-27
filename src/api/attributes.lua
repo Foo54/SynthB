@@ -1,5 +1,8 @@
 --- attributes defined by this mod (or others)
 --- idk if i'll use any of them but their good to have
+--- 
+--- RegEx for getting keys and aliases -> ('key', '"alias1", "alias2"'')
+--- /^SMODS\.Attribute\{key = "([^"]+), (?:alias = \{((?:"[^"]+")(, )?)+\})?\}"/
 
 --#region GENERAL
 SMODS.Attribute{key = "debuff"}
