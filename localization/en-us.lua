@@ -13,11 +13,29 @@ local descriptions = {
 			j_synthb_cadmium_colors = {
 				name = "Cadmium Colors",
 				text = {
-					"{C:hearts}#1#{} and {C:diamonds}#2#",
+					"Cards with {C:hearts}#1#{} or {C:diamonds}#2#{} suit",
 					"Earn {C:money}$#3#{} when scored,",
 					"but lose {C:money}$#3#{} when held in hand",
 					"{C:inactive,s:0.8}How could anybody ever",
 					"{C:inactive,s:0.8}live like me?",
+				}
+			},
+			j_synthb_the_world_is_mine = {
+				name = {"{f:5}ワールドイズマイン", "{s:0.7}The World is Mine"},
+				text = {
+					"This joker gains {C:chips}+#1#{} chips when a",
+					"{C:attention}card{} with {C:spades}#2#{} suit scores",
+					"{C:inactive}[Currently {C:chips}+#3#{C:inactive} chips]",
+					"{C:inactive,s:0.8,f:5}世界でいちばんおひめさま"
+				}
+			},
+			j_synthb_caramel_airfryer = {
+				name = "lump of caramel in the air fryer",
+				text = {
+					"{C:green}#1# in #2# chance{} for played cards",
+					"to become {C:attention}Stone{} cards",
+					"{C:inactive,s:0.8}Oh, when all my emptiness turns pink,",
+					"{C:inactive,s:0.8}will you even care?"
 				}
 			}
 		},
@@ -45,6 +63,30 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			the_world_is_mine = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}ワールドイズマイン",
+					"{C:inactive,s:0.8}The World is Mine",
+					"{C:attention}Producer:",
+					"ryo",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			caramel_airfryer = {
+				text = {
+					"{C:attention}Title:",
+					"lump of caramel in the air fryer",
+					"{C:attention}",
+					"{C:attention}Producer:",
+					"Copykeys",
+					"{C:attention}Voice:",
+					"{f:5}舞{} & Choir Voices #1",
+					"{C:inactive,s:0.8}Mai"
 				}
 			}
 		}

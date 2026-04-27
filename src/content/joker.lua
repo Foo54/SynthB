@@ -62,6 +62,9 @@ SMODS.Joker{
 		}
 	},
 	cost = 5,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "cadmium_colors")
 		return {vars = {card.ability.extra.suits[1], card.ability.extra.suits[2], card.ability.extra.earnings}}
@@ -113,4 +116,102 @@ SMODS.Joker{
 			end
 		}
 	end
+}
+
+-- The World is Mine
+SMODS.Joker{
+	key = "the_world_is_mine",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	cost = 6,
+	rarity = 2,
+	config = {
+		extra = {
+			chip_gain = 3,
+			chips = 0,
+			suit = "Spades"
+		}
+	},
+	attributes = {"chips", "suit", "spades", "scaling", "song", "ryo", "Miku"},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "the_world_is_mine")
+		return {vars = {card.ability.extra.chip_gain, card.ability.extra.suit, card.ability.extra.chips}}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and not context.blueprint then
+			if context.other_card:is_suit(card.ability.extra.suit) then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_value = "chip_gain"
+				})
+			end
+		end
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
+			},
+			text_config = { colour = G.C.CHIPS },
+		}
+	end
+}
+
+SMODS.Joker{
+	key = "caramel_airfryer",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	config = {
+		extra = {
+			num = 1,
+			dem = 4,
+			enhancement = "m_stone"
+		}
+	},
+	rarity = 2,
+	cost = 5,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"chance", "enhancements", "modify_card", "song", "Mai", "Choir", "Copykeys"},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.extra.enhancement]
+		SynthB.song_info(info_queue, "caramel_airfryer")
+		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_airfryer_stone")
+		return {vars = {num, dem}}
+	end,
+	calculate = function(self, card, context)
+		if context.before and not context.blueprint then
+			local stoned = 0
+			for _, scored_card in ipairs(context.full_hand) do
+				if SMODS.pseudorandom_probability(card, "synthb_airfryer_stone", card.ability.extra.num, card.ability.extra.dem) then
+					stoned = stoned + 1
+					scored_card:set_ability(card.ability.extra.enhancement, nil, true)
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							scored_card:juice_up()
+							return true
+						end
+					}))
+				end
+			end
+			if stoned > 0 then
+				return {
+					message = "Drained!",
+					colour = G.C.GREY
+				}
+			end
+		end
+	end,
 }
