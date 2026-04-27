@@ -11,6 +11,9 @@ SMODS.Joker{
 			mult = 6
 		}
 	},
+	blueprint_compat = true,
+	perishable_compat = true,
+	eternal_compat = true,
 	cost = 4,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "antani_itten_no")
@@ -433,3 +436,43 @@ SMODS.Joker{
 		}
 	end
 }
+
+-- Rolling Girl
+SMODS.Joker{
+	key = "rolling_girl",
+	atlas = "placeholder",
+	pos = {x = 0, y = 0},
+	attributes = {"song", "vocaloid song", "Miku", "Wowaka"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "rolling_girl")
+	end
+}
+
+-- Self Destructive Girl
+SMODS.Joker{
+	key = "self_destructive_girl",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 7,
+	perishable_compat = true,
+	eternal_compat = false,
+	attributes = {"on_sell", "destroy_card", "song", "vocaloid song", "Miku"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "self_destructive_girl")
+	end,
+	calculate = function(self, card, context)
+		if context.selling_self then
+			local index = 0
+			for i, _card in ipairs(G.jokers.cards) do
+				if _card == (context.blueprint_card or card) then
+					index = i
+					break
+				end
+			end
+			if index ~= 0 then SMODS.destroy_cards({G.jokers.cards[index - 1], G.jokers.cards[index + 1]}, true) end
+		end
+	end
+}
+
+

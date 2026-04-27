@@ -78,6 +78,21 @@ local descriptions = {
 					"{C:inactive}[Must have room]",
 					"{C:inactive,s:0.8,f:5}lyrics"
 				}
+			},
+			j_synthb_rolling_girl = {
+				name = {"{f:5}temp", "{s:0.7}Rolling Girl"},
+				text = {
+					"do something when its destroyed"
+				}
+			},
+			j_synthb_self_destructive_girl = {
+				name = {"{f:5}temp", "{s:0.7}Self Destructive Girl"},
+				text = {
+					"Sell this card to",
+					"{C:red}destroy{} adjacent jokers",
+					"{C:inactive}[Bypasses {C:attention}Eternal{C:inactive}]",
+					"{C:inactive,s:0.8,f:5}lyrics"
+				}
 			}
 		},
 		SongInfo = {
@@ -174,7 +189,32 @@ local descriptions = {
 					"{f:5}重音テト{} & {f:5}初音ミク",
 					"{C:inactive,s:0.8}Kasane Teto & Hatsune Miku"
 				}
-			}
+			},
+			rolling_girl = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Rolling Girl",
+					"{C:attention}Producer:",
+					"Wowaka",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			self_destructive_girl = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Self Destructive Girl",
+					"{C:attention}Producer:",
+					"{f:5}idk",
+					"{C:inactive,s:0.8}idk",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
 		}
 	}
 }

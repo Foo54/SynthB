@@ -29,3 +29,4 @@ SMODS.Attribute{key = "ryo"}
 SMODS.Attribute{key = "Copykeys"}
 SMODS.Attribute{key = "MonochroMenace"}
 SMODS.Attribute{key = "Picdo"}
+SMODS.Attribute{key = "Wowaka"}
