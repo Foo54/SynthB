@@ -230,14 +230,11 @@ SMODS.Joker{
 	attributes = {"debuff", "song", "MonochroMenace", "Teto", "vocaloid song"},
 	config = {
 		immutable = {
-			active = false
+			active = true
 		}
 	},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "regret_rock")
-	end,
-	add_to_deck = function (self, card, from_debuff)
-		card.ability.immutable.active = true
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind and not context.blueprint then
@@ -306,10 +303,10 @@ SMODS.Joker{
 			local hands = {}
 			for _, _card in ipairs(context.removed) do
 				if not _card.debuff then
-					local hand = card.ability.immutable.hands[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_toast_hand or "High Card"
+					local hand = card.ability.immutable.hands[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_bread_hand or "High Card"
 					if hand == "Last Played" then hand = (SMODS.last_hand or {}).scoring_name or "High Card" end
 					if not SMODS.is_poker_hand_visible(hand) then
-						hand = card.ability.immutable.if_hidden[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_toast_hand_hidden or "High Card"
+						hand = card.ability.immutable.if_hidden[_card.base.value] or SMODS.Ranks[_card.base.value].SynthB_bread_hand_hidden or "High Card"
 					end
 					hands[#hands+1] = hand
 				end

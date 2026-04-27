@@ -73,6 +73,8 @@ local descriptions = {
 					"Create a {C:tarot}#2#",
 					"if played hand",
 					"is a {C:attention}#1#{}",
+					"poker hand changes",
+					"at end of round",
 					"{C:inactive}[Must have room]",
 					"{C:inactive,s:0.8,f:5}lyrics"
 				}
