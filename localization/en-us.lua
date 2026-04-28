@@ -139,23 +139,23 @@ local descriptions = {
 				}
 			},
 			j_synthb_retry_now_normal = {
-				name = {"{f:5}temp", "Retry Now"},
+				name = {"{f:5}いますぐ輪廻", "Retry Now"},
 				text = {
 					"Prevents death",
 					"if chips scored",
 					"are at least {C:attention}90%",
 					"of required chips",
 					"{E:2,C:red}self destructs?",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}いますぐ輪廻 今回も結ばれないね"
 				}
 			},
 			j_synthb_retry_now_change = {
-				name = {"{f:5}temp", "Retry Now"},
+				name = {"{f:5}いますぐ輪廻", "Retry Now"},
 				text = {
 					"{X:mult,C:white}X#1#{} mult per {C:attention}hand",
 					"played this run",
 					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive} Mult]",
-					"{C:inactive,s:0.8}207944154"
+					"{C:inactive,s:0.8}207944155"
 				}
 			},
 
@@ -329,10 +329,10 @@ local descriptions = {
 			retry_now = {
 				text = {
 					"{C:attention}Title",
-					"{f:5}temp",
+					"{f:5}いますぐ輪廻",
 					"{C:inactive,s:0.8}Retry Now",
 					"{C:attention}Producer:",
-					"{f:5}temp",
+					"{f:5}なきそ",
 					"{C:inactive,s:0.8}Nakiso",
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
@@ -356,7 +356,7 @@ local descriptions = {
 	},
 	misc = {
 		dictionary = {
-			ph_retry_now = "insert song lyrics i might have to do some patching idk"
+			ph_retry_now = "いますぐ輪廻 今回も結ばれないね"
 		}
 	}
 }
