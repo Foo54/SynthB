@@ -162,7 +162,7 @@ local descriptions = {
 			-- Page 2
 
 			j_synthb_fire_dance = {
-				name = {"{f:5}temp", "{s:0.7}Fire Dance"},
+				name = {"{f:5}ファイアダンス", "{s:0.7}Fire Dance"},
 				text = {
 					"{C:attention}+#1#{} hand size",
 					"if the {C:attention}final{} hand played",
@@ -342,13 +342,13 @@ local descriptions = {
 			fire_dance = {
 				text = {
 					"{C:attention}Title",
-					"{f:5}temp",
+					"{f:5}ファイアダンス",
 					"{C:inactive,s:0.8}Fire Dance",
 					"{C:attention}Producer:",
-					"{f:5}temp{} & {f:5}temp",
+					"{f:5}デコニーナ{} & {f:5}ギガ",
 					"{C:inactive,s:0.8}Deco*27 & Giga",
 					"{C:attention}Voice:",
-					"{f:5}初音ミク{} & {f:5}temp{} & {f:5}temp{} & {f:5}temp",
+					"{f:5}初音ミク{} & {f:5}鏡音レン{} & {f:5}カイト{} & {f:5}メイコ",
 					"{C:inactive,s:0.8}Hatsune Miku & Kagamine Len & KAITO & MEIKO"
 				}
 			}
