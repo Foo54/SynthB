@@ -216,7 +216,7 @@ local descriptions = {
 					"{C:attention}Producer:",
 					"Copykeys",
 					"{C:attention}Voice:",
-					"{f:5}舞{} & Choir Voices #1#",
+					"{f:5}舞{C:inactive} & {}Choir Voices #1#",
 					"{C:inactive,s:0.8}Mai"
 				}
 			},
@@ -262,7 +262,7 @@ local descriptions = {
 					"{C:attention}Producer:",
 					"LamazeP",
 					"{C:attention}Voice:",
-					"{f:5}重音テト{} & {f:5}初音ミク",
+					"{f:5}重音テト{C:inactive} & {f:5}初音ミク",
 					"{C:inactive,s:0.8}Kasane Teto & Hatsune Miku"
 				}
 			},
@@ -345,10 +345,10 @@ local descriptions = {
 					"{f:5}ファイアダンス",
 					"{C:inactive,s:0.8}Fire Dance",
 					"{C:attention}Producer:",
-					"{f:5}デコニーナ{} & {f:5}ギガ",
+					"{f:5}デコニーナ{C:inactive} & {f:5}ギガ",
 					"{C:inactive,s:0.8}Deco*27 & Giga",
 					"{C:attention}Voice:",
-					"{f:5}初音ミク{} & {f:5}鏡音レン{} & {f:5}カイト{} & {f:5}メイコ",
+					"{f:5}初音ミク{C:inactive} & {f:5}鏡音レン{C:inactive} & {f:5}カイト{C:inactive} & {f:5}メイコ",
 					"{C:inactive,s:0.8}Hatsune Miku & Kagamine Len & KAITO & MEIKO"
 				}
 			}
