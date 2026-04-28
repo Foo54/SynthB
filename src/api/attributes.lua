@@ -14,6 +14,9 @@ SMODS.Attribute{key = "vocaloid song"}
 SMODS.Attribute{key = "music", alias = {"song"}} -- paperback
 
 
+--#region EVENTUAL PR
+SMODS.Attribute{key = "position"}
+
 --#region VOICEBANKS
 SMODS.Attribute{key = "Teto"}
 SMODS.Attribute{key = "Miku"}
@@ -25,6 +28,7 @@ SMODS.Attribute{key = "Yuki"}
 SMODS.Attribute{key = "Len"}
 SMODS.Attribute{key = "MEIKO"}
 SMODS.Attribute{key = "KAITO"}
+SMODS.Attribute{key = "GUMI"}
 
 
 --#region ARTISTS
@@ -42,3 +46,4 @@ SMODS.Attribute{key = "Hiiragi Magnetite"}
 SMODS.Attribute{key = "inabakumori"}
 SMODS.Attribute{key = "Nakiso"}
 SMODS.Attribute{key = "Deco*27"}
+SMODS.Attribute{key = "Kanaria"}

@@ -842,3 +842,30 @@ SMODS.Joker{
 		}
 	end
 }
+
+-- KING
+SMODS.Joker{
+	key = "king",
+	atlas = "placeholder",
+	pos = {x = 0, y = 0},
+	cost = 5,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "king")
+	end,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"modify_card", "rank", "position", "king", "song", "vocaloid song", "GUMI", "Kanaria"},
+	calculate = function(self, card, context)
+		if context.before then
+			if context.full_hand[1]:get_id() ~= 13 then 
+				assert(SMODS.modify_rank(context.full_hand[1], 1))
+				context.full_hand[1]:juice_up()
+			end
+			if context.full_hand[#context.full_hand]:get_id() ~= 13 then
+				assert(SMODS.modify_rank(context.full_hand[#context.full_hand], 1))
+				context.full_hand[#context.full_hand]:juice_up()
+			end
+		end
+	end,
+}

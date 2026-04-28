@@ -170,6 +170,15 @@ local descriptions = {
 					"{C:attention}caught fire",
 					"{C:inactive,s:0.8}Wake up, Get up, Stand up, MERA"
 				}
+			},
+			j_synthb_king = {
+				name = "KING",
+				text = {
+					"{C:attention}Leftmost{} and {C:attention}rightmost{} cards",
+					"increase their rank by {C:attention}1{}",
+					"unless they are {C:attention}Kings{}",
+					"{C:inactive,s:0.8,f:5}レフトサイド　ライトサイド"
+				}
 			}
 		},
 		SongInfo = {
@@ -351,7 +360,19 @@ local descriptions = {
 					"{f:5}初音ミク{C:inactive} & {f:5}鏡音レン{C:inactive} & {f:5}カイト{C:inactive} & {f:5}メイコ",
 					"{C:inactive,s:0.8}Hatsune Miku & Kagamine Len & KAITO & MEIKO"
 				}
-			}
+			},
+			king = {
+				text = {
+					"{C:attention}Title",
+					"KING",
+					"{C:attention}Producer:",
+					"Kanaria",
+					"{C:attention}Voice:",
+					"{f:5}グミ",
+					"{C:inactive,s:0.8}GUMI"
+				}
+			},
+			
 		}
 	},
 	misc = {
