@@ -650,3 +650,134 @@ SMODS.Joker{
 		}
 	end
 }
+
+-- Retry Now Normal
+SMODS.Joker{
+	key = "retry_now_normal",
+	atlas = "placeholder",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 9,
+	attributes = {"prevents_death", "song", "vocaloid song", "Miku", "Nakiso"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "retry_now")
+	end,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	calculate = function(self, card, context)
+		if context.end_of_round and context.game_over and context.main_eval then
+			if G.GAME.chips / G.GAME.blind.chips >= 0.9 then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						G.hand_text_area.blind_chips:juice_up()
+						G.hand_text_area.game_chips:juice_up()
+						G.E_MANAGER:add_event(Event{
+							trigger = 'after',
+							delay = 0.15,
+							func = function()
+								card:flip()
+								return true
+							end
+						})
+						delay(0.2)
+						G.E_MANAGER:add_event(Event{
+							trigger = 'after',
+							delay = 0.1,
+							func = function()
+								card:set_ability("j_synthb_retry_now_change")
+								play_sound('tarot1') -- replace with custom sound
+								return true
+							end
+						})
+						G.E_MANAGER:add_event(Event{
+							trigger = 'after',
+							delay = 0.15,
+							func = function()
+								card:flip()
+								return true
+							end
+						})
+						return true
+					end
+				}))
+				return {
+					message = localize('k_saved_ex'),
+					saved = 'ph_retry_now',
+					colour = G.C.BLUE
+				}
+			end
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "active_text" },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				local is_active = false
+				local blind_ratio = (G.GAME.chips or 0) / ((G.GAME.blind or {}).chips or 1)
+				is_active = blind_ratio and blind_ratio ~= 0 and blind_ratio >= 0.9 or false
+
+				card.joker_display_values.is_active = is_active
+				card.joker_display_values.active_text = is_active and localize("jdis_active") or localize("jdis_inactive")
+			end,
+			style_function = function(card, text, reminder_text, extra)
+				if reminder_text and reminder_text.children and reminder_text.children[2] then
+					reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+				end
+			end
+		}
+	end
+}
+
+-- Retry Now Changed
+SMODS.Joker{
+	key = "retry_now_change",
+	atlas = "placeholder",
+	pos = {x = 3, y = 0},
+	rarity = 4,
+	cost = 20,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	config = {
+		extra = {
+			scaling = 0.1
+		}
+	},
+	in_pool = function (self, args)
+		return false
+	end,
+	attributes = {"xmult", "scaling", "hand", "song", "vocaloid song", "Miku", "Nakiso"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "retry_now")
+		return {vars = {card.ability.extra.scaling, 1 + card.ability.extra.scaling * (G.GAME.hands_played or 0)}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				xmult = 1 + card.ability.extra.scaling * (G.GAME.hands_played or 0)
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp" }
+					}
+				}
+			},
+			calc_function = function(card)
+				card.joker_display_values.xmult = 1 + card.ability.extra.scaling * (G.GAME.hands_played or 0)
+			end
+		}
+	end
+}

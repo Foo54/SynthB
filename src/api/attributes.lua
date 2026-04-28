@@ -37,3 +37,4 @@ SMODS.Attribute{key = "LamazeP"}
 SMODS.Attribute{key = "worzy"}
 SMODS.Attribute{key = "Hiiragi Magnetite"}
 SMODS.Attribute{key = "inabakumori"}
+SMODS.Attribute{key = "Nakiso"}

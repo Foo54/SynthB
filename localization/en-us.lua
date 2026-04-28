@@ -25,7 +25,7 @@ local descriptions = {
 				text = {
 					"This joker gains {C:chips}+#1#{} chips when a",
 					"{C:attention}card{} with {C:spades}#2#{} suit scores",
-					"{C:inactive}[Currently {C:chips}+#3#{C:inactive} chips]",
+					"{C:inactive}[Currently {C:chips}+#3#{C:inactive} Chips]",
 					"{C:inactive,s:0.8,f:5}世界でいちばんおひめさま"
 				}
 			},
@@ -121,7 +121,7 @@ local descriptions = {
 					"Gain {C:chips}+#1#{} chips if",
 					"a {C:attention}#2#{} card hand",
 					"is played",
-					"{C:inactive}[Currently {C:chips}+#3#{C:inactive} chips]",
+					"{C:inactive}[Currently {C:chips}+#3#{C:inactive} Chips]",
 					"{C:inactive,s:0.8,f:5}テテテテトリス"
 				}
 			},
@@ -135,6 +135,26 @@ local descriptions = {
 					"is scored, resets",
 					"when {C:attention}Boss Blind{} defeated",
 					"{C:inactive,s:0.8,f:5}どうしようもない僕の嬉しさは"
+				}
+			},
+			j_synthb_retry_now_normal = {
+				name = {"{f:5}temp", "Retry Now"},
+				text = {
+					"Prevents death",
+					"if chips scored",
+					"are at least {C:attention}90%",
+					"of required chips",
+					"{E:2,C:red}self destructs?",
+					"{C:inactive,s:0.8,f:5}lyrics"
+				}
+			},
+			j_synthb_retry_now_change = {
+				name = {"{f:5}temp", "Retry Now"},
+				text = {
+					"{X:mult,C:white}X#1#{} mult per {C:attention}hand",
+					"played this run",
+					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive} Mult]",
+					"{C:inactive,s:0.8}207944154"
 				}
 			}
 		},
@@ -290,6 +310,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}歌愛ユキ",
 					"{C:inactive,s:0.8}Kaai Yuki"
+				}
+			},
+			retry_now = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Retry Now",
+					"{C:attention}Producer:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Nakiso",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			}
 		}
