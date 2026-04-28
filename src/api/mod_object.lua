@@ -31,3 +31,22 @@ function SynthB.mod.calculate(self, context)
 		end
 	end
 end
+
+function SynthB.mod.extra_tabs()
+	return {
+		{
+			label = "Credits",
+			tab_definition_function = function()
+				return {n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "tl", padding = 0.2, colour = G.C.BLACK }, nodes = {
+					{n = G.UIT.R, config = { padding = 0.2, align = "cl" }, nodes = {
+						{n = G.UIT.C, config = { align = "cl" }, nodes = {
+							{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+								{n = G.UIT.T, config = {text = "Mod Name - mariofan", scale = 0.3, colour = G.C.UI.TEXT_LIGHT}}
+							}}
+						}}
+					}}
+				}}
+			end
+		}
+	}
+end

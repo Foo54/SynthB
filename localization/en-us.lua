@@ -96,6 +96,12 @@ local descriptions = {
 					"{C:inactive}[Bypasses {C:attention}Eternal{C:inactive}]",
 					"{C:inactive,s:0.8,f:5}バイバイ、壊してあげるね"
 				}
+			},
+			j_synthb_static = {
+				name = "Static",
+				text = {
+					""
+				}
 			}
 		},
 		SongInfo = {
@@ -215,6 +221,17 @@ local descriptions = {
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
+			static = {
+				text = {
+					"{C:attention}Title:",
+					"Static",
+					"{C:attention}Producer:",
+					"Flavor Foley",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			}
 		}
 	}
 }
