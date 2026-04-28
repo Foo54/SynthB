@@ -491,4 +491,40 @@ SMODS.Joker{
 	end
 }
 
-
+-- Lemonade
+SMODS.Joker{
+	key = "lemonade",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 8,
+	config = {
+		extra = {
+			earnings = 6,
+			loss = 1,
+			scale = 1
+		}
+	},
+	perishable_compat = true,
+	eternal_compat = false,
+	blueprint_compat = true,
+	attributes = {"economy", "food", "scaling", "song", "vocaloid song", "Yi Xi", "worzy"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "lemonade")
+		return {vars = {card.ability.extra.earnings, card.ability.extra.loss, card.ability.extra.scale}}
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and context.main_eval then
+			local out = {
+				dollars = card.ability.extra.earnings
+			}
+			card.ability.extra.earnings = card.ability.extra.earnings - card.ability.extra.loss
+			return out
+		end
+		if context.selling_card and not context.blueprint then
+			card.ability.extra.earnings = card.ability.extra.earnings * 2
+			card.ability.extra.loss = card.ability.extra.loss + card.ability.extra.scale
+			card.ability.extra.scale = card.ability.extra.scale + 1
+		end
+	end,
+}

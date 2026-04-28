@@ -20,6 +20,7 @@ SMODS.Attribute{key = "Miku"}
 SMODS.Attribute{key = "Mai"}
 SMODS.Attribute{key = "Choir"}
 SMODS.Attribute{key = "Rei"}
+SMODS.Attribute{key = "Yi Xi"}
 
 
 --#region ARTISTS
@@ -32,3 +33,4 @@ SMODS.Attribute{key = "Picdo"}
 SMODS.Attribute{key = "Wowaka"}
 SMODS.Attribute{key = "EMIRI"}
 SMODS.Attribute{key = "LamazeP"}
+SMODS.Attribute{key = "worzy"}

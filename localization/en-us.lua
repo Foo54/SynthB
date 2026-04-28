@@ -97,10 +97,21 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}バイバイ、壊してあげるね"
 				}
 			},
-			j_synthb_static = {
-				name = "Static",
+			j_synthb_lemonade = {
+				name = "Lemonade",
 				text = {
-					""
+					{
+						"Earn {C:money}$#1#{} at",
+						"end of round",
+						"{C:money}-$#2#{} per",
+						"round played"
+					},
+					{
+						"When a card is sold",
+						"{C:attention}double{} money earned",
+						"and raise money lost by {C:money}$#3#",
+						"{C:inactive,s:0.8}One more scoop of sugar, sugar"
+					}
 				}
 			}
 		},
@@ -221,15 +232,15 @@ local descriptions = {
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
-			static = {
+			lemonade = {
 				text = {
 					"{C:attention}Title:",
-					"Static",
+					"Lemonade",
 					"{C:attention}Producer:",
-					"Flavor Foley",
+					"worzy",
 					"{C:attention}Voice:",
-					"{f:5}初音ミク",
-					"{C:inactive,s:0.8}Hatsune Miku"
+					"{f:4}奕夕",
+					"{C:inactive,s:0.8}Yi Xi"
 				}
 			}
 		}
