@@ -113,6 +113,16 @@ local descriptions = {
 						"{C:inactive,s:0.8}One more scoop of sugar, sugar"
 					}
 				}
+			},
+			j_synthb_tetoris = {
+				name = {"{f:5}テトリス", "{s:0.7}Tetoris"},
+				text = {
+					"Gain {C:chips}+#1#{} chips if",
+					"a {C:attention}#2#{} card hand",
+					"is played",
+					"{C:inactive}[Currently {C:chips}+#3#{C:inactive} chips]",
+					"{C:inactive,s:0.8,f:5}テテテテトリス"
+				}
 			}
 		},
 		SongInfo = {
@@ -241,6 +251,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:4}奕夕",
 					"{C:inactive,s:0.8}Yi Xi"
+				}
+			},
+			tetoris = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}テトリス",
+					"{C:inactive,s:0.8}Tetoris",
+					"{C:attention}Producer:",
+					"{f:5}柊マグネタイト",
+					"{C:inactive,s:0.8}Hiiragi Magnetite",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			}
 		}

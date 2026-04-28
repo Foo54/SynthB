@@ -24,7 +24,7 @@ SMODS.Attribute{key = "Yi Xi"}
 
 
 --#region ARTISTS
-SMODS.Attribute{key = "ぴーなた"}
+SMODS.Attribute{key = "Pinata"}
 SMODS.Attribute{key = "Jamie Paige"}
 SMODS.Attribute{key = "ryo"}
 SMODS.Attribute{key = "Copykeys"}
@@ -34,3 +34,4 @@ SMODS.Attribute{key = "Wowaka"}
 SMODS.Attribute{key = "EMIRI"}
 SMODS.Attribute{key = "LamazeP"}
 SMODS.Attribute{key = "worzy"}
+SMODS.Attribute{key = "Hiiragi Magnetite"}

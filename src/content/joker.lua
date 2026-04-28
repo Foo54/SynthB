@@ -4,7 +4,7 @@ SMODS.Joker{
 	key = "antani_itten_no",
 	atlas = "placeholder",
 	pos = {x = 0, y = 0},
-	attributes = {"mult", "suit", "clubs", "Teto", "song", "ぴーなた", "vocaloid song"},
+	attributes = {"mult", "suit", "clubs", "Teto", "song", "Pinata", "vocaloid song"},
 	config = {
 		extra = {
 			suit = "Clubs",
@@ -527,4 +527,55 @@ SMODS.Joker{
 			card.ability.extra.scale = card.ability.extra.scale + 1
 		end
 	end,
+}
+
+-- Tetoris
+SMODS.Joker{
+	key = "tetoris",
+	atlas = "placeholder",
+	pos = {x = 0, y = 0},
+	config = {
+		extra = {
+			scaling = 10,
+			chips = 0
+		},
+		immutable = {
+			cards = 5
+		}
+	},
+	cost = 5,
+	attributes = {"chips", "hand_type", "scaling", "song", "Teto", "vocaloid song"},
+	blueprint_compat = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "tetoris")
+		return {vars = {card.ability.extra.scaling, card.ability.immutable.cards, card.ability.extra.chips}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+		if context.before and not context.blueprint then
+			if #context.scoring_hand == card.ability.immutable.cards then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_value = "scaling"
+				})
+			end
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
+			},
+			text_config = { colour = G.C.CHIPS },
+		}
+	end
 }
