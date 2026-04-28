@@ -502,7 +502,11 @@ SMODS.Joker{
 		extra = {
 			earnings = 6,
 			loss = 1,
-			scale = 1
+			scale = 1,
+			cap = 10
+		},
+		immutable = {
+			mem_earnings = 6
 		}
 	},
 	perishable_compat = true,
@@ -511,22 +515,25 @@ SMODS.Joker{
 	attributes = {"economy", "food", "scaling", "song", "vocaloid song", "Yi Xi", "worzy"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "lemonade")
-		return {vars = {card.ability.extra.earnings, card.ability.extra.loss, card.ability.extra.scale}}
+		return {vars = {card.ability.extra.earnings, card.ability.extra.loss, card.ability.extra.scale, card.ability.extra.cap}}
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.main_eval then
-			local out = {
-				dollars = card.ability.extra.earnings
-			}
+			card.ability.immutable.mem_earnings = card.ability.extra.earnings
 			card.ability.extra.earnings = card.ability.extra.earnings - card.ability.extra.loss
-			return out
+			if card.ability.extra.earnings <= 0 then
+				SMODS.destroy_cards(card, nil, nil, true)
+			end
 		end
 		if context.selling_card and not context.blueprint then
-			card.ability.extra.earnings = card.ability.extra.earnings * 2
+			card.ability.extra.earnings = math.min(card.ability.extra.earnings * 2, card.ability.extra.cap)
 			card.ability.extra.loss = card.ability.extra.loss + card.ability.extra.scale
 			card.ability.extra.scale = card.ability.extra.scale + 1
 		end
 	end,
+	calc_dollar_bonus = function (self, card)
+		return card.ability.immutable.mem_earnings or nil
+	end
 }
 
 -- Tetoris
@@ -576,6 +583,70 @@ SMODS.Joker{
 				{ ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
 			},
 			text_config = { colour = G.C.CHIPS },
+		}
+	end
+}
+
+-- Relay Outer
+SMODS.Joker{
+	key = "relayouter",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 7,
+	config = {
+		extra = {
+			reset = 1,
+			earnings = 1,
+			scaling = 1
+		},
+		immutable = {
+			rank = 9,
+			mem_earnings = 1
+		}
+	},
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"economy", "scaling", "reset", "rank", "9", "song", "vocaloid song", "Yuki", "inabakumori"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "relayouter")
+		return {vars = {card.ability.extra.earnings, card.ability.extra.scaling, card.ability.immutable.rank}}
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and not context.blueprint then
+			if context.other_card:get_id() == card.ability.immutable.rank then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "earnings",
+					scalar_value = "scaling"
+				})
+				SynthB.debug(card.ability.extra.earnings)
+				card.ability.immutable.mem_earnings = card.ability.extra.earnings
+			end
+		end
+		if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss and not context.blueprint then
+			if card.ability.extra.earnings > card.ability.extra.reset then
+				card.ability.immutable.mem_earnings = card.ability.extra.earnings
+				card.ability.extra.earnings = card.ability.extra.reset
+				return {
+					message = localize('k_reset'),
+					colour = G.C.RED
+				}
+			end
+		end
+	end,
+	calc_dollar_bonus = function (self, card)
+		return card.ability.immutable.mem_earnings or nil
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "$" },
+				{ ref_table = "card.ability.extra", ref_value = "earnings", retrigger_type = "mult" },
+			},
+			text_config = { colour = G.C.MONEY },
 		}
 	end
 }

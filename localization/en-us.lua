@@ -109,6 +109,7 @@ local descriptions = {
 					{
 						"When a card is sold",
 						"{C:attention}double{} money earned",
+						"{C:inactive}[max of {C:money}$#4#{C:inactive}]",
 						"and raise money lost by {C:money}$#3#",
 						"{C:inactive,s:0.8}One more scoop of sugar, sugar"
 					}
@@ -122,6 +123,18 @@ local descriptions = {
 					"is played",
 					"{C:inactive}[Currently {C:chips}+#3#{C:inactive} chips]",
 					"{C:inactive,s:0.8,f:5}テテテテトリス"
+				}
+			},
+			j_synthb_relayouter = {
+				name = {"{f:5}リレイアウター", "{s:0.7}Relay Outer"},
+				text = {
+					"Earn {C:money}$#1#{} at",
+					"end of round",
+					"Payout increases by",
+					"{C:money}$#2#{} when a {C:attention}#3#",
+					"is scored, resets",
+					"when {C:attention}Boss Blind{} defeated",
+					"{C:inactive,s:0.8,f:5}どうしようもない僕の嬉しさは"
 				}
 			}
 		},
@@ -264,6 +277,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			relayouter = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}リレイアウター",
+					"{C:inactive,s:0.8}Relay Outer",
+					"{C:attention}Producer:",
+					"{f:5}稲葉曇",
+					"{C:inactive,s:0.8}inabakumori",
+					"{C:attention}Voice:",
+					"{f:5}歌愛ユキ",
+					"{C:inactive,s:0.8}Kaai Yuki"
 				}
 			}
 		}
