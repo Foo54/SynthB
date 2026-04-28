@@ -9,15 +9,5 @@ priority = 50
 target = 'functions/common_events.lua'
 pattern = '''{n=G.UIT.O, config={object = DynaText({string = {' '..(type(G.GAME.saved_text) == 'string' and (G.localization.misc.dictionary[G.GAME.saved_text] and localize(G.GAME.saved_text) or G.GAME.saved_text) or localize('ph_mr_bones'))..' '}, colours = {G.C.FILTER}, shadow = true, pop_in = 0, scale = 0.5*scale, silent = true})}}'''
 position = 'at'
-payload = '''{n=G.UIT.O, config={object = DynaText({string = {' '..(type(G.GAME.saved_text) == 'string' and (G.localization.misc.dictionary[G.GAME.saved_text] and localize(G.GAME.saved_text) or G.GAME.saved_text) or localize('ph_mr_bones'))..' '}, colours = {G.C.FILTER}, shadow = true, pop_in = 0, scale = 0.5*scale, silent = true, font = G.GAME.SynthB_retry_now_saved and G.FONTS[5] or nil})}}'''
-match_indent = true
-
-
-# reset the global
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = '''                elseif string.find(config.name, 'tag') then'''
-position = 'before'
-payload = '''G.GAME.SynthB_retry_now_saved = false'''
+payload = '''{n=G.UIT.O, config={object = DynaText({string = {' '..(type(G.GAME.saved_text) == 'string' and (G.localization.misc.dictionary[G.GAME.saved_text] and localize(G.GAME.saved_text) or G.GAME.saved_text) or localize('ph_mr_bones'))..' '}, colours = {G.C.FILTER}, shadow = true, pop_in = 0, scale = 0.5*scale, silent = true, font = G.GAME.saved_text == "ph_retry_now" and G.FONTS[5] or nil})}}'''
 match_indent = true
