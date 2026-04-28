@@ -1,3 +1,5 @@
+--- Page 1
+
 
 -- I'm Talking to You!!!
 SMODS.Joker{
@@ -777,6 +779,64 @@ SMODS.Joker{
 			},
 			calc_function = function(card)
 				card.joker_display_values.xmult = 1 + card.ability.extra.scaling * (G.GAME.hands_played or 0)
+			end
+		}
+	end
+}
+
+
+--- Page 2
+
+
+-- Fire Dance
+SMODS.Joker{
+	key = "fire_dance",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 6,
+	config = {
+		extra = {
+			gain = 2
+		},
+		immutable = {
+			active = false
+		}
+	},
+	attributes = {"hand_size", "hands", "song", "vocaloid song", "Miku", "Len", "KAITO", "MEIKO", "Deco*27", "Giga"},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "fire_dance")
+		return {vars = {card.ability.extra.gain, card.ability.extra.gained}}
+	end,
+	calculate = function(self, card, context)
+		if context.blind_defeated and context.main_eval then
+			if G.GAME.SynthB_oneshot_last_boss and not card.ability.immutable.active then
+				card.ability.immutable.active = true
+				G.hand:change_size(card.ability.extra.gain)
+			elseif not G.GAME.SynthB_oneshot_last_boss and card.ability.immutable.active then
+				card.ability.immutable.active = false
+				G.hand:change_size(-card.ability.extra.gain)
+			end
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "active_text" },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				card.joker_display_values.active_text = card.ability.immutable.active and localize("jdis_active") or localize("jdis_inactive")
+			end,
+			style_function = function(card, text, reminder_text, extra)
+				if reminder_text and reminder_text.children and reminder_text.children[2] then
+					reminder_text.children[2].config.colour = card.ability.immutable.active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+				end
 			end
 		}
 	end

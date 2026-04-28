@@ -1,6 +1,7 @@
 local descriptions = {
 	descriptions = {
 		Joker = {
+			-- Page 1
 			j_synthb_antani_itten_no = {
 				name = {"{f:5}アンタに言ってんの!!!", "{s:0.7}I'm Talking to You!!!"},
 				text = {
@@ -155,6 +156,19 @@ local descriptions = {
 					"played this run",
 					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive} Mult]",
 					"{C:inactive,s:0.8}207944154"
+				}
+			},
+
+			-- Page 2
+
+			j_synthb_fire_dance = {
+				name = {"{f:5}temp", "{s:0.7}Fire Dance"},
+				text = {
+					"{C:attention}+#1#{} hand size",
+					"if the {C:attention}final{} hand played",
+					"during the previous blind",
+					"{C:attention}caught fire",
+					"{C:inactive,s:0.8}Wake up, Get up, Stand up, MERA"
 				}
 			}
 		},
@@ -324,7 +338,25 @@ local descriptions = {
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
+			},
+			fire_dance = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Fire Dance",
+					"{C:attention}Producer:",
+					"{f:5}temp{} & {f:5}temp",
+					"{C:inactive,s:0.8}Deco*27 & Giga",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク{} & {f:5}temp{} & {f:5}temp{} & {f:5}temp",
+					"{C:inactive,s:0.8}Hatsune Miku & Kagamine Len & KAITO & MEIKO"
+				}
 			}
+		}
+	},
+	misc = {
+		dictionary = {
+			ph_retry_now = "insert song lyrics i might have to do some patching idk"
 		}
 	}
 }

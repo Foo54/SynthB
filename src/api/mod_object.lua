@@ -30,6 +30,15 @@ function SynthB.mod.calculate(self, context)
 			context.other_card.ability.SynthB_machine_love_mult = nil
 		end
 	end
+
+	-- Keep track of if the last blind was one shot
+	if context.after and G.GAME.blind then
+		if SMODS.last_hand_oneshot then
+			G.GAME.SynthB_oneshot_last_boss = true
+		else
+			G.GAME.SynthB_oneshot_last_boss = false
+		end
+	end
 end
 
 function SynthB.mod.extra_tabs()

@@ -22,6 +22,9 @@ SMODS.Attribute{key = "Choir"}
 SMODS.Attribute{key = "Rei"}
 SMODS.Attribute{key = "Yi Xi"}
 SMODS.Attribute{key = "Yuki"}
+SMODS.Attribute{key = "Len"}
+SMODS.Attribute{key = "MEIKO"}
+SMODS.Attribute{key = "KAITO"}
 
 
 --#region ARTISTS
@@ -38,3 +41,4 @@ SMODS.Attribute{key = "worzy"}
 SMODS.Attribute{key = "Hiiragi Magnetite"}
 SMODS.Attribute{key = "inabakumori"}
 SMODS.Attribute{key = "Nakiso"}
+SMODS.Attribute{key = "Deco*27"}
