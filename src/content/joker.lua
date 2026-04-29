@@ -1095,6 +1095,7 @@ SMODS.Joker{
 			suit = "Hearts"
 		}
 	},
+	attributes = {"modify_card", "suit", "song", "vocaloid song", "Teto", "Sasuke Haraguchi"},
 	blueprint_compat = false,
 	perishable_compat = true,
 	eternal_compat = true,
