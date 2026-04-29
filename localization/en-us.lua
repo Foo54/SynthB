@@ -228,7 +228,8 @@ local descriptions = {
 					"Suit changes at end of round",
 					"{C:inactve,s:0.8,f:5}lyrics"
 				}
-			}
+			},
+			--j_synthb_
 		},
 		SongInfo = {
 			antani_itten_no = {
