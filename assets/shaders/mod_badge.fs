@@ -31,7 +31,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     
 		// movement
     uv.x = mod(uv.x * 5 - mod_badge.x * 3, 1);
-    uv.y = mod(uv.y * 5 - mod_badge.x * 3, 1);
+    uv.y = mod(uv.y * 10 + 0.25, 1);
 		//idk what this does but it seems important
     if (uv.x > 1) {
         uv.x = 2 - uv.x;
