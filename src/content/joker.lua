@@ -29,6 +29,19 @@ SMODS.Joker{
 				}
 			end
 		end
+		if context.forcetrigger then
+			if G.hand and G.hand.cards then
+				local out = 0
+				for _, _card in ipairs(G.hand.cards) do
+					if _card:is_suit(card.ability.extra.suit) then
+						out = out + card.ability.extra.mult
+					end
+				end
+				return {
+					mult = out
+				}
+			end
+		end
 	end,
 	joker_display_def = function(JokerDisplay)
 		---@type JDJokerDefinition
@@ -51,7 +64,8 @@ SMODS.Joker{
 				card.joker_display_values.mult = mult
 			end
 		}
-	end
+	end,
+	demicolon_compat = true,
 }
 
 -- Cadmium Colors
@@ -88,7 +102,28 @@ SMODS.Joker{
 				end
 			end
 		end
+		if context.forcetrigger then
+			local out = 0
+			if G.play and G.play.cards then
+				for _, _card in ipairs(G.play.cards) do
+					if _card:is_suit(card.ability.extra.suits[1]) or _card:is_suit(card.ability.extra.suits[2]) then
+						out = out + card.ability.extra.earnings
+					end
+				end
+			end
+			if G.hand and G.hand.cards then
+				for _, _card in ipairs(G.hand.cards) do
+					if _card:is_suit(card.ability.extra.suits[1]) or _card:is_suit(card.ability.extra.suits[2]) then
+						out = out - card.ability.extra.earnings
+					end
+				end
+			end
+			return {
+				dollars = out
+			}
+		end
 	end,
+	demicolon_compat = true,
 	joker_display_def = function(JokerDisplay)
 		---@type JDJokerDefinition
 		return {
@@ -141,11 +176,22 @@ SMODS.Joker{
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "the_world_is_mine")
 		return {vars = {card.ability.extra.chip_gain, card.ability.extra.suit, card.ability.extra.chips}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "chip_gain"
+			})
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
 		if context.individual and context.cardarea == G.play and not context.blueprint then
 			if context.other_card:is_suit(card.ability.extra.suit) then
 				SMODS.scale_card(card, {
@@ -190,6 +236,7 @@ SMODS.Joker{
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"chance", "enhancements", "modify_card", "song", "Mai", "Choir", "Copykeys", "vocaloid song"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.extra.enhancement]
@@ -198,9 +245,9 @@ SMODS.Joker{
 		return {vars = {num, dem}}
 	end,
 	calculate = function(self, card, context)
-		if context.before and not context.blueprint then
+		if (context.before or context.forcetrigger) and not context.blueprint then
 			local stoned = 0
-			for _, scored_card in ipairs(context.full_hand) do
+			for _, scored_card in ipairs(context.full_hand or G.play.cards or {}) do
 				if SMODS.pseudorandom_probability(card, "synthb_airfryer_stone", card.ability.extra.num, card.ability.extra.dem) then
 					stoned = stoned + 1
 					scored_card:set_ability(card.ability.extra.enhancement, nil, true)
@@ -212,6 +259,7 @@ SMODS.Joker{
 					}))
 				end
 			end
+			SynthB.debug(context.full_hand or G.play.cards)
 			if stoned > 0 then
 				return {
 					message = "Drained!",
@@ -232,6 +280,7 @@ SMODS.Joker{
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"debuff", "song", "MonochroMenace", "Teto", "vocaloid song"},
 	config = {
 		immutable = {
@@ -245,6 +294,18 @@ SMODS.Joker{
 		if context.setting_blind and not context.blueprint then
 			card.ability.immutable.active = true
 			juice_card_until(card, function() return card.ability.immutable.active and not G.RESET_JIGGLES end, true)
+		end
+		if context.forcetrigger then
+			if G.hand and G.hand.cards then
+				for _, _card in ipairs(G.hand.cards) do
+					SMODS.debuff_card(_card, "prevent_debuff", "regret_rock")
+				end
+			end
+			if G.play and G.play.cards then
+				for _, _card in ipairs(G.play.cards) do
+					SMODS.debuff_card(_card, "prevent_debuff", "regret_rock")
+				end
+			end
 		end
 		if context.press_play and not context.blueprint then
 			if card.ability.immutable.active then
@@ -337,12 +398,24 @@ SMODS.Joker{
 			mult = 1
 		}
 	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"modify_card", "mult", "perma_bonus", "reset", "discard", "song", "Teto", "Jamie Paige", "vocaloid song"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "machine_love")
 		return {vars = {card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			if G.play and G.play.cards then
+				for _, _card in ipairs(G.play.cards) do
+					_card.ability.perma_mult = (_card.ability.perma_mult or 0) + card.ability.extra.mult
+					_card.ability.SynthB_machine_love_mult = (_card.ability.SynthB_machine_love_mult or 0) + card.ability.extra.mult
+				end
+			end
+		end
 		if context.individual and context.cardarea == G.play then
 			context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
 			context.other_card.ability.SynthB_machine_love_mult = (context.other_card.ability.SynthB_machine_love_mult or 0) + card.ability.extra.mult
@@ -369,6 +442,7 @@ SMODS.Joker{
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"hand_type", "generation", "tarot", "song", "vocaloid song", "Teto", "Miku", "LamazeP"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot]
@@ -376,6 +450,22 @@ SMODS.Joker{
 		return {vars = {card.ability.immutable.hand and localize(card.ability.immutable.hand, "poker_hands") or "[Random Poker Hand]", localize{type = "name_text", set = "Tarot", key = card.ability.immutable.tarot}}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+			G.E_MANAGER:add_event(Event({
+				func = (function()
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							SMODS.add_card{key = card.ability.immutable.tarot}
+							G.GAME.consumeable_buffer = 0
+							return true
+						end
+					}))
+					SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.PURPLE }, context.blueprint_card or card)
+					return true
+				end)
+			}))
+		end
 		if context.before and context.scoring_name == card.ability.immutable.hand then
 			if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
 				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
@@ -451,6 +541,9 @@ SMODS.Joker{
 			retriggers = 2
 		}
 	},
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "rolling_girl")
 		return {vars = {card.ability.extra.retriggers}}
@@ -480,7 +573,7 @@ SMODS.Joker{
 		SynthB.song_info(info_queue, "self_destructive_girl")
 	end,
 	calculate = function(self, card, context)
-		if context.selling_self then
+		if context.selling_self or context.forcetrigger then
 			local index = 0
 			for i, _card in ipairs(G.jokers.cards) do
 				if _card == (context.blueprint_card or card) then
@@ -514,12 +607,27 @@ SMODS.Joker{
 	perishable_compat = true,
 	eternal_compat = false,
 	blueprint_compat = true,
+	demicolon_compat = true,
 	attributes = {"economy", "food", "scaling", "song", "vocaloid song", "Yi Xi", "worzy"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "lemonade")
 		return {vars = {card.ability.extra.earnings, card.ability.extra.loss, card.ability.extra.scale, card.ability.extra.cap}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			card.ability.immutable.mem_earnings = card.ability.extra.earnings
+			card.ability.extra.earnings = card.ability.extra.earnings - card.ability.extra.loss
+			if card.ability.extra.earnings <= 0 then
+				SMODS.destroy_cards(card, nil, nil, true)
+			else
+				card.ability.extra.earnings = math.min(card.ability.extra.earnings * 2, card.ability.extra.cap)
+				card.ability.extra.loss = card.ability.extra.loss + card.ability.extra.scale
+				card.ability.extra.scale = card.ability.extra.scale + 1
+			end
+			return {
+				dollars = card.ability.immutable.mem_earnings
+			}
+		end
 		if context.end_of_round and context.main_eval then
 			card.ability.immutable.mem_earnings = card.ability.extra.earnings
 			card.ability.extra.earnings = card.ability.extra.earnings - card.ability.extra.loss
@@ -557,11 +665,22 @@ SMODS.Joker{
 	blueprint_compat = true,
 	perishable_compat = true,
 	eternal_compat = true,
+	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "tetoris")
 		return {vars = {card.ability.extra.scaling, card.ability.immutable.cards, card.ability.extra.chips}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "scaling"
+			})
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
 		if context.joker_main then
 			return {
 				chips = card.ability.extra.chips
@@ -610,12 +729,23 @@ SMODS.Joker{
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"economy", "scaling", "reset", "rank", "9", "song", "vocaloid song", "Yuki", "inabakumori"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "relayouter")
 		return {vars = {card.ability.extra.earnings, card.ability.extra.scaling, card.ability.immutable.rank}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "earnings",
+				scalar_value = "scaling"
+			})
+			return {
+				dollars = card.ability.extra.earnings
+			}
+		end
 		if context.individual and context.cardarea == G.play and not context.blueprint then
 			if context.other_card:get_id() == card.ability.immutable.rank then
 				SMODS.scale_card(card, {
@@ -747,6 +877,7 @@ SMODS.Joker{
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	config = {
 		extra = {
 			scaling = 0.1
@@ -761,7 +892,7 @@ SMODS.Joker{
 		return {vars = {card.ability.extra.scaling, 1 + card.ability.extra.scaling * (G.GAME.hands_played or 0)}}
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
+		if context.joker_main or context.forcetrigger then
 			return {
 				xmult = 1 + card.ability.extra.scaling * (G.GAME.hands_played or 0)
 			}
@@ -855,8 +986,21 @@ SMODS.Joker{
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"modify_card", "rank", "position", "king", "song", "vocaloid song", "GUMI", "Kanaria"},
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			if G.play and G.play.cards then
+				if G.play.cards[1]:get_id() ~= 13 then 
+					assert(SMODS.modify_rank(G.play.cards[1], 1))
+					G.play.cards[1]:juice_up()
+				end
+				if G.play.cards[#G.play.cards]:get_id() ~= 13 then
+					assert(SMODS.modify_rank(G.play.cards[#G.play.cards], 1))
+					G.play.cards[#G.play.cards]:juice_up()
+				end
+			end
+		end
 		if context.before then
 			if context.full_hand[1]:get_id() ~= 13 then 
 				assert(SMODS.modify_rank(context.full_hand[1], 1))
@@ -952,12 +1096,18 @@ SMODS.Joker{
 	blueprint_compat = true,
 	perishable_compat = true,
 	eternal_compat = false,
+	demicolon_compat = true,
 	attributes = {"food", "scaling", "chips", "song", "vocaloid song", "Jamie Paige", "Miku"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "shrimp_fried_rice")
 		return {vars = {card.ability.extra.chips, -card.ability.extra.loss}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
 		if context.individual then
 			if context.cardarea == G.play then
 				SMODS.scale_card(card, {
@@ -1022,6 +1172,7 @@ SMODS.Joker{
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"xchips", "xmult", "scaling", "tarot", "song", "vocaloid song", "Teto", "Hiiragi Magnetite"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot1]
@@ -1037,6 +1188,22 @@ SMODS.Joker{
 		}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "xchips",
+				scalar_value = "chips_scale"
+			})
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "xmult",
+				scalar_value = "mult_scale"
+			})
+			return {
+				xchips = card.ability.extra.xchips,
+				xmult = card.ability.extra.xmult
+			}
+		end
 		if context.using_consumeable and not context.blueprint then
 			if context.consumeable.config.center.key == card.ability.immutable.tarot1 then
 				SMODS.scale_card(card, {
@@ -1099,11 +1266,54 @@ SMODS.Joker{
 	blueprint_compat = false,
 	perishable_compat = true,
 	eternal_compat = true,
+	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "copycat")
 		return {vars = {localize(card.ability.immutable.suit, "suits_singular")}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			if G.hand and G.hand.cards then
+				for _i, _card in ipairs(G.hand.cards) do
+					if _card:is_suit(card.ability.immutable.suit) then
+						local index = _i - 1
+						if index ~= 0 then
+							local target = G.hand.cards[index]
+							G.E_MANAGER:add_event(Event{
+								trigger = "after",
+								delay = 0.15,
+								func = function()
+									target:flip()
+									play_sound('card1')
+									target:juice_up(0.3, 0.3)
+									return true
+								end
+							})
+							delay(0.2)
+							local other_card = _card
+							G.E_MANAGER:add_event(Event{
+								trigger = "after",
+								delay = 0.1,
+								func = function()
+									copy_card(other_card, target)
+									return true
+								end
+							})
+							G.E_MANAGER:add_event(Event{
+								trigger = "after",
+								delay = 0.15,
+								func = function()
+									G.hand.cards[index]:flip()
+									play_sound('tarot2', nil, 0.6)
+									G.hand.cards[index]:juice_up(0.3, 0.3)
+									return true
+								end
+							})
+						end
+					end
+				end
+			end
+		end
 		if context.end_of_round and context.individual and context.cardarea == G.hand and not context.blueprint then
 			if context.other_card:is_suit(card.ability.immutable.suit) then
 				local index = 0
@@ -1199,12 +1409,24 @@ SMODS.Joker{
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = true,
 	attributes = {"chips", "scaling", "song", "vocaloid song", "KAFU", "Iyowa"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "kyu_kurarin")
 		return {vars = {card.ability.extra.scaling, card.ability.extra.chips}}
 	end,
 	calculate = function(self, card, context)
+		if context.forcetrigger then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "scaling",
+				no_message = true
+			})
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
 		if context.remove_playing_cards and not context.blueprint then
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
