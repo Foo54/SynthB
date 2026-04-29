@@ -188,6 +188,14 @@ local descriptions = {
 					"{C:inactive,s:0.8}Baby, I don't know when",
 					"{C:inactive,s:0.8}I'm supposed to stop!"
 				}
+			},
+			j_synthb_brainrot = {
+				name = {"{f:5}ブレインロット", "{s:0.7}Brain Rot"},
+				text = {
+					"Create a {C:attention}Stone{} copy",
+					"of destroyed cards",
+					"{C:inactive,s:0.8,f:5}Brain rot　もっと　灰になるまでHigh"
+				}
 			}
 		},
 		SongInfo = {
@@ -387,6 +395,19 @@ local descriptions = {
 					"Birdbrain",
 					"{C:attention}Producer:",
 					"Jamie Paige {C:inactive}&{} OK Glass",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			brainrot = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}ブレインロット",
+					"{C:inactive,s:0.8}Brain Rot",
+					"{C:attention}Producer:",
+					"{f:5}東京真中",
+					"{C:inactive,s:0.8}Tokyo Manaka",
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
