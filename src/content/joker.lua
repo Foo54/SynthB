@@ -892,12 +892,13 @@ SMODS.Joker{
 	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 2,
-	cost = 7,
+	cost = 6,
 	attributes = {"generation", "enhancements", "song", "vocaloid song", "Teto", "Tokyo Manaka"},
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS.m_stone
 		SynthB.song_info(info_queue, "brainrot")
 	end,
 	calculate = function(self, card, context)
