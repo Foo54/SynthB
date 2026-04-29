@@ -208,7 +208,7 @@ local descriptions = {
 				}
 			},
 			j_synthb_disclose_flick = {
-				name = {"{f:5}temp", "Disclose Flick"},
+				name = {"{f:5}temp", "{s:0.7}Disclose Flick"},
 				text = {
 					"This Joker gains {X:chips,C:white}X#1#{} Chips",
 					"when a {C:tarot}#2#{} is used",
