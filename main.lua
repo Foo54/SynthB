@@ -1,13 +1,12 @@
 SynthB = SynthB or {}
 
 SynthB.mod = SMODS.current_mod
-SynthB.DEBUG = true
 
 SynthB.Globals = SynthB.Globals or {}
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
 function SynthB.debug(...) 
-	if SynthB.DEBUG then
+	if SynthB.mod.config.DEBUG then
 		print("SynthB | ", ...)
 	end
 end

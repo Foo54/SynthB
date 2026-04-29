@@ -16,6 +16,13 @@ function SynthB.mod.config_tab()
 						ref_table = SynthB.mod.config,
 						ref_value = 'allow_covers_on_any_card'
 					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
+						label = "Debug Mode",
+						ref_table = SynthB.mod.config,
+						ref_value = 'DEBUG'
+					})
 				}}
 			}}
 		}}
