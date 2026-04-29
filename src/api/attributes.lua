@@ -12,6 +12,7 @@ SMODS.Attribute{key = "vocaloid song"}
 
 --#region CROSSMOD
 SMODS.Attribute{key = "music", alias = {"song"}} -- paperback
+SMODS.Attribute{key = "otetsu"} -- feli's jokeria
 
 
 --#region EVENTUAL PR
