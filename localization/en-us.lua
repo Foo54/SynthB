@@ -503,11 +503,55 @@ local descriptions = {
 					"{C:inactive,s:0.8}KAFU"
 				}
 			}
+		},
+		Edition = {
+			e_synthb_cover_miku = {
+				name = "Miku Cover",
+				text = {
+					"Any {C:mult}Mult{} this card",
+					"scores is replaced",
+					"with {C:attention}#1#x{} its",
+					"value in {C:chips}Chips"
+				}
+			},
+			e_synthb_cover_teto = {
+				name = "Teto Cover",
+				text = {
+					"Any {C:chips}Chips{} this card",
+					"scores is replaced",
+					"with {C:attention}1/#1#{} its",
+					"value in {C:mult}Mult"
+				}
+			},
+			e_synthb_cover_kaito = {
+				name = "KAITO Cover",
+				text = {
+					"Any {C:mult}Mult{} this card",
+					"scores is replaced",
+					"with {C:attention}1/#1#{} its",
+					"value in {X:chips,C:white}XChips"
+				}
+			},
+			e_synthb_cover_meiko = {
+				name = "MEIKO Cover",
+				text = {
+					"Any {C:chips}Chips{} this card",
+					"scores is replaced",
+					"with {C:attention}1/#1#{} its",
+					"value in {X:mult,C:white}XMult"
+				}
+			}
 		}
 	},
 	misc = {
 		dictionary = {
 			ph_retry_now = "いますぐ輪廻 今回も結ばれないね"
+		},
+		labels = {
+			synthb_cover_miku = "Miku Cover",
+			synthb_cover_teto = "Teto Cover",
+			synthb_cover_kaito = "KAITO Cover",
+			synthb_cover_meiko = "MEIKO Cover",
 		}
 	}
 }

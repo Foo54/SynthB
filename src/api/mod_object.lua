@@ -9,6 +9,13 @@ function SynthB.mod.config_tab()
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_song_info'
 					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
+						label = "Allow Covers on Any Card",
+						ref_table = SynthB.mod.config,
+						ref_value = 'allow_covers_on_any_card'
+					})
 				}}
 			}}
 		}}
