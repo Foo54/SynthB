@@ -886,7 +886,6 @@ SMODS.Joker{
 	-- see birdbrain.toml for implementation
 }
 
-
 -- Brain Rot
 SMODS.Joker{
 	key = "brainrot",
@@ -936,4 +935,63 @@ SMODS.Joker{
 			end
 		end
 	end,
+}
+
+-- Shrimp Fried Rice
+SMODS.Joker{
+	key = "shrimp_fried_rice",
+	atlas = "placeholder",
+	cost = 4,
+	config = {
+		extra = {
+			chips = 39,
+			loss = -1
+		}
+	},
+	attributes = {"food", "scaling", "chips", "song", "vocaloid song", "Jamie Paige", "Miku"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "shrimp_fried_rice")
+		return {vars = {card.ability.extra.chips, -card.ability.extra.loss}}
+	end,
+	calculate = function(self, card, context)
+		if context.individual then
+			if context.cardarea == G.play then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_value = "loss",
+					no_message = true
+				})
+				if card.ability.extra.chips <= 0 then
+					SMODS.destroy_cards(card, nil, nil, true)
+				end
+			end
+			if context.cardarea == "unscored" then
+				return {
+					chips = card.ability.extra.chips
+				}
+			end
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" }
+			},
+			text_config = { colour = G.C.CHIPS },
+			reminder_text = {
+					{ text = "(unscored)" },
+			},
+			calc_function = function(card)
+					local chips = 0
+					local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+					if text ~= 'Unknown' then
+							chips = chips + card.ability.extra.chips * (#JokerDisplay.current_hand - #scoring_hand)
+					end
+					card.joker_display_values.chips = chips
+			end,
+		}
+	end
 }

@@ -196,6 +196,16 @@ local descriptions = {
 					"of destroyed cards",
 					"{C:inactive,s:0.8,f:5}Brain rot　もっと　灰になるまでHigh"
 				}
+			},
+			j_synthb_shrimp_fried_rice = {
+				name = {"{f:5}エビチャーハン!", "{s:0.7}You're Telling Me A SHRIMP Fried This Rice?!"},
+				text = {
+					"Unscored cards give",
+					"{C:chips}+#1#{} chips",
+					"Loses {C:chips}+#2#{} chips",
+					"per card scored",
+					"{C:inactive,s:0.8}THIS IS A CERTIFIED SHRIMP"
+				}
 			}
 		},
 		SongInfo = {
@@ -411,6 +421,18 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			shrimp_fried_rice = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}エビチャーハン!",
+					"{C:inactive,s:0.8}You're Telling Me A SHRIMP Fried This Rice?!",
+					"{C:attention}Producer:",
+					"Jamie Paige",
+					"{C:attention}Voice:",
+					"{f:5}{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
 		}
