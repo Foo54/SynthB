@@ -217,6 +217,17 @@ local descriptions = {
 					"{C:inactive}[Currently {X:chips,C:white}X#5#{C:inactive} Chips and {X:mult,C:white}X#6#{C:inactive} Mult]",
 					"{C:inactive,s:0.8,f:5}lyrics"
 				}
+			},
+			j_synthb_hontono = {
+				name = {"{f:5}temp", "{s:0.7}Hontono"},
+				text = {
+					"Cards with {C:attention}#1#{} suit held in hand",
+					"convert the card to their {C:attention}left",
+					"into a {C:attention}copy{} of themselves",
+					"at end of round",
+					"Suit changes at end of round",
+					"{C:inactve,s:0.8,f:5}lyrics"
+				}
 			}
 		},
 		SongInfo = {
@@ -454,6 +465,19 @@ local descriptions = {
 					"{C:attention}Producer:",
 					"{f:5}柊マグネタイト",
 					"{C:inactive,s:0.8}Hiiragi Magnetite",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			hontono = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Hontono",
+					"{C:attention}Producer:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Sasuke Haraguchi",
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"

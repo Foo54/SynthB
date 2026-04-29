@@ -1082,3 +1082,86 @@ SMODS.Joker{
 		}
 	end
 }
+
+-- Hontono
+SMODS.Joker{
+	key = "hontono",
+	atlas = "placeholder",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 9,
+	config = {
+		immutable = {
+			suit = "Hearts"
+		}
+	},
+	blueprint_compat = false,
+	perishable_compat = true,
+	eternal_compat = true,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "hontono")
+		return {vars = {localize(card.ability.immutable.suit, "suits_singular")}}
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and context.individual and context.cardarea == G.hand and not context.blueprint then
+			if context.other_card:is_suit(card.ability.immutable.suit) then
+				local index = 0
+				for i, _card in ipairs(G.hand.cards) do
+					if _card == context.other_card then
+						index = i - 1
+						break
+					end
+				end
+				if index ~= 0 then
+					local target = G.hand.cards[index]
+					G.E_MANAGER:add_event(Event{
+						trigger = "after",
+						delay = 0.15,
+						func = function()
+							target:flip()
+							play_sound('card1')
+							target:juice_up(0.3, 0.3)
+							return true
+						end
+					})
+					delay(0.2)
+					local other_card = context.other_card
+					G.E_MANAGER:add_event(Event{
+						trigger = "after",
+						delay = 0.1,
+						func = function()
+							copy_card(other_card, target)
+							return true
+						end
+					})
+					G.E_MANAGER:add_event(Event{
+						trigger = "after",
+						delay = 0.15,
+						func = function()
+							G.hand.cards[index]:flip()
+							play_sound('tarot2', nil, 0.6)
+							G.hand.cards[index]:juice_up(0.3, 0.3)
+							return true
+						end
+					})
+				end
+			end
+		end
+		if context.round_eval and not context.blueprint then
+			local suits = {}
+			for key, _ in pairs(SMODS.Suits) do
+				if key ~= card.ability.immutable.suit then
+					suits[#suits+1] = key
+				end
+			end
+			card.ability.immutable.suit = pseudorandom_element(suits, "synthb_hontono")
+		end
+	end,
+	set_ability = function (self, card, initial, delay_sprites)
+		local suits = {}
+		for key, _ in pairs(SMODS.Suits) do
+			suits[#suits+1] = key
+		end
+		card.ability.immutable.suit = pseudorandom_element(suits, "synthb_hontono_initial")
+	end
+}
