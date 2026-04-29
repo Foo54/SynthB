@@ -869,3 +869,19 @@ SMODS.Joker{
 		end
 	end,
 }
+
+-- Birdbrain
+SMODS.Joker{
+	key = "birdbrain",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	cost = 6,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "birdbrain")
+	end,
+	blueprint_compat = false,
+	persishable_compat = true,
+	eternal_compat = true,
+	attributes = {"hands", "passive", "song", "vocaloid song", "Teto", "Jamie Paige", "OK Glass"}
+	-- see birdbrain.toml for implementation
+}

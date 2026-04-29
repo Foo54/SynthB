@@ -174,10 +174,19 @@ local descriptions = {
 			j_synthb_king = {
 				name = "KING",
 				text = {
-					"{C:attention}Leftmost{} and {C:attention}rightmost{} cards",
+					"{C:attention}Leftmost{} and {C:attention}rightmost{} played cards",
 					"increase their rank by {C:attention}1{}",
 					"unless they are {C:attention}Kings{}",
 					"{C:inactive,s:0.8,f:5}レフトサイド　ライトサイド"
+				}
+			},
+			j_synthb_birdbrain = {
+				name = "Birdbrain",
+				text = {
+					"Rounds do not end",
+					"until {C:attention}all{} hands are used",
+					"{C:inactive,s:0.8}Baby, I don't know when",
+					"{C:inactive,s:0.8}I'm supposed to stop!"
 				}
 			}
 		},
@@ -372,7 +381,17 @@ local descriptions = {
 					"{C:inactive,s:0.8}GUMI"
 				}
 			},
-			
+			birdbrain = {
+				text = {
+					"{C:attention}Title:",
+					"Birdbrain",
+					"{C:attention}Producer:",
+					"Jamie Paige {C:inactive}&{} OK Glass",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
 		}
 	},
 	misc = {

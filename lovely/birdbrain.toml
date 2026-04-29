@@ -1,0 +1,25 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# Stop round from advancing normally
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''if G.GAME.chips - G.GAME.blind.chips >= 0 or G.GAME.current_round.hands_left < 1 then'''
+position = 'at'
+payload = '''if (G.GAME.chips - G.GAME.blind.chips >= 0 and not next(SMODS.find_card("j_synthb_birdbrain", false))) or G.GAME.current_round.hands_left < 1 then'''
+match_indent = true
+
+
+# Stop round from advancing from disabling boss
+[[patches]]
+[patches.pattern]
+target = 'blind.lua'
+pattern = '''if self.boss and G.GAME.chips - G.GAME.blind.chips >= 0 then'''
+position = 'at'
+payload = '''if self.boss and G.GAME.chips - G.GAME.blind.chips >= 0 and not next(SMODS.find_card("j_synthb_birdbrain", false)) then'''
+match_indent = true
+
+

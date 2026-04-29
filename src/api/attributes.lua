@@ -47,3 +47,4 @@ SMODS.Attribute{key = "inabakumori"}
 SMODS.Attribute{key = "Nakiso"}
 SMODS.Attribute{key = "Deco*27"}
 SMODS.Attribute{key = "Kanaria"}
+SMODS.Attribute{key = "OK Glass"}
