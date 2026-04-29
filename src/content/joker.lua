@@ -1164,5 +1164,23 @@ SMODS.Joker{
 			suits[#suits+1] = key
 		end
 		card.ability.immutable.suit = pseudorandom_element(suits, "synthb_hontono_initial")
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "suit", colour = G.C.ORANGE },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				card.joker_display_values.suit = localize(card.ability.immutable.suit, "suits_plural")
+			end,
+			style_function = function(card, text, reminder_text, extra)
+				if reminder_text and reminder_text.children[2] then
+					reminder_text.children[2].config.colour = lighten(G.C.SUITS[card.ability.immutable.suit], 0.35)
+				end
+			end
+		}
 	end
 }
