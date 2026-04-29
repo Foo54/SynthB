@@ -20,12 +20,12 @@ function SMODS.create_mod_badges(obj, badges)
 				if not obj.no_shader_on_modbadge then
 					badges[i].nodes[1].config.shader = "synthb_mod_badge"
 				end
-				badges[i].nodes[1].nodes[2].config.object.content.scale = 0.5
-				badges[i].nodes[1].nodes[2].config.object.content.config.scale = 0.5
+				badges[i].nodes[1].nodes[2].config.object.content.scale = 0.4
+				badges[i].nodes[1].nodes[2].config.object.content.config.scale = 0.4
 				badges[i].nodes[1].nodes[2].config.object.content.config.spacing = 2
 				badges[i].nodes[1].nodes[2].config.object.content:update_text(true)
-				table.insert(badges[i].nodes[1].nodes, 1, {n = G.UIT.B, config = {h = 0.5, w = 0.03}})
-				table.insert(badges[i].nodes[1].nodes, {n = G.UIT.B, config = {h = 0.5, w = 0.03}})
+				table.insert(badges[i].nodes[1].nodes, 1, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
+				table.insert(badges[i].nodes[1].nodes, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
 			end
 		end
 	end
