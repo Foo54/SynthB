@@ -1100,7 +1100,7 @@ SMODS.Joker{
 	perishable_compat = true,
 	eternal_compat = true,
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "hontono")
+		SynthB.song_info(info_queue, "copycat")
 		return {vars = {localize(card.ability.immutable.suit, "suits_singular")}}
 	end,
 	calculate = function(self, card, context)
@@ -1181,6 +1181,54 @@ SMODS.Joker{
 					reminder_text.children[2].config.colour = lighten(G.C.SUITS[card.ability.immutable.suit], 0.35)
 				end
 			end
+		}
+	end
+}
+
+-- kyu-kurarin
+SMODS.Joker{
+	key = "kyu_kurarin",
+	atlas = "placeholder",
+	cost = 5,
+	config = {
+		extra = {
+			scaling = 7,
+			chips = 0
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"chips", "scaling", "song", "vocaloid song", "KAFU", "Iyowa"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "kyu_kurarin")
+		return {vars = {card.ability.extra.scaling, card.ability.extra.chips}}
+	end,
+	calculate = function(self, card, context)
+		if context.remove_playing_cards and not context.blueprint then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_table = {card.ability.extra.scaling * #context.removed},
+---@diagnostic disable-next-line: assign-type-mismatch
+				scalar_value = 1,
+				no_message = true
+			})
+		end
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
+			},
+			text_config = { colour = G.C.CHIPS },
 		}
 	end
 }

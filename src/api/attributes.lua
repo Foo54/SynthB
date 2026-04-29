@@ -30,6 +30,7 @@ SMODS.Attribute{key = "Len"}
 SMODS.Attribute{key = "MEIKO"}
 SMODS.Attribute{key = "KAITO"}
 SMODS.Attribute{key = "GUMI"}
+SMODS.Attribute{key = "KAFU"}
 
 
 --#region ARTISTS
@@ -52,3 +53,4 @@ SMODS.Attribute{key = "OK Glass"}
 SMODS.Attribute{key = "Tokyo Manaka"}
 SMODS.Attribute{key = "Sasuke Haraguchi"}
 SMODS.Attribute{key = "CircusP"}
+SMODS.Attribute{key = "Iyowa"}

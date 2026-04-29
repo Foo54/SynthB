@@ -230,10 +230,11 @@ local descriptions = {
 				}
 			},
 			j_synthb_kyu_kurarin = {
-				name = "kyu-kurarin",
+				name = {"{f:5}temp", "{s:0.7}Kyu-kurarin"},
 				text = {
 					"This Joker gains {C:chips}+#1#{} Chips",
 					"when a playing card is {C:red}destroyed",
+					"{C:inactive}[Currently {C:chips}+#2#{C:inactive} Chips]",
 					"{C:inactive,s:0.8,f:5}lyrics"
 				}
 			}
@@ -492,7 +493,8 @@ local descriptions = {
 			kyu_kurarin = {
 				text = {
 					"{C:attention}Title:",
-					"kyu-kurarin",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Kyu-kurarin",
 					"{C:attention}Producer:",
 					"{f:5}temp",
 					"{C:inactive,s:0.8}Iyowa",
