@@ -208,14 +208,14 @@ local descriptions = {
 				}
 			},
 			j_synthb_disclose_flick = {
-				name = {"{f:5}temp", "{s:0.7}Disclose Flick"},
+				name = {"{f:5}ディスクローズ・フリック", "{s:0.7}Disclose Flick"},
 				text = {
 					"This Joker gains {X:chips,C:white}X#1#{} Chips",
 					"when a {C:tarot}#2#{} is used",
 					"and {X:mult,C:white}X#3#{} Mult",
 					"when a {C:tarot}#4#{} is used",
 					"{C:inactive}[Currently {X:chips,C:white}X#5#{C:inactive} Chips and {X:mult,C:white}X#6#{C:inactive} Mult]",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}絶対的正義 始終判定"
 				}
 			},
 			j_synthb_copycat = {
@@ -230,12 +230,12 @@ local descriptions = {
 				}
 			},
 			j_synthb_kyu_kurarin = {
-				name = {"{f:5}temp", "{s:0.7}Kyu-kurarin"},
+				name = {"{f:5}きゅうくらりん", "{s:0.7}Kyu-kurarin"},
 				text = {
 					"This Joker gains {C:chips}+#1#{} Chips",
 					"when a playing card is {C:red}destroyed",
 					"{C:inactive}[Currently {C:chips}+#2#{C:inactive} Chips]",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}わたし　ちゅうぶらりん"
 				}
 			}
 		},
@@ -469,7 +469,7 @@ local descriptions = {
 			disclose_flick = {
 				text = {
 					"{C:attention}Title:",
-					"{f:5}temp",
+					"{f:5}ディスクローズ・フリック",
 					"{C:inactive,s:0.8}Disclose Flick",
 					"{C:attention}Producer:",
 					"{f:5}柊マグネタイト",
@@ -493,13 +493,13 @@ local descriptions = {
 			kyu_kurarin = {
 				text = {
 					"{C:attention}Title:",
-					"{f:5}temp",
+					"{f:5}きゅうくらりん",
 					"{C:inactive,s:0.8}Kyu-kurarin",
 					"{C:attention}Producer:",
-					"{f:5}temp",
+					"{f:5}いよわ",
 					"{C:inactive,s:0.8}Iyowa",
 					"{C:attention}Voice:",
-					"{f:5}temp",
+					"{f:5}可不",
 					"{C:inactive,s:0.8}KAFU"
 				}
 			}
