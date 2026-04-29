@@ -1,16 +1,6 @@
 ---@diagnostic disable: duplicate-set-field
 -- code modified from more fluff
 
-SMODS.Shader({
-	key = "mod_badge",
-	path = "mod_badge.fs",
-	send_vars = function (self, sprite, card)
-		return {
-			mask = SMODS.Atlases.synthb_mod_badge_mask.image
-		}
-	end
-})
-
 local smcmb = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
 	smcmb(obj, badges)

@@ -27,5 +27,6 @@ SynthB.load_file("api/mod_object")
 SynthB.load_file("api/mod_badge")
 
 SynthB.debug("Loading Content Files")
+SynthB.load_file("content/shader")
 SynthB.load_file("content/joker")
 SynthB.load_file("content/edition")

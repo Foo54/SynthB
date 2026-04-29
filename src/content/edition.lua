@@ -1,6 +1,6 @@
 SMODS.Edition{
 	key = "cover_miku",
-	shader = false,
+	shader = "miku",
 	in_shop = true,
 	weight = 20,
 	config = {
@@ -32,7 +32,7 @@ SMODS.Edition{
 
 SMODS.Edition{
 	key = "cover_teto",
-	shader = false,
+	shader = "teto",
 	in_shop = true,
 	weight = 20,
 	config = {
@@ -64,7 +64,7 @@ SMODS.Edition{
 
 SMODS.Edition{
 	key = "cover_kaito",
-	shader = false,
+	shader = "kaito",
 	in_shop = true,
 	weight = 10,
 	config = {
@@ -96,7 +96,7 @@ SMODS.Edition{
 
 SMODS.Edition{
 	key = "cover_meiko",
-	shader = false,
+	shader = "meiko",
 	in_shop = true,
 	weight = 10,
 	config = {
