@@ -206,6 +206,17 @@ local descriptions = {
 					"per card scored",
 					"{C:inactive,s:0.8}THIS IS A CERTIFIED SHRIMP"
 				}
+			},
+			j_synthb_disclose_flick = {
+				name = {"{f:5}temp", "Disclose Flick"},
+				text = {
+					"This Joker gains {X:chips,C:white}X#1#{} Chips",
+					"when a {C:tarot}#2#{} is used",
+					"and {X:mult,C:white}X#3#{} Mult",
+					"when a {C:tarot}#4#{} is used",
+					"{C:inactive}[Currently {X:chips,C:white}X#5#{C:inactive} Chips and {X:mult,C:white}X#6#{C:inactive} Mult]",
+					"{C:inactive,s:0.8,f:5}lyrics"
+				}
 			}
 		},
 		SongInfo = {
@@ -433,6 +444,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			disclose_flick = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Disclose Flick",
+					"{C:attention}Producer:",
+					"{f:5}柊マグネタイト",
+					"{C:inactive,s:0.8}Hiiragi Magnetite",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
 		}

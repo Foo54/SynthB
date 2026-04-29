@@ -949,6 +949,9 @@ SMODS.Joker{
 			loss = -1
 		}
 	},
+	blueprint_compat = true,
+	perishable_compat = true,
+	eternal_compat = false,
 	attributes = {"food", "scaling", "chips", "song", "vocaloid song", "Jamie Paige", "Miku"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "shrimp_fried_rice")
@@ -993,6 +996,89 @@ SMODS.Joker{
 					end
 					card.joker_display_values.chips = chips
 			end,
+		}
+	end
+}
+
+-- Disclose Flick
+SMODS.Joker{
+	key = "disclose_flick",
+	atlas = "placeholder",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 8,
+	config = {
+		extra = {
+			chips_scale = 0.2,
+			xchips = 1,
+			mult_scale = 0.2,
+			xmult = 1,
+		},
+		immutable = {
+			tarot1 = "c_judgement",
+			tarot2 = "c_justice"
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"xchips", "xmult", "scaling", "tarot", "song", "vocaloid song", "Teto", "Hiiragi Magnetite"},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot1]
+		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot2]
+		SynthB.song_info(info_queue, "disclose_flick")
+		return {vars = {
+			card.ability.extra.chips_scale,
+			localize{type = "name_text", set = "Tarot", key = card.ability.immutable.tarot1},
+			card.ability.extra.mult_scale,
+			localize{type = "name_text", set = "Tarot", key = card.ability.immutable.tarot2},
+			card.ability.extra.xchips,
+			card.ability.extra.xmult
+		}}
+	end,
+	calculate = function(self, card, context)
+		if context.using_consumeable and not context.blueprint then
+			if context.consumeable.config.center.key == card.ability.immutable.tarot1 then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xchips",
+					scalar_value = "chips_scale"
+				})
+			end
+			if context.consumeable.config.center.key == card.ability.immutable.tarot2 then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "mult_scale"
+				})
+			end
+		end
+		if context.joker_main then
+			return {
+				xchips = card.ability.extra.xchips,
+				xmult = card.ability.extra.xmult
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.ability.extra", ref_value = "xchips", retrigger_type = "exp" }
+					},
+					border_colour = G.C.CHIPS
+				},
+				{text = " "},
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+					},
+				}
+			}
 		}
 	end
 }
