@@ -1,7 +1,7 @@
 SynthB = SynthB or {}
 
 SynthB.mod = SMODS.current_mod
-SynthB.DEBUG = true
+SynthB.DEBUG = false
 
 SynthB.Globals = SynthB.Globals or {}
 
