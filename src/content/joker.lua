@@ -1083,9 +1083,9 @@ SMODS.Joker{
 	end
 }
 
--- Hontono
+-- Copycat
 SMODS.Joker{
-	key = "hontono",
+	key = "copycat",
 	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 3,
@@ -1095,7 +1095,7 @@ SMODS.Joker{
 			suit = "Hearts"
 		}
 	},
-	attributes = {"modify_card", "suit", "song", "vocaloid song", "Teto", "Sasuke Haraguchi"},
+	attributes = {"modify_card", "suit", "song", "vocaloid song", "GUMI", "CircusP"},
 	blueprint_compat = false,
 	perishable_compat = true,
 	eternal_compat = true,

@@ -51,3 +51,4 @@ SMODS.Attribute{key = "Kanaria"}
 SMODS.Attribute{key = "OK Glass"}
 SMODS.Attribute{key = "Tokyo Manaka"}
 SMODS.Attribute{key = "Sasuke Haraguchi"}
+SMODS.Attribute{key = "CircusP"}

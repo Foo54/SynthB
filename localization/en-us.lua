@@ -218,18 +218,25 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}lyrics"
 				}
 			},
-			j_synthb_hontono = {
-				name = {"{f:5}temp", "{s:0.7}Hontono"},
+			j_synthb_copycat = {
+				name = "Copycat",
 				text = {
 					"Cards with {C:attention}#1#{} suit held in hand",
 					"convert the card to their {C:attention}left",
 					"into a {C:attention}copy{} of themselves",
 					"at end of round",
 					"Suit changes at end of round",
-					"{C:inactve,s:0.8,f:5}lyrics"
+					"{C:inactve,s:0.8}lyrics"
 				}
 			},
-			--j_synthb_
+			j_synthb_kyu_kurarin = {
+				name = "kyu-kurarin",
+				text = {
+					"This Joker gains {C:chips}+#1#{} Chips",
+					"when a playing card is {C:red}destroyed",
+					"{C:inactive,s:0.8,f:5}lyrics"
+				}
+			}
 		},
 		SongInfo = {
 			antani_itten_no = {
@@ -471,19 +478,29 @@ local descriptions = {
 					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
-			hontono = {
+			copycat = {
 				text = {
 					"{C:attention}Title:",
-					"{f:5}temp",
-					"{C:inactive,s:0.8}Hontono",
+					"Copycat",
 					"{C:attention}Producer:",
-					"{f:5}temp",
-					"{C:inactive,s:0.8}Sasuke Haraguchi",
+					"CircusP",
 					"{C:attention}Voice:",
-					"{f:5}重音テト",
-					"{C:inactive,s:0.8}Kasane Teto"
+					"{f:5}グミ",
+					"{C:inactive,s:0.8}GUMI"
 				}
 			},
+			kyu_kurarin = {
+				text = {
+					"{C:attention}Title:",
+					"kyu-kurarin",
+					"{C:attention}Producer:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Iyowa",
+					"{C:attention}Voice:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}KAFU"
+				}
+			}
 		}
 	},
 	misc = {
