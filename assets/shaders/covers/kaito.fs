@@ -68,7 +68,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 {
 	vec4 tex = Texel( texture, texture_coords);
 	vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba)/texture_details.ba;
-  return dissolve_mask(lerp(tex, vec4(0.2, 0.4, 0.8, tex.a), sin(kaito.y * 2 + uv.x * 10 + uv.y * 10) * 0.2 + 0.2), texture_coords, uv);
+  return dissolve_mask(lerp(tex, vec4(0.2, 0.4, 0.8, tex.a), sin(-kaito.y * 2 + uv.x * 10 + uv.y * 10) * 0.2 + 0.2), texture_coords, uv);
 }
 
 // for transforming the card while your mouse is on it
