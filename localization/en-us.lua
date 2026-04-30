@@ -226,7 +226,7 @@ local descriptions = {
 					"into a {C:attention}copy{} of themselves",
 					"at end of round",
 					"Suit changes at end of round",
-					"{C:inactve,s:0.8}Copy that, Copycat"
+					"{C:inactive,s:0.8}Copy that, Copycat"
 				}
 			},
 			j_synthb_kyu_kurarin = {
