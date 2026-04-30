@@ -167,7 +167,7 @@ function SynthB.mod.extra_tabs()
 end
 
 function G.FUNCS.go_to_synthb_discord(e)
-	SynthB.debug("ooh your going to the discord oooh")
+	love.system.openURL("https://discord.gg/G7xRjTV43h")
 end
 
 SynthB.mod.ui_config = {
