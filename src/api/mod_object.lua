@@ -170,6 +170,12 @@ function G.FUNCS.go_to_synthb_discord(e)
 	SynthB.debug("ooh your going to the discord oooh")
 end
 
+SynthB.mod.ui_config = {
+	tab_button_colour = SynthB.custom_colors.LIGHT_GREEN,
+	back_colour = darken(SynthB.custom_colors.LIGHT_GREEN, 0.2),
+	collection_option_cycle_colour = darken(SynthB.custom_colors.LIGHT_GREEN, 0.3)
+}
+
 function SynthB.mod.custom_ui (mod_nodes)
   mod_nodes = EMPTY(mod_nodes)
   local node1 = {n = G.UIT.C, config = { w = 8, align = "tm", r = 0.1 , h = 6, padding = 0.2}, nodes = {
