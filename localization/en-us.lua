@@ -241,9 +241,8 @@ local descriptions = {
 			j_synthb_medicine = {
 				name = {"{f:5}イガク", "{s:0.7}Medicine"},
 				text = {
-					"All played {C:attention}Face{} cards",
-					"become {C:attention}Steel{} cards",
-					"when scored",
+					"{C:attention}Face{} cards have no suit or rank,",
+					"always score, and give {C:mult}+#1#{} Mult",
 					"{C:inactive,s:0.8,f:5}カオが→鈍器になっちゃうヨ"
 				}
 			},
@@ -542,6 +541,14 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			}
+		},
+		MiscInfoQueue = {
+			idea_credits = {
+				name = "Concept",
+				text = {
+					"#1#"
 				}
 			}
 		},

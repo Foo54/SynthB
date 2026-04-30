@@ -1459,41 +1459,71 @@ SMODS.Joker{
 SMODS.Joker{
 	key = "medicine",
 	atlas = "placeholder",
-	pos = {x = 1, y = 0},
-	rarity = 2,
-	cost = 6,
-	blueprint_compat = false,
-	demicolon_compat = false,
+	cost = 5,
+	blueprint_compat = true,
+	demicolon_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
-	attributes = {"face", "enhancement", "modify_card", "song", "vocaloid song", "Sasuke Haraguchi", "Teto"},
+	attributes = {"face", "mult", "song", "vocaloid song", "Sasuke Haraguchi", "Teto"},
+	config = {
+		extra = {
+			mult = 4
+		}
+	},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "medicine")
+		SynthB.card_credits(info_queue, "idea_credits", {"Ice"})
+		return {vars = {card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)
-		if context.before and not context.blueprint then
-			local faces = 0
-			for _, scored_card in ipairs(context.scoring_hand) do
-				if scored_card:is_face() then
-					faces = faces + 1
-					scored_card:set_ability('m_steel', nil, true)
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							scored_card:juice_up()
-							return true
-						end
-					}))
-				end
-			end
-			if faces > 0 then
+		if context.modify_scoring_hand and not context.blueprint then
+			if SynthB.is_face(context.other_card) then
 				return {
-					message = "ユ!",
-					font = G.FONTS[5],
-					colour = G.C.GREY
+					add_to_hand = true
 				}
 			end
 		end
+		if context.individual and context.cardarea == G.play then
+			if SynthB.is_face(context.other_card) then
+				return {
+					mult = card.ability.extra.mult
+				}
+			end
+		end
+		if context.forcetrigger then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+			},
+			text_config = { colour = G.C.MULT },
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				local mult = 0
+				local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+				if text ~= 'Unknown' then
+					for _, scoring_card in pairs(scoring_hand) do
+						if SynthB.is_face(scoring_card) then
+							mult = mult + card.ability.extra.mult * JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+						end
+					end
+				end
+				card.joker_display_values.mult = mult
+				card.joker_display_values.localized_text = localize("k_face_cards")
+			end
+		}
+	end
 }
 
 -- Internet is Mine

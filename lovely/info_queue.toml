@@ -11,7 +11,9 @@ pattern = '''localize{type = 'descriptions', key = _c.key, set = _c.set, nodes =
    end'''
 position = 'at'
 payload = '''localize{type = 'descriptions', key = _c.key, set = _c.set, nodes = desc_nodes, vars = _c.vars or loc_vars}
-   elseif _c.set == "SongInfo" then
+   elseif _c.set == "MiscInfoQueue" then
+	 	localize{type = 'descriptions', key = _c.key, set = _c.set, nodes = desc_nodes, vars = _c.vars or loc_vars}
+	 elseif _c.set == "SongInfo" then
 	 	localize{type = 'descriptions', key = _c.key, set = _c.set, nodes = desc_nodes, vars = _c.vars or loc_vars}
 	 end
 '''
