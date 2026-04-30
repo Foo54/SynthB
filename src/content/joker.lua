@@ -1455,3 +1455,39 @@ SMODS.Joker{
 	end
 }
 
+-- Medicine
+SMODS.Joker{
+	key = "medicine",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 6,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "medicine")
+	end,
+	calculate = function(self, card, context)
+		if context.before and not context.blueprint then
+			local faces = 0
+			for _, scored_card in ipairs(context.scoring_hand) do
+				if scored_card:is_face() then
+					faces = faces + 1
+					scored_card:set_ability('m_steel', nil, true)
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							scored_card:juice_up()
+							return true
+						end
+					}))
+				end
+			end
+			if faces > 0 then
+				return {
+					message = "ユ!",
+					font = G.FONTS[5],
+					colour = G.C.GREY
+				}
+			end
+		end
+	end,
+}
+

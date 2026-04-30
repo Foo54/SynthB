@@ -237,6 +237,15 @@ local descriptions = {
 					"{C:inactive}[Currently {C:chips}+#2#{C:inactive} Chips]",
 					"{C:inactive,s:0.8,f:5}わたし　ちゅうぶらりん"
 				}
+			},
+			j_synthb_medicine = {
+				name = {"{f:5}イガク", "{s:0.7}Medicine"},
+				text = {
+					"All played {C:attention}Face{} cards",
+					"become {C:attention}Steel{} cards",
+					"when scored",
+					"{C:inactive,s:0.8,f:5}カオが→鈍器になっちゃうヨ"
+				}
 			}
 		},
 		SongInfo = {
@@ -501,6 +510,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}可不",
 					"{C:inactive,s:0.8}KAFU"
+				}
+			},
+			medicine = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}イガク",
+					"{C:inactive,s:0.8}Medicine",
+					"{C:attention}Producer:",
+					"{f:5}原口沙輔",
+					"{C:inactive,s:0.8}Sasuke Haraguchi",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			}
 		},
