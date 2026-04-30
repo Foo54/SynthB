@@ -165,3 +165,32 @@ function SynthB.mod.extra_tabs()
 		}
 	}
 end
+
+function G.FUNCS.go_to_synthb_discord(e)
+	SynthB.debug("ooh your going to the discord oooh")
+end
+
+function SynthB.mod.custom_ui (mod_nodes)
+  mod_nodes = EMPTY(mod_nodes)
+  local node1 = {n = G.UIT.C, config = { w = 8, align = "tm", r = 0.1 , h = 6, padding = 0.2}, nodes = {
+		{n = G.UIT.R, config = { align = "tm" }, nodes = {
+			{ n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 10, 4, "synthb_logo")}}
+		}},
+		{n = G.UIT.R, config = { align = "tm" }, nodes = {
+			{n = G.UIT.C, config = {padding = 0.2}, nodes = {
+				{n = G.UIT.R, config = {}, nodes = {
+					{ n = G.UIT.T, config = { text = "Created by:", scale = 0.5, colour = G.C.WHITE } }
+				}},
+				{n = G.UIT.R, config = {}, nodes = {
+					{ n = G.UIT.T, config = { text = "Foo54", scale = 0.75, colour = G.C.WHITE } }
+				}},
+				{n = G.UIT.R, config = {}, nodes = {
+					UIBox_button({
+						colour = HEX('5865F2'), minw = 3.5, minh = 1, padding = 0.1, emboss = 0.2, button = "go_to_synthb_discord", label = {"Join the Discord!"}
+					})
+				}},
+			}},
+		}},
+  }}
+  table.insert(mod_nodes, node1)
+end
