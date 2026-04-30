@@ -1597,3 +1597,65 @@ SMODS.Joker{
 		}
 	end
 }
+
+-- Glass Girl
+SMODS.Joker{
+	key = "glass_girl",
+	atlas = "placeholder",
+	pos = {x=1,y=0},
+	rarity = 2,
+	cost = 7,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS.m_steel
+		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
+		SynthB.song_info(info_queue, "glass_girl")
+	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger then
+			if G.hand and G.hand.cards then
+				for _, _card in ipairs(G.hand.cards) do
+					_card:set_ability("m_steel", nil, true)
+					_card:juice_up()
+				end
+			end
+		end
+		if context.remove_playing_cards and not context.blueprint then
+			if context.scoring_hand and G.hand and G.play then
+				for i = 2, #context.removed do
+					if context.removed[i].glass_trigger then
+						local index = 0
+						for _i, _card in ipairs(G.play.cards) do
+							if _card == context.removed[i] then
+								index = _i - 1
+								break
+							end
+						end
+						if index ~= 0 then
+							if G.play.cards[index].glass_trigger then
+								if G.hand and G.hand.cards then
+									for _, _card in ipairs(G.hand.cards) do
+										_card:set_ability("m_steel", nil, true)
+										G.E_MANAGER:add_event(Event{
+											func = function ()
+												_card:juice_up()
+												return true
+											end
+										})
+									end
+								end
+								return {
+									message = "!!!",
+									colour = G.C.ORANGE
+								}
+							end
+						end
+					end
+				end
+			end
+		end
+	end,
+}

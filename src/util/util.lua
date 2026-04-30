@@ -31,5 +31,4 @@ end
 
 SynthB.custom_colors = {
 	LIGHT_GREEN = HEX("99e550"),
-	
 }

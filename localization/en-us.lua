@@ -253,6 +253,17 @@ local descriptions = {
 					"give {X:mult,C:white}X#1#{} Mult",
 					"{C:inactive,s:0.8}I'm a queen, you can't beat"
 				}
+			},
+			j_synthb_glass_girl = {
+				name = "Glass Girl",
+				text = {
+					"Cards held in hand",
+					"become {C:attention}Steel{} cards",
+					"when {C:attention}2{} adjacent",
+					"{C:attention}Glass{} cards shatter",
+					"{C:inactive,s:0.8}Ooh girls made of glass,",
+					"{C:inactive,s:0.8}our hearts full of lithium"
+				}
 			}
 		},
 		SongInfo = {
@@ -541,6 +552,16 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			glass_girl = {
+				text = {
+					"Glass Girl",
+					"{C:attention}Producer:",
+					"eggtan {C:inactive}&{} Jamie Paige",
+					"{C:attention}Voice:",
+					"{f:5}足立レイ",
+					"{C:inactive,s:0.8}Adachi Rei"
 				}
 			}
 		},
