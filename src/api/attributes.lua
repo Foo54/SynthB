@@ -54,3 +54,6 @@ SMODS.Attribute{key = "Tokyo Manaka"}
 SMODS.Attribute{key = "Sasuke Haraguchi"}
 SMODS.Attribute{key = "CircusP"}
 SMODS.Attribute{key = "Iyowa"}
+SMODS.Attribute{key = "Nocticola"}
+SMODS.Attribute{key = "aleon"}
+SMODS.Attribute{key = "Treb"}

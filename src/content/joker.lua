@@ -1462,6 +1462,11 @@ SMODS.Joker{
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 6,
+	blueprint_compat = false,
+	demicolon_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"face", "enhancement", "modify_card", "song", "vocaloid song", "Sasuke Haraguchi", "Teto"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "medicine")
 	end,
@@ -1491,3 +1496,74 @@ SMODS.Joker{
 	end,
 }
 
+-- Internet is Mine
+SMODS.Joker{
+	key = "internet_is_mine",
+	atlas = "placeholder",
+	cost = 4,
+	config = {
+		extra = {
+			xmult = 2
+		},
+		immutable = {
+			rank = 12
+		}
+	},
+	blueprint_compat = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	demicolon_compat = true,
+	attributes = {"xmult", "queen", "rank", "song", "vocaloid song", "Miku", "Treb", "aleon", "Nocticola"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "internet_is_mine")
+		return {vars = {card.ability.extra.xmult}}
+	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
+		if context.individual and not context.end_of_round and context.cardarea == "unscored" then
+			if context.other_card:get_id() == card.ability.immutable.rank then
+				return {
+					xmult = card.ability.extra.xmult
+				}
+			end
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "mult" }
+					}
+				}
+			},
+			reminder_text = {
+					{ text = "(unscored Queens)" },
+			},
+			calc_function = function(card)
+					local xmult = 1
+					local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+					if text ~= 'Unknown' then
+						for _, _card in ipairs(JokerDisplay.current_hand) do
+							if _card:get_id() == card.ability.immutable.rank then
+								for _, __card in ipairs(scoring_hand) do
+									if _card == __card then
+										goto continue
+									end
+								end
+								xmult = xmult * card.ability.extra.xmult
+							end
+							::continue::
+						end
+					end
+					card.joker_display_values.xmult = xmult
+			end,
+		}
+	end
+}

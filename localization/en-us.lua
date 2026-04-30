@@ -246,6 +246,14 @@ local descriptions = {
 					"when scored",
 					"{C:inactive,s:0.8,f:5}カオが→鈍器になっちゃうヨ"
 				}
+			},
+			j_synthb_internet_is_mine = {
+				name = "Internet is Mine",
+				text = {
+					"Played and unscored {C:attention}Queens{}",
+					"give {X:mult,C:white}X#1#{} Mult",
+					"{C:inactive,s:0.8}I'm a queen, you can't beat"
+				}
 			}
 		},
 		SongInfo = {
@@ -523,6 +531,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			internet_is_mine = {
+				text = {
+					"{C:attention}Title:",
+					"Internet is Mine",
+					"{C:attention}Producer:",
+					"Nocticola, aleon, Treb",
+					"{C:attention}Voice:",
+					"{f:5}{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			}
 		},

@@ -143,6 +143,9 @@ function SynthB.mod.extra_tabs()
 											}},
 											{n = G.UIT.R, nodes = {
 												{n = G.UIT.T, config = {text = "VanillaRemade", scale = 0.3, colour = G.C.UI.TEXT_DARK}},
+											}},
+											{n = G.UIT.R, nodes = {
+												{n = G.UIT.T, config = {text = "chigago", scale = 0.3, colour = G.C.UI.TEXT_DARK}},
 											}}
 										}}
 									}}
