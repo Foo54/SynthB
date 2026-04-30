@@ -1,7 +1,7 @@
 [manifest]
 version = "1.0.0"
 dump_lua = true
-priority = 50
+priority = -10
 
 # insert font from attention text
 [[patches]]
@@ -36,7 +36,7 @@ payload = '''attention_text({
                 align = card_aligned,
                 major = card,
                 offset = {x = 0, y = y_off},
-								font = extra and extra.font
+								font = extra and extra.font and (type(extra.font) == "table" and extra.font or G.FONTS[extra.font] or SMODS.Fonts[extra.font]) 
             })'''
 match_indent = true
 
