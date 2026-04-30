@@ -57,3 +57,4 @@ SMODS.Attribute{key = "Iyowa"}
 SMODS.Attribute{key = "Nocticola"}
 SMODS.Attribute{key = "aleon"}
 SMODS.Attribute{key = "Treb"}
+SMODS.Attribute{key = "eggtan"}
