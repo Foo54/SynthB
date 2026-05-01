@@ -64,6 +64,25 @@ end
 
 function SynthB.mod.extra_tabs()
 	local column_min_w = 6
+	local song_buttons = {}
+	for key, _ in pairs(SynthB.songs) do
+		song_buttons[#song_buttons+1] = SynthB.generate_song_button(key)
+		song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
+	end
+	local scrollbox = SMODS.UIScrollBox{
+		content = {
+			definition = {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
+				{n = G.UIT.C, config = {}, nodes = song_buttons}
+			}},
+			config = {align = "cm"}
+		},
+    overflow = {
+			node_config = {
+				maxh = 8,
+				r = 0.1,
+			},
+    }
+	}
 	return {
 		{
 			label = "Credits",
@@ -159,6 +178,28 @@ function SynthB.mod.extra_tabs()
 								}}
 							}},
 						}},
+					}}
+				}}
+			end
+		},
+		{
+			label = "Songs",
+			tab_definition_function = function()
+				return {n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "tm", padding = 0.2, colour = G.C.BLACK }, nodes = {
+					{n = G.UIT.C, config = { align = "cm"}, nodes = {
+						{n = G.UIT.O, config = {align = "cm", object = scrollbox}}
+					}},
+					{n = G.UIT.C, nodes = {
+						SMODS.GUI.scrollbar({
+							h = 8,
+							w = 0.2,
+							min = 0,
+							max = 1,
+							bg_colour = { 0, 0, 0, 0.15 },
+							scroll_collision_obj = scrollbox,
+							knob_h = 0.6,
+							scroll_mult = 1.5
+						})
 					}}
 				}}
 			end

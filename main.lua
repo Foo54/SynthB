@@ -18,6 +18,7 @@ SynthB.debug("Loading Files")
 
 SynthB.debug("Loading Utility Files")
 SynthB.load_file("util/util")
+SynthB.load_file("util/songs")
 
 SynthB.debug("Loading API Files")
 SynthB.load_file("api/hooks")
