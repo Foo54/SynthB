@@ -62,76 +62,8 @@ function SynthB.mod.calculate(self, context)
 	end
 end
 
-function G.FUNCS.synthb_regen_object (e)
-	if not e.config.object or e.config.object.REMOVED then
-		local buttons_per_row = 3
-		local song_buttons = {
-			{n = G.UIT.R, nodes = {}}
-		}
-		for i, data in pairs(SynthB.songs) do
-			if #song_buttons[#song_buttons].nodes == buttons_per_row * 2 then
-				song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes] = nil
-				song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
-				song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {}}
-			end
-			song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i)
-			song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = {n = G.UIT.C, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
-		end
-		SynthB.GUI.songs_scrollbox = SMODS.UIScrollBox{
-			content = {
-				definition = {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
-					{n = G.UIT.C, config = {}, nodes = song_buttons}
-				}},
-				config = {align = "cm"}
-			},
-			overflow = {
-				node_config = {
-					maxh = 9,
-					r = 0.1,
-				},
-			}
-		}
-		e.config.object = SynthB.GUI.songs_scrollbox
----@diagnostic disable-next-line: undefined-field
-		local sb = G.OVERLAY_MENU:get_UIE_by_ID("synthb_scrollbar")
-		sb.UIBox.definition.nodes[2].nodes[1].nodes[1].config.object.definition.nodes[2].config.scroll_collision_obj = SynthB.GUI.songs_scrollbox
-		sb.UIBox.definition.nodes[2].nodes[1].nodes[1].config.object.definition.nodes[2].config.ref_table = SynthB.GUI.songs_scrollbox.scroll_offset
-		SynthB.GUI.songs_scrollbox.scroll_args.sync_mode = "offset"
-		SynthB.GUI.songs_scrollbox.scroll_sync_mode = "offset"
-		e.UIBox:recalculate()
-		
-	end
-end
-
 function SynthB.mod.extra_tabs()
 	local column_min_w = 6
-	local buttons_per_row = 3
-	local song_buttons = {
-		{n = G.UIT.R, nodes = {}}
-	}
-	for i, data in pairs(SynthB.songs) do
-		if #song_buttons[#song_buttons].nodes == buttons_per_row * 2 then
-			song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes] = nil
-			song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
-			song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {}}
-		end
-		song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i)
-		song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = {n = G.UIT.C, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
-	end
-	SynthB.GUI.songs_scrollbox = SMODS.UIScrollBox{
-		content = {
-			definition = {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
-				{n = G.UIT.C, config = {}, nodes = song_buttons}
-			}},
-			config = {align = "cm"}
-		},
-    overflow = {
-			node_config = {
-				maxh = 9,
-				r = 0.1,
-			},
-    }
-	}
 	return {
 		{
 			label = "Credits",
@@ -237,18 +169,45 @@ function SynthB.mod.extra_tabs()
 		{
 			label = "Songs",
 			tab_definition_function = function()
+				local buttons_per_row = 3
+				local song_buttons = {
+					{n = G.UIT.R, nodes = {}}
+				}
+				for i, data in pairs(SynthB.songs) do
+					if #song_buttons[#song_buttons].nodes == buttons_per_row * 2 then
+						song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes] = nil
+						song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
+						song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {}}
+					end
+					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i)
+					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = {n = G.UIT.C, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
+				end
+				local scrollbox = SMODS.UIScrollBox{
+					content = {
+						definition = {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
+							{n = G.UIT.C, config = {}, nodes = song_buttons}
+						}},
+						config = {align = "cm"}
+					},
+					overflow = {
+						node_config = {
+							maxh = 9,
+							r = 0.1,
+						},
+					}
+				}
 				return {n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "tm", padding = 0.2, colour = G.C.BLACK }, nodes = {
 					{n = G.UIT.C, config = { align = "cm"}, nodes = {
-						{n = G.UIT.O, config = {align = "cm", object = SynthB.GUI.songs_scrollbox, func = "synthb_regen_object"}}
+						{n = G.UIT.O, config = {align = "cm", object = scrollbox}}
 					}},
-					{n = G.UIT.C, config = {id = "synthb_scrollbar"}, nodes = {
+					{n = G.UIT.C, nodes = {
 						SMODS.GUI.scrollbar({
 							h = 9,
 							w = 0.2,
 							min = 0,
 							max = 1,
 							bg_colour = { 0, 0, 0, 0.15 },
-							scroll_collision_obj = SynthB.GUI.songs_scrollbox,
+							scroll_collision_obj = scrollbox,
 							knob_h = 0.6,
 							scroll_mult = 1.5
 						})
