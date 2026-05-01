@@ -18,3 +18,10 @@ SMODS.Atlas{
 	px = 1000,
 	py = 400
 }
+
+SMODS.Atlas{
+	key = "covers",
+	path = "covers.png",
+	px = 302,
+	py = 302
+}
