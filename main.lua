@@ -4,6 +4,12 @@ SynthB.mod = SMODS.current_mod
 
 SynthB.Globals = SynthB.Globals or {}
 
+SynthB.GUI = {}
+
+SynthB.custom_colors = {
+	LIGHT_GREEN = HEX("99e550"),
+}
+
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
 function SynthB.debug(...) 
 	if SynthB.mod.config.DEBUG then

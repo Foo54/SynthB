@@ -28,7 +28,3 @@ function SynthB.is_face(card)
 	if not id then return false end
 	return (id > 0 and rank and rank.face) or next(SMODS.find_card("j_pareidolia"))
 end
-
-SynthB.custom_colors = {
-	LIGHT_GREEN = HEX("99e550"),
-}
