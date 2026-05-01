@@ -291,6 +291,25 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}夕焼けの中に吸い込まれて消えてった"
 				}
 			},
+			j_synthb_miku = {
+				name = "Miku",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"This card can always appear",
+					"and does not take",
+					"up a joker slot",
+					"{C:inactive,s:0.8}Blue hair, blue tie, hiding in your wifi"
+				}
+			},
+			j_synthb_matryoshka = {
+				name = {"{f:5}マトリョシカ", "{s:0.7}Matryoshka"},
+				text = {
+					"{C:green}#1# in #2#{} chance to gain",
+					"{C:blue}+#3#{} hands if played",
+					"hand has exactly {C:attention}4{} cards",
+					"{C:inactive,s:0.8,f:5}いつまで経っても針は四時"
+				}
+			}
 		},
 		SongInfo = {
 			antani_itten_no = {
@@ -614,7 +633,31 @@ local descriptions = {
 					"{f:5}イア",
 					"{C:inactive,s:0.8}IA"
 				}
-			}
+			},
+			miku = {
+				text = {
+					"{C:attention}Title:",
+					"Miku",
+					"{C:attention}Producer:",
+					"Anamanaguchi",
+					"{C:attention}Voice:",
+					"{f:5}{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			matryoshka = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}マトリョシカ",
+					"{C:inactive,s:0.8}Matryoshka",
+					"{C:attention}Producer:",
+					"{f:5}ハチ",
+					"{C:inactive,s:0.8}Hachi",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク{C:inactive} & {f:5}グミ",
+					"{C:inactive,s:0.8}Hatsune Miku & GUMI"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {

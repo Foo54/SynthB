@@ -1007,7 +1007,7 @@ SynthB.Joker{
 		SynthB.song_info(info_queue, "birdbrain")
 	end,
 	blueprint_compat = false,
-	persishable_compat = true,
+	perishable_compat = true,
 	eternal_compat = true,
 	attributes = {"hands", "passive", "song", "vocaloid song", "Teto", "Jamie Paige", "OK Glass"}
 	-- see birdbrain.toml for implementation
@@ -1736,4 +1736,81 @@ SynthB.Joker{
 			}
 		}
 	end
+}
+
+-- Miku
+SynthB.Joker{
+	key = "miku",
+	cost = 3,
+	config = {
+		card_limit = 1,
+		extra = {
+			chips = 3.9
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"chips", "song", "vocaloid song", "Miku", "Anamanaguchi"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "miku")
+		return {vars = {card.ability.extra.chips}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main or context.forcetrigger then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+			},
+			text_config = { colour = G.C.CHIPS }
+		}
+	end,
+	in_pool = function (self, args)
+		return true, {allow_duplicates = true}
+	end
+}
+
+-- Matryoshka
+SynthB.Joker{
+	key = "matryoshka",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 4,
+	config = {
+		extra = {
+			num = 1,
+			dem = 4,
+			gain = 1
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"chance", "hands", "song", "vocaloid song", "Miku", "GUMI", "Hachi"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "matryoshka")
+		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_matryoshka")
+		num = math.min(num, dem - 1)
+		return {vars = {num, dem, card.ability.extra.gain}}
+	end,
+	calculate = function(self, card, context)
+		if context.before or context.forcetrigger then
+			local flag = context.forcetrigger or false
+			local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_matryoshka")
+			num = math.min(num, dem - 1)
+			if flag or (#context.full_hand == 4 and SMODS.pseudorandom_probability(card, "synthb_matryoshka", num, dem, nil, true)) then
+				ease_hands_played(card.ability.extra.gain)
+			end
+		end
+	end,
 }

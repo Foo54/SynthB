@@ -60,3 +60,5 @@ SMODS.Attribute{key = "aleon"}
 SMODS.Attribute{key = "Treb"}
 SMODS.Attribute{key = "eggtan"}
 SMODS.Attribute{key = "kemu"}
+SMODS.Attribute{key = "Anamanaguchi"}
+SMODS.Attribute{key = "Hachi"}

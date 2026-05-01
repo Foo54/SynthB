@@ -26,6 +26,8 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=HwXaamu58Ao&t=665", key = "glass_girl", pos = {x = 4, y = 4}},
 	{link = "https://www.youtube.com/watch?v=kbNdx0yqbZE", key = "monitoring", pos = {x = 0, y = 5}},
 	{link = "https://www.youtube.com/watch?v=Om3MTou2kPg", key = "six_trillion", pos = {x = 1, y = 5}},
+	{link = "https://www.youtube.com/watch?v=NocXEwsJGOQ", key = "miku", pos = {x = 2, y = 5}},
+	{link = "https://www.youtube.com/watch?v=HOz-9FzIDf0", key = "matryoshka", pos = {x = 3, y = 5}},
 }
 
 SynthB.key_songs = {}
