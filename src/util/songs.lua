@@ -33,10 +33,11 @@ function G.FUNCS.go_to_song(e)
 end
 
 function SynthB.generate_song_button(key, index, prefix)
-	local out = {n = G.UIT.C, config = {align = "tm", minw = 5.5, minh = 5.5, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, scale = 0.6, button = "go_to_song", ref_table = SynthB.songs[index]}, nodes = localize{type = "name", set = "Joker", key = (prefix or "j_synthb_") .. key}}
+	-- adjust fixed scale and necessary to ensure all buttons are of uniform size
+	local out = {n = G.UIT.C, config = {align = "tm", minw = 4.6, minh = 4.6, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, scale = 0.6, button = "go_to_song", ref_table = SynthB.songs[index]}, nodes = localize{type = "name", set = "Joker", key = (prefix or "j_synthb_") .. key, fixed_scale = 0.67}}
 ---@diagnostic disable-next-line: param-type-mismatch
 	table.insert(out.nodes, 1, {n = G.UIT.R, config = {align = "cm"}, nodes = {
-		{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 4.5, 4.5, "synthb_covers", SynthB.songs[index].pos or {x = 0, y = 0})}}
+		{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 3.5, 3.5, "synthb_covers", SynthB.songs[index].pos or {x = 0, y = 0})}}
 	}})
 	return out
 end
