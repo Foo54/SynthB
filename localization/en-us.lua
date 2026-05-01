@@ -266,7 +266,7 @@ local descriptions = {
 				}
 			},
 			j_synthb_monitoring = {
-				name = {"{f:5}temp", "{s:0.7}Monitoring"},
+				name = {"{f:5}モニタリング", "{s:0.7}Monitoring"},
 				text = {
 					"If played hand contains",
 					"exactly {C:attention}1{} card,",
@@ -275,11 +275,11 @@ local descriptions = {
 					"This effect {C:red}stops",
 					"if the card is not {C:attention}scored",
 					"in the first played hand",
-					"{C:inactive,s:0.8,f:5}"
+					"{C:inactive,s:0.8,f:5}何度だって受け止めてあげる"
 				}
 			},
 			j_synthb_six_trillion = {
-				name = {"{f:5}temp", "Six Trillion Years and Overnight Story"},
+				name = {"{f:5}六兆年と一夜物語", "Six Trillion Years and Overnight Story"},
 				text = {
 					"Destroy all played",
 					"cards in {C:attention}final",
@@ -288,9 +288,9 @@ local descriptions = {
 					"of the {C:attention}Chips{} and {C:attention}Mult",
 					"those cards scored",
 					"{C:inactive}[Currently {C:chips}+#1#{C:inactive} Chips and {C:mult}+#2#{C:inactive} Mult]",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}夕焼けの中に吸い込まれて消えてった"
 				}
-			}
+			},
 		},
 		SongInfo = {
 			antani_itten_no = {
@@ -593,7 +593,7 @@ local descriptions = {
 			monitoring = {
 				text = {
 					"{C:attention}Title",
-					"{f:5}temp",
+					"{f:5}モニタリング",
 					"{C:inactive,s:0.8}Monitoring",
 					"{C:attention}Producer:",
 					"{f:5}デコニーナ",
@@ -606,12 +606,12 @@ local descriptions = {
 			six_trillion = {
 				text = {
 					"{C:attention}Title",
-					"{f:5}temp",
+					"{f:5}六兆年と一夜物語",
 					"{C:inactive,s:0.8}Six Trillion Years and Overnight Story",
 					"{C:attention}Producer:",
 					"kemu",
 					"{C:attention}Voice:",
-					"{f:5}temp",
+					"{f:5}イア",
 					"{C:inactive,s:0.8}IA"
 				}
 			}

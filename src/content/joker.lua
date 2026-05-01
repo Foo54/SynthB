@@ -2,9 +2,8 @@
 
 
 -- I'm Talking to You!!!
-SMODS.Joker{
+SynthB.Joker{
 	key = "antani_itten_no",
-	atlas = "placeholder",
 	pos = {x = 0, y = 0},
 	attributes = {"mult", "suit", "clubs", "Teto", "song", "Pinata", "vocaloid song"},
 	config = {
@@ -69,9 +68,8 @@ SMODS.Joker{
 }
 
 -- Cadmium Colors
-SMODS.Joker{
+SynthB.Joker{
 	key = "cadmium_colors",
-	atlas = "placeholder",
 	pos = {x = 0, y = 0},
 	attributes = {"suit", "hearts", "diamonds", "economy", "song", "Jamie Paige", "Teto", "vocaloid song"},
 	config = {
@@ -159,9 +157,8 @@ SMODS.Joker{
 }
 
 -- The World is Mine
-SMODS.Joker{
+SynthB.Joker{
 	key = "the_world_is_mine",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	cost = 6,
 	rarity = 2,
@@ -220,9 +217,8 @@ SMODS.Joker{
 }
 
 -- lump of caramel in the air fryer
-SMODS.Joker{
+SynthB.Joker{
 	key = "caramel_airfryer",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	config = {
 		extra = {
@@ -271,9 +267,8 @@ SMODS.Joker{
 }
 
 -- Regret Rock
-SMODS.Joker{
+SynthB.Joker{
 	key = "regret_rock",
-	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 3,
 	cost = 7,
@@ -327,9 +322,8 @@ SMODS.Joker{
 }
 
 -- My Bread was Burnt to a Crisp
-SMODS.Joker{
+SynthB.Joker{
 	key = "burnt_toast",
-	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	config = {
 		immutable = {
@@ -387,9 +381,8 @@ SMODS.Joker{
 }
 
 -- Machine Love
-SMODS.Joker{
+SynthB.Joker{
 	key = "machine_love",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 6,
@@ -428,9 +421,8 @@ SMODS.Joker{
 }
 
 -- Triple Baka
-SMODS.Joker{
+SynthB.Joker{
 	key = "triple_baka",
-	atlas = "placeholder",
 	pos = {x = 0, y = 0},
 	config = {
 		immutable = {
@@ -530,9 +522,8 @@ SMODS.Joker{
 }
 
 -- Rolling Girl
-SMODS.Joker{
+SynthB.Joker{
 	key = "rolling_girl",
-	atlas = "placeholder",
 	pos = {x = 0, y = 0},
 	cost = 4,
 	attributes = {"song", "vocaloid song", "Miku", "Wowaka"},
@@ -560,9 +551,8 @@ SMODS.Joker{
 }
 
 -- Self Destructive Girl
-SMODS.Joker{
+SynthB.Joker{
 	key = "self_destructive_girl",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 7,
@@ -587,9 +577,8 @@ SMODS.Joker{
 }
 
 -- Lemonade
-SMODS.Joker{
+SynthB.Joker{
 	key = "lemonade",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 8,
@@ -647,9 +636,8 @@ SMODS.Joker{
 }
 
 -- Tetoris
-SMODS.Joker{
+SynthB.Joker{
 	key = "tetoris",
-	atlas = "placeholder",
 	pos = {x = 0, y = 0},
 	config = {
 		extra = {
@@ -709,9 +697,8 @@ SMODS.Joker{
 }
 
 -- Relay Outer
-SMODS.Joker{
+SynthB.Joker{
 	key = "relayouter",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 7,
@@ -784,9 +771,8 @@ SMODS.Joker{
 }
 
 -- Retry Now Normal
-SMODS.Joker{
+SynthB.Joker{
 	key = "retry_now_normal",
-	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 3,
 	cost = 9,
@@ -868,12 +854,12 @@ SMODS.Joker{
 }
 
 -- Retry Now Changed
-SMODS.Joker{
+SynthB.Joker{
 	key = "retry_now_change",
-	atlas = "placeholder",
 	pos = {x = 3, y = 0},
 	rarity = 4,
 	cost = 20,
+	synthb_song = "retry_now_normal",
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
@@ -921,9 +907,8 @@ SMODS.Joker{
 
 
 -- Fire Dance
-SMODS.Joker{
+SynthB.Joker{
 	key = "fire_dance",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 6,
@@ -975,9 +960,8 @@ SMODS.Joker{
 }
 
 -- KING
-SMODS.Joker{
+SynthB.Joker{
 	key = "king",
-	atlas = "placeholder",
 	pos = {x = 0, y = 0},
 	cost = 5,
 	loc_vars = function(self, info_queue, card)
@@ -1015,9 +999,8 @@ SMODS.Joker{
 }
 
 -- Birdbrain
-SMODS.Joker{
+SynthB.Joker{
 	key = "birdbrain",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	cost = 6,
 	loc_vars = function(self, info_queue, card)
@@ -1031,9 +1014,8 @@ SMODS.Joker{
 }
 
 -- Brain Rot
-SMODS.Joker{
+SynthB.Joker{
 	key = "brainrot",
-	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 2,
 	cost = 6,
@@ -1083,9 +1065,8 @@ SMODS.Joker{
 }
 
 -- Shrimp Fried Rice
-SMODS.Joker{
+SynthB.Joker{
 	key = "shrimp_fried_rice",
-	atlas = "placeholder",
 	cost = 4,
 	config = {
 		extra = {
@@ -1151,9 +1132,8 @@ SMODS.Joker{
 }
 
 -- Disclose Flick
-SMODS.Joker{
+SynthB.Joker{
 	key = "disclose_flick",
-	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 3,
 	cost = 8,
@@ -1251,9 +1231,8 @@ SMODS.Joker{
 }
 
 -- Copycat
-SMODS.Joker{
+SynthB.Joker{
 	key = "copycat",
-	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 3,
 	cost = 9,
@@ -1396,9 +1375,8 @@ SMODS.Joker{
 }
 
 -- kyu-kurarin
-SMODS.Joker{
+SynthB.Joker{
 	key = "kyu_kurarin",
-	atlas = "placeholder",
 	cost = 5,
 	config = {
 		extra = {
@@ -1456,9 +1434,8 @@ SMODS.Joker{
 }
 
 -- Medicine
-SMODS.Joker{
+SynthB.Joker{
 	key = "medicine",
-	atlas = "placeholder",
 	cost = 5,
 	blueprint_compat = true,
 	demicolon_compat = true,
@@ -1527,9 +1504,8 @@ SMODS.Joker{
 }
 
 -- Internet is Mine
-SMODS.Joker{
+SynthB.Joker{
 	key = "internet_is_mine",
-	atlas = "placeholder",
 	cost = 4,
 	config = {
 		extra = {
@@ -1599,9 +1575,8 @@ SMODS.Joker{
 }
 
 -- Glass Girl
-SMODS.Joker{
+SynthB.Joker{
 	key = "glass_girl",
-	atlas = "placeholder",
 	pos = {x=1,y=0},
 	rarity = 2,
 	cost = 7,
@@ -1662,9 +1637,8 @@ SMODS.Joker{
 }
 
 -- Monitoring
-SMODS.Joker{
+SynthB.Joker{
 	key = "monitoring",
-	atlas = "placeholder",
 	pos = {x = 2, y = 0},
 	rarity = 3,
 	cost = 8,
@@ -1715,9 +1689,8 @@ SMODS.Joker{
 }
 
 -- Six Trillion Years and Overnight Story
-SMODS.Joker{
+SynthB.Joker{
 	key = "six_trillion",
-	atlas = "placeholder",
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 6,

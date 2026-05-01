@@ -66,3 +66,22 @@ function CardArea.shuffle (self, _seed)
 	end
 	return ret
 end
+
+local card_click_ref = Card.click
+function Card:click ()
+	if self.config.center.synthb_song then
+		if SynthB.mod.config.triple_click_for_song then
+			if G.TIMERS.REAL - self.config.center.synthb_timer > 1 then
+				self.config.center.synthb_timer = G.TIMERS.REAL
+				self.config.center.synthb_count = 0
+			end
+			self.config.center.synthb_count = self.config.center.synthb_count + 1
+			if self.config.center.synthb_count >= 3 then
+				self.config.center.synthb_count = 0
+				self.config.center.synthb_timer = G.TIMERS.REAL
+				G.FUNCS.go_to_song({config = {ref_table = SynthB.key_songs[type(self.config.center.synthb_song) == "string" and self.config.center.synthb_song or self.config.center.original_key]}})
+			end
+		end
+	end
+	card_click_ref(self)
+end

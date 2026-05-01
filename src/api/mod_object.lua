@@ -19,6 +19,13 @@ function SynthB.mod.config_tab()
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
+						label = "Triple Click to View Song",
+						ref_table = SynthB.mod.config,
+						ref_value = 'triple_click_for_song'
+					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
 						label = "Allow Covers on Any Card",
 						ref_table = SynthB.mod.config,
 						ref_value = 'allow_covers_on_any_card'

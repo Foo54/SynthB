@@ -24,9 +24,14 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=F38EuG2dAyM", key = "medicine", pos = {x = 2, y = 4}},
 	{link = "https://www.youtube.com/watch?v=VZJRmKSZIfY&t=978s", key = "internet_is_mine", pos = {x = 3, y = 4}},
 	{link = "https://www.youtube.com/watch?v=HwXaamu58Ao&t=665", key = "glass_girl", pos = {x = 4, y = 4}},
-	{link = "uh", key = "monitoring", pos = {x = 0, y = 5}},
-	{link = "uh", key = "six_trillion", pos = {x = 1, y = 5}},
+	{link = "https://www.youtube.com/watch?v=kbNdx0yqbZE", key = "monitoring", pos = {x = 0, y = 5}},
+	{link = "https://www.youtube.com/watch?v=Om3MTou2kPg", key = "six_trillion", pos = {x = 1, y = 5}},
 }
+
+SynthB.key_songs = {}
+for _, song in ipairs(SynthB.songs) do
+	SynthB.key_songs[song.key] = song
+end
 
 function G.FUNCS.go_to_song(e)
 	love.system.openURL(e.config.ref_table.link)
