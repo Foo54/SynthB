@@ -264,6 +264,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}Ooh girls made of glass,",
 					"{C:inactive,s:0.8}our hearts full of lithium"
 				}
+			},
+			j_synthb_monitoring = {
+				name = {"{f:5}temp", "{s:0.7}Monitoring"},
+				text = {
+					"If played hand contains",
+					"exactly {C:attention}1{} card,",
+					"that card will {C:attention}always",
+					"be drawn on the first hand of round.",
+					"This effect {C:red}stops",
+					"if the card is not {C:attention}scored",
+					"in the first played hand",
+					"{C:inactive,s:0.8,f:5}"
+				}
 			}
 		},
 		SongInfo = {
@@ -562,6 +575,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}足立レイ",
 					"{C:inactive,s:0.8}Adachi Rei"
+				}
+			},
+			monitoring = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Monitoring",
+					"{C:attention}Producer:",
+					"{f:5}デコニーナ",
+					"{C:inactive,s:0.8}Deco*27",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			}
 		},

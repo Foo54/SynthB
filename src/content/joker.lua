@@ -1660,3 +1660,56 @@ SMODS.Joker{
 		end
 	end,
 }
+
+-- Monitoring
+SMODS.Joker{
+	key = "monitoring",
+	atlas = "placeholder",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 8,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = false,
+	attributes = {"hands", "song", "vocaloid song", "Deco*27", "Miku"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "monitoring")
+	end,
+	calculate = function(self, card, context)
+		if context.before and not context.blueprint then
+			if G.GAME.current_round.hands_played == 0 then
+				local marked_card
+				for _, _card in ipairs(context.scoring_hand) do
+					if _card.ability.synthb_monitored then
+						marked_card = _card
+						break
+					end
+				end
+				G.GAME.synthb_monitored = false
+				for _, _card in ipairs(G.playing_cards) do
+					if _card ~= marked_card then
+						_card.ability.synthb_monitored = nil
+					else
+						G.GAME.synthb_monitored = true
+					end
+				end
+			end
+			if #context.full_hand == 1 then
+				context.full_hand[1].ability.synthb_monitored = true
+				return {
+					message = 'MWAH!',
+					colour = G.C.BLUE
+				}
+			end
+		end
+	end,
+	remove_from_deck = function (self, card, from_debuff)
+		if not from_debuff then
+			G.GAME.synthb_monitored = false
+			for _, _card in ipairs(G.playing_cards) do
+				_card.ability.synthb_monitored = nil
+			end
+		end
+	end
+}

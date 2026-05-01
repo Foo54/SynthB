@@ -51,3 +51,18 @@ function SMODS.has_no_rank (card)
 			return next(SMODS.find_card("j_synthb_medicine"))
 	end
 end
+
+local cardarea_shuffle_ref = CardArea.shuffle
+function CardArea.shuffle (self, _seed)
+	local ret = cardarea_shuffle_ref(self, _seed)
+	if G.GAME.synthb_monitored then
+		for index, card in ipairs(self.cards) do
+			if card.ability.synthb_monitored then
+				self.cards[index] = self.cards[#self.cards]
+				self.cards[#self.cards] = card
+			end
+		end
+		self:set_ranks() --- idk what this does but the original function has it and it seems important
+	end
+	return ret
+end

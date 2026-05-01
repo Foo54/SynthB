@@ -23,7 +23,8 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=2b1IexhKPz4", key = "kyu_kurarin", pos = {x = 1, y = 4}},
 	{link = "https://www.youtube.com/watch?v=F38EuG2dAyM", key = "medicine", pos = {x = 2, y = 4}},
 	{link = "https://www.youtube.com/watch?v=VZJRmKSZIfY&t=978s", key = "internet_is_mine", pos = {x = 3, y = 4}},
-	{link = "https://www.youtube.com/watch?v=HwXaamu58Ao&t=665", key = "glass_girl", pos = {x = 4, y = 4}}
+	{link = "https://www.youtube.com/watch?v=HwXaamu58Ao&t=665", key = "glass_girl", pos = {x = 4, y = 4}},
+	{link = "uh", key = "monitoring", pos = {x = 0, y = 5}},
 }
 
 function G.FUNCS.go_to_song(e)
