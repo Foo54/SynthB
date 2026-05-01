@@ -194,7 +194,7 @@ function SynthB.mod.extra_tabs()
 							maxh = 9,
 							r = 0.1,
 						},
-					}
+					},
 				}
 				return {n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "tm", padding = 0.2, colour = G.C.BLACK }, nodes = {
 					{n = G.UIT.C, config = { align = "cm"}, nodes = {
@@ -209,7 +209,7 @@ function SynthB.mod.extra_tabs()
 							bg_colour = { 0, 0, 0, 0.15 },
 							scroll_collision_obj = scrollbox,
 							knob_h = 0.6,
-							scroll_mult = 1.5
+							scroll_mult = 3
 						})
 					}}
 				}}
