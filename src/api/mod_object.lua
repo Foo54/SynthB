@@ -65,8 +65,8 @@ end
 function SynthB.mod.extra_tabs()
 	local column_min_w = 6
 	local song_buttons = {}
-	for key, _ in pairs(SynthB.songs) do
-		song_buttons[#song_buttons+1] = SynthB.generate_song_button(key)
+	for _, data in pairs(SynthB.songs) do
+		song_buttons[#song_buttons+1] = SynthB.generate_song_button(data.key)
 		song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
 	end
 	local scrollbox = SMODS.UIScrollBox{
