@@ -1713,3 +1713,54 @@ SMODS.Joker{
 		end
 	end
 }
+
+-- Six Trillion Years and Overnight Story
+SMODS.Joker{
+	key = "six_trillion",
+	atlas = "placeholder",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 6,
+	config = {
+		extra = {
+			chips = 0,
+			mult = 0
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"destroy_card", "hands", "scaling", "chips", "mult", "song", "vocaloid song", "IA", "kemu"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "six_trillion")
+		return {vars = {card.ability.extra.chips, card.ability.extra.mult}}
+	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger or context.joker_main then
+			return {
+				chips = card.ability.extra.chips,
+				mult = card.ability.extra.mult
+			}
+		end
+		if context.destroy_card and G.GAME.current_round.hands_left == 0 and (context.cardarea == G.play or context.cardarea == "unscored") then
+			card.ability.extra.chips = card.ability.extra.chips + (context.destroy_card:get_chip_bonus() + ((context.destroy_card.edition or {}).chips or 0)) / 3
+			card.ability.extra.mult = card.ability.extra.mult + (context.destroy_card:get_chip_mult() + ((context.destroy_card.edition or {}).mult or 0)) / 3
+			return {
+				remove = true
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+", colour = G.C.CHIPS },
+				{ ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult", colour = G.C.CHIPS },
+				{text = " "},
+				{ text = "+", colour = G.C.MULT },
+				{ ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT }
+			}
+		}
+	end
+}

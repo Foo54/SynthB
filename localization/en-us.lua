@@ -277,6 +277,19 @@ local descriptions = {
 					"in the first played hand",
 					"{C:inactive,s:0.8,f:5}"
 				}
+			},
+			j_synthb_six_trillion = {
+				name = {"{f:5}temp", "Six Trillion Years and Overnight Story"},
+				text = {
+					"Destroy all played",
+					"cards in {C:attention}final",
+					"{C:attention}hand{} of round",
+					"This Joker gains {C:attention}1/3rd{}",
+					"of the {C:attention}Chips{} and {C:attention}Mult",
+					"those cards scored",
+					"{C:inactive}[Currently {C:chips}+#1#{C:inactive} Chips and {C:mult}+#2#{C:inactive} Mult]",
+					"{C:inactive,s:0.8,f:5}lyrics"
+				}
 			}
 		},
 		SongInfo = {
@@ -588,6 +601,18 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			six_trillion = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}Six Trillion Years and Overnight Story",
+					"{C:attention}Producer:",
+					"kemu",
+					"{C:attention}Voice:",
+					"{f:5}temp",
+					"{C:inactive,s:0.8}IA"
 				}
 			}
 		},

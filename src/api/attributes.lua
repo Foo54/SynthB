@@ -31,6 +31,7 @@ SMODS.Attribute{key = "MEIKO"}
 SMODS.Attribute{key = "KAITO"}
 SMODS.Attribute{key = "GUMI"}
 SMODS.Attribute{key = "KAFU"}
+SMODS.Attribute{key = "IA"}
 
 
 --#region ARTISTS
@@ -58,3 +59,4 @@ SMODS.Attribute{key = "Nocticola"}
 SMODS.Attribute{key = "aleon"}
 SMODS.Attribute{key = "Treb"}
 SMODS.Attribute{key = "eggtan"}
+SMODS.Attribute{key = "kemu"}
