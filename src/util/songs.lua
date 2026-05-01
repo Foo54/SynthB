@@ -30,6 +30,11 @@ function G.FUNCS.go_to_song(e)
 	love.system.openURL(e.config.ref_table.link)
 end
 
-function SynthB.generate_song_button(key, prefix)
-	return {n = G.UIT.R, config = {align = "tm", minw = 8, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, button = "go_to_song", ref_table = SynthB.songs[key]}, nodes = localize{type = "name", set = "Joker", key = (prefix or "j_synthb_") .. key}}
+function SynthB.generate_song_button(key, index, prefix)
+	local out = {n = G.UIT.C, config = {align = "tm", minw = 5.5, minh = 5.5, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, scale = 0.6, button = "go_to_song", ref_table = SynthB.songs[index]}, nodes = localize{type = "name", set = "Joker", key = (prefix or "j_synthb_") .. key}}
+---@diagnostic disable-next-line: param-type-mismatch
+	table.insert(out.nodes, 1, {n = G.UIT.R, config = {align = "cm"}, nodes = {
+		{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 4.5, 4.5, "synthb_logo", SynthB.songs[index].pos or {x = 0, y = 0})}}
+	}})
+	return out
 end

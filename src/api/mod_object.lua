@@ -64,10 +64,18 @@ end
 
 function SynthB.mod.extra_tabs()
 	local column_min_w = 6
-	local song_buttons = {}
-	for _, data in pairs(SynthB.songs) do
-		song_buttons[#song_buttons+1] = SynthB.generate_song_button(data.key)
-		song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
+	local buttons_per_row = 3
+	local song_buttons = {
+		{n = G.UIT.R, nodes = {}}
+	}
+	for i, data in pairs(SynthB.songs) do
+		if #song_buttons[#song_buttons].nodes == buttons_per_row * 2 then
+			song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes] = nil
+			song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
+			song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {}}
+		end
+		song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i)
+		song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = {n = G.UIT.C, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
 	end
 	local scrollbox = SMODS.UIScrollBox{
 		content = {
@@ -78,7 +86,7 @@ function SynthB.mod.extra_tabs()
 		},
     overflow = {
 			node_config = {
-				maxh = 8,
+				maxh = 9,
 				r = 0.1,
 			},
     }
@@ -191,7 +199,7 @@ function SynthB.mod.extra_tabs()
 					}},
 					{n = G.UIT.C, nodes = {
 						SMODS.GUI.scrollbar({
-							h = 8,
+							h = 9,
 							w = 0.2,
 							min = 0,
 							max = 1,
