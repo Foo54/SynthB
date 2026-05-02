@@ -309,6 +309,26 @@ local descriptions = {
 					"hand has exactly {C:attention}4{} cards",
 					"{C:inactive,s:0.8,f:5}いつまで経っても針は四時"
 				}
+			},
+			j_synthb_spot_late = {
+				name = {"{f:5}スポットレイト", "{s:0.7}Spot Late"},
+				text = {
+					{
+						"This Joker gains",
+						"{C:mult}+#1#{} Mult per",
+						"hand played if it's",
+						"not the {C:attention}leftmost{} joker",
+						"and loses {C:mult}+#1#{} Mult",
+						"otherwise",
+						"{C:inactive}[Currently {C:mult}+#2#{C:inactive} Mult]"
+					},
+					{
+						"Only scores when",
+						"this joker is",
+						"the {C:attention}leftmost{} joker",
+						"{C:inactive,s:0.8,f:5}あたし以外の概念で放置した分だけ"
+					}
+				}
 			}
 		},
 		SongInfo = {
@@ -656,6 +676,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}初音ミク{C:inactive} & {f:5}グミ",
 					"{C:inactive,s:0.8}Hatsune Miku & GUMI"
+				}
+			},
+			spot_late = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}スポットレイト",
+					"{C:inactive,s:0.8}Spot Late",
+					"{C:attention}Producer:",
+					"{f:5}稲葉曇",
+					"{C:inactive,s:0.8}inabakumori",
+					"{C:attention}Voice:",
+					"{f:5}歌愛ユキ",
+					"{C:inactive,s:0.8}Kaai Yuki"
 				}
 			},
 		},

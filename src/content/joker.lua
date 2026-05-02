@@ -1814,3 +1814,59 @@ SynthB.Joker{
 		end
 	end,
 }
+
+-- Spot Late
+SynthB.Joker{
+	key = "spot_late",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 6,
+	config = {
+		extra = {
+			gain = 2,
+			mult = 0
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"mult", "scaling", "song", "vocaloid song", "inabakumori", "yuki"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "spot_late")
+		return {vars = {card.ability.extra.gain, card.ability.extra.mult}}
+	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger then
+			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
+		if context.before then
+			if G.jokers.cards[1] == card then
+				card.ability.extra.mult = math.max(0, card.ability.extra.mult - card.ability.extra.gain)
+			else
+				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
+			end
+		end
+		if context.joker_main and G.jokers.cards[1] == card then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+			},
+			text_config = { colour = G.C.MULT },
+			calc_function = function (card)
+				card.joker_display_values.mult = G.jokers.cards[1] == card and card.ability.extra.mult or 0
+			end
+		}
+	end
+}
