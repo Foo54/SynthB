@@ -547,6 +547,16 @@ SynthB.Joker{
 				}
 			end
 		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+				if held_in_hand then return 0 end
+				local last_card = scoring_hand and scoring_hand[#scoring_hand]
+				return last_card and playing_card == last_card and joker_card.ability.extra.retriggers * JokerDisplay.calculate_joker_triggers(joker_card) or 0
+			end
+		}
 	end
 }
 
@@ -1814,6 +1824,10 @@ SynthB.Joker{
 		end
 	end,
 }
+
+
+--- Page 3
+
 
 -- Spot Late
 SynthB.Joker{
