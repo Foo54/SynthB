@@ -65,6 +65,7 @@ SynthB.Joker{
 	cost = 8,
 	config = {
 		extra = {
+			raise = 1,
 			gain = 8,
 			limit = 100
 		}
@@ -76,7 +77,7 @@ SynthB.Joker{
 	attributes = {"chips", "scaling", "modify_card", "temperature", "song", "vocaloid song", "Iyowa", "Rei"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "heat_abnormal")
-		return {vars = {card.ability.extra.gain, card.ability.extra.limit, card.ability.extra.gain * math.floor((G.GAME or {}).synthb_temp or 0)}}
+		return {vars = {card.ability.extra.gain, card.ability.extra.limit, card.ability.extra.gain * math.floor((G.GAME or {}).synthb_temp or 0), card.ability.extra.raise}}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main or context.forcetrigger then
@@ -85,7 +86,7 @@ SynthB.Joker{
 			}
 		end
 		if context.individual and context.cardarea == G.play then
-			SynthB.ease_temp(context.other_card.base.id / 10)
+			SynthB.ease_temp(1)
 		end
 	end,
 	can_use = function(self, card)

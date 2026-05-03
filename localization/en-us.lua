@@ -340,6 +340,9 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}いつまで経っても針は四時"
 				}
 			},
+
+			-- Page 3
+
 			j_synthb_spot_late = {
 				name = {"{f:5}スポットレイト", "{s:0.7}Spot Late"},
 				text = {
@@ -364,7 +367,8 @@ local descriptions = {
 				name = {"{f:5}熱異常", "{s:0.7}Heat Abnormal"},
 				text = {
 					{
-						"Scoring cards {C:attention}increases{} the {C:temperature}Temperature",
+						"Raise the {C:temperature}Temperature{} by {X:temperature,C:white}#4#C",
+						"when playing cards are scored",
 						"{C:inactive,s:0.8,f:5}数え事が孕んだ熱"
 					},
 					{
