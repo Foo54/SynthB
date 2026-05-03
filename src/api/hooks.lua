@@ -1,11 +1,17 @@
 ---@diagnostic disable: duplicate-set-field
 local set_edition_ref = Card.set_edition
 function Card:set_edition(edition, immediate, silent, delay)
+	SynthB.debug(edition, immediate, silent, delay)
 	if type(edition) == "table" then
 		if edition.name_of_edition then
 			edition = "e_" .. edition.name_of_edition
-		else
+		elseif edition.key then
 			edition = edition.key
+		else
+			for key, _ in pairs(edition) do
+				edition = "e_" .. key
+				break
+			end
 		end
 	end
 	if not SynthB.mod.config.allow_covers_on_any_card and edition and type(G.P_CENTERS[edition].valid_card) == 'function' then
