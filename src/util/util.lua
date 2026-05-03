@@ -30,5 +30,8 @@ function SynthB.is_face(card)
 end
 
 function SynthB.ease_temp(mod)
+	SynthB.debug(mod)
+	local ret = SMODS.calculate_context({old_temp = G.GAME.synthb_temp or 0, new_temp = (G.GAME.synthb_temp or 0) + mod, mod_temp = mod})
+	mod = ret and ret.mod_temp or mod
 	G.GAME.synthb_temp = (G.GAME.synthb_temp or 0) + mod
 end

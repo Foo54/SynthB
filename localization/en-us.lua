@@ -52,10 +52,25 @@ local descriptions = {
 			j_synthb_burnt_toast = {
 				name = {"{f:5}パンこげこげになっちゃった", "{s:0.7}My Bread was Burnt to a Crisp"},
 				text = {
-					"{C:red}Destroying{} playing cards",
-					"upgrades a {C:attention}poker hand",
-					"based on the cards rank",
-					"{C:inactive,s:0.8,f:5}もっと美味しく出来るハズだから"
+					{
+						"Raise the {C:temperature}Temperature{} by {X:temperature,C:white}#1#C",
+						"when a playing card is destroyed",
+						"{C:inactive,s:0.8,f:5}もっと美味しく出来るハズだから"
+					},
+					{
+						"{X:temperature,C:white}#2#{C:green} in #3#{} chance",
+						"to upgrade {C:attention}poker hand{} twice",
+						"when a {C:planet}Planet{} card is used",
+						"{C:inactive,s:0.8,f:5}もう遅いのはわかってるよ"
+					},
+					{
+						"{C:attention}Use{} this card to",
+						"upgrade the selected",
+						"{C:attention}poker hand",
+						"and lower the {C:temperature}Temperature",
+						"by {X:temperature,C:white}#4#C",
+						"{C:inactive,s:0.8,f:5}食べれないことないけどさ"
+					}
 				}
 			},
 			j_synthb_machine_love = {
@@ -164,11 +179,26 @@ local descriptions = {
 			j_synthb_fire_dance = {
 				name = {"{f:5}ファイアダンス", "{s:0.7}Fire Dance"},
 				text = {
-					"{C:attention}+#1#{} hand size",
-					"if the {C:attention}final{} hand played",
-					"during the previous blind",
-					"{C:attention}caught fire",
-					"{C:inactive,s:0.8}Wake up, Get up, Stand up, MERA"
+					{
+						"Raise the {C:temperature}Temperature{} by {X:temperature,C:white}#8#C",
+						"when hand catches on fire",
+						"{C:inactive,s:0.8,f:5}やばBADなBURNOUTぶっかます番だ"
+					},
+					{
+						"{C:red}-#1#{} hand size",
+						"{C:blue}+#2#{} hand size per {X:temperature,C:white}#3#C",
+						"{C:inactive}[Currently {C:blue}+#7#{C:inactive} hand size]",
+						"{C:inactive,s:0.8}Wake up, Get up, Stand up, MERA"
+					},
+					{
+						"{C:attention}Use{} this card to",
+						"increase the rank of",
+						"up to {C:attention}#4#{} selected",
+						"cards by {C:attention}#5#",
+						"and lower the {C:temperature}Temperature",
+						"by {X:temperature,C:white}#6#C",
+						"{C:inactive,s:0.8,f:5}ガンガン登る今は何合目？"
+					}
 				}
 			},
 			j_synthb_king = {
@@ -334,19 +364,19 @@ local descriptions = {
 				name = {"{f:5}熱異常", "{s:0.7}Heat Abnormal"},
 				text = {
 					{
-						"Scoring cards {C:attention}increases{} the {C:ORANGE}Temperature",
+						"Scoring cards {C:attention}increases{} the {C:temperature}Temperature",
 						"{C:inactive,s:0.8,f:5}数え事が孕んだ熱"
 					},
 					{
-						"{C:chips}+#1#{} Chips per {X:ORANGE,C:white}#2#C{}",
-						"{C:inactive}[Currently {C:chips}+#5#{C:inactive} Chips]",
+						"{C:chips}+#1#{} Chips per {X:temperature,C:white}1C{}",
+						"{C:inactive}[Currently {C:chips}+#3#{C:inactive} Chips]",
 						"{C:inactive,s:0.8,f:5}すぐそこまで",
 					},
 					{
 						"Use this card to",
 						"{C:attention}enhance{} all cards held in hand",
-						"and reset {C:ORANGE}Temperature",
-						"if {C:ORANGE}Temperature{} is over {X:ORANGE,C:white}#4#C{}",
+						"and lower the {C:temperature}Temperature",
+						"by {X:temperature,C:white}#2#C",
 						"{C:inactive,s:0.8,f:5}死んだ変数で繰り返す"
 					}
 				}

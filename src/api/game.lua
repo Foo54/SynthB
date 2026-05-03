@@ -1,2 +1,2 @@
 loc_colour("red")
-G.ARGS.LOC_COLOURS.ORANGE = G.C.ORANGE
+G.ARGS.LOC_COLOURS.temperature = G.C.ORANGE
