@@ -33,6 +33,7 @@ SynthB.load_file("api/attributes")
 SynthB.load_file("api/atlas")
 SynthB.load_file("api/mod_object")
 SynthB.load_file("api/mod_badge")
+SynthB.load_file("api/game")
 
 SynthB.debug("Loading Content Files")
 SynthB.load_file("content/shader")

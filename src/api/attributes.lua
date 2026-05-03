@@ -6,6 +6,7 @@
 
 --#region GENERAL
 SMODS.Attribute{key = "debuff"}
+SMODS.Attribute{key = "temperature"}
 SMODS.Attribute{key = "song"}
 SMODS.Attribute{key = "vocaloid song"}
 

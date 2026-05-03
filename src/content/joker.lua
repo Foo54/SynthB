@@ -1884,3 +1884,41 @@ SynthB.Joker{
 		}
 	end
 }
+
+-- Heat Abnormal
+SynthB.Joker{
+	key = "heat_abnormal",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 8,
+	config = {
+		extra = {
+			perk = 8,
+			gain = 1,
+			limit = 1000
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"chips", "scaling", "modify_card", "temperature", "song", "vocaloid song", "Iyowa", "Rei"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "heat_abnormal")
+		return {vars = {card.ability.extra.gain, card.ability.extra.perk, G.GAME.synthb_temp or 0, card.ability.extra.limit, card.ability.extra.gain * math.floor((G.GAME.synthb_temp or 0) / card.ability.extra.perk)}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main or context.forcetrigger then
+			if context.forcetrigger then
+				-- enhance cards
+			end
+			return {
+				chips = card.ability.extra.gain * math.floor((G.GAME.synthb_temp or 0) / card.ability.extra.perk)
+			}
+		end
+		if context.individual and context.cardarea == G.play then
+			SynthB.ease_temp(context.other_card.base.id)
+		end
+	end,
+}
+

@@ -1,0 +1,2 @@
+loc_colour("red")
+G.ARGS.LOC_COLOURS.ORANGE = G.C.ORANGE

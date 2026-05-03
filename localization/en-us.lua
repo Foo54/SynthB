@@ -329,6 +329,27 @@ local descriptions = {
 						"{C:inactive,s:0.8,f:5}あたし以外の概念で放置した分だけ"
 					}
 				}
+			},
+			j_synthb_heat_abnormal = {
+				name = {"{f:5}熱異常", "{s:0.7}Heat Abnormal"},
+				text = {
+					{
+						"Scoring cards {C:attention}increases{} the {C:ORANGE}Temperature",
+						"{C:inactive,s:0.8,f:5}数え事が孕んだ熱"
+					},
+					{
+						"{C:chips}+#1#{} Chips per {X:ORANGE,C:white}#2#C{}",
+						"{C:inactive}[Currently {C:chips}+#5#{C:inactive} Chips]",
+						"{C:inactive,s:0.8,f:5}すぐそこまで",
+					},
+					{
+						"Use this card to",
+						"{C:attention}enhance{} all cards held in hand",
+						"and reset {C:ORANGE}Temperature",
+						"if {C:ORANGE}Temperature{} is over {X:ORANGE,C:white}#4#C{}",
+						"{C:inactive,s:0.8,f:5}死んだ変数で繰り返す"
+					}
+				}
 			}
 		},
 		SongInfo = {
@@ -689,6 +710,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}歌愛ユキ",
 					"{C:inactive,s:0.8}Kaai Yuki"
+				}
+			},
+			heat_abnormal = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}熱異常",
+					"{C:inactive,s:0.8}Heat Abnormal",
+					"{C:attention}Producer:",
+					"{f:5}いよわ",
+					"{C:inactive,s:0.8}Iyowa",
+					"{C:attention}Voice:",
+					"{f:5}足立レイ",
+					"{C:inactive,s:0.8}Adachi Rei"
 				}
 			},
 		},

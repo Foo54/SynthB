@@ -28,3 +28,7 @@ function SynthB.is_face(card)
 	if not id then return false end
 	return (id > 0 and rank and rank.face) or next(SMODS.find_card("j_pareidolia"))
 end
+
+function SynthB.ease_temp(mod)
+	G.GAME.synthb_temp = (G.GAME.synthb_temp or 0) + mod
+end
