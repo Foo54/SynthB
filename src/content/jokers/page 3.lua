@@ -218,5 +218,44 @@ SynthB.Joker{
 	end
 }
 
-
+-- Hello, World!
+SynthB.Joker{
+	key = "hello_world",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 7,
+	config = {
+		immutable = {
+			active = true
+		}
+	},
+	blueprint_compat = false,
+	perishable_compat = true,
+	eternal_compat = true,
+	demicolon_compat = false,
+	attributes = {"passive", "song", "vocaloid song", "Motoo Fujiwara", "Miku"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "hello_world")
+		local cardarea = CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W * 0.7, G.CARD_H * 0.7, {
+			type = 'title_2', card_limit = 1, highlight_limit = 0
+		})
+		if G.deck and G.deck.cards and #G.deck.cards > 0 and not (card.area and card.area.config.collection) then
+			cardarea:emplace(copy_card(G.deck.cards[#G.deck.cards], nil, 0.7))
+		end
+		return {vars = {elements = {cardarea}}}
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and context.main_eval then
+			card.ability.immutable.active = true
+		end
+	end,
+	can_use = function(self, card)
+		return G.deck and #G.deck.cards > 1 and card.ability.immutable.active
+	end,
+	use = function(self, card)
+		local card = G.deck.cards[#G.deck.cards]
+		G.deck.cards[#G.deck.cards] = nil
+		table.insert(G.deck.cards, 1, card)
+	end
+}
 

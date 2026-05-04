@@ -30,7 +30,8 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=HOz-9FzIDf0", key = "matryoshka", pos = {x = 3, y = 5}},
 	{link = "https://www.youtube.com/watch?v=STBoCK69vVQ", key = "spot_late", pos = {x = 4, y = 5}},
 	{link = "https://www.youtube.com/watch?v=b2NTglk9tvI", key = "heat_abnormal", pos = {x = 0, y = 6}},
-	{link = "uh", key = "spoken_for", pos = {x = 1, y = 6}},
+	{link = "https://www.youtube.com/watch?v=LvYL8u4p-aM", key = "spoken_for", pos = {x = 1, y = 6}},
+	{link = "https://www.youtube.com/watch?v=B1nUc7LfZYA", key = "hello_world", pos = {x = 2, y = 6}},
 	--[[
 	for cross mod do this
 	

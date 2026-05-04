@@ -392,6 +392,25 @@ local descriptions = {
 					"{C:inactive,s:0.8}I could be a friend,",
 					"{C:inactive,s:0.8}or I could be a foe"
 				}
+			},
+			j_synthb_hello_world = {
+				name = "Hello, World!",
+				text = {
+					{
+						"The {C:attention}top{} card",
+						"of your deck",
+						"is visible below.",
+						"{C:attention}Use{} this card",
+						"to move the {C:attention}top",
+						"card of deck",
+						"to the {C:attention}bottom",
+						"{C:inactive}Once per round",
+						"{C:inactive,s:0.8,f:5}ハロー　どうも　僕はここ"
+					},
+					{
+						" {element:1} "
+					}
+				}
 			}
 		},
 		SongInfo = {
@@ -776,6 +795,18 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			hello_world = {
+				text = {
+					"{C:attention}Title:",
+					"Hello, World!",
+					"{C:attention}Producer:",
+					"{f:5}藤原基央",
+					"{C:inactive,s:0.8}Motoo Fujiwara",
+					"{C:attention}Voice:",
+					"{f:5}{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
 		},
