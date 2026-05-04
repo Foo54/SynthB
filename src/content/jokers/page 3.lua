@@ -253,6 +253,7 @@ SynthB.Joker{
 		return G.deck and #G.deck.cards > 1 and card.ability.immutable.active
 	end,
 	use = function(self, card)
+		card.ability.immutable.active = false
 		local card = G.deck.cards[#G.deck.cards]
 		G.deck.cards[#G.deck.cards] = nil
 		table.insert(G.deck.cards, 1, card)
