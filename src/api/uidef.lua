@@ -44,6 +44,7 @@ function G.UIDEF.synthb_thermometer_top ()
 			}
 		}, nodes = {
 			{n = G.UIT.O, config = {
+				shader = "synthb_thermo",
 				object = SMODS.create_sprite(0, 0, 1 * scale, 3.81 * scale, "synthb_thermometer", {x = 0, y = 0})
 			}}
 		}}

@@ -8,6 +8,16 @@ SMODS.Shader({
 	end
 })
 
+SMODS.Shader{
+	key = "thermo",
+	path = "thermo.fs",
+	send_vars = function(self, sprite, card)
+		return {
+			temp = math.min(1, (G.GAME.synthb_temp or 0) / 100)
+		}
+	end
+}
+
 SMODS.Shader({
 	key = "miku",
 	path = "covers/miku.fs"
