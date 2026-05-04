@@ -7,6 +7,8 @@ Vocaloid Themed Balatro Mod by Foo54
 	- 27 Artists
 	- Links to all the songs
 - 4 New Editions!
+- New Mechanic!
+	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content
 	- [Feli's Jokeria](https://github.com/LasagnaFelidae/Balatro-FelisJokeria)
 - Crossmod Support
