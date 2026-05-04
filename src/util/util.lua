@@ -30,13 +30,19 @@ function SynthB.is_face(card)
 end
 
 function SynthB.draw_thermometer()
-	G.synthb_thermometer_bottom = UIBox{
+	local x = -1.425
+	local y = 0.5
+	--[[G.synthb_thermometer_bottom = UIBox{
 		definition = G.UIDEF.synthb_thermometer_bottom(),
-		config = {align='bli', offset = {x=-1.425,y=0.5}, major=G.ROOM_ATTACH, type="room", bond = 'Weak', instance_type="NODE"}
+		config = {align='bli', offset = {x=x,y=y}, major=G.ROOM_ATTACH, type="room", bond = 'Weak', instance_type="NODE"}
+	}]]
+	G.synthb_thermometer_middle = UIBox{
+		definition = G.UIDEF.synthb_thermometer_middle(),
+		config = {align='bli', offset = {x=x,y=y}, major=G.ROOM_ATTACH, type="room", bond = 'Weak', instance_type="NODE"}
 	}
 	G.synthb_thermometer_top = UIBox{
 		definition = G.UIDEF.synthb_thermometer_top(),
-		config = {align='bli', offset = {x=-1.425,y=0.5}, major=G.ROOM_ATTACH, type="room", bond = 'Weak', instance_type="UIBOX"}
+		config = {align='bli', offset = {x=x,y=y}, major=G.ROOM_ATTACH, type="room", bond = 'Weak', instance_type="UIBOX"}
 	}
 end
 
@@ -46,11 +52,12 @@ function SynthB.ease_temp(mod)
 	mod = ret and ret.mod_temp or mod
 	G.GAME.synthb_temp = (G.GAME.synthb_temp or 0) + mod
 	G.GAME.synthb_temp_c = G.GAME.synthb_temp .. " C"
+	G.GAME.synthb_temp_thermo = 100 - math.min(100, G.GAME.synthb_temp)
 	if (not G.synthb_thermometer_top or G.synthb_thermometer_top.REMOVED) and G.GAME.synthb_temp > 0 then
 		SynthB.draw_thermometer()
 	end
-	if G.GAME.synthb_temp <= 0 and G.synthb_thermometer_bottom and not G.synthb_thermometer_bottom.REMOVED then
-		G.synthb_thermometer_bottom:remove()
+	if G.GAME.synthb_temp <= 0 and G.synthb_thermometer_top and not G.synthb_thermometer_top.REMOVED then
+		G.synthb_thermometer_middle:remove()
 		G.synthb_thermometer_top:remove()
 	end
 end
