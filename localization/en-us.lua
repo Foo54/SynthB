@@ -384,6 +384,14 @@ local descriptions = {
 						"{C:inactive,s:0.8,f:5}死んだ変数で繰り返す"
 					}
 				}
+			},
+			j_synthb_spoken_for = {
+				name = "Spoken For",
+				text = {
+					"{C:mult}+/- #1#{} Mult",
+					"{C:inactive,s:0.8}I could be a friend,",
+					"{C:inactive,s:0.8}or I could be a foe"
+				}
 			}
 		},
 		SongInfo = {
@@ -757,6 +765,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}足立レイ",
 					"{C:inactive,s:0.8}Adachi Rei"
+				}
+			},
+			spoken_for = {
+				text = {
+					"{C:attention}Title:",
+					"Spoken For",
+					"{C:attention}Producer:",
+					"Flavor Foley",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
 		},

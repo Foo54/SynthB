@@ -149,6 +149,73 @@ SynthB.Joker{
 			end
 		}))
 		delay(0.5)
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+", colour = G.C.CHIPS },
+				{ ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult", colour = G.C.CHIPS },
+				{ text = " "},
+				{
+					border_nodes = {
+						{text = "+"},
+						{ref_table = "card.joker_display_values", ref_value = "heat", retrigger_type = "mult"}
+					},
+					border_colour = G.C.ORANGE
+				}
+			},
+			calc_function = function (card)
+				local heat = 0
+				local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+				if text ~= 'Unknown' then
+					for _, scoring_card in pairs(scoring_hand) do
+						heat = heat + card.ability.extra.raise * JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+					end
+				end
+				card.joker_display_values.heat = heat
+				card.joker_display_values.chips = card.ability.extra.gain * ((G.GAME.synthb_temp or 0) + (G.play and G.play.cards and #G.play.cards == 0 and heat or 0))
+			end
+		}
 	end
 }
+
+-- Spoken For
+SynthB.Joker{
+	key = "spoken_for",
+	cost = 5,
+	config = {
+		extra = {
+			mult = 30
+		}
+	},
+	blueprint_compat = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	demicolon_compat = true,
+	attributes = {"mult", "chance", "song", "vocaloid song", "Teto", "Flavor Foley"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "spoken_for")
+		return {vars = {card.ability.extra.mult}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main or context.forcetrigger then
+			return {
+				mult = card.ability.extra.mult * (SMODS.pseudorandom_probability(card, "synthb_spoken_for", 1, 2, nil, true) and 1 or -1)
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{ text = "+/- " },
+				{ ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" }
+			},
+			text_config = {colour = G.C.MULT}
+		}
+	end
+}
+
+
 
