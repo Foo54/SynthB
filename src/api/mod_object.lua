@@ -85,7 +85,7 @@ function SynthB.mod.calculate(self, context)
 	end
 
 	-- lower heat
-	if context.starting_shop then
+	if context.starting_shop  and (G.GAME.synthb_temp or 0) > 1 then
 		SynthB.ease_temp(-1)
 	end
 
