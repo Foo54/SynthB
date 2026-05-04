@@ -328,7 +328,7 @@ SynthB.Joker{
 	config = {
 		extra = {
 			gain = 5,
-			cost = 15
+			cost = 30
 		}
 	},
 	blueprint_compat = true,
