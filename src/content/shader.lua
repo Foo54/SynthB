@@ -18,6 +18,21 @@ SMODS.Shader{
 	end
 }
 
+SMODS.ScreenShader{
+	key = "heatwaves",
+	path = "heatwaves.fs",
+	order = 10000,
+	should_apply = function (self)
+		return SynthB.too_hot()
+	end,
+	send_vars = function(self)
+		return {
+			time = G.TIMERS.REAL,
+			temp = SynthB.heat_mod()
+		}
+	end
+}
+
 SMODS.Shader({
 	key = "miku",
 	path = "covers/miku.fs"

@@ -70,7 +70,7 @@ function SynthB.ease_temp(mod)
 end
 
 function SynthB.heat_modify_effect(card, key, effect)
-	local mod = SynthB.heat_mod()
+	local mod = 1 - SynthB.heat_mod()
 
 	if effect.chip_mod then effect.chip_mod = effect.chip_mod * mod end
 	if effect.chips then effect.chips = effect.chips * mod end
@@ -96,5 +96,5 @@ function SynthB.too_hot()
 end
 
 function SynthB.heat_mod()
-	return 1 - math.min((200 - G.GAME.synthb_temp) / 100, 0.01)
+	return 1 - math.min(math.max((200 - G.GAME.synthb_temp) / 100, 0.01), 1)
 end
