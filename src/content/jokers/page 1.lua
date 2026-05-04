@@ -338,6 +338,7 @@ SynthB.Joker{
 	cost = 8,
 	attributes = {"planet", "chance", "song", "Rei", "Picdo", "vocaloid song"},
 	loc_vars = function(self, info_queue, card)
+		SynthB.heat_info(info_queue)
 		SynthB.song_info(info_queue, "burnt_toast")
 		return {vars = {card.ability.extra.gain, (G.GAME or {}).synthb_temp or 0, (G.GAME or {}).synthb_max_temp or 100, card.ability.extra.cost}}
 	end,

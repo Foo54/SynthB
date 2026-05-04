@@ -76,6 +76,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"chips", "scaling", "modify_card", "temperature", "song", "vocaloid song", "Iyowa", "Rei"},
 	loc_vars = function(self, info_queue, card)
+		SynthB.heat_info(info_queue)
 		SynthB.song_info(info_queue, "heat_abnormal")
 		return {vars = {card.ability.extra.gain, card.ability.extra.limit, card.ability.extra.gain * math.floor((G.GAME or {}).synthb_temp or 0), card.ability.extra.raise}}
 	end,

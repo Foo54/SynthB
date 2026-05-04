@@ -24,6 +24,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
+		SynthB.heat_info(info_queue)
 		SynthB.song_info(info_queue, "fire_dance")
 		return {vars = {
 			card.ability.extra.initial_loss,

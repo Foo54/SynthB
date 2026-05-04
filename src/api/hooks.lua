@@ -14,7 +14,6 @@ function Card:set_edition(edition, immediate, silent, delay)
 		end
 		if type(edition) == "table" then edition = nil end
 	end
-	SynthB.debug(edition)
 	if not SynthB.mod.config.allow_covers_on_any_card and edition and type(G.P_CENTERS[edition].valid_card) == 'function' then
 		while type(G.P_CENTERS[edition].valid_card) == 'function' and not G.P_CENTERS[edition]:valid_card(self) do
 			edition = SMODS.poll_edition{guaranteed = true}
@@ -29,6 +28,11 @@ function eval_card(card, context)
 	if card.edition and card.edition.key and type(G.P_CENTERS[card.edition.key].modify_effect) == "function" then
 		for key, partial_effect in pairs(effect) do
 			G.P_CENTERS[card.edition.key].modify_effect(card, key, partial_effect)
+		end
+	end
+	if SynthB.too_hot() then
+		for key, partial_effect in pairs(effect) do
+			SynthB.heat_modify_effect(card, key, partial_effect)
 		end
 	end
 	return effect, post_trig

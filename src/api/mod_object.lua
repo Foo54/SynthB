@@ -19,6 +19,13 @@ function SynthB.mod.config_tab()
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
+						label = "Display Temperature Information",
+						ref_table = SynthB.mod.config,
+						ref_value = 'display_heat_info'
+					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
 						label = "Triple Click to View Song",
 						ref_table = SynthB.mod.config,
 						ref_value = 'triple_click_for_song'
@@ -44,6 +51,44 @@ function SynthB.mod.config_tab()
 end
 
 function SynthB.mod.calculate(self, context)
+	-- heat debuff card
+	if context.debuff_card then
+		if SynthB.too_hot() then
+			if context.debuff_card.config.center.set == "Default" then
+				if SMODS.pseudorandom_probability(nil, "synthb_heat_debuff_card", G.GAME.synthb_temp - 100, 100, nil, true) then
+					return {
+						debuff = true
+					}
+				end
+			end
+		end
+	end
+
+	-- heat money loss
+	if context.end_of_round and context.main_eval then
+		if SynthB.too_hot() then
+			return {
+				dollars = -math.ceil(G.GAME.dollars * SynthB.heat_mod())
+			}
+		end
+	end
+
+	-- heat debuff hand
+	if context.debuff_hand and not context.check then
+		if SynthB.too_hot() then
+			if SMODS.pseudorandom_probability(nil, "synthb_heat_debuff_hand", G.GAME.synthb_temp - 100, 100, nil, true) then
+				return {
+					debuff = true
+				}
+			end
+		end
+	end
+
+	-- lower heat
+	if context.starting_shop then
+		SynthB.ease_temp(-1)
+	end
+
 	-- Remove prevent debuff from cards undebuffed by regret rock
 	if context.round_eval then
 		for _, card in ipairs(G.playing_cards) do
