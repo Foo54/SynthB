@@ -25,3 +25,10 @@ SMODS.Atlas{
 	px = 302,
 	py = 302
 }
+
+SMODS.Atlas{
+	key = "thermometer",
+	path = "thermometer.png",
+	px = 31,
+	py = 120
+}

@@ -30,11 +30,25 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=HOz-9FzIDf0", key = "matryoshka", pos = {x = 3, y = 5}},
 	{link = "https://www.youtube.com/watch?v=STBoCK69vVQ", key = "spot_late", pos = {x = 4, y = 5}},
 	{link = "https://www.youtube.com/watch?v=b2NTglk9tvI", key = "heat_abnormal", pos = {x = 0, y = 6}},
+	--[[
+	for cross mod do this
+	
+	SynthB.inject_song_data{
+		link = "your link here"
+		key = "your song key, no prefixes",
+		prefix = "j_mod_prefix_",
+		atlas = "cover art atlas, px and py are 302, 300x300 with 1px buffer",
+		pos = {x = 0, y = 0} position on atlas
+	}
+	--]]
 }
 
-SynthB.key_songs = {}
-for _, song in ipairs(SynthB.songs) do
-	SynthB.key_songs[song.key] = song
+function SynthB.inject_song_data (table)
+	SynthB.songs[#SynthB.songs+1] = table
+	SynthB.key_songs = {}
+	for _, song in ipairs(SynthB.songs) do
+		SynthB.key_songs[song.key] = song
+	end
 end
 
 function G.FUNCS.go_to_song(e)
@@ -46,7 +60,7 @@ function SynthB.generate_song_button(key, index, prefix)
 	local out = {n = G.UIT.C, config = {align = "tm", minw = 4.6, minh = 4.6, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, scale = 0.6, button = "go_to_song", ref_table = SynthB.songs[index]}, nodes = localize{type = "name", set = "Joker", key = (prefix or "j_synthb_") .. key, fixed_scale = 0.67}}
 ---@diagnostic disable-next-line: param-type-mismatch
 	table.insert(out.nodes, 1, {n = G.UIT.R, config = {align = "cm"}, nodes = {
-		{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 3.5, 3.5, "synthb_covers", SynthB.songs[index].pos or {x = 0, y = 0})}}
+		{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 3.5, 3.5, SynthB.songs[index].atlas or "synthb_covers", SynthB.songs[index].pos or {x = 0, y = 0})}}
 	}})
 	return out
 end

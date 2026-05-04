@@ -29,9 +29,28 @@ function SynthB.is_face(card)
 	return (id > 0 and rank and rank.face) or next(SMODS.find_card("j_pareidolia"))
 end
 
+function SynthB.draw_thermometer()
+	G.synthb_thermometer_bottom = UIBox{
+		definition = G.UIDEF.synthb_thermometer_bottom(),
+		config = {align='bli', offset = {x=-1.425,y=0.5}, major=G.ROOM_ATTACH, type="room", bond = 'Weak', instance_type="NODE"}
+	}
+	G.synthb_thermometer_top = UIBox{
+		definition = G.UIDEF.synthb_thermometer_top(),
+		config = {align='bli', offset = {x=-1.425,y=0.5}, major=G.ROOM_ATTACH, type="room", bond = 'Weak', instance_type="UIBOX"}
+	}
+end
+
 function SynthB.ease_temp(mod)
 	SynthB.debug(mod)
 	local ret = SMODS.calculate_context({old_temp = G.GAME.synthb_temp or 0, new_temp = (G.GAME.synthb_temp or 0) + mod, mod_temp = mod})
 	mod = ret and ret.mod_temp or mod
 	G.GAME.synthb_temp = (G.GAME.synthb_temp or 0) + mod
+	G.GAME.synthb_temp_c = G.GAME.synthb_temp .. " C"
+	if not G.synthb_thermometer_top and G.GAME.synthb_temp > 0 then
+		SynthB.draw_thermometer()
+	end
+	if G.GAME.synthb_temp <= 0 and G.synthb_thermometer_bottom then
+		G.synthb_thermometer_bottom:remove()
+		G.synthb_thermometer_top:remove()
+	end
 end

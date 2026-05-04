@@ -1,7 +1,6 @@
 ---@diagnostic disable: duplicate-set-field
 local set_edition_ref = Card.set_edition
 function Card:set_edition(edition, immediate, silent, delay)
-	SynthB.debug(edition, immediate, silent, delay)
 	if type(edition) == "table" then
 		if edition.name_of_edition then
 			edition = "e_" .. edition.name_of_edition
@@ -91,3 +90,15 @@ function Card:click ()
 	end
 	card_click_ref(self)
 end
+
+
+local create_run_ref = G.start_run
+function G:start_run (args)
+	local ret = create_run_ref(self, args)
+	if G.GAME.synthb_temp or 0 > 0 then
+		SynthB.draw_thermometer()
+	end
+	return ret
+end
+
+

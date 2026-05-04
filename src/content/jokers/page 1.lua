@@ -345,11 +345,11 @@ SynthB.Joker{
 		if context.remove_playing_cards then
 			SynthB.ease_temp(card.ability.extra.gain * #context.removed)
 		end
-		if context.using_consumeable and context.consumable.config.center.set == "Planet" then
+		if context.using_consumeable and context.consumeable.config.center.set == "Planet" then
 			if SMODS.pseudorandom_probability(card, "synthb_burnt_bread", G.GAME.synthb_temp or 0, G.GAME.synthb_max_temp or 100, nil, true) then
 				SMODS.upgrade_poker_hands{
 ---@diagnostic disable-next-line: assign-type-mismatch
-					hands = context.consumable.ability.hand_type or "High Card"
+					hands = context.consumeable.ability.hand_type or "High Card"
 				}
 			end
 		end
@@ -359,10 +359,10 @@ SynthB.Joker{
 	end,
 	use = function(self, card)
 		SynthB.ease_temp(-card.ability.extra.cost)
-		local type, _, _, _, _= G.FUNCS.get_poker_hand_info(G.hand.parse_highlighted)
+		local t, _, _, _, _= G.FUNCS.get_poker_hand_info(G.hand.highlighted)
 		SMODS.upgrade_poker_hands{
 ---@diagnostic disable-next-line: assign-type-mismatch
-			hands = type
+			hands = t
 		}
 	end
 }

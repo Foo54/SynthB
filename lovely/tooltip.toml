@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# Add song credits
+[[patches]]
+[patches.pattern]
+target = 'engine/ui.lua'
+pattern = '''self.config.h_popup_config ={align="tm", offset = {x=0,y=-0.1}, parent = self}'''
+position = 'at'
+payload = '''self.config.h_popup_config ={align=(self.config.tooltip or self.config.detailed_tooltip).align or "tm", offset = {x=0,y=-0.1}, parent = self}'''
+match_indent = true
+
+
