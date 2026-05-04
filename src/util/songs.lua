@@ -41,11 +41,19 @@ SynthB.songs = {
 		atlas = "cover art atlas, px and py are 302, 300x300 with 1px buffer",
 		pos = {x = 0, y = 0} position on atlas
 	}
+	
+	a list of this data is also supported
 	--]]
 }
 
 function SynthB.inject_song_data (table)
-	SynthB.songs[#SynthB.songs+1] = table
+	if #table > 0 then
+		for _, song in table do
+			SynthB.songs[#SynthB.songs+1] = song
+		end
+	else
+		SynthB.songs[#SynthB.songs+1] = table
+	end
 	SynthB.key_songs = {}
 	for _, song in ipairs(SynthB.songs) do
 		SynthB.key_songs[song.key] = song

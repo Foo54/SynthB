@@ -43,3 +43,16 @@ SynthB.load_file("content/jokers/page 1")
 SynthB.load_file("content/jokers/page 2")
 SynthB.load_file("content/jokers/page 3")
 SynthB.load_file("content/edition")
+
+SynthB.debug("Loading Crossmod Files")
+-- cross mod loading modified from aikoshen
+for _,mod in pairs(SMODS.Mods) do
+	if mod.can_load and mod.path and not mod.meta_mod then
+		pcall(function ()
+			local p = SMODS.load_file("SynthB.lua", mod.id)
+			if p then
+				p()
+			end
+		end)
+	end
+end
