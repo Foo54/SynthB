@@ -355,7 +355,7 @@ SynthB.Joker{
 		end
 	end,
 	can_use = function(self, card)
-		return G.hand.highlighted and #G.hand.highlighted > 0
+		return G.hand.highlighted and #G.hand.highlighted > 0 and G.GAME.synthb_temp or 0 >= card.ability.extra.cost
 	end,
 	use = function(self, card)
 		SynthB.ease_temp(-card.ability.extra.cost)

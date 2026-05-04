@@ -46,10 +46,10 @@ function SynthB.ease_temp(mod)
 	mod = ret and ret.mod_temp or mod
 	G.GAME.synthb_temp = (G.GAME.synthb_temp or 0) + mod
 	G.GAME.synthb_temp_c = G.GAME.synthb_temp .. " C"
-	if not G.synthb_thermometer_top and G.GAME.synthb_temp > 0 then
+	if (not G.synthb_thermometer_top or G.synthb_thermometer_top.REMOVED) and G.GAME.synthb_temp > 0 then
 		SynthB.draw_thermometer()
 	end
-	if G.GAME.synthb_temp <= 0 and G.synthb_thermometer_bottom then
+	if G.GAME.synthb_temp <= 0 and G.synthb_thermometer_bottom and not G.synthb_thermometer_bottom.REMOVED then
 		G.synthb_thermometer_bottom:remove()
 		G.synthb_thermometer_top:remove()
 	end

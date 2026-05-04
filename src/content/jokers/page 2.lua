@@ -37,7 +37,7 @@ SynthB.Joker{
 		}}
 	end,
 	add_to_deck = function(self, card, from_debuff)
-		G.hand:change_size(-card.ability.extra.initial_loss)
+		G.hand:change_size(-card.ability.extra.initial_loss + card.ability.extra.gain * math.floor((G.GAME.synthb_temp or 0) / card.ability.extra.scaling))
 	end,
 	remove_from_deck = function(self, card, from_debuff)
 		G.hand:change_size(card.ability.extra.initial_loss - card.ability.extra.gain * math.floor((G.GAME.synthb_temp or 0) / card.ability.extra.scaling))
