@@ -55,9 +55,9 @@ function SynthB.draw_thermometer()
 end
 
 function SynthB.ease_temp(mod)
-	local ret = SMODS.calculate_context({old_temp = G.GAME.synthb_temp or 0, new_temp = (G.GAME.synthb_temp or 0) + mod, mod_temp = mod})
+	local ret = SMODS.calculate_context({old_temp = G.GAME.synthb_temp, new_temp = G.GAME.synthb_temp + mod, mod_temp = mod})
 	mod = ret and ret.mod_temp or mod
-	G.GAME.synthb_temp = (G.GAME.synthb_temp or 0) + mod
+	G.GAME.synthb_temp = G.GAME.synthb_temp + mod
 	return function()
 		G.E_MANAGER:add_event(Event{
 			func = function()
@@ -103,7 +103,7 @@ function SynthB.heat_modify_effect(card, key, effect)
 end
 
 function SynthB.too_hot()
-	return (G.GAME.synthb_temp or 0) > 100
+	return G.GAME.synthb_temp > 100
 end
 
 function SynthB.heat_mod()

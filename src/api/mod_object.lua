@@ -85,7 +85,7 @@ function SynthB.mod.calculate(self, context)
 	end
 
 	-- lower heat
-	if context.starting_shop  and (G.GAME.synthb_temp or 0) > 1 then
+	if context.starting_shop  and G.GAME.synthb_temp > 1 then
 		return {
 			func = SynthB.ease_temp(-1)
 		}
@@ -113,6 +113,12 @@ function SynthB.mod.calculate(self, context)
 		else
 			G.GAME.SynthB_oneshot_last_boss = false
 		end
+	end
+end
+
+function SynthB.mod.reset_game_globals(run_start)
+	if run_start then
+		G.GAME.synthb_temp = 0
 	end
 end
 

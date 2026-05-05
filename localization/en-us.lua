@@ -966,8 +966,8 @@ local descriptions = {
 			c_synthb_tuning_lowpass = {
 				name = "Lowpass",
 				text = {
-					"Convert all {C:attention}#1#'s",
-					"in hands to {C:attention}#2#'s"
+					"Convert all {C:attention}#1#'s{} or higher",
+					"in hand to {C:attention}#2#'s"
 				}
 			},
 			c_synthb_tuning_normalize = {

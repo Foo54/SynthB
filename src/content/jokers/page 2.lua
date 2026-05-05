@@ -38,10 +38,10 @@ SynthB.Joker{
 		}}
 	end,
 	add_to_deck = function(self, card, from_debuff)
-		G.hand:change_size(-card.ability.extra.initial_loss + card.ability.extra.gain * math.floor((G.GAME.synthb_temp or 0) / card.ability.extra.scaling))
+		G.hand:change_size(-card.ability.extra.initial_loss + card.ability.extra.gain * math.floor(G.GAME.synthb_temp / card.ability.extra.scaling))
 	end,
 	remove_from_deck = function(self, card, from_debuff)
-		G.hand:change_size(card.ability.extra.initial_loss - card.ability.extra.gain * math.floor((G.GAME.synthb_temp or 0) / card.ability.extra.scaling))
+		G.hand:change_size(card.ability.extra.initial_loss - card.ability.extra.gain * math.floor(G.GAME.synthb_temp / card.ability.extra.scaling))
 	end,
 	calculate = function(self, card, context)
 		if context.forcetrigger or (context.blind_defeated and context.main_eval and SMODS.last_hand_oneshot) then
@@ -58,7 +58,7 @@ SynthB.Joker{
 		end
 	end,
 	can_use = function(self, card)
-		return (G.GAME.synthb_temp or 0) >= card.ability.extra.cost and G.hand and G.hand.highlighted and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.selected
+		return G.GAME.synthb_temp >= card.ability.extra.cost and G.hand and G.hand.highlighted and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.selected
 	end,
 	use = function(self, card)
 		SynthB.ease_temp(-card.ability.extra.cost)()
