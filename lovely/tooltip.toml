@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 50
 
-# Add song credits
+# allow for custom tooltip align
 [[patches]]
 [patches.pattern]
 target = 'engine/ui.lua'

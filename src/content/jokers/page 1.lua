@@ -344,7 +344,9 @@ SynthB.Joker{
 	end,
 	calculate = function(self, card, context)
 		if context.remove_playing_cards then
-			SynthB.ease_temp(card.ability.extra.gain * #context.removed)
+			return {
+				func = SynthB.ease_temp(card.ability.extra.gain * #context.removed)
+			}
 		end
 		if context.using_consumeable and context.consumeable.config.center.set == "Planet" then
 			if SMODS.pseudorandom_probability(card, "synthb_burnt_bread", G.GAME.synthb_temp or 0, G.GAME.synthb_max_temp or 100, nil, true) then
@@ -359,7 +361,7 @@ SynthB.Joker{
 		return G.hand.highlighted and #G.hand.highlighted > 0 and G.GAME.synthb_temp or 0 >= card.ability.extra.cost
 	end,
 	use = function(self, card)
-		SynthB.ease_temp(-card.ability.extra.cost)
+		SynthB.ease_temp(-card.ability.extra.cost)()
 		local t, _, _, _, _= G.FUNCS.get_poker_hand_info(G.hand.highlighted)
 		SMODS.upgrade_poker_hands{
 ---@diagnostic disable-next-line: assign-type-mismatch

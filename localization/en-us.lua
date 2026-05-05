@@ -915,11 +915,102 @@ local descriptions = {
 					"This card cannot score"
 				}
 			}
+		},
+		Tuning = {
+			c_synthb_tuning_pitch_bend = {
+				name = "Pitch Bend",
+				text = {
+					"Set the rank of the {C:attention}2nd",
+					"of {C:attention}#1#{} selected cards",
+					"to the {C:attention}average{} of the other cards"
+				}
+			},
+			c_synthb_tuning_velocity = {
+				name = "Velocity",
+				text = {
+					"{C:attention}Double{} almost all",
+					"stats on a random",
+					"card in hand"
+				}
+			},
+			c_synthb_tuning_attack = {
+				name = "Attack",
+				text = {
+					"{C:attention}#1#{} selected cards",
+					"will permanently",
+					"gain {C:mult}+#2#{} Mult",
+					"the next {C:attention}#3#{} times they score"
+				}
+			},
+			c_synthb_tuning_decay = {
+				name = "Decay",
+				text = {
+					"{C:attention}#1#{} selected cards",
+					"permanently gain {C:chips}+#2#{} Chips",
+					"but lose {C:chips}+#3#{} Chips",
+					"the next {C:attention}#4#{} times they score"
+				}
+			},
+			c_synthb_tuning_gender = {
+				name = "Gender",
+				text = {
+					""
+				}
+			},
+			c_synthb_tuning_breath = {
+				name = "Breath",
+				text = {
+					""
+				}
+			},
+			c_synthb_tuning_lowpass = {
+				name = "Lowpass",
+				text = {
+					"Convert all {C:attention}#1#'s",
+					"in hands to {C:attention}#2#'s"
+				}
+			},
+			c_synthb_tuning_normalize = {
+				name = "Normalize",
+				text = {
+					"Convert {C:attention}#1#",
+					"selected cards into",
+					"{C:attention}#2#{} of {V:1}#3#"
+				}
+			},
+			c_synthb_tuning_vibrato = {
+				name = "Vibrato",
+				text = {
+					"{C:attention}#1#{} selected",
+					"cards permanently gain between",
+					"{C:chips}-#2#{} and {C:chips}#2#{} Chips"
+				}
+			},
+			c_synthb_tuning_modulation = {
+				name = "Modulation",
+				text = {
+					"{C:attention}#1#{} selected",
+					"cards permanently gain between",
+					"{C:chips}-#2#{} and {C:chips}#2#{} Mult"
+				}
+			},
+			c_synthb_tuning_direct = {
+				name = "Direct",
+				text = {
+					"Remove all modifications",
+					"from up to {C:attention}#1#{} selected",
+					"cards and create a",
+					"{C:dark_edition}Negative{} Joker or Consumable",
+					"for every {C:attention}#1#{} modifications removed"
+				}
+			}
 		}
 	},
 	misc = {
 		dictionary = {
-			ph_retry_now = "いますぐ輪廻 今回も結ばれないね"
+			ph_retry_now = "いますぐ輪廻 今回も結ばれないね",
+			k_tuning = "Tuning",
+			b_tuning_cards = "Tuning",
 		},
 		labels = {
 			synthb_cover_miku = "Miku Cover",
@@ -927,6 +1018,7 @@ local descriptions = {
 			synthb_cover_kaito = "KAITO Cover",
 			synthb_cover_meiko = "MEIKO Cover",
 			synthb_fake = "Fake Card",
+			tuning = "Tuning",
 		}
 	}
 }

@@ -87,14 +87,16 @@ SynthB.Joker{
 			}
 		end
 		if context.individual and context.cardarea == G.play then
-			SynthB.ease_temp(1)
+			return {
+				func = SynthB.ease_temp(1)
+			}
 		end
 	end,
 	can_use = function(self, card)
 		return (G.GAME.synthb_temp or 0) >= card.ability.extra.limit and G.hand and G.hand.cards and #G.hand.cards > 0
 	end,
 	use = function(self, card)
-		SynthB.ease_temp(-card.ability.extra.limit)
+		SynthB.ease_temp(-card.ability.extra.limit)()
 		G.E_MANAGER:add_event(Event({
 			trigger = 'after',
 			delay = 0.4,

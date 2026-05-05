@@ -86,7 +86,9 @@ function SynthB.mod.calculate(self, context)
 
 	-- lower heat
 	if context.starting_shop  and (G.GAME.synthb_temp or 0) > 1 then
-		SynthB.ease_temp(-1)
+		return {
+			func = SynthB.ease_temp(-1)
+		}
 	end
 
 	-- Remove prevent debuff from cards undebuffed by regret rock

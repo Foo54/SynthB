@@ -45,7 +45,9 @@ SynthB.Joker{
 	end,
 	calculate = function(self, card, context)
 		if context.forcetrigger or (context.blind_defeated and context.main_eval and SMODS.last_hand_oneshot) then
-			SynthB.ease_temp(card.ability.extra.heat)
+			return {
+				func = SynthB.ease_temp(card.ability.extra.heat)
+			}
 		end
 		if context.mod_temp and not context.blueprint then
 			local new_val = math.floor(math.abs(context.new_temp) / card.ability.extra.scaling)
@@ -59,7 +61,7 @@ SynthB.Joker{
 		return (G.GAME.synthb_temp or 0) >= card.ability.extra.cost and G.hand and G.hand.highlighted and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.selected
 	end,
 	use = function(self, card)
-		SynthB.ease_temp(-card.ability.extra.cost)
+		SynthB.ease_temp(-card.ability.extra.cost)()
 		G.E_MANAGER:add_event(Event({
 			trigger = 'after',
 			delay = 0.4,
