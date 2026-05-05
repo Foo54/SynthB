@@ -43,6 +43,7 @@ SynthB.load_file("content/jokers/page 1")
 SynthB.load_file("content/jokers/page 2")
 SynthB.load_file("content/jokers/page 3")
 SynthB.load_file("content/edition")
+SynthB.load_file("content/sticker")
 
 SynthB.debug("Loading Crossmod Files")
 -- cross mod loading modified from aikoshen

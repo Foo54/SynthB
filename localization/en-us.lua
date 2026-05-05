@@ -411,6 +411,16 @@ local descriptions = {
 						" {element:1} "
 					}
 				}
+			},
+			j_synthb_clone_clone = {
+				name = {"{f:5}クローンクローン", "{s:0.7}Clone Clone"},
+				text = {
+					"{C:green}#1# in #2#{} chance to duplicate",
+					"scored cards, with a fixed",
+					"{C:green}25%{} chance to become",
+					"{C:attention}fake",
+					"{C:inactive,s:0.8,f:5}何が真実で虚構かを"
+				}
 			}
 		},
 		SongInfo = {
@@ -809,6 +819,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
+			clone_clone = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}クローンクローン",
+					"{C:inactive,s:0.8}Clone Clone",
+					"{C:attention}Producer:",
+					"{f:5}アテナ",
+					"{C:inactive,s:0.8}Atena",
+					"{C:attention}Voice:",
+					"{f:5}グミ{C:inactive} & {f:5}鏡音リン",
+					"{C:inactive,s:0.8}GUMI & Kagamine Rin"
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -884,6 +907,14 @@ local descriptions = {
 					"value in {X:mult,C:white}XMult"
 				}
 			}
+		},
+		Other = {
+			synthb_fake = {
+				name = "Fake Card",
+				text = {
+					"This card cannot score"
+				}
+			}
 		}
 	},
 	misc = {
@@ -895,6 +926,7 @@ local descriptions = {
 			synthb_cover_teto = "Teto Cover",
 			synthb_cover_kaito = "KAITO Cover",
 			synthb_cover_meiko = "MEIKO Cover",
+			synthb_fake = "Fake Card",
 		}
 	}
 }

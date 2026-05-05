@@ -206,19 +206,19 @@ SynthB.Joker{
 						return true
 					end
 				}))
-				return {
-					message = localize('k_copied_ex'),
-					colour = G.C.CHIPS,
-					func = function() -- This is for timing purposes, it runs after the message
-						G.E_MANAGER:add_event(Event({
-							func = function()
-								SMODS.calculate_context({ playing_card_added = true, cards = { copied } })
-								return true
-							end
-						}))
-					end
-				}
 			end
+			return {
+				message = localize('k_copied_ex'),
+				colour = G.C.CHIPS,
+				func = function() -- This is for timing purposes, it runs after the message
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							SMODS.calculate_context({ playing_card_added = true, cards = { copied } })
+							return true
+						end
+					}))
+				end
+			}
 		end
 	end,
 }

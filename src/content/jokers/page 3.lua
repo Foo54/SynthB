@@ -260,3 +260,68 @@ SynthB.Joker{
 	end
 }
 
+-- Clone Clone
+SynthB.Joker{
+	key = "clone_clone",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 9,
+	config = {
+		extra = {
+			num = 1,
+			dem = 4,
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = false,
+	attributes = {"generation", "chance", "stickers", "song", "vocaloid song", "Atena", "GUMI", "Rin"},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = {set = "Other", key = "synthb_fake"}
+		SynthB.song_info(info_queue, "clone_clone")
+		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_clone_clone")
+		return {vars = {num, dem}}
+	end,
+	calculate = function(self, card, context)
+		if context.before and not context.blueprint then
+			local copied = {}
+			for _, _card in ipairs(context.scoring_hand) do
+				if SMODS.pseudorandom_probability(card, "synthb_clone_clone", card.ability.extra.num, card.ability.extra.dem) then
+					G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+					local card_copied = copy_card(_card, nil, nil, G.playing_card)
+					if SMODS.pseudorandom_probability(card, "synthb_clone_clone_fake", 1, 4, nil, true) then
+						card_copied:add_sticker("synthb_fake", true)
+					end
+					copied[#copied+1] = card_copied
+					card_copied:add_to_deck()
+					G.deck.config.card_limit = G.deck.config.card_limit + 1
+					table.insert(G.playing_cards, card_copied)
+					G.hand:emplace(card_copied)
+					card_copied.states.visible = nil
+
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							card_copied:start_materialize()
+							return true
+						end
+					}))
+				end
+			end
+			if #copied > 0 then
+				return {
+					message = localize('k_copied_ex'),
+					colour = G.C.CHIPS,
+					func = function() -- This is for timing purposes, it runs after the message
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								SMODS.calculate_context({ playing_card_added = true, cards = { copied } })
+								return true
+							end
+						}))
+					end
+				}
+			end
+		end
+	end,
+}

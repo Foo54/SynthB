@@ -6,6 +6,7 @@
 
 --#region GENERAL
 SMODS.Attribute{key = "debuff"}
+SMODS.Attribute{key = "stickers"}
 SMODS.Attribute{key = "temperature"}
 SMODS.Attribute{key = "song"}
 SMODS.Attribute{key = "vocaloid song"}
@@ -33,6 +34,7 @@ SMODS.Attribute{key = "KAITO"}
 SMODS.Attribute{key = "GUMI"}
 SMODS.Attribute{key = "KAFU"}
 SMODS.Attribute{key = "IA"}
+SMODS.Attribute{key = "Rin"}
 
 
 --#region ARTISTS
@@ -65,3 +67,4 @@ SMODS.Attribute{key = "Anamanaguchi"}
 SMODS.Attribute{key = "Hachi"}
 SMODS.Attribute{key = "Flavor Foley"}
 SMODS.Attribute{key = "Motoo Fujiwara"}
+SMODS.Attribute{key = "Atena"}
