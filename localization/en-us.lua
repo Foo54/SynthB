@@ -1001,7 +1001,7 @@ local descriptions = {
 					"from up to {C:attention}#1#{} selected",
 					"cards and create a",
 					"{C:dark_edition}Negative{} Joker or Consumable",
-					"for every {C:attention}#1#{} modifications removed"
+					"for every {C:attention}#1#{} modification removed"
 				}
 			}
 		}
