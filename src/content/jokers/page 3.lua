@@ -125,7 +125,7 @@ SynthB.Joker{
 				trigger = 'after',
 				delay = 0.1,
 				func = function()
-					G.hand.cards[i]:set_ability(SMODS.poll_enhancement{guaranteed = true}, true, true)
+					G.hand.cards[i]:set_ability(SMODS.poll_enhancement{guaranteed = true})
 					return true
 				end
 			}))
