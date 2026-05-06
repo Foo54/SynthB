@@ -989,7 +989,7 @@ local descriptions = {
 					"Select {C:attention}#1#{} cards.",
 					"Move all modifications from",
 					"the {C:attention}first{} selected card",
-					"ontro the {C:attention}second"
+					"onto the {C:attention}second"
 				}
 			},
 			c_synthb_tuning_lowpass = {
