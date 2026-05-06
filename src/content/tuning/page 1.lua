@@ -323,3 +323,191 @@ SynthB.Tuning{
 		delay(0.5)
 	end,
 }
+
+-- Normalize
+SynthB.Tuning{
+	key = "tuning_normalize",
+	config = {max_highlighted = 3, rank = "10", suit = "Spades"},
+	set_ability = function (self, card, initial, delay_sprites)
+		card.ability.rank = pseudorandom_element(SMODS.Ranks, "synthb_normalize_rank").key
+		card.ability.suit = pseudorandom_element(SMODS.Suits, "synthb_normalize_suit").suit
+	end,
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, localize(card.ability.rank, "ranks"), localize(card.ability.suit, "suits_plural"), colours = {G.C.SUITS[card.ability.suit]}}}
+	end,
+	use = function(self, card, area, copier)
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		for i = 1, #G.hand.highlighted do
+			local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('card1', percent)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		delay(0.2)
+		for i = 1, #G.hand.highlighted do
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					assert(SMODS.change_base(G.hand.highlighted[i], card.ability.suit, card.ability.rank))
+					return true
+				end
+			}))
+		end
+		for i = 1, #G.hand.highlighted do
+			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('tarot2', percent, 0.6)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end,
+}
+
+-- Vibrato
+SynthB.Tuning{
+	key = "tuning_vibrato",
+	config = {max_highlighted = 5, gain = 30},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, card.ability.gain}}
+	end,
+	use = function(self, card, area, copier)
+		for _, _card in ipairs(G.hand.highlighted) do
+			_card.ability.perma_bonus = card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain, card.ability.gain))
+			_card:juice_up()
+		end
+	end,
+}
+
+-- Modulation
+SynthB.Tuning{
+	key = "tuning_modulation",
+	config = {max_highlighted = 5, gain = 5},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, card.ability.gain}}
+	end,
+	use = function(self, card, area, copier)
+		for _, _card in ipairs(G.hand.highlighted) do
+			_card.ability.perma_mult = card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain, card.ability.gain))
+			_card:juice_up()
+		end
+	end,
+}
+
+-- Direct
+SynthB.Tuning{
+	key = "tuning_direct",
+	config = {max_highlighted = 5},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted}}
+	end,
+	use = function(self, card, area, copier)
+		local modifications_removed = 0
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		for i = 1, #G.hand.highlighted do
+			local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('card1', percent)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		delay(0.2)
+		for i = 1, #G.hand.highlighted do
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					---@type Card
+					local _card = G.hand.highlighted[i]
+					if _card.edition then
+						modifications_removed = modifications_removed + 1
+						_card:set_edition()
+					end
+					if _card.ability.effect ~= "Base" then
+						modifications_removed = modifications_removed + 1
+						_card:set_ability("c_base")
+					end
+					if _card.seal then
+						modifications_removed = modifications_removed + 1
+						_card:set_seal()
+					end
+					return true
+				end
+			}))
+		end
+		for i = 1, #G.hand.highlighted do
+			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('tarot2', percent, 0.6)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				for _ = 1, modifications_removed, 5 do
+					if SMODS.pseudorandom_probability(card, "synthb_direct", 1, 4, nil, true) then
+						SMODS.add_card{set = "Joker", edition = "e_negative"}
+					else
+						SMODS.add_card{set = "Consumeables", edition = 'e_negative'}
+					end
+				end
+				return true
+			end
+		}))
+		delay(0.5)
+	end,
+}
+
