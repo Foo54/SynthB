@@ -54,8 +54,7 @@ SynthB.Joker{
 			local new_val = math.floor(math.abs(context.new_temp) / card.ability.extra.scaling)
 			local old_val = math.floor(math.abs(context.old_temp) / card.ability.extra.scaling)
 			if new_val ~= old_val then
-				SynthB.debug((context.mod_temp > 0 and 1 or -1) * card.ability.extra.gain * (new_val - old_val))
-				G.hand:change_size((context.mod_temp > 0 and 1 or -1) * card.ability.extra.gain * (new_val - old_val))
+				G.hand:change_size(card.ability.extra.gain * (new_val - old_val))
 			end
 		end
 	end,
