@@ -242,3 +242,84 @@ SynthB.Tuning{
 		delay(0.5)
 	end,
 }
+
+-- Lowpass
+SynthB.Tuning{
+	key = "tuning_lowpass",
+	config = {max_rank = 10, new_rank = 2},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_rank, card.ability.new_rank}}
+	end,
+	can_use = function(self, card)
+		if not (G.hand and #G.hand.cards > 0) then return false end
+		for _, _card in ipairs(G.hand.cards) do
+			if _card:get_id() >= card.ability.max_rank then
+				return true
+			end
+		end
+		return false
+	end,
+	use = function(self, card, area, copier)
+		local cards = {}
+		for _, _card in ipairs(G.hand.cards) do
+			if _card:get_id() >= card.ability.max_rank then
+				cards[#cards+1] = _card
+			end
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		for i = 1, #cards do
+			local percent = 1.15 - (i - 0.999) / (#cards - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					cards[i]:flip()
+					play_sound('card1', percent)
+					cards[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		delay(0.2)
+		for _, _card in ipairs(cards) do
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					assert(SMODS.change_base(_card, nil, tostring(card.ability.new_rank)))
+					return true
+				end
+			}))
+		end
+		for i = 1, #cards do
+			local percent = 0.85 + (i - 0.999) / (#cards - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					cards[i]:flip()
+					play_sound('tarot2', percent, 0.6)
+					cards[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end,
+}
