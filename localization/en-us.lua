@@ -1042,7 +1042,7 @@ local descriptions = {
 				text = {
 					"{C:attention}#1#{} selected",
 					"cards permanently gain between",
-					"{C:chips}-#2#{} and {C:chips}#2#{} Mult"
+					"{C:mult}-#2#{} and {C:mult}#2#{} Mult"
 				}
 			},
 			c_synthb_tuning_direct = {
@@ -1052,7 +1052,7 @@ local descriptions = {
 					"from up to {C:attention}#1#{} selected",
 					"cards and create a",
 					"{C:dark_edition}Negative{} Joker or Consumable",
-					"for every {C:attention}#1#{} modification removed"
+					"for every {C:attention}#1#{} modifications removed"
 				}
 			},
 			c_synthb_tuning_tone_shift = {
@@ -1060,7 +1060,6 @@ local descriptions = {
 				text = {
 					"Cycle the {C:attention}Suit{}",
 					"of {C:attention}#1#{} selected cards",
-					"{C:spades}#2#{C:inactive} -> {C:hearts}#3#{C:inactive} -> {C:clubs}#4#{C:inactive} -> {C:diamonds}#5#{C:inactive} -> {C:spades}#2#",
 				}
 			}
 		}

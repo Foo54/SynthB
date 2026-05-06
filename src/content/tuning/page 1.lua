@@ -330,7 +330,7 @@ SynthB.Tuning{
 	config = {max_highlighted = 3, rank = "10", suit = "Spades"},
 	set_ability = function (self, card, initial, delay_sprites)
 		card.ability.rank = pseudorandom_element(SMODS.Ranks, "synthb_normalize_rank").key
-		card.ability.suit = pseudorandom_element(SMODS.Suits, "synthb_normalize_suit").suit
+		card.ability.suit = pseudorandom_element(SMODS.Suits, "synthb_normalize_suit").key
 	end,
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, localize(card.ability.rank, "ranks"), localize(card.ability.suit, "suits_plural"), colours = {G.C.SUITS[card.ability.suit]}}}
@@ -511,3 +511,74 @@ SynthB.Tuning{
 	end,
 }
 
+-- Tone Shift
+SynthB.Tuning{
+	key = "tuning_tone_shift",
+	config = {max_highlighted = 3},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted}}
+	end,
+	use = function(self, card, area, copier)
+		local suit_map = {
+			Spades = "Hearts",
+			Hearts = "Clubs",
+			Clubs = "Diamonds",
+			Diamonds = "Spades"
+		}
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		for i = 1, #G.hand.highlighted do
+			local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('card1', percent)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		delay(0.2)
+		for i = 1, #G.hand.highlighted do
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					assert(SMODS.change_base(G.hand.highlighted[i], suit_map[G.hand.highlighted[i].base.suit], nil))
+					return true
+				end
+			}))
+		end
+		for i = 1, #G.hand.highlighted do
+			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('tarot2', percent, 0.6)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end,
+}
