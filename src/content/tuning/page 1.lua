@@ -31,7 +31,9 @@ SynthB.Tuning{
 				effect = true,
 				type = true,
 				name = true,
-				synthb_bonus_chips = true
+				synthb_bonus_chips = true,
+				delay_seal = true,
+				seal = true
 			}
 			local stupid_annoying_keys = {
 				x_chips = true,
