@@ -920,6 +920,21 @@ local descriptions = {
 					"Gains {C:mult}+#1#{} Mult",
 					"the next {C:attention}#2#{} #3# scored",
 				}
+			},
+			card_synthb_chips = {
+				text = {
+					"Loses {C:chips}+#1#{} Chips",
+					"the next {C:attention}#2#{} #3# scored",
+				}
+			},
+			undiscovered_tuning = {
+				name = "Not Discovered",
+				text={
+					"Purchase or use",
+					"this card in an",
+					"unseeded run to",
+					"learn what it does"
+				}
 			}
 		},
 		Tuning = {

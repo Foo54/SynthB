@@ -66,3 +66,21 @@ SynthB.Tuning{
 		G.hand:unhighlight_all()
 	end,
 }
+
+-- Decay
+SynthB.Tuning{
+	key = "tuning_decay",
+	config = {max_highlighted = 3, chips_start = 60, chips_gain = -10, chips_duration = 5},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, card.ability.chips_start, -card.ability.chips_gain, card.ability.chips_duration}}
+	end,
+	use = function(self, card, area, copier)
+		for _, _card in ipairs(G.hand.highlighted) do
+			_card.ability.perma_bonus = _card.ability.perma_bonus + card.ability.chips_start
+			_card.ability.synthb_chips_gain = card.ability.chips_gain
+			_card.ability.synthb_chips_duration = (_card.ability.synthb_chips_duration or 0) + card.ability.chips_duration
+			_card:juice_up()
+		end
+		G.hand:unhighlight_all()
+	end,
+}

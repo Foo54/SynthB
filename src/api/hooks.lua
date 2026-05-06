@@ -118,5 +118,8 @@ function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
 	if specific_vars and specific_vars.synthb_mult_gain then
 		localize{type = "other", key = "card_synthb_mult", nodes = desc_nodes, vars = {specific_vars.synthb_mult_gain, specific_vars.synthb_mult_duration, localize(specific_vars.synthb_mult_duration > 1 and "b_times_plural" or "b_times_singular")}}
 	end
+	if specific_vars and specific_vars.synthb_chips_gain then
+		localize{type = "other", key = "card_synthb_chips", nodes = desc_nodes, vars = {-specific_vars.synthb_chips_gain, specific_vars.synthb_chips_duration, localize(specific_vars.synthb_chips_duration > 1 and "b_times_plural" or "b_times_singular")}}
+	end
 	return ret
 end

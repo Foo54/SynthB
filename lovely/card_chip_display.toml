@@ -11,6 +11,8 @@ pattern = '''nominal_chips = self.base.nominal ~= 0 and self.base.nominal or nil
 position = 'at'
 payload = '''synthb_mult_gain = self.ability.synthb_mult_gain,
 synthb_mult_duration = self.ability.synthb_mult_duration,
+synthb_chips_gain = self.ability.synthb_chips_gain,
+synthb_chips_duration = self.ability.synthb_chips_duration,
 nominal_chips = (self.base.nominal ~= 0 and self.base.nominal or nil) + (self.ability.synthb_bonus_chips or 0),'''
 match_indent = true
 

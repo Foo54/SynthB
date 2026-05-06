@@ -52,8 +52,8 @@ end
 
 function SynthB.mod.calculate(self, context)
 	
-	-- upgrade cards that have perma mult gain
 	if context.individual and context.cardarea == G.play then
+		-- upgrade cards that have perma mult gain
 		if context.other_card.ability.synthb_mult_gain then
 			SMODS.scale_card(context.other_card, {
 				ref_table = context.other_card.ability,
@@ -64,6 +64,20 @@ function SynthB.mod.calculate(self, context)
 			if context.other_card.ability.synthb_mult_duration == 0 then
 				context.other_card.ability.synthb_mult_duration = nil
 				context.other_card.ability.synthb_mult_gain = nil
+			end
+		end
+
+		-- downgrade cards that have perma chips loss
+		if context.other_card.ability.synthb_chips_gain then
+			SMODS.scale_card(context.other_card, {
+				ref_table = context.other_card.ability,
+				ref_value = "perma_bonus",
+				scalar_value = "synthb_chips_gain"
+			})
+			context.other_card.ability.synthb_chips_duration = context.other_card.ability.synthb_chips_duration - 1
+			if context.other_card.ability.synthb_chips_duration == 0 then
+				context.other_card.ability.synthb_chips_duration = nil
+				context.other_card.ability.synthb_chips_gain = nil
 			end
 		end
 	end
