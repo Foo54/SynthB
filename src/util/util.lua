@@ -55,22 +55,22 @@ function SynthB.draw_thermometer()
 end
 
 function SynthB.ease_temp(mod)
-	local ret = SMODS.calculate_context({old_temp = G.GAME.synthb_temp, new_temp = G.GAME.synthb_temp + mod, mod_temp = mod})
+	local ret = SMODS.calculate_context({old_temp = SynthB.get_temp(), new_temp = SynthB.get_temp() + mod, mod_temp = mod})
 	mod = ret and ret.mod_temp or mod
 	G.GAME.synthb_temp = G.GAME.synthb_temp + mod
 	return function()
 		G.E_MANAGER:add_event(Event{
 			func = function()
-				G.GAME.synthb_temp_c = G.GAME.synthb_temp .. " C"
-				G.GAME.synthb_temp_thermo = 100 - math.min(100, G.GAME.synthb_temp)
-				if (not G.synthb_thermometer_top or G.synthb_thermometer_top.REMOVED) and G.GAME.synthb_temp > 0 then
+				G.GAME.synthb_temp_c = SynthB.get_temp() .. " C"
+				G.GAME.synthb_temp_thermo = 100 - math.min(100, SynthB.get_temp())
+				if (not G.synthb_thermometer_top or G.synthb_thermometer_top.REMOVED) and SynthB.get_temp() > 0 then
 					SynthB.draw_thermometer()
 				end
-				if G.GAME.synthb_temp <= 0 and G.synthb_thermometer_top and not G.synthb_thermometer_top.REMOVED then
+				if SynthB.get_temp() <= 0 and G.synthb_thermometer_top and not G.synthb_thermometer_top.REMOVED then
 					G.synthb_thermometer_middle:remove()
 					G.synthb_thermometer_top:remove()
 				end
-				if G.GAME.synthb_temp > 0 then
+				if SynthB.get_temp() > 0 then
 					G.synthb_thermometer_top:juice_up(0.4, 0.4*0.6)
 					G.synthb_thermometer_middle:juice_up(0.4, 0.4*0.6)
 				end
@@ -102,10 +102,14 @@ function SynthB.heat_modify_effect(card, key, effect)
 	if effect.Xmult_mod or 1 ~= 1 then effect.Xmult_mod = effect.Xmult_mod * mod end
 end
 
+function SynthB.get_temp()
+	return (G.GAME or {}).synthb_temp or 0
+end
+
 function SynthB.too_hot()
-	return G.GAME.synthb_temp > 100
+	return SynthB.get_temp() > 100
 end
 
 function SynthB.heat_mod()
-	return 1 - math.min(math.max((200 - G.GAME.synthb_temp) / 100, 0.01), 1)
+	return 1 - math.min(math.max((200 - SynthB.get_temp()) / 100, 0.01), 1)
 end

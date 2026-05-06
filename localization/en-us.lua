@@ -914,6 +914,12 @@ local descriptions = {
 				text = {
 					"This card cannot score"
 				}
+			},
+			card_synthb_mult = {
+				text = {
+					"Gains {C:mult}+#1#{} Mult",
+					"the next {C:attention}#2#{} #3# scored",
+				}
 			}
 		},
 		Tuning = {
@@ -954,13 +960,21 @@ local descriptions = {
 			c_synthb_tuning_gender = {
 				name = "Gender",
 				text = {
-					""
+					"Change the {C:attention}Rank",
+					"of {C:attention}#1#{} selected cards",
+					"Odd cards {C:attention}increase{} their rank",
+					"Even cards {C:attention}decrease{} their rank",
+					"Kings and Jacks {C:attention}become Queens",
+					"Queens {C:attention}become Kings or Jacks"
 				}
 			},
-			c_synthb_tuning_breath = {
-				name = "Breath",
+			c_synthb_tuning_portamento = {
+				name = "Portamento",
 				text = {
-					""
+					"Select {C:attention}#1#{} cards.",
+					"Move all modifications from",
+					"the {C:attention}left{} card onto",
+					"the {C:attention}right{} card"
 				}
 			},
 			c_synthb_tuning_lowpass = {
@@ -1003,6 +1017,14 @@ local descriptions = {
 					"{C:dark_edition}Negative{} Joker or Consumable",
 					"for every {C:attention}#1#{} modification removed"
 				}
+			},
+			c_synthb_tuning_tone_shift = {
+				name = "Tone Shift",
+				text = {
+					"Cycle the {C:attention}Suit{}",
+					"of {C:attention}#1#{} selected cards",
+					"{C:spades}#2#{C:inactive} -> {C:hearts}#3#{C:inactive} -> {C:clubs}#4#{C:inactive} -> {C:diamonds}#5#{C:inactive} -> {C:spades}#2#",
+				}
 			}
 		}
 	},
@@ -1011,6 +1033,8 @@ local descriptions = {
 			ph_retry_now = "いますぐ輪廻 今回も結ばれないね",
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning",
+			b_times_singular = "time",
+			b_times_plural = "times",
 		},
 		labels = {
 			synthb_cover_miku = "Miku Cover",

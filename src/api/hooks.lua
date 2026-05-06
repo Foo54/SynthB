@@ -101,10 +101,22 @@ end
 local create_run_ref = G.start_run
 function G:start_run (args)
 	local ret = create_run_ref(self, args)
-	if G.GAME.synthb_temp or 0 > 0 then
+	if SynthB.get_temp() > 0 then
 		SynthB.draw_thermometer()
 	end
 	return ret
 end
 
+local chip_bonus_ref = Card.get_chip_bonus
+function Card:get_chip_bonus()
+    return chip_bonus_ref(self) + (self.ability.synthb_bonus_chips or 0)
+end
 
+local perma_bonuses_ref = SMODS.localize_perma_bonuses
+function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
+	local ret = perma_bonuses_ref(specific_vars, desc_nodes)
+	if specific_vars and specific_vars.synthb_mult_gain then
+		localize{type = "other", key = "card_synthb_mult", nodes = desc_nodes, vars = {specific_vars.synthb_mult_gain, specific_vars.synthb_mult_duration, localize(specific_vars.synthb_mult_duration > 1 and "b_times_plural" or "b_times_singular")}}
+	end
+	return ret
+end

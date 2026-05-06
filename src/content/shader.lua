@@ -13,7 +13,7 @@ SMODS.Shader{
 	path = "thermo.fs",
 	send_vars = function(self, sprite, card)
 		return {
-			temp = math.min(1, G.GAME.synthb_temp / 100)
+			temp = math.min(1, SynthB.get_temp() / 100)
 		}
 	end
 }

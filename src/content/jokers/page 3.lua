@@ -83,7 +83,7 @@ SynthB.Joker{
 	calculate = function(self, card, context)
 		if context.joker_main or context.forcetrigger then
 			return {
-				chips = card.ability.extra.gain * math.floor(G.GAME.synthb_temp)
+				chips = card.ability.extra.gain * math.floor(SynthB.get_temp())
 			}
 		end
 		if context.individual and context.cardarea == G.play then
@@ -93,7 +93,7 @@ SynthB.Joker{
 		end
 	end,
 	can_use = function(self, card)
-		return G.GAME.synthb_temp >= card.ability.extra.limit and G.hand and G.hand.cards and #G.hand.cards > 0
+		return SynthB.get_temp() >= card.ability.extra.limit and G.hand and G.hand.cards and #G.hand.cards > 0
 	end,
 	use = function(self, card)
 		SynthB.ease_temp(-card.ability.extra.limit)()
@@ -177,7 +177,7 @@ SynthB.Joker{
 					end
 				end
 				card.joker_display_values.heat = heat
-				card.joker_display_values.chips = card.ability.extra.gain * (G.GAME.synthb_temp + (G.play and G.play.cards and #G.play.cards == 0 and heat or 0))
+				card.joker_display_values.chips = card.ability.extra.gain * (SynthB.get_temp() + (G.play and G.play.cards and #G.play.cards == 0 and heat or 0))
 			end
 		}
 	end

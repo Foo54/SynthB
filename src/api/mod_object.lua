@@ -51,11 +51,28 @@ function SynthB.mod.config_tab()
 end
 
 function SynthB.mod.calculate(self, context)
+	
+	-- upgrade cards that have perma mult gain
+	if context.individual and context.cardarea == G.play then
+		if context.other_card.ability.synthb_mult_gain then
+			SMODS.scale_card(context.other_card, {
+				ref_table = context.other_card.ability,
+				ref_value = "perma_mult",
+				scalar_value = "synthb_mult_gain"
+			})
+			context.other_card.ability.synthb_mult_duration = context.other_card.ability.synthb_mult_duration - 1
+			if context.other_card.ability.synthb_mult_duration == 0 then
+				context.other_card.ability.synthb_mult_duration = nil
+				context.other_card.ability.synthb_mult_gain = nil
+			end
+		end
+	end
+
 	-- heat debuff card
 	if context.debuff_card then
 		if SynthB.too_hot() then
 			if context.debuff_card.config.center.set == "Default" then
-				if SMODS.pseudorandom_probability(nil, "synthb_heat_debuff_card", G.GAME.synthb_temp - 100, 100, nil, true) then
+				if SMODS.pseudorandom_probability(nil, "synthb_heat_debuff_card", SynthB.get_temp() - 100, 100, nil, true) then
 					return {
 						debuff = true
 					}
@@ -76,7 +93,7 @@ function SynthB.mod.calculate(self, context)
 	-- heat debuff hand
 	if context.debuff_hand and not context.check then
 		if SynthB.too_hot() then
-			if SMODS.pseudorandom_probability(nil, "synthb_heat_debuff_hand", G.GAME.synthb_temp - 100, 100, nil, true) then
+			if SMODS.pseudorandom_probability(nil, "synthb_heat_debuff_hand", SynthB.get_temp() - 100, 100, nil, true) then
 				return {
 					debuff = true
 				}
@@ -85,7 +102,7 @@ function SynthB.mod.calculate(self, context)
 	end
 
 	-- lower heat
-	if context.starting_shop  and G.GAME.synthb_temp > 1 then
+	if context.starting_shop  and SynthB.get_temp() > 1 then
 		return {
 			func = SynthB.ease_temp(-1)
 		}
