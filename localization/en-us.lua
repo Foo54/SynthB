@@ -971,9 +971,9 @@ local descriptions = {
 			c_synthb_tuning_velocity = {
 				name = "Velocity",
 				text = {
-					"{C:attention}Double{} almost all",
-					"stats on a random",
-					"card in hand"
+					"Multiply almost all",
+					"stats on a random card",
+					"held in hand by {X:attention,C:white}X#1#"
 				}
 			},
 			c_synthb_tuning_attack = {
@@ -1068,7 +1068,7 @@ local descriptions = {
 		dictionary = {
 			ph_retry_now = "いますぐ輪廻 今回も結ばれないね",
 			k_tuning = "Tuning",
-			b_tuning_cards = "Tuning",
+			b_tuning_cards = "Tuning Cards",
 			b_times_singular = "time",
 			b_times_plural = "times",
 		},

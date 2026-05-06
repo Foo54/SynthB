@@ -41,6 +41,7 @@ SynthB.Joker{
 		G.hand:change_size(-card.ability.extra.initial_loss + card.ability.extra.gain * math.floor(SynthB.get_temp() / card.ability.extra.scaling))
 	end,
 	remove_from_deck = function(self, card, from_debuff)
+		SynthB.debug(card.ability.extra.initial_loss - card.ability.extra.gain * math.floor(SynthB.get_temp() / card.ability.extra.scaling))
 		G.hand:change_size(card.ability.extra.initial_loss - card.ability.extra.gain * math.floor(SynthB.get_temp() / card.ability.extra.scaling))
 	end,
 	calculate = function(self, card, context)
@@ -53,6 +54,7 @@ SynthB.Joker{
 			local new_val = math.floor(math.abs(context.new_temp) / card.ability.extra.scaling)
 			local old_val = math.floor(math.abs(context.old_temp) / card.ability.extra.scaling)
 			if new_val ~= old_val then
+				SynthB.debug((context.mod_temp > 0 and 1 or -1) * card.ability.extra.gain * (new_val - old_val))
 				G.hand:change_size((context.mod_temp > 0 and 1 or -1) * card.ability.extra.gain * (new_val - old_val))
 			end
 		end

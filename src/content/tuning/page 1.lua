@@ -15,6 +15,10 @@ SynthB.Tuning{
 SynthB.Tuning{
 	key = "tuning_velocity",
 	pos = {x = 1, y = 0},
+	config = {markiplier = 1.2},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.markiplier}}
+	end,
 	can_use = function(self, card)
 		return G.hand and #G.hand.cards > 0
 	end,
@@ -26,6 +30,7 @@ SynthB.Tuning{
 			local excluded_keys = {
 				order = true,
 				hands_played_at_create = true,
+				played_this_ante = true,
 				debuff_sources = true,
 				set = true,
 				effect = true,
@@ -44,7 +49,7 @@ SynthB.Tuning{
 			for key, value in pairs(_card.ability) do
 				if not excluded_keys[key] then
 					if not stupid_annoying_keys[key] or value ~= 1 then
-						_card.ability[key] = value * 2
+						_card.ability[key] = value * card.ability.markiplier
 					end
 				end
 			end
@@ -413,7 +418,7 @@ SynthB.Tuning{
 	end,
 	use = function(self, card, area, copier)
 		for _, _card in ipairs(G.hand.highlighted) do
-			_card.ability.perma_bonus = card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain, card.ability.gain))
+			_card.ability.perma_bonus = _card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain, card.ability.gain))
 			_card:juice_up()
 		end
 	end,
@@ -429,7 +434,7 @@ SynthB.Tuning{
 	end,
 	use = function(self, card, area, copier)
 		for _, _card in ipairs(G.hand.highlighted) do
-			_card.ability.perma_mult = card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain, card.ability.gain))
+			_card.ability.perma_mult = _card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain, card.ability.gain))
 			_card:juice_up()
 		end
 	end,
