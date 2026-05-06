@@ -14,6 +14,7 @@ SynthB.Tuning{
 -- Velocity
 SynthB.Tuning{
 	key = "tuning_velocity",
+	pos = {x = 1, y = 0},
 	can_use = function(self, card)
 		return G.hand and #G.hand.cards > 0
 	end,
@@ -53,6 +54,7 @@ SynthB.Tuning{
 -- Attack
 SynthB.Tuning{
 	key = "tuning_attack",
+	pos = {x = 2, y = 0},
 	config = {max_highlighted = 3, mult_gain = 1, mult_duration = 5},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, card.ability.mult_gain, card.ability.mult_duration}}
@@ -70,6 +72,7 @@ SynthB.Tuning{
 -- Decay
 SynthB.Tuning{
 	key = "tuning_decay",
+	pos = {x = 3, y = 0},
 	config = {max_highlighted = 3, chips_start = 60, chips_gain = -10, chips_duration = 5},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, card.ability.chips_start, -card.ability.chips_gain, card.ability.chips_duration}}
@@ -88,6 +91,7 @@ SynthB.Tuning{
 -- Gender
 SynthB.Tuning{
 	key = "tuning_gender",
+	pos = {x = 4, y = 0},
 	config = {max_highlighted = 3},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}
@@ -165,6 +169,7 @@ SynthB.Tuning{
 -- Portamento
 SynthB.Tuning{
 	key = "tuning_portamento",
+	pos = {x = 5, y = 0},
 	config = {max_highlighted = 2, min_highlighted = 2},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}
@@ -246,6 +251,7 @@ SynthB.Tuning{
 -- Lowpass
 SynthB.Tuning{
 	key = "tuning_lowpass",
+	pos = {x = 0, y = 1},
 	config = {max_rank = 10, new_rank = 2},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_rank, card.ability.new_rank}}
@@ -327,6 +333,7 @@ SynthB.Tuning{
 -- Normalize
 SynthB.Tuning{
 	key = "tuning_normalize",
+	pos = {x = 1, y = 1},
 	config = {max_highlighted = 3, rank = "10", suit = "Spades"},
 	set_ability = function (self, card, initial, delay_sprites)
 		card.ability.rank = pseudorandom_element(SMODS.Ranks, "synthb_normalize_rank").key
@@ -397,6 +404,7 @@ SynthB.Tuning{
 -- Vibrato
 SynthB.Tuning{
 	key = "tuning_vibrato",
+	pos = {x = 2, y = 1},
 	config = {max_highlighted = 5, gain = 30},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, card.ability.gain}}
@@ -412,6 +420,7 @@ SynthB.Tuning{
 -- Modulation
 SynthB.Tuning{
 	key = "tuning_modulation",
+	pos = {x = 3, y = 1},
 	config = {max_highlighted = 5, gain = 5},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, card.ability.gain}}
@@ -427,6 +436,7 @@ SynthB.Tuning{
 -- Direct
 SynthB.Tuning{
 	key = "tuning_direct",
+	pos = {x = 4, y = 1},
 	config = {max_highlighted = 5},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}
@@ -514,6 +524,7 @@ SynthB.Tuning{
 -- Tone Shift
 SynthB.Tuning{
 	key = "tuning_tone_shift",
+	pos = {x = 5, y = 1},
 	config = {max_highlighted = 3},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}

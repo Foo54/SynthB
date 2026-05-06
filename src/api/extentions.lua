@@ -6,7 +6,6 @@ SynthB.Joker = SMODS.Joker:extend{
 }
 
 SynthB.Tuning = SMODS.Consumable:extend{
-	atlas = "synthb_placeholder",
-	pos = {x = 3, y = 1},
+	atlas = "synthb_tuning",
 	set = "Tuning"
 }
