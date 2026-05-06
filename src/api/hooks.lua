@@ -123,3 +123,13 @@ function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
 	end
 	return ret
 end
+
+local change_base_ref = SMODS.change_base
+function SMODS.change_base(card, suit, rank, delay_sprites)
+	local _rank = card.base.id
+	local ret = change_base_ref(card, suit, rank, delay_sprites)
+	if ret ~= nil and _rank ~= card.base.id then
+		SMODS.calculate_context({modify_card_rank = card, old_rank = _rank, new_rank = card.base.id})
+	end
+	return ret
+end

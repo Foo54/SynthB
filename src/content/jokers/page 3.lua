@@ -327,3 +327,52 @@ SynthB.Joker{
 		end
 	end,
 }
+
+-- I'm the Rain
+SynthB.Joker{
+	key = "im_the_rain",
+	cost = 4,
+	config = {
+		extra = {
+			num = 2,
+			dem = 5
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"chance", "tarot", "generation", "rank", "song", "vocaloid", "Miku", "Yuki", "inabakumori"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "im_the_rain")
+		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_im_the_rain")
+		return {vars = {num, dem}}
+	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger or context.modify_card_rank then
+			if context.forcetrigger or SMODS.pseudorandom_probability(card, "synthb_im_the_rain", card.ability.extra.num, card.ability.extra.dem) then
+				if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+					G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+					return {
+						message = "雨",
+						font = 5,
+						color = G.C.GREY,
+						func = function()
+							G.E_MANAGER:add_event(Event({
+								func = (function()
+									SMODS.add_card {set = 'Tarot'}
+									G.GAME.consumeable_buffer = 0
+									return true
+								end)
+							}))
+						end
+					}
+				end
+			end
+		end
+	end,
+}
+
+
+
+

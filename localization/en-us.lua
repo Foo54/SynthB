@@ -421,6 +421,15 @@ local descriptions = {
 					"{C:attention}fake",
 					"{C:inactive,s:0.8,f:5}何が真実で虚構かを"
 				}
+			},
+			j_synthb_im_the_rain = {
+				name = {"{f:5}私は雨", "{s:0.7}I'm the Rain"},
+				text = {
+					"{C:green}#1# in #2#{} chance to",
+					"create a {C:tarot}Tarot{} card",
+					"when a card's rank changes",
+					"{C:inactive,s:0.8,f:5}セカイ的気候変動"
+				}
 			}
 		},
 		SongInfo = {
@@ -831,7 +840,20 @@ local descriptions = {
 					"{f:5}グミ{C:inactive} & {f:5}鏡音リン",
 					"{C:inactive,s:0.8}GUMI & Kagamine Rin"
 				}
-			}
+			},
+			im_the_rain = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}私は雨",
+					"{C:inactive,s:0.8}I'm the Rain",
+					"{C:attention}Producer:",
+					"{f:5}稲葉曇",
+					"{C:inactive,s:0.8}inabakumori",
+					"{C:attention}Voice:",
+					"{f:5}歌愛ユキ{C:inactive} & {f:5}初音ミク",
+					"{C:inactive,s:0.8}Kaai Yuki & Hatsune Miku"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {
