@@ -979,8 +979,8 @@ local descriptions = {
 					"of {C:attention}#1#{} selected cards",
 					"Odd cards {C:attention}increase{} their rank",
 					"Even cards {C:attention}decrease{} their rank",
-					"Kings and Jacks {C:attention}become Queens",
-					"Queens {C:attention}become Kings or Jacks"
+					"Kings and Jacks {C:attention}become{} Queens",
+					"Queens {C:attention}become{} Kings or Jacks"
 				}
 			},
 			c_synthb_tuning_portamento = {
