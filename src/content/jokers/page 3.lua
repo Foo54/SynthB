@@ -4,12 +4,10 @@
 -- Spot Late
 SynthB.Joker{
 	key = "spot_late",
-	pos = {x = 1, y = 0},
-	rarity = 2,
-	cost = 6,
+	cost = 4,
 	config = {
 		extra = {
-			gain = 2,
+			gain = 1,
 			mult = 0
 		}
 	},
