@@ -988,8 +988,8 @@ local descriptions = {
 				text = {
 					"Select {C:attention}#1#{} cards.",
 					"Move all modifications from",
-					"the {C:attention}left{} card onto",
-					"the {C:attention}right{} card"
+					"the {C:attention}first{} selected card",
+					"ontro the {C:attention}second"
 				}
 			},
 			c_synthb_tuning_lowpass = {

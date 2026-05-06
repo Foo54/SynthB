@@ -7,7 +7,7 @@ SynthB.Tuning{
 	end,
 	use = function(self, card, area, copier)
 		-- totally helpful comment explaining what this does
-		pcall(function()assert(SMODS.change_base(G.hand.highlighted[2], nil, ({0, '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'})[math.floor((G.hand.highlighted[1].base.id + G.hand.highlighted[3].base.id) / 2)]))end)
+		pcall(function()assert(SMODS.change_base(G.hand.highlighted[2],nil,({0,'2','3','4','5','6','7','8','9','10','Jack','Queen','King','Ace'})[math.floor((G.hand.highlighted[1].base.id+G.hand.highlighted[3].base.id)/2)]))end)
 	end,
 }
 
@@ -137,6 +137,87 @@ SynthB.Tuning{
 				end
 			}))
 		end
+		for i = 1, #G.hand.highlighted do
+			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('tarot2', percent, 0.6)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end,
+}
+
+-- Portamento
+SynthB.Tuning{
+	key = "tuning_portamento",
+	config = {max_highlighted = 2, min_highlighted = 2},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted}}
+	end,
+	use = function(self, card, area, copier)
+		local rank2 = G.hand.highlighted[2].base.value
+		local suit2 = G.hand.highlighted[2].base.suit
+		local rank1 = G.hand.highlighted[1].base.value
+		local suit1 = G.hand.highlighted[1].base.suit
+		
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		for i = 1, #G.hand.highlighted do
+			local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('card1', percent)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		delay(0.2)
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.1,
+			func = function()
+				copy_card(G.hand.highlighted[1], G.hand.highlighted[2])
+				assert(SMODS.change_base(G.hand.highlighted[2], suit2, rank2))
+				return true
+			end
+		}))
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.1,
+			func = function()
+				local dummy_card = SMODS.create_card{set = "Base"}
+				copy_card(dummy_card, G.hand.highlighted[1])
+				assert(SMODS.change_base(G.hand.highlighted[1], suit1, rank1))
+				dummy_card:remove()
+				return true
+			end
+		}))
 		for i = 1, #G.hand.highlighted do
 			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
 			G.E_MANAGER:add_event(Event({
