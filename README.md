@@ -7,6 +7,8 @@ Vocaloid Themed Balatro Mod by Foo54
 	- 30 Artists
 	- Links to all the songs
 - 4 New Editions!
+- 1 New Consumable Type
+	- 12 New cards based around tuning in UTAU
 - New Mechanic!
 	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content
