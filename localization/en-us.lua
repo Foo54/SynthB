@@ -990,6 +990,16 @@ local descriptions = {
 				}
 			},
 		},
+		Spectral = {
+			c_synthb_spectral_voicebank = {
+				name = "Voicebank",
+				text = {
+					"Add a {C:synthb_tuning_dark}UTAU Seal",
+					"to {C:attention}1{} selected",
+					"card in your hand"
+				}
+			}
+		},
 		Tuning = {
 			c_synthb_tuning_pitch_bend = {
 				name = "Pitch Bend",
