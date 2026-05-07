@@ -983,9 +983,9 @@ local descriptions = {
 			synthb_utau_seal = {
 				name = "UTAU Seal",
 				text = {
-					"Create a {C:synthb_tuning_darken}Tuning{} card",
+					"Create a {C:synthb_tuning_dark}Tuning{} card",
 					"if all played cards",
-					"have a {C:synthb_tuning_darken}UTAU Seal",
+					"have a {C:synthb_tuning_dark}UTAU Seal",
 					"{C:inactive}[Must have room]"
 				}
 			},

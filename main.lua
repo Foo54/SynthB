@@ -8,7 +8,8 @@ SynthB.GUI = {}
 
 SynthB.custom_colors = {
 	LIGHT_GREEN = HEX("99e550"),
-	TUNING = HEX("00FFFF")
+	TUNING = HEX("00FFFF"),
+	TUNING_DARK = darken(HEX("00FFFF"), 0.1)
 }
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
