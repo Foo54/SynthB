@@ -375,6 +375,11 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "parry",
 	cost = 5,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = false,
+	attributes = {"modify_card", "enhancement", "song", "vocaloid", "Len", "Rin", "Miyamori Bungaku"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
 		info_queue[#info_queue+1] = G.P_CENTERS.m_gold

@@ -9,7 +9,7 @@ priority = 50
 target = 'game.lua'
 pattern = '''if G.GAME.chips - G.GAME.blind.chips >= 0 or G.GAME.current_round.hands_left < 1 then'''
 position = 'at'
-payload = '''if (G.GAME.chips - G.GAME.blind.chips >= 0 and not next(SMODS.find_card("j_synthb_birdbrain", false))) or G.GAME.current_round.hands_left < 1 then'''
+payload = '''if (G.GAME.chips - G.GAME.blind.chips >= 0 and not SynthB.effect.birdbrain()) or G.GAME.current_round.hands_left < 1 then'''
 match_indent = true
 
 
@@ -19,7 +19,7 @@ match_indent = true
 target = 'blind.lua'
 pattern = '''if self.boss and G.GAME.chips - G.GAME.blind.chips >= 0 then'''
 position = 'at'
-payload = '''if self.boss and G.GAME.chips - G.GAME.blind.chips >= 0 and not next(SMODS.find_card("j_synthb_birdbrain", false)) then'''
+payload = '''if self.boss and G.GAME.chips - G.GAME.blind.chips >= 0 and not SynthB.effect.birdbrain() then'''
 match_indent = true
 
 

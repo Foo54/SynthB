@@ -17,7 +17,7 @@ Vocaloid Themed Balatro Mod by Foo54
 	- Cryptid Forcetriggers
 	- Paperback Music Attribute
 
-## Crossmod API
+## 3rd Party Crossmod API
 When implementing crossmod songs, make sure the following standards are met:
 - `descriptions.SongInfo` entry in the following format
 	```lua
