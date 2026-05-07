@@ -4,9 +4,9 @@ SMODS.Seal{
 	pos = {x = 0, y = 2},
 	badge_colour = SynthB.custom_colors.TUNING,
 	calculate = function(self, card, context)
-		if context.before and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+		if context.before and card.area == G.play and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
 			local all_sealed = true
-			for _, _card in ipairs(G.hand.cards) do
+			for _, _card in ipairs(G.play.cards) do
 				if _card.seal ~= "synthb_utau" then
 					all_sealed = false
 					break
