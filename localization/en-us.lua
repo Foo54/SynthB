@@ -979,7 +979,16 @@ local descriptions = {
 					"unseeded run to",
 					"learn what it does"
 				}
-			}
+			},
+			synthb_utau_seal = {
+				name = "UTAU Seal",
+				text = {
+					"Create a {C:synthb_tuning_darken}Tuning{} card",
+					"if all played cards",
+					"have a {C:synthb_tuning_darken}UTAU Seal",
+					"{C:inactive}[Must have room]"
+				}
+			},
 		},
 		Tuning = {
 			c_synthb_tuning_pitch_bend = {
@@ -1091,6 +1100,7 @@ local descriptions = {
 			ph_retry_now = "いますぐ輪廻 今回も結ばれないね",
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning Cards",
+			k_plus_tuning = "+1 Tuning Card",
 			b_times_singular = "time",
 			b_times_plural = "times",
 		},
@@ -1101,6 +1111,7 @@ local descriptions = {
 			synthb_cover_meiko = "MEIKO Cover",
 			synthb_fake = "Fake Card",
 			tuning = "Tuning",
+			synthb_utau_seal = "UTAU Seal",
 		}
 	}
 }

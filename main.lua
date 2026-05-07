@@ -8,6 +8,7 @@ SynthB.GUI = {}
 
 SynthB.custom_colors = {
 	LIGHT_GREEN = HEX("99e550"),
+	TUNING = HEX("00FFFF")
 }
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
@@ -48,6 +49,7 @@ SynthB.load_file("content/tuning/tuning")
 SynthB.load_file("content/tuning/page 1")
 SynthB.load_file("content/edition")
 --SynthB.load_file("content/back")
+SynthB.load_file("content/seal")
 SynthB.load_file("content/sticker")
 
 SynthB.debug("Loading Crossmod Files")

@@ -9,4 +9,4 @@ SMODS.Enhancement:take_ownership('glass', {
 			end
 		end
 	end,
-})
+}, true)
