@@ -64,13 +64,6 @@ function SynthB.inject_song_data (table)
 	end
 end
 
-SynthB.inject_song_data{
-	link = "uh",
-	key = "parry",
-	prefix = "j_synthb_",
-	pos = {x = 0, y = 7}
-}
-
 function G.FUNCS.go_to_song(e)
 	love.system.openURL(e.config.ref_table.link)
 end
