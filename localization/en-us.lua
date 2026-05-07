@@ -430,6 +430,15 @@ local descriptions = {
 					"when a card's rank changes",
 					"{C:inactive,s:0.8,f:5}セカイ的気候変動"
 				}
+			},
+			j_synthb_parry = {
+				name = {"{f:5}パリィ", "{s:0.7}Parry"},
+				text = {
+					"{C:attention}Glass{} cards become",
+					"{C:attention}Gold{} cards instead",
+					"of being destroyed",
+					"{C:inactive,s:0.8,f:5}グラス割ってぶちまける"
+				}
 			}
 		},
 		SongInfo = {
@@ -854,6 +863,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}Kaai Yuki & Hatsune Miku"
 				}
 			},
+			parry = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}パリィ",
+					"{C:inactive,s:0.8}Parry",
+					"{C:attention}Producer:",
+					"{f:5}宮守文学",
+					"{C:inactive,s:0.8}Miyamori Bungaku",
+					"{C:attention}Voice:",
+					"{f:5}鏡音レン{C:inactive} & {f:5}鏡音リン",
+					"{C:inactive,s:0.8}Kagamine Len & Kagamine Rin"
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {

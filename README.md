@@ -2,9 +2,9 @@
 Vocaloid Themed Balatro Mod by Foo54
 
 ## Content
-- 36 New Jokers!
+- 37 New Jokers!
 	- 14 Voicebanks
-	- 30 Artists
+	- 31 Artists
 	- Links to all the songs
 - 4 New Editions!
 - 1 New Consumable Type

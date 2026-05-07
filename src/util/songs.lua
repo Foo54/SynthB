@@ -34,6 +34,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=B1nUc7LfZYA", key = "hello_world", pos = {x = 2, y = 6}},
 	{link = "https://www.youtube.com/watch?v=bmbAm-fKnbQ", key = "clone_clone", pos = {x = 3, y = 6}},
 	{link = "https://www.youtube.com/watch?v=EEk4JGzqoFg", key = "im_the_rain", pos = {x = 4, y = 6}},
+	{link = "https://www.youtube.com/watch?v=p9F__9fciRo", key = "parry", pos = {x = 0, y = 7}},
 	--[[
 	for cross mod do this
 	
@@ -51,7 +52,7 @@ SynthB.songs = {
 
 function SynthB.inject_song_data (table)
 	if #table > 0 then
-		for _, song in table do
+		for _, song in ipairs(table) do
 			SynthB.songs[#SynthB.songs+1] = song
 		end
 	else
@@ -62,6 +63,13 @@ function SynthB.inject_song_data (table)
 		SynthB.key_songs[song.key] = song
 	end
 end
+
+SynthB.inject_song_data{
+	link = "uh",
+	key = "parry",
+	prefix = "j_synthb_",
+	pos = {x = 0, y = 7}
+}
 
 function G.FUNCS.go_to_song(e)
 	love.system.openURL(e.config.ref_table.link)

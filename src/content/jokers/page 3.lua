@@ -371,6 +371,15 @@ SynthB.Joker{
 	end,
 }
 
-
+-- Parry
+SynthB.Joker{
+	key = "parry",
+	cost = 5,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
+		info_queue[#info_queue+1] = G.P_CENTERS.m_gold
+		SynthB.song_info(info_queue, "parry")
+	end,
+}
 
 

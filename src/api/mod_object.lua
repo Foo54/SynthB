@@ -270,7 +270,7 @@ function SynthB.mod.extra_tabs()
 						song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
 						song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {}}
 					end
-					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i)
+					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i, data.prefix)
 					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = {n = G.UIT.C, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
 				end
 				local scrollbox = SMODS.UIScrollBox{
