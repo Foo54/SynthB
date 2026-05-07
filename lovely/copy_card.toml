@@ -1,0 +1,21 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# remove synthb attributes when copying onto cards with them
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''new_card.pinned = other.pinned'''
+position = 'after'
+payload = '''for k, v in pairs(new_card.ability) do
+	if other.ability[k] == nil then
+		new_card.ability[k] = nil
+	end
+end'''
+match_indent = true
+
+
+
+
