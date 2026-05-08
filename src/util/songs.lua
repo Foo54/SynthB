@@ -35,6 +35,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=bmbAm-fKnbQ", key = "clone_clone", pos = {x = 3, y = 6}},
 	{link = "https://www.youtube.com/watch?v=EEk4JGzqoFg", key = "im_the_rain", pos = {x = 4, y = 6}},
 	{link = "https://www.youtube.com/watch?v=p9F__9fciRo", key = "parry", pos = {x = 0, y = 7}},
+	{link = "https://www.nicovideo.jp/watch/sm13455867", key = "nyan_cat", pos = {x = 1, y = 7}},
 	--[[
 	for cross mod do this
 	
