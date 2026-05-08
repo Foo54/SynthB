@@ -2,13 +2,15 @@
 Vocaloid Themed Balatro Mod by Foo54
 
 ## Content
-- 37 New Jokers!
-	- 14 Voicebanks
-	- 31 Artists
+- 38 New Jokers!
+	- 15 Voicebanks
+	- 32 Artists
 	- Links to all the songs
 - 4 New Editions!
 - 1 New Consumable Type
 	- 12 New cards based around tuning in UTAU
+- 1 New Spectral
+- 1 New Seal
 - New Mechanic!
 	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content

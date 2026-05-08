@@ -439,6 +439,14 @@ local descriptions = {
 					"of being destroyed",
 					"{C:inactive,s:0.8,f:5}グラス割ってぶちまける"
 				}
+			},
+			j_synthb_nyan_cat = {
+				name = "Nyanyanyanyanyanyanya",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult per suit",
+					"in {C:attention}scoring{} hand",
+					"{C:inactive,s:0.8}Yes I know this is a cover of a miku song"
+				}
 			}
 		},
 		SongInfo = {
@@ -874,6 +882,18 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}鏡音レン{C:inactive} & {f:5}鏡音リン",
 					"{C:inactive,s:0.8}Kagamine Len & Kagamine Rin"
+				}
+			},
+			nyan_cat = {
+				text = {
+					"{C:attention}Title",
+					"Nyanyanyanyanyanyanya",
+					"{C:attention}Producer:",
+					"{f:5}ももももP",
+					"{C:inactive,s:0.8}momomomo-P",
+					"{C:attention}Voice:",
+					"{f:5}桃音モモ",
+					"{C:inactive,s:0.8}Momo Momone"
 				}
 			}
 		},

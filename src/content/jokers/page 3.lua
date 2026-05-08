@@ -387,4 +387,77 @@ SynthB.Joker{
 	end,
 }
 
-
+-- Nyan Cat
+SynthB.Joker{
+	key = "nyan_cat",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 6,
+	config = {
+		extra = {
+			scale = 0.25
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"xmult", "suit", "song", "vocaloid song", "Momone", "momomomoP"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "nyan_cat")
+		return {vars = {card.ability.extra.scale}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main or context.forcetrigger then
+			if G.play.cards then
+				local suits = {}
+				local wilds = 0
+				for _, _card in ipairs(context.scoring_hand or G.play.cards) do
+					if SMODS.has_enhancement(_card, "m_wild") then
+						wilds = wilds + 1
+					else
+						suits[_card.base.suit] = true
+					end
+				end
+				for _ in pairs(suits) do
+					wilds = wilds + 1
+				end
+				return {
+					xmult = 1 + wilds * card.ability.extra.scale
+				}
+			end
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{text = "X"},
+						{ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult"}
+					},
+				}
+			},
+			calc_function = function (card)
+				local wilds = 0
+				local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+				if text ~= 'Unknown' then
+					local suits = {}
+					for _, _card in ipairs(scoring_hand) do
+						if SMODS.has_enhancement(_card, "m_wild") then
+							wilds = wilds + 1
+						else
+							suits[_card.base.suit] = true
+						end
+					end
+					for _ in pairs(suits) do
+						wilds = wilds + 1
+					end
+				end
+				
+				card.joker_display_values.mult = 1 + wilds * card.ability.extra.scale
+			end
+		}
+	end
+}
