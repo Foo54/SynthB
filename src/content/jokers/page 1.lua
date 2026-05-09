@@ -4,6 +4,7 @@
 -- I'm Talking to You!!!
 SynthB.Joker{
 	key = "antani_itten_no",
+	atlas = "joker_placeholders",
 	pos = {x = 0, y = 0},
 	attributes = {"mult", "suit", "clubs", "Teto", "song", "Pinata", "vocaloid song"},
 	config = {
@@ -70,7 +71,8 @@ SynthB.Joker{
 -- Cadmium Colors
 SynthB.Joker{
 	key = "cadmium_colors",
-	pos = {x = 0, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 1, y = 0},
 	attributes = {"suit", "hearts", "diamonds", "economy", "song", "Jamie Paige", "Teto", "vocaloid song"},
 	config = {
 		extra = {
@@ -159,7 +161,8 @@ SynthB.Joker{
 -- The World is Mine
 SynthB.Joker{
 	key = "the_world_is_mine",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 2, y = 0},
 	cost = 6,
 	rarity = 2,
 	config = {
@@ -269,7 +272,8 @@ SynthB.Joker{
 -- Regret Rock
 SynthB.Joker{
 	key = "regret_rock",
-	pos = {x = 2, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 4, y = 0},
 	rarity = 3,
 	cost = 7,
 	blueprint_compat = false,

@@ -414,11 +414,11 @@ SynthB.Tuning{
 	pos = {x = 2, y = 1},
 	config = {max_highlighted = 5, gain = 30},
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.max_highlighted, card.ability.gain}}
+		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain/2}}
 	end,
 	use = function(self, card, area, copier)
 		for _, _card in ipairs(G.hand.highlighted) do
-			_card.ability.perma_bonus = _card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain, card.ability.gain))
+			_card.ability.perma_bonus = _card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain/2, card.ability.gain))
 			_card:juice_up()
 		end
 	end,
@@ -430,11 +430,11 @@ SynthB.Tuning{
 	pos = {x = 3, y = 1},
 	config = {max_highlighted = 5, gain = 5},
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.max_highlighted, card.ability.gain}}
+		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain / 2}}
 	end,
 	use = function(self, card, area, copier)
 		for _, _card in ipairs(G.hand.highlighted) do
-			_card.ability.perma_mult = _card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain, card.ability.gain))
+			_card.ability.perma_mult = _card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain/2, card.ability.gain))
 			_card:juice_up()
 		end
 	end,
@@ -480,6 +480,7 @@ SynthB.Tuning{
 				func = function()
 					---@type Card
 					local _card = G.hand.highlighted[i]
+					local dummy_card = SMODS.create_card{set = "Base"}
 					if _card.edition then
 						modifications_removed = modifications_removed + 1
 						_card:set_edition()
@@ -492,6 +493,13 @@ SynthB.Tuning{
 						modifications_removed = modifications_removed + 1
 						_card:set_seal()
 					end
+					for key, value in pairs(_card.ability) do
+						if type(value) == "number" and value ~= dummy_card.ability[key] then
+							_card.ability[key] = dummy_card.ability[key]
+							modifications_removed = modifications_removed + 1
+						end
+					end
+					dummy_card:remove()
 					return true
 				end
 			}))

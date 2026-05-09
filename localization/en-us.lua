@@ -1095,7 +1095,7 @@ local descriptions = {
 				text = {
 					"{C:attention}#1#{} selected",
 					"cards permanently gain between",
-					"{C:chips}-#2#{} and {C:chips}#2#{} Chips"
+					"{C:chips}-#3#{} and {C:chips}#2#{} Chips"
 				}
 			},
 			c_synthb_tuning_modulation = {
@@ -1103,7 +1103,7 @@ local descriptions = {
 				text = {
 					"{C:attention}#1#{} selected",
 					"cards permanently gain between",
-					"{C:mult}-#2#{} and {C:mult}#2#{} Mult"
+					"{C:mult}-#3#{} and {C:mult}#2#{} Mult"
 				}
 			},
 			c_synthb_tuning_direct = {

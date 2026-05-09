@@ -906,7 +906,7 @@ SynthB.Joker{
 	key = "miku",
 	cost = 3,
 	config = {
-		card_limit = 1,
+		extra_slots_used = -1,
 		extra = {
 			chips = 3.9
 		}
