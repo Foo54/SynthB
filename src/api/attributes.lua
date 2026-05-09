@@ -36,6 +36,7 @@ SMODS.Attribute{key = "KAFU"}
 SMODS.Attribute{key = "IA"}
 SMODS.Attribute{key = "Rin"}
 SMODS.Attribute{key = "Momone"}
+SMODS.Attribute{key = "flower"}
 
 
 --#region ARTISTS
@@ -71,3 +72,4 @@ SMODS.Attribute{key = "Motoo Fujiwara"}
 SMODS.Attribute{key = "Atena"}
 SMODS.Attribute{key = "Miyamori Bungaku"}
 SMODS.Attribute{key = "momomomoP"}
+SMODS.Attribute{key = "Azari"}

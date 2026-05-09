@@ -98,8 +98,8 @@ function Card:click ()
 end
 
 
-local create_run_ref = G.start_run
-function G:start_run (args)
+local create_run_ref = Game.start_run
+function Game:start_run (args)
 	local ret = create_run_ref(self, args)
 	if SynthB.get_temp() > 0 then
 		SynthB.draw_thermometer()

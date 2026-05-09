@@ -447,6 +447,15 @@ local descriptions = {
 					"in {C:attention}scoring{} hand",
 					"{C:inactive,s:0.8}Yes I know this is a cover of a miku song"
 				}
+			},
+			j_synthb_dna = {
+				name = "D/N/A",
+				text = {
+					"If played hand",
+					"contains exactly {C:attention}1{} card,",
+					"Create a {C:attention}linked{} copy of it",
+					"{C:inactive,s:0.8,f:5}繋がれたまま　夢を見る"
+				}
 			}
 		},
 		SongInfo = {
@@ -894,6 +903,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}桃音モモ",
 					"{C:inactive,s:0.8}Momo Momone"
+				}
+			},
+			dna = {
+				text = {
+					"{C:attention}Title",
+					"Azari ",
+					"{C:attention}Producer:",
+					"D/N/A",
+					"{C:attention}Voice:",
+					"{f:5}重音テト{C:inactive} & flower",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			}
 		},

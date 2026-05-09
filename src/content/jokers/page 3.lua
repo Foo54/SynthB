@@ -461,3 +461,51 @@ SynthB.Joker{
 		}
 	end
 }
+
+do return end
+-- D/N/A
+SynthB.Joker{
+	key = "dna",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 8,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = false,
+	attributes = {"generation", "modify_card", "hands", "song", "vocaloid song", "Teto", "flower", "Azari"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "dna")
+	end,
+	calculate = function(self, card, context)
+		if context.before and not context.blueprint and #context.full_hand == 1 then
+			G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+			local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+			card_copied:add_to_deck()
+			SynthB.link_cards(context.full_hand[1], card_copied)
+			G.deck.config.card_limit = G.deck.config.card_limit + 1
+			table.insert(G.playing_cards, card_copied)
+			G.discard:emplace(card_copied)
+			card_copied.states.visible = nil
+
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					card_copied:start_materialize()
+					return true
+				end
+			}))
+			return {
+				message = localize('k_copied_ex'),
+				colour = G.C.CHIPS,
+				func = function() -- This is for timing purposes, it runs after the message
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
+							return true
+						end
+					}))
+				end
+			}
+		end
+	end,
+}
