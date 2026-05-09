@@ -47,3 +47,9 @@ SMODS.Atlas{
 	py = 95
 }
 
+SMODS.Atlas{
+	key = "triple_baka_placeholder",
+	path = "triple_baka.png",
+	px = 71,
+	py = 95,
+}

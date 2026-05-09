@@ -66,6 +66,11 @@ function SynthB.inject_song_data (table)
 	end
 end
 
+SynthB.key_songs = {}
+for _, song in ipairs(SynthB.songs) do
+	SynthB.key_songs[song.key] = song
+end
+
 function G.FUNCS.go_to_song(e)
 	love.system.openURL(e.config.ref_table.link)
 end

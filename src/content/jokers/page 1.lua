@@ -328,7 +328,8 @@ SynthB.Joker{
 -- My Bread was Burnt to a Crisp
 SynthB.Joker{
 	key = "burnt_toast",
-	pos = {x = 2, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 5, y = 0},
 	config = {
 		extra = {
 			gain = 5,
@@ -377,7 +378,8 @@ SynthB.Joker{
 -- Machine Love
 SynthB.Joker{
 	key = "machine_love",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 6, y = 0},
 	rarity = 2,
 	cost = 6,
 	config = {
@@ -417,7 +419,7 @@ SynthB.Joker{
 -- Triple Baka
 SynthB.Joker{
 	key = "triple_baka",
-	pos = {x = 0, y = 0},
+	atlas = "triple_baka_placeholder",
 	config = {
 		immutable = {
 			hand = nil,
@@ -518,7 +520,8 @@ SynthB.Joker{
 -- Rolling Girl
 SynthB.Joker{
 	key = "rolling_girl",
-	pos = {x = 0, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 8, y = 0},
 	cost = 4,
 	attributes = {"song", "vocaloid song", "Miku", "Wowaka"},
 	config = {
@@ -557,7 +560,8 @@ SynthB.Joker{
 -- Self Destructive Girl
 SynthB.Joker{
 	key = "self_destructive_girl",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 9, y = 0},
 	rarity = 2,
 	cost = 7,
 	perishable_compat = true,
@@ -583,7 +587,8 @@ SynthB.Joker{
 -- Lemonade
 SynthB.Joker{
 	key = "lemonade",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 0, y = 1},
 	rarity = 2,
 	cost = 8,
 	config = {
@@ -777,7 +782,8 @@ SynthB.Joker{
 -- Retry Now Normal
 SynthB.Joker{
 	key = "retry_now_normal",
-	pos = {x = 2, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 3, y = 1},
 	rarity = 3,
 	cost = 9,
 	attributes = {"prevents_death", "song", "vocaloid song", "Miku", "Nakiso"},

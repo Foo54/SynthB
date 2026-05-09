@@ -465,7 +465,8 @@ SynthB.Joker{
 -- D/N/A
 SynthB.Joker{
 	key = "dna",
-	pos = {x = 2, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 8, y = 3},
 	rarity = 3,
 	cost = 8,
 	blueprint_compat = false,
