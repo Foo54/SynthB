@@ -474,6 +474,7 @@ SynthB.Joker{
 	demicolon_compat = false,
 	attributes = {"generation", "modify_card", "hands", "song", "vocaloid song", "Teto", "flower", "Azari"},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "synthb_linked", vars = {"N/A"}}
 		SynthB.song_info(info_queue, "dna")
 	end,
 	calculate = function(self, card, context)
