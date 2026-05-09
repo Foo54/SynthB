@@ -150,6 +150,7 @@ end
 function SynthB.mod.reset_game_globals(run_start)
 	if run_start then
 		G.GAME.synthb_temp = 0
+		G.GAME.synthb_linked_id = 0
 	end
 end
 

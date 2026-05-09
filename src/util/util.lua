@@ -113,3 +113,14 @@ end
 function SynthB.heat_mod()
 	return 1 - math.min(math.max((200 - SynthB.get_temp()) / 100, 0.01), 1)
 end
+
+--- links 2 cards together
+--- @param card1 Card
+--- @param card2 Card
+function SynthB.link_cards(card1, card2)
+	card1:add_sticker("synthb_linked", true)
+	card2:add_sticker("synthb_linked", true)
+	card1.ability.synthb_linked.id = G.GAME.synthb_linked_id
+	card2.ability.synthb_linked.id = G.GAME.synthb_linked_id
+	G.GAME.synthb_linked_id = G.GAME.synthb_linked_id + 1
+end

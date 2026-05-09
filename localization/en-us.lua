@@ -451,8 +451,8 @@ local descriptions = {
 			j_synthb_dna = {
 				name = "D/N/A",
 				text = {
-					"If played hand",
-					"contains exactly {C:attention}1{} card,",
+					"If {C:attention}first hand{} of round",
+					"has only {C:attention}1{} card,",
 					"Create a {C:attention}linked{} copy of it",
 					"{C:inactive,s:0.8,f:5}繋がれたまま　夢を見る"
 				}
@@ -908,11 +908,11 @@ local descriptions = {
 			dna = {
 				text = {
 					"{C:attention}Title",
-					"Azari ",
-					"{C:attention}Producer:",
 					"D/N/A",
+					"{C:attention}Producer:",
+					"Azari",
 					"{C:attention}Voice:",
-					"{f:5}重音テト{C:inactive} & flower",
+					"{f:5}重音テト{C:inactive} & {}flower",
 					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			}
@@ -997,6 +997,14 @@ local descriptions = {
 				name = "Fake Card",
 				text = {
 					"This card cannot score"
+				}
+			},
+			synthb_linked = {
+				name = "Linked",
+				text = {
+					"Linked cards are",
+					"{C:attention}Always{} scored together",
+					"{C:inactive}ID: #1#"
 				}
 			},
 			card_synthb_mult = {
@@ -1160,6 +1168,7 @@ local descriptions = {
 			synthb_cover_kaito = "KAITO Cover",
 			synthb_cover_meiko = "MEIKO Cover",
 			synthb_fake = "Fake Card",
+			synthb_linked = "Linked",
 			tuning = "Tuning",
 			synthb_utau_seal = "UTAU Seal",
 		}
