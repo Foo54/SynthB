@@ -52,3 +52,14 @@ SMODS.Shader({
 	key = "meiko",
 	path = "covers/meiko.fs"
 })
+
+SMODS.Shader({
+	key = "retry_now",
+	path = "retry_now.fs",
+	---@param card Card
+	send_vars = function(sprite, card)
+		return {
+			brightness = card and card.ability.immutable.brightness or 1
+		}
+	end
+})

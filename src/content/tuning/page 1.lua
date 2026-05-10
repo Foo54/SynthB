@@ -476,6 +476,7 @@ SynthB.Tuning{
 		local stupid_fricking_keys_that_i_hate = {
 			hands_played_at_create = true,
 			order = true,
+			played_this_ante = true
 		}
 		for i = 1, #G.hand.highlighted do
 			G.E_MANAGER:add_event(Event({

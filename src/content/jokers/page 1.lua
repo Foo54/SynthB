@@ -784,6 +784,19 @@ SynthB.Joker{
 	key = "retry_now_normal",
 	atlas = "joker_placeholders",
 	pos = {x = 3, y = 1},
+	config = {
+		immutable = {
+			brightness = 0
+		}
+	},
+	update = function (self, card, dt)
+		if card.ability.immutable.brightness > 0 then
+			card.ability.immutable.brightness = math.min(1, card.ability.immutable.brightness + 0.1)
+			if card.ability.immutable.brightness >= 1 then
+				card:set_ability("j_synthb_retry_now_change")
+			end
+		end
+	end,
 	rarity = 3,
 	cost = 9,
 	attributes = {"prevents_death", "song", "vocaloid song", "Miku", "Nakiso"},
@@ -804,25 +817,8 @@ SynthB.Joker{
 							trigger = 'after',
 							delay = 0.15,
 							func = function()
-								card:flip()
-								return true
-							end
-						})
-						delay(0.2)
-						G.E_MANAGER:add_event(Event{
-							trigger = 'after',
-							delay = 0.1,
-							func = function()
-								card:set_ability("j_synthb_retry_now_change")
-								play_sound('tarot1') -- replace with custom sound
-								return true
-							end
-						})
-						G.E_MANAGER:add_event(Event{
-							trigger = 'after',
-							delay = 0.15,
-							func = function()
-								card:flip()
+								SynthB.debug("what")
+								card.ability.immutable.brightness = 0.1
 								return true
 							end
 						})
@@ -866,9 +862,9 @@ SynthB.Joker{
 -- Retry Now Changed
 SynthB.Joker{
 	key = "retry_now_change",
-	atlas = "joker_placeholders",
-	pos = {x = 4, y = 1},
-	soul_pos = {x = 7, y = 0},
+	atlas = "retry_now_placeholder",
+	pos = {x = 0, y = 0},
+	soul_pos = {x = 1, y = 0},
 	rarity = 4,
 	cost = 20,
 	synthb_song = "retry_now_normal",
@@ -879,8 +875,14 @@ SynthB.Joker{
 	config = {
 		extra = {
 			scaling = 0.1
+		},
+		immutable = {
+			brightness = 1
 		}
 	},
+	update = function (self, card, dt)
+		card.ability.immutable.brightness = math.max(0, card.ability.immutable.brightness - 0.05)
+	end,
 	in_pool = function (self, args)
 		return false
 	end,
@@ -913,7 +915,3 @@ SynthB.Joker{
 		}
 	end
 }
-
-
-
-

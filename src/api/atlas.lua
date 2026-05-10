@@ -53,3 +53,10 @@ SMODS.Atlas{
 	px = 71,
 	py = 95,
 }
+
+SMODS.Atlas{
+	key = "retry_now_placeholder",
+	path = "retry_now.png",
+	px = 71,
+	py = 95,
+}
