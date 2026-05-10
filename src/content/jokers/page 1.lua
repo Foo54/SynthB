@@ -866,7 +866,9 @@ SynthB.Joker{
 -- Retry Now Changed
 SynthB.Joker{
 	key = "retry_now_change",
-	pos = {x = 3, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 4, y = 1},
+	soul_pos = {x = 7, y = 0},
 	rarity = 4,
 	cost = 20,
 	synthb_song = "retry_now_normal",
