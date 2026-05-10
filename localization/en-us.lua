@@ -1181,7 +1181,7 @@ local descriptions = {
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning Cards",
 			k_plus_tuning = "+1 Tuning Card",
-			k_sytnhb_plus_teto = "+1 Teto",
+			k_synthb_plus_teto = "+1 Teto",
 			b_times_singular = "time",
 			b_times_plural = "times",
 		},

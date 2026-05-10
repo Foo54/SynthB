@@ -536,13 +536,13 @@ SynthB.Joker{
 					if not _card:has_attribute("Teto") then
 						_card:set_edition("e_synthb_cover_teto")
 					end
-					play_sound("synhtb_teto", 1, 1)
+					play_sound("synthb_teto", 1, 1)
 					G.GAME.joker_buffer = 0
 					return true
 				end
 			}))
 			return {
-				message = localize('k_sytnhb_plus_teto'),
+				message = localize('k_synthb_plus_teto'),
 				colour = G.ARGS.LOC_COLOURS.garfields_thanksgiving,
 			}
 		end
