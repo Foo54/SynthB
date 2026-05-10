@@ -12,7 +12,7 @@ SMODS.Edition{
 		return {vars = {card.edition.extra.mult_scale}}
 	end,
 	valid_card = function(self, card)
-		return card:has_attribute("mult") or card.config.center.set == "Default"
+		return card:has_attribute("mult") or card.config.center.set == "Default" or card.config.center.set == "Enhanced"
 	end,
 	modify_effect = function(card, key, effect)
 		if effect.mult then
@@ -44,7 +44,7 @@ SMODS.Edition{
 		return {vars = {card.edition.extra.chips_scale}}
 	end,
 	valid_card = function(self, card)
-		return card:has_attribute("chips") or card.config.center.set == "Default"
+		return card:has_attribute("chips") or card.config.center.set == "Default" or card.config.center.set == "Enhanced"
 	end,
 	modify_effect = function(card, key, effect)
 		if effect.chips then
@@ -76,7 +76,7 @@ SMODS.Edition{
 		return {vars = {card.edition.extra.mult_scale}}
 	end,
 	valid_card = function(self, card)
-		return card:has_attribute("mult") or card.config.center.set == "Default"
+		return card:has_attribute("mult") or card.config.center.set == "Default" or card.config.center.set == "Enhanced"
 	end,
 	modify_effect = function(card, key, effect)
 		if effect.mult then
@@ -108,7 +108,7 @@ SMODS.Edition{
 		return {vars = {card.edition.extra.chips_scale}}
 	end,
 	valid_card = function(self, card)
-		return card:has_attribute("chips") or card.config.center.set == "Default"
+		return card:has_attribute("chips") or card.config.center.set == "Default" or card.config.center.set == "Enhanced"
 	end,
 	modify_effect = function(card, key, effect)
 		if effect.chips then

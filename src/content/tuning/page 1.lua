@@ -473,6 +473,10 @@ SynthB.Tuning{
 			}))
 		end
 		delay(0.2)
+		local stupid_fricking_keys_that_i_hate = {
+			hands_played_at_create = true,
+			order = true,
+		}
 		for i = 1, #G.hand.highlighted do
 			G.E_MANAGER:add_event(Event({
 				trigger = 'after',
@@ -494,7 +498,8 @@ SynthB.Tuning{
 						_card:set_seal()
 					end
 					for key, value in pairs(_card.ability) do
-						if type(value) == "number" and value ~= dummy_card.ability[key] then
+						if type(value) == "number" and value ~= dummy_card.ability[key] and stupid_fricking_keys_that_i_hate[key] == nil then
+							SynthB.debug(key)
 							_card.ability[key] = dummy_card.ability[key]
 							modifications_removed = modifications_removed + 1
 						end
@@ -522,11 +527,13 @@ SynthB.Tuning{
 			delay = 0.2,
 			func = function()
 				G.hand:unhighlight_all()
-				for _ = 1, modifications_removed, 5 do
-					if SMODS.pseudorandom_probability(card, "synthb_direct", 1, 4, nil, true) then
-						SMODS.add_card{set = "Joker", edition = "e_negative"}
-					else
-						SMODS.add_card{set = "Consumeables", edition = 'e_negative'}
+				if modifications_removed >= 5 then
+					for _ = 1, modifications_removed - 1, 5 do
+						if SMODS.pseudorandom_probability(card, "synthb_direct", 1, 4, nil, true) then
+							SMODS.add_card{set = "Joker", edition = "e_negative"}
+						else
+							SMODS.add_card{set = "Consumeables", edition = 'e_negative'}
+						end
 					end
 				end
 				return true
