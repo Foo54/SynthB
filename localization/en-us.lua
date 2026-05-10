@@ -441,7 +441,7 @@ local descriptions = {
 				}
 			},
 			j_synthb_nyan_cat = {
-				name = "Nyanyanyanyanyanyanya",
+				name = "Nyanyanyanyanyanyanya!",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult per suit",
 					"in {C:attention}scoring{} hand",
@@ -458,7 +458,7 @@ local descriptions = {
 				}
 			},
 			j_synthb_character_t = {
-				name = "Character T",
+				name = {"{f:5}キャラクターT", "{s:0.7}Character T"},
 				text = {
 					"Create a {C:garfields_thanksgiving}Teto{} Joker",
 					"when {C:attention}selecting blind",
@@ -905,7 +905,7 @@ local descriptions = {
 			nyan_cat = {
 				text = {
 					"{C:attention}Title",
-					"Nyanyanyanyanyanyanya",
+					"Nyanyanyanyanyanyanya!",
 					"{C:attention}Producer:",
 					"{f:5}ももももP",
 					"{C:inactive,s:0.8}momomomo-P",
@@ -928,7 +928,8 @@ local descriptions = {
 			character_t = {
 				text = {
 					"{C:attention}Title:",
-					"Character T",
+					"{f:5}キャラクターT",
+					"{C:inactive,s:0.8}Character T",
 					"{C:attention}Producer:",
 					"{f:5}アテナ",
 					"{C:inactive,s:0.8}Atena",
