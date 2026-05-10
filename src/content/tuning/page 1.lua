@@ -8,6 +8,7 @@ SynthB.Tuning{
 	use = function(self, card, area, copier)
 		-- totally helpful comment explaining what this does
 		pcall(function()assert(SMODS.change_base(G.hand.highlighted[2],nil,({0,'2','3','4','5','6','7','8','9','10','Jack','Queen','King','Ace'})[math.floor((G.hand.highlighted[1].base.id+G.hand.highlighted[3].base.id)/2)]))end)
+		G.hand:unhighlight_all()
 	end,
 }
 
@@ -421,6 +422,7 @@ SynthB.Tuning{
 			_card.ability.perma_bonus = _card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain/2, card.ability.gain))
 			_card:juice_up()
 		end
+		G.hand:unhighlight_all()
 	end,
 }
 
@@ -437,6 +439,7 @@ SynthB.Tuning{
 			_card.ability.perma_mult = _card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain/2, card.ability.gain))
 			_card:juice_up()
 		end
+		G.hand:unhighlight_all()
 	end,
 }
 

@@ -456,6 +456,15 @@ local descriptions = {
 					"Create a {C:attention}linked{} copy of it",
 					"{C:inactive,s:0.8,f:5}繋がれたまま　夢を見る"
 				}
+			},
+			j_synthb_character_t = {
+				name = "Character T",
+				text = {
+					"Create a {C:garfields_thanksgiving}Teto{} Joker",
+					"when {C:attention}selecting blind",
+					"if no other Jokers are owned",
+					"{C:inactive,s:0.8,f:5}何もない時代から生まれて"
+				}
 			}
 		},
 		SongInfo = {
@@ -915,7 +924,19 @@ local descriptions = {
 					"{f:5}重音テト{C:inactive} & {}flower",
 					"{C:inactive,s:0.8}Kasane Teto"
 				}
-			}
+			},
+			character_t = {
+				text = {
+					"{C:attention}Title:",
+					"Character T",
+					"{C:attention}Producer:",
+					"{f:5}アテナ",
+					"{C:inactive,s:0.8}Atena",
+					"{C:attention}Voice:",
+					"{f:5}重音テト{C:inactive} & {f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto & Kasane Teto"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -1159,6 +1180,7 @@ local descriptions = {
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning Cards",
 			k_plus_tuning = "+1 Tuning Card",
+			k_sytnhb_plus_teto = "+1 Teto",
 			b_times_singular = "time",
 			b_times_plural = "times",
 		},

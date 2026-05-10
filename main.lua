@@ -9,13 +9,14 @@ SynthB.GUI = {}
 SynthB.custom_colors = {
 	LIGHT_GREEN = HEX("99e550"),
 	TUNING = HEX("00FFFF"),
-	TUNING_DARK = darken(HEX("00FFFF"), 0.1)
+	TUNING_DARK = darken(HEX("00FFFF"), 0.1),
+	TETO = HEX("E54C75")
 }
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
 function SynthB.debug(...) 
 	if SynthB.mod.config.DEBUG then
-		print("SynthB | ", ...)
+		print("SynthB |", ...)
 	end
 end
 
@@ -41,6 +42,7 @@ SynthB.load_file("api/useable_joker")
 SynthB.load_file("api/uidef")
 SynthB.load_file("api/ownership")
 SynthB.load_file("api/drawstep")
+SynthB.load_file("api/sound")
 
 SynthB.debug("Loading Content Files")
 SynthB.load_file("content/shader")

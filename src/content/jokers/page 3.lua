@@ -514,3 +514,37 @@ SynthB.Joker{
 		end
 	end,
 }
+
+-- Character T
+SynthB.Joker{
+	key = "character_t",
+	pos = {x = 0, y = 0},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "character_t")
+	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger or (context.setting_blind and #G.jokers.cards == 1) then
+			local do_teto_edition = SMODS.pseudorandom_probability(card, "synthb_character_t", 1, 10, nil, true)
+			G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					local _card = SMODS.add_card{key = pseudorandom_element(SMODS.get_attribute_pool(do_teto_edition and "chip" or "Teto"))}
+					if not _card:has_attribute("Teto") then
+						_card:set_edition("e_synthb_cover_teto")
+					end
+					play_sound("synhtb_teto", 1, 1)
+					G.GAME.joker_buffer = 0
+					return true
+				end
+			}))
+			return {
+				message = localize('k_sytnhb_plus_teto'),
+				colour = G.ARGS.LOC_COLOURS.garfields_thanksgiving,
+			}
+		end
+	end,
+}
