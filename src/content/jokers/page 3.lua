@@ -548,3 +548,71 @@ SynthB.Joker{
 		end
 	end,
 }
+
+--- Feedback
+SynthB.Joker{
+	key = "feedback",
+	cost = 5,
+	config = {
+		extra = {
+			mult = 0,
+			scaling = 3
+		}
+	},
+	attributes = {"scaling", "mult", "rank", "suit", "ace", "spades", "enhancenment", "song", "vocaloid song", "Luka", "MonochroMenace", "isidore"},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "feedback")
+		return {vars = {card.ability.extra.mult, card.ability.extra.scaling}}
+	end,
+	calculate = function(self, card, context)
+		if (context.before or context.forcetrigger) and not context.blueprint then
+			local scaled = true
+			for key, value in ipairs(context.scoring_hand) do
+				if value:get_id() == 14 and value.base.suit == "Spades" and SMODS.has_enhancement(value, "m_wild") then
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "mult",
+						scalar_value = "scaling"
+					})
+					break
+				end
+			end
+		end
+		if context.joker_main and context.forcetrigger then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{text = "+"},
+				{ref_table = "card.joker_display_values", ref_value = "mult"}
+			},
+			reminder_text = {
+				{text = "(Wild Ace of Spades)"}
+			},
+			text_config = {colour = G.C.MULT},
+			calc_function = function (card)
+				local mult = card.ability.extra.mult
+				local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+				if text ~= 'Unknown' then
+					for _, scoring_card in pairs(scoring_hand) do
+						if scoring_card:get_id() == 14 and scoring_card.base.suit == "Spades" and SMODS.has_enhancement(scoring_card, "m_wild") then
+							mult = mult + card.ability.extra.scaling
+						end
+					end
+				end
+				card.joker_display_values.mult = mult
+			end
+		}
+	end
+}
+
+

@@ -465,6 +465,16 @@ local descriptions = {
 					"if no other Jokers are owned",
 					"{C:inactive,s:0.8,f:5}何もない時代から生まれて"
 				}
+			},
+			j_synthb_feedback = {
+				name = "FEEDBACK",
+				text = {
+					"This Joker gains {C:mult}+#2#{} mult",
+					"if {C:attention}scored hand{} contains",
+					"a {C:attention}Wild Ace{} of {C:spades}Spades{}",
+					"{C:inactive}[Currently {C:mult}+#1#{C:inactive} Mult]",
+					"{C:inactive,s:0.8}We'll shout until the speakers blow out"
+				}
 			}
 		},
 		SongInfo = {
@@ -936,6 +946,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト{C:inactive} & {f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto & Kasane Teto"
+				}
+			},
+			feedback = {
+				text = {
+					"{C:attention}Title:",
+					"FEEDBACK",
+					"{C:attention}Producer:",
+					"MonochroMenace{C:inactive} & {}isidore",
+					"{C:attention}Voice:",
+					"{f:5}巡音ルカ",
+					"{C:inactive,s:0.8}Megurine Luka"
 				}
 			},
 		},

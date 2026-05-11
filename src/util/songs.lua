@@ -38,6 +38,7 @@ SynthB.songs = {
 	{link = "https://www.nicovideo.jp/watch/sm13455867", key = "nyan_cat", pos = {x = 1, y = 7}},
 	{link = "https://www.youtube.com/watch?v=j9RGt9Z_UeE", key = "dna", pos = {x = 2, y = 7}},
 	{link = "https://www.youtube.com/watch?v=YSBZFVSvqL0", key = "character_t", pos = {x = 3, y = 7}},
+	{link = "https://www.youtube.com/watch?v=4-QtK09Lfdk", key = "feedback", pos = {x = 4, y = 7}},
 	--[[
 	for cross mod do this
 	
