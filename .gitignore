@@ -47,3 +47,6 @@ luac.out
 
 # my stuff
 todo.txt
+
+# keep file paths hidden
+dont_export/file_paths.py

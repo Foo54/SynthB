@@ -1,9 +1,15 @@
 import json
 from datetime import date
+import file_paths
+'''
+file_paths.py
+VERSION_DATA = path to version_data.json
+VERSION = path to VERSION.lua
+CONFIG = path to config.json
+'''
 
 if __name__ == "__main__":
-	path = "C:\\Users\\foo54\\AppData\\Roaming\\Balatro\\Mods\\SynthB\\dont_export\\version_data.json"
-	data = json.load(open(path))
+	data = json.load(open(file_paths.VERSION_DATA))
 
 	if data["change"]:
 		data["change"] = True
@@ -24,21 +30,18 @@ if __name__ == "__main__":
 						i -= 1
 				else:
 					break
-		file = open(path, "w")
+		file = open(file_paths.VERSION_DATA, "w")
 		json.dump(data, file, indent = 2)
 		file.close()
 	version = f"{data['major']}.{data['minor']}.{data['patch']}-{data['date']}{''.join(['abcdefghijklmnopqrstuvwxyz'[n] for n in data['rev']])}"
 	print(version)
-	
-	VERSION_LUA_PATH = "C:\\Users\\foo54\\AppData\\Roaming\\Balatro\\Mods\\SynthB\\VERSION.lua"
-	version_lua = open(VERSION_LUA_PATH, "w")
+
+	version_lua = open(file_paths.VERSION, "w")
 	version_lua.write(f'return "{data["prefix"]}-{version}"')
 	version_lua.close()
-
-	CONFIG_JSON_PATH = "C:\\Users\\foo54\\AppData\\Roaming\\Balatro\\Mods\\SynthB\\config.json"
-	config_json_data = json.load(open(CONFIG_JSON_PATH))
+	config_json_data = json.load(open(file_paths.CONFIG))
 	config_json_data["version"] = version
-	config_json = open(CONFIG_JSON_PATH, "w")
+	config_json = open(file_paths.CONFIG, "w")
 	json.dump(config_json_data, config_json, indent=2)
 	config_json.close()
 
