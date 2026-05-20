@@ -476,8 +476,21 @@ local descriptions = {
 					"{C:inactive,s:0.8}We'll shout until the speakers blow out"
 				}
 			},
-			j_synhtb_tempsong = {
-				name = "temp"
+			j_synthb_tell_your_world = {
+				name = "Tell Your World",
+				text = {
+					{
+						"Create {C:tarot}#1#",
+						"when {C:attention}Blind{} is selected",
+						"{C:inactive}[Must have room]",
+						"{C:inactive,f:5,s:0.8}lyrics"
+					},
+					{
+						"Cards target by {C:tarot}#1#",
+						"become linked for {C:attention}#2#{C:inactive} rounds",
+						"{C:inactive,f:5,s:0.8}lyrics"
+					}
+				}
 			}
 		},
 		SongInfo = {
@@ -962,6 +975,17 @@ local descriptions = {
 					"{C:inactive,s:0.8}Megurine Luka"
 				}
 			},
+			tell_your_world = {
+				text = {
+					"{C:attention}Title:",
+					"Tell Your World",
+					"{C:attention}Producer:",
+					"kz(livetune)",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -1051,6 +1075,15 @@ local descriptions = {
 					"Linked cards are",
 					"{C:attention}Always{} scored together",
 					"{C:inactive}ID: #1#"
+				}
+			},
+			synthb_linked_temp = {
+				name = "Linked",
+				text = {
+					"Linked cards are",
+					"{C:attention}Always{} scored together",
+					"{C:inactive}ID: #1#",
+					"{C:inactive}Link is removed in {C:attention}#2#{} round#3#"
 				}
 			},
 			card_synthb_mult = {

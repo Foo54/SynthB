@@ -115,12 +115,19 @@ function SynthB.heat_mod()
 end
 
 --- links 2 cards together
---- @param card1 Card
---- @param card2 Card
-function SynthB.link_cards(card1, card2)
-	card1:add_sticker("synthb_linked", true)
-	card2:add_sticker("synthb_linked", true)
-	card1.ability.synthb_linked.id = G.GAME.synthb_linked_id
-	card2.ability.synthb_linked.id = G.GAME.synthb_linked_id
+--- @param cards Card[] list of cards to link
+--- @param timer? integer how long until the cards unlink
+function SynthB.link_cards(cards, timer)
+	for _, card in ipairs(cards) do
+		card:add_sticker("synthb_linked", true)
+		card.ability.synthb_linked.id = G.GAME.synthb_linked_id
+		card.ability.synthb_linked.rounds = timer
+	end
 	G.GAME.synthb_linked_id = G.GAME.synthb_linked_id + 1
+end
+
+--- Gets held Tell Your World
+--- @returns Card|nil
+function SynthB.tyw()
+	return SMODS.find_card("j_synthb_tell_your_world")[1]
 end

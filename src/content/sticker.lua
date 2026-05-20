@@ -17,7 +17,7 @@ SMODS.Sticker{
 	},
 	rate = 0,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.synthb_linked.id}}
+		return {vars = {card.ability.synthb_linked.id, card.ability.synthb_linked.rounds, (card.ability.synthb_linked.rounds or 0) > 1 and "s" or ""}, key = self.key .. (card.ability.synthb_linked.rounds and "_temp" or "")}
 	end,
 	calculate = function (self, card, context)
 		if context.press_play then

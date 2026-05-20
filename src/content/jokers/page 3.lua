@@ -487,7 +487,7 @@ SynthB.Joker{
 			G.playing_card = (G.playing_card and G.playing_card + 1) or 1
 			local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
 			card_copied:add_to_deck()
-			SynthB.link_cards(context.full_hand[1], card_copied)
+			SynthB.link_cards{context.full_hand[1], card_copied}
 			G.deck.config.card_limit = G.deck.config.card_limit + 1
 			table.insert(G.playing_cards, card_copied)
 			G.discard:emplace(card_copied)
@@ -615,4 +615,49 @@ SynthB.Joker{
 	end
 }
 
-
+--- Tell Your World
+SynthB.Joker{
+	key = "tell_your_world",
+	rarity = 4,
+	pos = {x = 3, y = 0},
+	cost = 25,
+	config = {
+		extra = {
+			rounds = 5
+		},
+		immutable = {
+			tarot = "c_world",
+		}
+	},
+	attributes = {"generation", "tarot", "stickers", "modify_card", "song", "vocaloid song", "Miku", "kz"},
+	blueprint_compat = true,
+	perishable_compat = true,
+	eternal_compat = true,
+	demicolon_compat = true,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot]
+		SynthB.song_info(info_queue, "tell_your_world")
+		return {vars = {localize{type = "name_text", set = "Tarot", key = card.ability.immutable.tarot}, card.ability.extra.rounds}}
+	end,
+	calculate = function(self, card, context)
+		if context.setting_blind or context.forcetrigger then
+			if (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit) or context.forcetrigger then
+				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+				G.E_MANAGER:add_event(Event({
+					func = (function()
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								SMODS.add_card{key = card.ability.immutable.tarot}
+								G.GAME.consumeable_buffer = 0
+								return true
+							end
+						}))
+						SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.PURPLE }, context.blueprint_card or card)
+						return true
+					end)
+				}))
+				return nil, true
+			end
+		end
+	end
+}

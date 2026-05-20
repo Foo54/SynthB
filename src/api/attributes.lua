@@ -75,3 +75,4 @@ SMODS.Attribute{key = "Miyamori Bungaku"}
 SMODS.Attribute{key = "momomomoP"}
 SMODS.Attribute{key = "Azari"}
 SMODS.Attribute{key = "isidore"}
+SMODS.Attribute{key = "kz"}

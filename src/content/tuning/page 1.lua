@@ -50,7 +50,7 @@ SynthB.Tuning{
 			for key, value in pairs(_card.ability) do
 				if not excluded_keys[key] then
 					if not stupid_annoying_keys[key] or value ~= 1 then
-						_card.ability[key] = value * card.ability.markiplier
+						pcall(function() _card.ability[key] = value * card.ability.markiplier end) -- pcall for table stuff
 					end
 				end
 			end

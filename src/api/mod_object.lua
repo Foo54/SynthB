@@ -122,10 +122,19 @@ function SynthB.mod.calculate(self, context)
 		}
 	end
 
-	-- Remove prevent debuff from cards undebuffed by regret rock
 	if context.round_eval then
 		for _, card in ipairs(G.playing_cards) do
+			-- Remove prevent debuff from cards undebuffed by regret rock
 			SMODS.debuff_card(card, nil, "regret_rock")
+
+			-- Update temporary linked cards
+			if card.ability.synthb_linked and card.ability.synthb_linked.rounds then
+				card.ability.synthb_linked.rounds = card.ability.synthb_linked.rounds - 1
+				pcall(function() card:juice_up() end)
+				if card.ability.synthb_linked.rounds <= 0 then
+					card:remove_sticker("synthb_linked")
+				end
+			end
 		end
 	end
 
