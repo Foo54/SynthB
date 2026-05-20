@@ -10,7 +10,7 @@ function SynthB.mod.config_tab()
 						ref_value = 'display_misc_info'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+				{n = G.UIT.R, config = { align = "cm", padding = 0.01 }, nodes = {
 					{n = G.UIT.T, config = {text = "- OR -", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {

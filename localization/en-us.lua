@@ -1089,6 +1089,16 @@ local descriptions = {
 				}
 			}
 		},
+		Tag = {
+			tag_synthb_drink_orange = {
+				name = "Overthinking Orange",
+				text = {
+					"Next opened booster pack",
+					"has an additional card",
+					"and selection limit"
+				}
+			}
+		},
 		Edition = {
 			e_synthb_cover_miku = {
 				name = "Miku Cover",
