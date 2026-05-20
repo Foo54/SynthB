@@ -491,7 +491,48 @@ local descriptions = {
 						"{C:inactive,f:5,s:0.8}lyrics"
 					}
 				}
-			}
+			},
+			j_synthb_weathergirl = {
+				name = "Weathergirl",
+				text = {
+					"uh idk"
+				}
+			},
+			j_synthb_shanti = {
+				name = {"{f:5}name", "{s:0.8}Shanti"},
+				text = {
+					"uh idk"
+				}
+			},
+			j_synthb_human = {
+				name = "Human",
+				text = {
+					"uh idk"
+				}
+			},
+
+			-- Page 4
+
+			j_synthb_brain_implosion_energy = {
+				name = "Brain Implosion Energy Drink",
+				text = {
+					"Create an {C:synthb_drink}Energy Drink{} tag",
+					"when {C:attention}Shop{} is entered",
+					"{C:inactive,s:0.8}10,000g of pure caffine!"
+				}
+			},
+			j_synthb_deco_song = {
+				name = "idk",
+				text = {
+					"uh idk"
+				}
+			},
+			j_synhtb_iyowa_song = {
+				name = "idk",
+				text = {
+					"uh idk"
+				}
+			},
 		},
 		SongInfo = {
 			antani_itten_no = {
@@ -985,7 +1026,18 @@ local descriptions = {
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
-			}
+			},
+			brain_implosion_energy = {
+				text = {
+					"{C:attention}Title:",
+					"Brain Implosion Energy Drink",
+					"{C:attention}Producer:",
+					"Flanger Moose",
+					"{C:attention}Voice:",
+					"{f:5}重音テト{C:inactive} & {}Eleanor Forte",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -1021,6 +1073,19 @@ local descriptions = {
 					"{C:inactive}-- -- -- --",
 					"This information can be disabled in the mod",
 					"config page"
+				}
+			},
+			energy_drinks = {
+				name = "Energy Drinks",
+				text = {
+					"{C:synthb_orange}Overthinking Orange",
+					"{C:synthb_strawberry}Socially Anxious Strawberry",
+					"{C:synthb_banana}Burnout Banana",
+					"{C:synthb_raspberry}Repressed Raspberry",
+					"{C:synthb_grape}Grieving Grape",
+					"{C:synthb_melon}Misery Melon",
+					"{C:synthb_tritip}Trauma Tri-Tip",
+					"{C:synthb_durian}Depression Durian"
 				}
 			}
 		},
@@ -1238,6 +1303,7 @@ local descriptions = {
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning Cards",
 			k_plus_tuning = "+1 Tuning Card",
+			k_plus_energy_drink = "+1 Energy Drink",
 			k_synthb_plus_teto = "+1 Teto",
 			b_times_singular = "time",
 			b_times_plural = "times",

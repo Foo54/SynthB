@@ -5,6 +5,16 @@ function SynthB.mod.config_tab()
 			{n = G.UIT.C, config = { align = "cr" }, nodes = {
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
+						label = "Enable Misc Info",
+						ref_table = SynthB.mod.config,
+						ref_value = 'display_misc_info'
+					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					{n = G.UIT.T, config = {text = "- OR -", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
 						label = "Enable Song Info",
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_song_info'
@@ -17,12 +27,22 @@ function SynthB.mod.config_tab()
 						ref_value = 'display_card_credits'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+				{n = G.UIT.R, config = { align = "cm", padding = 0.01 }, nodes = {
 					create_toggle({
 						label = "Display Temperature Information",
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_heat_info'
 					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
+						label = "Display Energy Drink Information",
+						ref_table = SynthB.mod.config,
+						ref_value = 'display_energy_drink_info'
+					})
+				}},
+				{n = G.UIT.R, config = { align = "cm", padding = 0.01 }, nodes = {
+					{n = G.UIT.T, config = {text = "- - - - - - - - - -", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({

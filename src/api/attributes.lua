@@ -5,8 +5,6 @@
 --- /^SMODS\.Attribute\{key = "([^"]+), (?:alias = \{((?:"[^"]+")(, )?)+\})?\}"/
 
 --#region GENERAL
-SMODS.Attribute{key = "debuff"}
-SMODS.Attribute{key = "stickers"}
 SMODS.Attribute{key = "temperature"}
 SMODS.Attribute{key = "song"}
 SMODS.Attribute{key = "vocaloid song"}
@@ -19,6 +17,8 @@ SMODS.Attribute{key = "otetsu"} -- feli's jokeria
 
 --#region EVENTUAL PR
 SMODS.Attribute{key = "position"}
+SMODS.Attribute{key = "debuff"}
+SMODS.Attribute{key = "stickers"}
 
 --#region VOICEBANKS
 SMODS.Attribute{key = "Teto"}
@@ -38,6 +38,7 @@ SMODS.Attribute{key = "Rin"}
 SMODS.Attribute{key = "Momone"}
 SMODS.Attribute{key = "flower"}
 SMODS.Attribute{key = "Luka"}
+SMODS.Attribute{key = "Forte"}
 
 
 --#region ARTISTS

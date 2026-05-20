@@ -4,7 +4,7 @@
 ---@param key string the key found within descriptions.SongInfo
 ---@param vars? table any vars needed for the ui
 function SynthB.song_info(info_queue, key, vars)
-	if SynthB.mod.config.display_song_info then
+	if SynthB.mod.config.display_misc_info or SynthB.mod.config.display_song_info then
 		info_queue[#info_queue+1] = {set = "SongInfo", key = key, type="descriptions", vars = vars}
 	end
 end
@@ -15,7 +15,7 @@ end
 --- @param key string the key found within descriptions.MiscInfoQueue
 --- @param vars? table any vars needed for the ui
 function SynthB.card_credits(info_queue, key, vars)
-	if SynthB.mod.config.display_card_credits then
+	if SynthB.mod.config.display_misc_info or SynthB.mod.config.display_card_credits then
 		info_queue[#info_queue+1] = {set = "MiscInfoQueue", key = key, type = "descriptions", vars = vars}
 	end
 end
@@ -24,7 +24,7 @@ end
 --- respecting the set config value
 --- @param info_queue table the info_queue to add the ui to
 function SynthB.heat_info(info_queue)
-	if SynthB.mod.config.display_heat_info then
+	if SynthB.mod.config.display_misc_info or SynthB.mod.config.display_heat_info then
 		info_queue[#info_queue+1] = {set = "MiscInfoQueue", key = "heat_explanation", type = "descriptions"}
 	end
 end
@@ -130,4 +130,18 @@ end
 --- @returns Card|nil
 function SynthB.tyw()
 	return SMODS.find_card("j_synthb_tell_your_world")[1]
+end
+
+--- Adds energy drink info_queue
+--- @param info_queue table
+function SynthB.energy_drink_info(info_queue)
+	if SynthB.mod.config.display_misc_info or SynthB.mod.config.display_energy_drink_info then
+		info_queue[#info_queue+1] = {set = "MiscInfoQueue", key = "energy_drinks", type = "descriptions"}
+	end
+end
+
+--- Gets a random energy drink key
+--- @param seed string
+function SynthB.random_energy_drink(seed)
+	return pseudorandom_element(SynthB.energy_drinks, seed)
 end
