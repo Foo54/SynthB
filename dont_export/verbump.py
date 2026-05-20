@@ -33,7 +33,7 @@ if __name__ == "__main__":
 	file = open(file_paths.VERSION_DATA, "w")
 	json.dump(data, file, indent = 2)
 	file.close()
-	version = f"{data['major']}.{data['minor']}.{data['patch']}-{data['date']}{''.join(['abcdefghijklmnopqrstuvwxyz'[n] for n in data['rev']])}"
+	version = f"{data['major']}.{data['minor']}.{data['patch']}-{data['date']}{''.join([chr(97 + n) for n in data['rev']])}"
 	print(version)
 
 	version_lua = open(file_paths.VERSION, "w")
