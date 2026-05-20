@@ -1,2 +1,2 @@
-# commit aseprite files, but don't release them
-/aseprite export-ignore
+# commit these files but don't release them
+/dont_export export-ignore

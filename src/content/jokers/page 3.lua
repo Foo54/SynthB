@@ -532,7 +532,7 @@ SynthB.Joker{
 			G.GAME.joker_buffer = G.GAME.joker_buffer + 1
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					local _card = SMODS.add_card{key = pseudorandom_element(SMODS.get_attribute_pool(do_teto_edition and "chip" or "Teto"))}
+					local _card = SMODS.add_card{key = pseudorandom_element(SMODS.get_attribute_pool(do_teto_edition and "chip" or "Teto")) or "j_synthb_miku"}
 					if not _card:has_attribute("Teto") then
 						_card:set_edition("e_synthb_cover_teto")
 					end
