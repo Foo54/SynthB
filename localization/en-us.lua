@@ -483,12 +483,12 @@ local descriptions = {
 						"Create {C:tarot}#1#",
 						"when {C:attention}Blind{} is selected",
 						"{C:inactive}[Must have room]",
-						"{C:inactive,f:5,s:0.8}lyrics"
+						"{C:inactive,f:5,s:0.8}君に届けたいことが"
 					},
 					{
 						"Cards targeted by {C:tarot}#1#",
 						"become {C:attention}linked{} for {C:attention}#2#{} rounds",
-						"{C:inactive,f:5,s:0.8}lyrics"
+						"{C:inactive,f:5,s:0.8}いくつもの線は円になって"
 					}
 				}
 			},
@@ -1094,8 +1094,8 @@ local descriptions = {
 				name = "Overthinking Orange",
 				text = {
 					"Next opened booster pack",
-					"has an additional card",
-					"and selection limit"
+					"has an {C:attention}#1#{}",
+					"additional cards"
 				}
 			}
 		},
