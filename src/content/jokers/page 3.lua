@@ -636,6 +636,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot]
+		info_queue[#info_queue+1] = {set = "Other", key = "synthb_linked_temp", vars = {39, 5, "s"}}
 		SynthB.song_info(info_queue, "tell_your_world")
 		return {vars = {localize{type = "name_text", set = "Tarot", key = card.ability.immutable.tarot}, card.ability.extra.rounds}}
 	end,

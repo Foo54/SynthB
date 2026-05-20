@@ -486,8 +486,8 @@ local descriptions = {
 						"{C:inactive,f:5,s:0.8}lyrics"
 					},
 					{
-						"Cards target by {C:tarot}#1#",
-						"become linked for {C:attention}#2#{C:inactive} rounds",
+						"Cards targeted by {C:tarot}#1#",
+						"become {C:attention}linked{} for {C:attention}#2#{} rounds",
 						"{C:inactive,f:5,s:0.8}lyrics"
 					}
 				}
@@ -1083,7 +1083,7 @@ local descriptions = {
 					"Linked cards are",
 					"{C:attention}Always{} scored together",
 					"{C:inactive}ID: #1#",
-					"{C:inactive}Link is removed in {C:attention}#2#{} round#3#"
+					"{C:inactive}Link is removed in {C:attention}#2#{C:inactive} round#3#"
 				}
 			},
 			card_synthb_mult = {
