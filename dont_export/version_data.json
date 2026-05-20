@@ -2,10 +2,10 @@
   "prefix": "SynthB",
   "major": 1,
   "minor": 4,
-  "patch": 0,
+  "patch": 1,
   "date": "260520",
   "rev": [
     10
   ],
-  "change": true
+  "change": false
 }
