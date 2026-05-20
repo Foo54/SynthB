@@ -12,7 +12,6 @@ if __name__ == "__main__":
 	data = json.load(open(file_paths.VERSION_DATA))
 
 	if data["change"]:
-		data["change"] = True
 		d = date.today()
 		da = f'{d.year % 100:0>2}{d.month:0>2}{d.day:0>2}'
 		if da != data["date"]:
@@ -30,9 +29,10 @@ if __name__ == "__main__":
 						i -= 1
 				else:
 					break
-		file = open(file_paths.VERSION_DATA, "w")
-		json.dump(data, file, indent = 2)
-		file.close()
+	data["change"] = True
+	file = open(file_paths.VERSION_DATA, "w")
+	json.dump(data, file, indent = 2)
+	file.close()
 	version = f"{data['major']}.{data['minor']}.{data['patch']}-{data['date']}{''.join(['abcdefghijklmnopqrstuvwxyz'[n] for n in data['rev']])}"
 	print(version)
 
