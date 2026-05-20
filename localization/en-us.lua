@@ -475,6 +475,9 @@ local descriptions = {
 					"{C:inactive}[Currently {C:mult}+#1#{C:inactive} Mult]",
 					"{C:inactive,s:0.8}We'll shout until the speakers blow out"
 				}
+			},
+			j_synhtb_tempsong = {
+				name = "temp"
 			}
 		},
 		SongInfo = {
