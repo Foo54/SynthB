@@ -50,3 +50,6 @@ todo.txt
 
 # keep file paths hidden
 dont_export/file_paths.py
+
+# don't need this
+dont_export/__pycache__
