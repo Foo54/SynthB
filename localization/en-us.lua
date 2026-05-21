@@ -492,12 +492,6 @@ local descriptions = {
 					}
 				}
 			},
-			j_synthb_weathergirl = {
-				name = "Weathergirl",
-				text = {
-					"uh idk"
-				}
-			},
 			j_synthb_shanti = {
 				name = {"{f:5}name", "{s:0.8}Shanti"},
 				text = {
@@ -510,6 +504,16 @@ local descriptions = {
 					"uh idk"
 				}
 			},
+			j_synthb_brain_implosion_energy = {
+				name = "Brain Implosion Energy Drink",
+				text = {
+					"Create an {C:synthb_drink}Energy Drink{} tag",
+					"when {C:attention}Shop{} is entered",
+					"{C:inactive,s:0.8}10,000g of pure caffine!"
+				}
+			},
+
+			-- Page 4
 			j_synthb_needle = {
 				name = "needLe",
 				text = {
@@ -522,27 +526,23 @@ local descriptions = {
 					""
 				}
 			},
-
-			-- Page 4
-
-			j_synthb_brain_implosion_energy = {
-				name = "Brain Implosion Energy Drink",
+			j_synthb_blackjack = {
+				name = "Blackjack",
 				text = {
-					"Create an {C:synthb_drink}Energy Drink{} tag",
-					"when {C:attention}Shop{} is entered",
-					"{C:inactive,s:0.8}10,000g of pure caffine!"
+					""
 				}
 			},
-			j_synthb_deco_song = {
-				name = "idk",
+
+
+			--- Crossmod
+			j_synthb_weathergirl = {
+				name = "Weathergirl",
 				text = {
-					"uh idk"
-				}
-			},
-			j_synhtb_iyowa_song = {
-				name = "idk",
-				text = {
-					"uh idk"
+					"{C:green}#1# in n{} chance for",
+					"played cards to become {C:attention}#2#s{},",
+					"where {C:green}n{} is the position of the card",
+					"{C:inactive}1st card: 1 in 1, 5th card: 1 in 5",
+					"{C:inactive,s:0.8}I heard they said it looked like rain"
 				}
 			},
 		},
@@ -1037,6 +1037,16 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			weathergirl = {
+				text = {
+					"{C:attention}Title:",
+					"Weathergirl",
+					"{C:attention}Producer:",
+					"Flavor Foley",
+					"{C:attention}Voice:",
+					"Eleanor Forte" -- shortest song info woah
 				}
 			},
 			brain_implosion_energy = {

@@ -12,7 +12,7 @@ SMODS.Tag{
 		return {vars = {tag.config.cards}}
 	end,
 	apply = function (self, tag, context)
-		if context.
+		--if context.
 	end,
 	in_pool = function(self, args)
 		return false

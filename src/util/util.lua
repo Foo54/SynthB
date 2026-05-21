@@ -145,3 +145,9 @@ end
 function SynthB.random_energy_drink(seed)
 	return pseudorandom_element(SynthB.energy_drinks, seed)
 end
+
+--- Check if mod is loaded (taken from AikoShen)
+function SynthB.is_mod_loaded (var)
+	if not var then return false end
+	return (SMODS.Mods[var] and SMODS.Mods[var].can_load) and true or false
+end

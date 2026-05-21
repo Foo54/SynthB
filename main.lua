@@ -70,6 +70,9 @@ SynthB.load_file("content/seal")
 SynthB.load_file("content/sticker")
 SynthB.load_file("content/tag")
 
+SynthB.debug("Loading Crossmod and Compatibility Files")
+SynthB.load_file("compat/aikoshen")
+
 SynthB.debug("Loading Crossmod Files")
 -- cross mod loading modified from aikoshen
 for _,mod in pairs(SMODS.Mods) do
