@@ -2,20 +2,22 @@
 Vocaloid Themed Balatro Mod by Foo54
 
 ## Content
-- 41 New Jokers!
-	- 17 Voicebanks
-	- 33 Artists
+- 44 New Jokers!
+	- 18 Voicebanks
+	- 35 Artists
 	- Links to all the songs
+- 8 New Tags!
 - 4 New Editions!
-- 1 New Consumable Type
+- 1 New Consumable Type!
 	- 12 New cards based around tuning in UTAU
-- 1 New Spectral
-- 1 New Seal
-- 2 New Stickers
+- 1 New Spectral!
+- 1 New Seal!
+- 2 New Stickers!
 - New Mechanic!
 	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content
 	- [Feli's Jokeria](https://github.com/LasagnaFelidae/Balatro-FelisJokeria)
+	- [Aikoyori's Shenanigains](https://github.com/Aikoyori/Balatro-Aikoyoris-Shenanigans)
 - Crossmod Support
 	- Cryptid Forcetriggers
 	- Paperback Music Attribute
