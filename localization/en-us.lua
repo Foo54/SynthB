@@ -510,6 +510,18 @@ local descriptions = {
 					"uh idk"
 				}
 			},
+			j_synthb_needle = {
+				name = "needLe",
+				text = {
+					""
+				}
+			},
+			j_synthb_shiawase_for_you = {
+				name = "SHIAWASE FOR YOU",
+				text = {
+					""
+				}
+			},
 
 			-- Page 4
 
