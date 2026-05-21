@@ -143,7 +143,23 @@ end
 --- Gets a random energy drink key
 --- @param seed string
 function SynthB.random_energy_drink(seed)
-	return pseudorandom_element(SynthB.energy_drinks, seed)
+	local pool = {}
+	for _, tag_key in ipairs(SynthB.energy_drinks) do
+		local good = true
+		for _, tag in ipairs(G.GAME.tags) do
+			if tag.key == tag_key then
+				good = false
+				break
+			end
+		end
+		if good then
+			pool[#pool+1] = tag_key
+		end
+	end
+	if #pool == 0 then
+		pool[1] = "tag_synthb_drink_orange" -- default
+	end
+	return pseudorandom_element(pool, seed)
 end
 
 --- Check if mod is loaded (taken from AikoShen)

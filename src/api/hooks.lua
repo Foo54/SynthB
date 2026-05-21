@@ -133,3 +133,56 @@ function SMODS.change_base(card, suit, rank, delay_sprites)
 	end
 	return ret
 end
+
+local add_tag_ref = add_tag
+---@diagnostic disable-next-line: lowercase-global
+function add_tag(_tag)
+	local from_load = _tag.from_load
+	local ret = add_tag_ref(_tag)
+	if not from_load and SMODS.Tags[_tag.key] then
+		SynthB.temp_data = _tag
+		if SMODS.Tags[_tag.key].on_obtain then
+			SMODS.Tags[_tag.key]:on_obtain(_tag)
+		end
+	end
+end
+
+local round_score_ref = SMODS.calculate_round_score
+function SMODS.calculate_round_score (flames)
+	local ret = round_score_ref(flames)
+	if SynthB.Globals.ignore_tag_reductions then SynthB.Globals.ignore_tag_reductions = false; return ret end
+	for _, v in ipairs(G.GAME.tags) do
+		local data = v:apply_to_run({type = 'synthb_decrease_score'})
+		if data and data.mult then
+			ret = ret * data.mult
+		end
+	end
+	return ret
+end
+
+local tag_ui_ref = Tag.generate_UI
+function Tag:generate_UI(_size)
+	local tag_sprite_tab, tag_sprite = tag_ui_ref(self, _size)
+	if tag_sprite then
+		local tag_click_ref = tag_sprite.click or function() end
+		function tag_sprite:click (...)
+---@diagnostic disable-next-line: redundant-parameter
+			local ret = tag_click_ref(self, ...)
+			if tag_sprite.config.tag.ability then 
+				tag_sprite.config.tag:apply_to_run{type = "synthb_tag_clicked"}
+			end
+			return ret
+		end
+	end
+	return tag_sprite_tab, tag_sprite
+end
+
+local ease_dollars_ref = ease_dollars
+---@diagnostic disable-next-line: lowercase-global
+function ease_dollars(mod, instant)
+	local ret = ease_dollars_ref(mod, instant)
+	for _, v in ipairs(G.GAME.tags) do
+		v:apply_to_run{type = 'synthb_money_changed', amount = mod}
+	end
+	return ret
+end

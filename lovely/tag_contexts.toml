@@ -1,0 +1,60 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# Call custom tag type when booster is opened
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''SMODS.calculate_context({open_booster = true, card = self, booster = booster_obj})'''
+position = 'before'
+payload = '''G.E_MANAGER:add_event(Event({trigger = 'after', delay = 1.3*math.sqrt(G.SETTINGS.GAMESPEED), blockable = false, blocking = false, func = function()
+	for _, v in ipairs(G.GAME.tags) do
+		v:apply_to_run({type = 'synthb_pack_opened'})
+	end
+	return true
+end}))'''
+match_indent = true
+
+
+# Call custom tag type when booster is opened
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''-- TARGET: effects before scoring starts'''
+position = 'before'
+payload = '''for _, v in ipairs(G.GAME.tags) do
+	v:apply_to_run({type = 'synthb_before_hand'})
+end'''
+match_indent = true
+
+
+# Call custom tag type to store score
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''hand_chips = mod_chips(nu_chip or hand_chips)'''
+position = 'after'
+payload = '''for _, v in ipairs(G.GAME.tags) do
+	v:apply_to_run({type = 'synthb_gain_score'})
+end'''
+match_indent = true
+
+
+# Call custom tag type to store score
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''-- TARGET: setting_blind effects'''
+position = 'before'
+payload = '''for _, v in ipairs(G.GAME.tags) do
+	v:apply_to_run{type = 'synthb_setting_blind', blind = G.GAME.round_resets.blind}
+end'''
+match_indent = true
+
+
+
+
+
+

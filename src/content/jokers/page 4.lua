@@ -23,7 +23,9 @@ SynthB.Joker{
 				func = (function()
 					G.E_MANAGER:add_event(Event({
 						func = function()
-							add_tag(Tag(SynthB.random_energy_drink("synthb_brain_implosion_energy")))
+							local tag = Tag(SynthB.random_energy_drink("synthb_brain_implosion_energy"))
+							tag:set_ability(tag)
+							add_tag(tag)
 							play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
 							return true
 						end

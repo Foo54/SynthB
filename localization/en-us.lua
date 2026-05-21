@@ -1116,8 +1116,61 @@ local descriptions = {
 				name = "Overthinking Orange",
 				text = {
 					"Next opened booster pack",
-					"has an {C:attention}#1#{}",
-					"additional cards"
+					"has {C:attention}#1#{} additional cards"
+				}
+			},
+			tag_synthb_drink_strawberry = {
+				name = "Socially Anxious Strawberry",
+				text = {
+					"Cards in next played hand",
+					"become {C:attention}Glass{} cards"
+				}
+			},
+			tag_synthb_drink_banana = {
+				name = "Burnout Banana",
+				text = {
+					"Create a {C:attention}Gros Michel",
+					"when entering shop",
+					"{C:green}#1# in #2#{} chance to be drunk"
+				}
+			},
+			tag_synthb_drink_raspberry = {
+				name = "Repressed Raspberry",
+				text = {
+					"Takes and stores {C:attention}50%{} of score",
+					"Click this tag to release it",
+					"on the next hand played",
+					"{C:inactive}[Currently holding #1# score]",
+					"{C:inactive}#2#"
+				}
+			},
+			tag_synthb_drink_grape = {
+				name = "Grieving Grape",
+				text = {
+					"Unused discards are stored",
+					"and given back in {C:attention}#1#{} round#2#",
+					"{C:inactive}[Currently {C:red}+#3#{C:inactive} Discards]"
+				}
+			},
+			tag_synthb_drink_melon = {
+				name = "Misery Melon",
+				text = {
+					"Go up to {C:red}-$#1#{} in debt",
+					"When debt limit is reached,",
+					"make money {C:money}positive"
+				}
+			},
+			tag_synthb_drink_tritip = {
+				name = "Trauma Tri-Tip",
+				text = {
+					"Create {C:attention}3{} {C:planet}Planet{} Cards",
+					"for next played poker hand"
+				}
+			},
+			tag_synthb_drink_durian = {
+				name = "Depression Durian",
+				text = {
+					"Disable next {C:attention}Boss Blind"
 				}
 			}
 		},
