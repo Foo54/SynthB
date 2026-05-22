@@ -92,11 +92,41 @@ function G.FUNCS.synthb_can_hit (e)
 	end
 end
 
+function G.FUNCS.synthb_update_stand (e)
+	local score = SynthB.blackjack_score(SynthB.Globals.blackjack.hand)
+	if score <= 11 and #SynthB.Globals.blackjack.hand.cards == 2 then
+		e.config.colour = G.C.BLUE
+		if e.config.ref_table.ability.immutable.betting * 2 > e.config.ref_table.ability.extra.xmult then
+			e.config.button = "synthb_all_in"
+			SynthB.Globals.blackjack.buttons.right_button = "All In"
+		else
+			e.config.button = "synthb_double_down"
+			SynthB.Globals.blackjack.buttons.right_button = "Double Down"
+		end
+	else
+		e.config.colour = G.C.RED
+		e.config.button = "synthb_stand"
+		SynthB.Globals.blackjack.buttons.right_button = "Stand"
+	end
+end
+
 function G.FUNCS.synthb_hit (e)
 	local _card = SynthB.Globals.blackjack.deck.cards[#SynthB.Globals.blackjack.deck.cards]
 	SynthB.Globals.blackjack.deck:remove_card(_card)
 	SynthB.Globals.blackjack.hand:emplace(_card)
 	SynthB.Globals.blackjack.buttons.middle_button = SynthB.blackjack_score(SynthB.Globals.blackjack.hand)
+end
+
+function G.FUNCS.synthb_all_in (e)
+	e.config.ref_table.ability.immutable.betting = e.config.ref_table.ability.extra.xmult
+	G.FUNCS.synthb_hit(e)
+	G.FUNCS.synthb_stand(e)
+end
+
+function G.FUNCS.synthb_double_down (e)
+	e.config.ref_table.ability.immutable.betting = 2 * e.config.ref_table.ability.immutable.betting
+	G.FUNCS.synthb_hit(e)
+	G.FUNCS.synthb_stand(e)
 end
 
 function G.FUNCS.synthb_stand (e)

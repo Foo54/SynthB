@@ -76,7 +76,7 @@ SynthB.Joker{
 									{n = G.UIT.B, config = {w = 0.1, h = 0.1}}
 								}},
 								{n = G.UIT.R, config = {align = "cm"}, nodes = {
-									{n = G.UIT.C, config = {id = "left_button", synthb_ignore = true, func = "synthb_can_lower", button = "synthb_lower", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
+									{n = G.UIT.C, config = {id = "left_button", synthb_ignore = true, func = "synthb_can_lower", button = "synthb_lower", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 1.25, maxw = 1.25, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
 										{n = G.UIT.T, config = {ref_table = SynthB.Globals.blackjack.buttons, ref_value = "left_button", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 									}},
 									{n = G.UIT.C, nodes = {
@@ -88,7 +88,7 @@ SynthB.Joker{
 									{n = G.UIT.C, nodes = {
 										{n = G.UIT.B, config = {w = 0.1, h = 0.1}}
 									}},
-									{n = G.UIT.C, config = {id = "right_button", synthb_ignore = true, func = "synthb_can_raise", button = "synthb_raise", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
+									{n = G.UIT.C, config = {id = "right_button", synthb_ignore = true, func = "synthb_can_raise", button = "synthb_raise", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 1.25, maxw = 1.25, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
 										{n = G.UIT.T, config = {ref_table = SynthB.Globals.blackjack.buttons, ref_value = "right_button", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 									}}
 								}},
@@ -167,7 +167,7 @@ SynthB.Joker{
 				---@type UIElement
 				local right_button = e:get_UIE_by_ID("right_button")
 				right_button.config.button = "synthb_stand"
-				right_button.config.func = nil
+				right_button.config.func = "synthb_update_stand"
 				right_button.config.colour = G.C.RED
 				SynthB.Globals.blackjack.buttons.right_button = "Stand"
 
@@ -206,6 +206,7 @@ SynthB.Joker{
 				---@type UIElement
 				local right_button = e:get_UIE_by_ID("right_button")
 				right_button.config.colour = G.C.UI.BACKGROUND_INACTIVE
+				right_button.config.func = nil
 				right_button.config.button = nil
 
 				card.ability.immutable.STATE_COMPLETE = true
