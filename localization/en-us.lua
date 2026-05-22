@@ -1167,6 +1167,8 @@ local descriptions = {
 					"{C:attention,s:1.2,u:inactive}Terminology",
 					"Hit{C:inactive} - {}Draw another card",
 					"Stand{C:inactive} - {}Stop drawing cards",
+					"Double Down{C:inactive} - {}Double your bet, hit, then stand",
+					"All In{C:inactive} - {}Bet all XMult, hit, then stand"
 				}
 			}
 		},
