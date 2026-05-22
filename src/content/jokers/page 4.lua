@@ -167,6 +167,7 @@ SynthB.Joker{
 				local right_button = e:get_UIE_by_ID("right_button")
 				right_button.config.button = "synthb_stand"
 				right_button.config.func = nil
+				right_button.config.colour = G.C.RED
 				SynthB.Globals.blackjack.buttons.right_button = "Stand"
 
 				card.ability.immutable.STATE_COMPLETE = true
@@ -243,6 +244,11 @@ SynthB.Joker{
 			card.ability.immutable.STATE_COMPLETE = false
 			return {
 				message = localize("b_needs_attention")
+			}
+		end
+		if context.joker_main then
+			return {
+				xmult = card.ability.extra.xmult
 			}
 		end
 	end,
