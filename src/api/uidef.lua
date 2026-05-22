@@ -50,3 +50,61 @@ function G.UIDEF.synthb_thermometer_top ()
 		}}
 	}}
 end
+
+function G.FUNCS.synthb_can_lower(e)
+	if e.config.ref_table.ability.immutable.betting >= e.config.ref_table.ability.immutable.raise then
+		e.config.colour = G.C.RED
+		e.config.button = "synthb_lower"
+	else
+		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+		e.config.button = nil
+	end
+end
+
+function G.FUNCS.synthb_can_raise(e)
+	if e.config.ref_table.ability.extra.xmult >= e.config.ref_table.ability.immutable.betting + e.config.ref_table.ability.immutable.raise then
+		e.config.colour = G.C.RED
+		e.config.button = "synthb_raise"
+	else
+		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+		e.config.button = nil
+	end
+end
+
+function G.FUNCS.synthb_lower (e)
+	e.config.ref_table.ability.immutable.betting = e.config.ref_table.ability.immutable.betting - e.config.ref_table.ability.immutable.raise
+end
+function G.FUNCS.synthb_confirm (e)
+	e.config.ref_table.ability.immutable.STATE = e.config.ref_table.ability.immutable.STATES[e.config.ref_table.ability.immutable.betting == 0 and "CONTINUE" or "PLAYING"]
+	e.config.ref_table.ability.immutable.STATE_COMPLETE = false
+end
+function G.FUNCS.synthb_raise (e)
+	e.config.ref_table.ability.immutable.betting = e.config.ref_table.ability.immutable.betting + e.config.ref_table.ability.immutable.raise
+end
+
+function G.FUNCS.synthb_can_hit (e)
+	if SynthB.Globals.blackjack.buttons.middle_button < 21 then
+		e.config.colour = G.C.RED
+		e.config.button = "synthb_hit"
+	else
+		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+		e.config.button = nil
+	end
+end
+
+function G.FUNCS.synthb_hit (e)
+	local _card = SynthB.Globals.blackjack.deck.cards[#SynthB.Globals.blackjack.deck.cards]
+	SynthB.Globals.blackjack.deck:remove_card(_card)
+	SynthB.Globals.blackjack.hand:emplace(_card)
+	SynthB.Globals.blackjack.buttons.middle_button = SynthB.blackjack_score(SynthB.Globals.blackjack.hand)
+end
+
+function G.FUNCS.synthb_stand (e)
+	e.config.ref_table.ability.immutable.STATE = e.config.ref_table.ability.immutable.STATES.OPPONENT
+	e.config.ref_table.ability.immutable.STATE_COMPLETE = false
+end
+
+function G.FUNCS.synthb_continue (e)
+	e.config.ref_table.ability.immutable.STATE = e.config.ref_table.ability.immutable.STATES.CONTINUE
+	e.config.ref_table.ability.immutable.STATE_COMPLETE = false
+end

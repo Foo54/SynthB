@@ -3,6 +3,14 @@ SynthB = SynthB or {}
 SynthB.mod = SMODS.current_mod
 
 SynthB.Globals = SynthB.Globals or {}
+SynthB.Globals.blackjacks_to_play = 0
+SynthB.Globals.blackjack = {
+	buttons = {
+		left_button = "Lower",
+		middle_button = "Confirm",
+		right_button = "Raise"
+	}
+}
 
 SynthB.GUI = {}
 

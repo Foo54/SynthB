@@ -67,21 +67,43 @@ end
 
 local card_click_ref = Card.click
 function Card:click ()
-	if self.config.center.synthb_song then
-		if SynthB.mod.config.triple_click_for_song then
-			if G.TIMERS.REAL - self.config.center.synthb_timer > 1 then
-				self.config.center.synthb_timer = G.TIMERS.REAL
-				self.config.center.synthb_count = 0
-			end
-			self.config.center.synthb_count = self.config.center.synthb_count + 1
-			if self.config.center.synthb_count >= 3 then
-				self.config.center.synthb_count = 0
-				self.config.center.synthb_timer = G.TIMERS.REAL
-				G.FUNCS.go_to_song({config = {ref_table = SynthB.key_songs[type(self.config.center.synthb_song) == "string" and self.config.center.synthb_song or self.config.center.original_key]}})
+	if not SynthB.Globals.blackjack_open then
+		if self.config.center.synthb_song then
+			if SynthB.mod.config.triple_click_for_song then
+				if G.TIMERS.REAL - self.config.center.synthb_timer > 1 then
+					self.config.center.synthb_timer = G.TIMERS.REAL
+					self.config.center.synthb_count = 0
+				end
+				self.config.center.synthb_count = self.config.center.synthb_count + 1
+				if self.config.center.synthb_count >= 3 then
+					self.config.center.synthb_count = 0
+					self.config.center.synthb_timer = G.TIMERS.REAL
+					G.FUNCS.go_to_song({config = {ref_table = SynthB.key_songs[type(self.config.center.synthb_song) == "string" and self.config.center.synthb_song or self.config.center.original_key]}})
+				end
 			end
 		end
+		if self.config.center.key == "j_synthb_blackjack" and self.ability.immutable.STATE == self.ability.immutable.STATES.NEEDS_ATTENTION then
+			self:hover()
+			SynthB.Globals.blackjack_open = self
+			self.ability.immutable.STATE = self.ability.immutable.STATES.BETTING
+			self.ability.immutable.STATE_COMPLETE = false
+		end
+		card_click_ref(self)
 	end
-	card_click_ref(self)
+end
+
+local card_hover_ref = Card.hover
+function Card:hover()
+	if not SynthB.Globals.blackjack_open then
+		card_hover_ref(self)
+	end
+end
+
+local card_stop_hover_ref = Card.stop_hover
+function Card:stop_hover()
+	if not (self.config.center.key == "j_synthb_blackjack" and SynthB.Globals.blackjack_open == self) then
+		card_stop_hover_ref(self)
+	end
 end
 
 
@@ -177,4 +199,12 @@ end
 local is_face_ref = Card.is_face
 function Card:is_face(from_boss)
 	return is_face_ref(self, from_boss) or (next(SMODS.find_card("j_synthb_human")) and self:is_suit("Diamonds"))
+end
+
+local delete_run_ref = G.delete_run
+function G:delete_run()
+	local ret = delete_run_ref(self)
+	SynthB.Globals.blackjacks_to_play = 0
+	SynthB.Globals.blackjack_open = nil
+	return ret
 end

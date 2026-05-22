@@ -167,3 +167,22 @@ function SynthB.is_mod_loaded (var)
 	if not var then return false end
 	return (SMODS.Mods[var] and SMODS.Mods[var].can_load) and true or false
 end
+
+--- Calculate Blackjack Score
+--- @param cards CardArea|Card[]
+--- @return integer score calculated score
+--- @return boolean soft soft score (has an ace scoring 11)
+function SynthB.blackjack_score (cards)
+	local sum = 0
+	if cards.cards then cards = cards.cards end
+	local aces = 0
+	for _, card in ipairs(cards) do
+		sum = sum + card.base.nominal
+		if card.base.id == 14 then aces = aces + 1 end
+	end
+	while sum > 21 and aces > 0 do
+		sum = sum - 10
+		aces = aces - 1
+	end
+	return sum, aces > 0
+end

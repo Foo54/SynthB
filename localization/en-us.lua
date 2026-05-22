@@ -535,9 +535,7 @@ local descriptions = {
 			},
 			j_synthb_blackjack = {
 				name = "Blackjack",
-				text = {
-					""
-				}
+				text = {}
 			},
 
 
@@ -1090,6 +1088,18 @@ local descriptions = {
 					"{f:5}temp{C:inactive} & {f:5}temp",
 					"{C:inactive,s:0.8}SF-A2 miki & Hiyama Kiyoteru"
 				}
+			},
+			blackjack = {
+				text = {
+					"{C:attention}Title:",
+					"Blackjack",
+					"{C:attention}Producer:",
+					"{f:5}temp{C:inactive} & {f:5}temp{C:inactive} & {f:5}temp",
+					"{C:inactive}YuchaP & DarvishP & kaichi",
+					"{C:attention}Voice:",
+					"{f:5}巡音ルカ",
+					"{C:inactive,s:0.8}Megurine Luka"
+				}
 			}
 		},
 		MiscInfoQueue = {
@@ -1258,6 +1268,19 @@ local descriptions = {
 					"{C:inactive}ID: #1#"
 				}
 			},
+			synthb_blackjack = {
+				text = {
+					"Play a game of {C:attention}Blackjack",
+					"before scoring.",
+					"Bet this cards {X:mult,C:white}XMult{}",
+					"for a chance to win",
+					"double it back",
+					"Bet {X:mult,C:white}X0{} if you don't",
+					"want to play",
+					"{C:inactive}[Currently {X:mult,C:white}X#1#{C:inactive} Mult]",
+					"{C:inactive,f:5,s:0.8}lyrics"
+				}
+			},
 			synthb_linked_temp = {
 				name = "Linked",
 				text = {
@@ -1424,6 +1447,10 @@ local descriptions = {
 			k_synthb_plus_teto = "+1 Teto",
 			b_times_singular = "time",
 			b_times_plural = "times",
+			b_needs_attention = "Click Me!",
+			k_blackjack_win = "Win!",
+			k_blackjack_lose = "Loss!",
+			k_blackjack_tie = "Tie!",
 		},
 		labels = {
 			synthb_cover_miku = "Miku Cover",

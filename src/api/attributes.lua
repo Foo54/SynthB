@@ -80,3 +80,6 @@ SMODS.Attribute{key = "Azari"}
 SMODS.Attribute{key = "isidore"}
 SMODS.Attribute{key = "kz"}
 SMODS.Attribute{key = "wotaku"}
+SMODS.Attribute{key = "YuchaP"}
+SMODS.Attribute{key = "DarvishP"}
+SMODS.Attribute{key = "kaichi"}
