@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# disable buttons
+[[patches]]
+[patches.pattern]
+target = 'engine/ui.lua'
+pattern = '''G.FUNCS[self.config.button](self)'''
+position = 'at'
+payload = '''if SynthB.Globals.blackjacks_to_play == 0 or self.config.synthb_ignore then G.FUNCS[self.config.button](self) end'''
+match_indent = true
+
+

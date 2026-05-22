@@ -208,3 +208,15 @@ function G:delete_run()
 	SynthB.Globals.blackjack_open = nil
 	return ret
 end
+
+local deck_info_ref = G.FUNCS.deck_info
+function G.FUNCS.deck_info (args)
+	if SynthB.Globals.blackjacks_to_play > 0 then return false end
+	return deck_info_ref(args)
+end
+
+local options_ref = G.FUNCS.options
+function G.FUNCS.options (args)
+	if SynthB.Globals.blackjacks_to_play > 0 then return false end
+	return options_ref(args)
+end

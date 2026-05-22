@@ -75,19 +75,19 @@ SynthB.Joker{
 									{n = G.UIT.B, config = {w = 0.1, h = 0.1}}
 								}},
 								{n = G.UIT.R, config = {align = "cm"}, nodes = {
-									{n = G.UIT.C, config = {id = "left_button", func = "synthb_can_lower", button = "synthb_lower", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
+									{n = G.UIT.C, config = {id = "left_button", synthb_ignore = true, func = "synthb_can_lower", button = "synthb_lower", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
 										{n = G.UIT.T, config = {ref_table = SynthB.Globals.blackjack.buttons, ref_value = "left_button", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 									}},
 									{n = G.UIT.C, nodes = {
 										{n = G.UIT.B, config = {w = 0.1, h = 0.1}}
 									}},
-									{n = G.UIT.C, config = {id = "middle_button", button = "synthb_confirm", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.GREEN, r = 0.1}, nodes = {
+									{n = G.UIT.C, config = {id = "middle_button", synthb_ignore = true, button = "synthb_confirm", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.GREEN, r = 0.1}, nodes = {
 										{n = G.UIT.T, config = {ref_table = SynthB.Globals.blackjack.buttons, ref_value = "middle_button", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 									}},
 									{n = G.UIT.C, nodes = {
 										{n = G.UIT.B, config = {w = 0.1, h = 0.1}}
 									}},
-									{n = G.UIT.C, config = {id = "right_button", func = "synthb_can_raise", button = "synthb_raise", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
+									{n = G.UIT.C, config = {id = "right_button", synthb_ignore = true, func = "synthb_can_raise", button = "synthb_raise", button_dist = 0, ref_table = card, align = "cm", padding = 0.1, minw = 0.75, maxw = 0.75, minh = 0.4, colour = G.C.RED, r = 0.1}, nodes = {
 										{n = G.UIT.T, config = {ref_table = SynthB.Globals.blackjack.buttons, ref_value = "right_button", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 									}}
 								}},
@@ -251,5 +251,5 @@ SynthB.Joker{
 				xmult = card.ability.extra.xmult
 			}
 		end
-	end,
+	end
 }
