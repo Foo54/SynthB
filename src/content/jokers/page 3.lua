@@ -709,7 +709,30 @@ SynthB.Joker{
 	end,
 --- @param card Card
 	set_ability = function(self, card, initial, delay_sprites)
-		card:add_sticker("eternal")
+		card:add_sticker("eternal", true)
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "active_text" },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				local is_active = false
+				local blind_ratio = (G.GAME.chips or 0) / ((G.GAME.blind or {}).chips or 1)
+				is_active = (blind_ratio and blind_ratio ~= 0 and blind_ratio >= 0.5 and G.GAME.dollars > 0) or false
+
+				card.joker_display_values.is_active = is_active
+				card.joker_display_values.active_text = is_active and localize("jdis_active") or localize("jdis_inactive")
+			end,
+			style_function = function(card, text, reminder_text, extra)
+				if reminder_text and reminder_text.children and reminder_text.children[2] then
+					reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+				end
+			end
+		}
 	end
 }
 
@@ -721,5 +744,18 @@ SynthB.Joker{
 	eternal_compat = true,
 	perishable_compat = true,
 	demicolon_compat = false,
-	attributes = {"diamonds", "suit", "face", "passive", "modify_card", "song", "vocaloid song", "miki", "Hiyama", "Flavor Foley"}
+	attributes = {"diamonds", "suit", "face", "passive", "modify_card", "song", "vocaloid song", "miki", "Hiyama", "Flavor Foley"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "human")
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "Diamonds", colour = G.ARGS.LOC_COLOURS.diamonds },
+				{ text = ")" },
+			}
+		}
+	end
 }
