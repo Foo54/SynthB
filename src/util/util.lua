@@ -34,7 +34,7 @@ function SynthB.is_face(card)
 	local id = card.base.id
 	local rank = SMODS.Ranks[card.base.value]
 	if not id then return false end
-	return (id > 0 and rank and rank.face) or next(SMODS.find_card("j_pareidolia"))
+	return (id > 0 and rank and rank.face) or next(SMODS.find_card("j_pareidolia")) or (next(SMODS.find_card("j_synthb_human")) and card:is_suit("Diamonds"))
 end
 
 function SynthB.draw_thermometer()

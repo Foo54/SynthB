@@ -38,19 +38,6 @@ function eval_card(card, context)
 	return effect, post_trig
 end
 
-
-local has_no_suit_ref = SMODS.has_no_suit
-function SMODS.has_no_suit (card)
-	if has_no_suit_ref(card) then return true end
-	if card.debuff then return false end
-	local id = card.base.id
-	local rank = SMODS.Ranks[card.base.value]
-	if not id then return false end
-	if (id > 0 and rank and rank.face) or next(SMODS.find_card("j_pareidolia")) then
-			return next(SMODS.find_card("j_synthb_medicine"))
-	end
-end
-
 local has_no_rank_ref = SMODS.has_no_rank
 function SMODS.has_no_rank (card)
 	if has_no_rank_ref(card) then return true end
@@ -185,4 +172,9 @@ function ease_dollars(mod, instant)
 		v:apply_to_run{type = 'synthb_money_changed', amount = mod}
 	end
 	return ret
+end
+
+local is_face_ref = Card.is_face
+function Card:is_face(from_boss)
+	return is_face_ref(self, from_boss) or (next(SMODS.find_card("j_synthb_human")) and self:is_suit("Diamonds"))
 end

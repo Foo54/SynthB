@@ -678,6 +678,7 @@ SynthB.Joker{
 			debt = 10
 		}
 	},
+	attributes = {"prevents_death", "economy", "song", "vocaloid song", "KAITO", "wotaku"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "shanti")
 		return {vars = {card.ability.extra.debt}}
@@ -710,4 +711,15 @@ SynthB.Joker{
 	set_ability = function(self, card, initial, delay_sprites)
 		card:add_sticker("eternal")
 	end
+}
+
+-- Human
+SynthB.Joker{
+	key = "human",
+	cost = 5,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = false,
+	attributes = {"diamonds", "suit", "face", "passive", "modify_card", "song", "vocaloid song", "miki", "Hiyama", "Flavor Foley"}
 }

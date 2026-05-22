@@ -39,6 +39,8 @@ SMODS.Attribute{key = "Momone"}
 SMODS.Attribute{key = "flower"}
 SMODS.Attribute{key = "Luka"}
 SMODS.Attribute{key = "Forte"}
+SMODS.Attribute{key = "miki"}
+SMODS.Attribute{key = "Hiyama"}
 
 
 --#region ARTISTS

@@ -271,7 +271,7 @@ local descriptions = {
 			j_synthb_medicine = {
 				name = {"{f:5}イガク", "{s:0.7}Medicine"},
 				text = {
-					"{C:attention}Face{} cards have no suit or rank,",
+					"{C:attention}Face{} cards have no rank,",
 					"always score, and give {C:mult}+#1#{} Mult",
 					"{C:inactive,s:0.8,f:5}カオが→鈍器になっちゃうヨ"
 				}
@@ -506,7 +506,9 @@ local descriptions = {
 			j_synthb_human = {
 				name = "Human",
 				text = {
-					"uh idk"
+					"All {C:diamonds}Diamonds{} are",
+					"considered {C:attention}Face{} cards",
+					"{C:inactive,s:0.8}Why do you like the stars?"
 				}
 			},
 			j_synthb_brain_implosion_energy = {
@@ -1076,6 +1078,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}カイト",
 					"{C:inactive,s:0.8}KAITO"
+				}
+			},
+			human = {
+				text = {
+					"{C:attention}Title:",
+					"Human",
+					"{C:attention}Producer:",
+					"Flavor Foley",
+					"{C:attention}Voice:",
+					"{f:5}temp{C:inactive} & {f:5}temp",
+					"{C:inactive,s:0.8}SF-A2 miki & Hiyama Kiyoteru"
 				}
 			}
 		},
