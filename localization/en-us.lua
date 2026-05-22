@@ -493,9 +493,14 @@ local descriptions = {
 				}
 			},
 			j_synthb_shanti = {
-				name = {"{f:5}name", "{s:0.8}Shanti"},
+				name = {"{f:5}シャンティ", "{s:0.8}SHANTI"},
 				text = {
-					"uh idk"
+					"Prevents Death,",
+					"takes {C:red}$#1#{}, and doubles fee",
+					"if at least {C:attention}50%{} of",
+					"required chips are scored",
+					"and you are not in debt",
+					"{C:inactive,f:5,s:0.8}金ならまた今度でいいさ"
 				}
 			},
 			j_synthb_human = {
@@ -1060,6 +1065,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
+			shanti = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}シャンティ",
+					"{C:inactive,s:0.8}SHANTI",
+					"{C:attention}Producer:",
+					"{f:5}ヲタク",
+					"{C:inactive,s:0.8}wotaku",
+					"{C:attention}Voice:",
+					"{f:5}カイト",
+					"{C:inactive,s:0.8}KAITO"
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -1385,6 +1403,7 @@ local descriptions = {
 	misc = {
 		dictionary = {
 			ph_retry_now = "いますぐ輪廻 今回も結ばれないね",
+			ph_shanti = "Shanti Happy Candy",
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning Cards",
 			k_plus_tuning = "+1 Tuning Card",

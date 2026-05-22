@@ -1,5 +1,7 @@
 
---- @extension SMODS.Joker
+
+
+---@class SynthB.Joker: SMODS.Joker
 SynthB.Joker = SMODS.Joker:extend{
 	synthb_song = true,
 	atlas = "synthb_placeholder",

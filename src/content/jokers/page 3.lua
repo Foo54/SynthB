@@ -662,3 +662,52 @@ SynthB.Joker{
 		end
 	end
 }
+
+-- SHANTI
+SynthB.Joker{
+	key = "shanti",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 3,
+	eternal_compat = true,
+	perishable_compat = false,
+	blueprint_compat = false,
+	demicolon_compat = false,
+	config = {
+		extra = {
+			debt = 10
+		}
+	},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "shanti")
+		return {vars = {card.ability.extra.debt}}
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and context.game_over and context.main_eval then
+			if G.GAME.dollars > 0 and G.GAME.chips / G.GAME.blind.chips >= 0.5 then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						G.hand_text_area.blind_chips:juice_up()
+						G.hand_text_area.game_chips:juice_up()
+						ease_dollars(-card.ability.extra.debt)
+						SMODS.scale_card(card, {
+							ref_table = card.ability.extra,
+							ref_value = "debt",
+							scalar_value = "debt"
+						})
+						return true
+					end
+				}))
+				return {
+					message = localize('k_saved_ex'),
+					saved = 'ph_shanti',
+					colour = G.C.BLUE
+				}
+			end
+		end
+	end,
+--- @param card Card
+	set_ability = function(self, card, initial, delay_sprites)
+		card:add_sticker("eternal")
+	end
+}
