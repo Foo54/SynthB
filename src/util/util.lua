@@ -186,3 +186,12 @@ function SynthB.blackjack_score (cards)
 	end
 	return sum, aces > 0
 end
+
+
+--- Adds blackjack rules info_queue
+--- @param info_queue table
+function SynthB.blackjack_info(info_queue)
+	if SynthB.mod.config.display_misc_info or SynthB.mod.config.display_blackjack_info then
+		info_queue[#info_queue+1] = {set = "MiscInfoQueue", key = "blackjack_rules", type = "descriptions"}
+	end
+end

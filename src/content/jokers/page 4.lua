@@ -33,6 +33,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"scaling", "xmult", "song", "vocaloid song", "Luka", "YuchaP", "DarvishP", "kaichi"},
 	loc_vars = function(self, info_queue, card)
+		SynthB.blackjack_info(info_queue)
 		SynthB.song_info(info_queue, "blackjack")
 		local loc_nodes = {}
 		localize{type = "other", vars = {card.ability.extra.xmult}, key = "synthb_blackjack", nodes = loc_nodes}

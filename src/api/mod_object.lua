@@ -41,6 +41,13 @@ function SynthB.mod.config_tab()
 						ref_value = 'display_energy_drink_info'
 					})
 				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
+						label = "Display Blackjack Rules",
+						ref_table = SynthB.mod.config,
+						ref_value = 'display_blackjack_info'
+					})
+				}},
 				{n = G.UIT.R, config = { align = "cm", padding = 0.01 }, nodes = {
 					{n = G.UIT.T, config = {text = "- - - - - - - - - -", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
 				}},

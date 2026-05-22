@@ -44,7 +44,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=WgYaGPNRjgI", key = "brain_implosion_energy", pos = {x = 2, y = 8}},
 	{link = "https://www.youtube.com/watch?v=POy0RvJeaqM", key = "shanti", pos = {x = 3, y = 8}},
 	{link = "https://www.youtube.com/watch?v=hbuNxmAXdNk", key = "human", pos = {x = 4, y = 8}},
-	{link = "temp", key = "blackjack", pos = {x = 0, y = 9}},
+	{link = "https://www.youtube.com/watch?v=yIc8j0oMAW8", key = "blackjack", pos = {x = 0, y = 9}},
 	--{link = "temp", key = "deco_song", pos = {x = 1, y = 9}},
 	--{link = "temp", key = "iyowa_song", pos = {x = 2, y = 9}},
 	--[[

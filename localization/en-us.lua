@@ -1094,7 +1094,7 @@ local descriptions = {
 					"{C:attention}Title:",
 					"Blackjack",
 					"{C:attention}Producer:",
-					"{f:5}temp{C:inactive} & {f:5}temp{C:inactive} & {f:5}temp",
+					"{f:5}ゆちゃ{C:inactive} & {f:5}ダルビッシュP{C:inactive} & {f:5}かいち",
 					"{C:inactive}YuchaP & DarvishP & kaichi",
 					"{C:attention}Voice:",
 					"{f:5}巡音ルカ",
@@ -1149,6 +1149,24 @@ local descriptions = {
 					"{C:synthb_melon}Misery Melon",
 					"{C:synthb_tritip}Trauma Tri-Tip",
 					"{C:synthb_durian}Depression Durian"
+				}
+			},
+			blackjack_rules = {
+				name = "Blackjack Rules",
+				text = {
+					"{C:attention,s:1.2,u:inactive}How to play",
+					"Get as close as you can to",
+					"Scoring 21 without going over to win.",
+					"Your opponent will also be",
+					"trying to do the same thing",
+					" ",
+					"{C:attention}Number{} cards are worth their value,",
+					"{C:attention}Face{} cards are worth 10,",
+					"and {C:attention}Aces{} are worth 1 or 11.",
+					" ",
+					"{C:attention,s:1.2,u:inactive}Terminology",
+					"Hit{C:inactive} - {}Draw another card",
+					"Stand{C:inactive} - {}Stop drawing cards",
 				}
 			}
 		},
@@ -1278,7 +1296,7 @@ local descriptions = {
 					"Bet {X:mult,C:white}X0{} if you don't",
 					"want to play",
 					"{C:inactive}[Currently {X:mult,C:white}X#1#{C:inactive} Mult]",
-					"{C:inactive,f:5,s:0.8}lyrics"
+					"{C:inactive,f:5,s:0.8}這いずるだけの唄"
 				}
 			},
 			synthb_linked_temp = {
