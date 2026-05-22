@@ -10,5 +10,6 @@ priority = 50
 target = 'functions/state_events.lua'
 pattern = '''check_for_unlock({type = 'hand_contents', cards = G.play.cards})'''
 position = 'before'
-payload = '''if SynthB.Globals.blackjacks_to_play > 0 then return false end'''
+payload = '''G.ACC = 0
+if SynthB.Globals.blackjacks_to_play > 0 then return false end'''
 match_indent = true
