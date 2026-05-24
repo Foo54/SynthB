@@ -847,6 +847,7 @@ local descriptions = {
 			},
 			glass_girl = {
 				text = {
+					"{C:attention}Title:",
 					"Glass Girl",
 					"{C:attention}Producer:",
 					"eggtan {C:inactive}&{} Jamie Paige",
@@ -1109,6 +1110,7 @@ local descriptions = {
 			},
 			dance_delightful = {
 				text = {
+					"{C:attention}Title:",
 					"Dance Delightful",
 					"{C:attention}Producer:",
 					"Jamie Paige",

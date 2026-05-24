@@ -204,6 +204,13 @@ end
 
 local delete_run_ref = G.delete_run
 function G:delete_run()
+	if G.jokers and G.jokers.cards then
+		for _, card in ipairs(G.jokers.cards) do
+			for _, val in ipairs(card.synthb_dd_mod or {}) do
+				SynthB.manip_card(card, function (key, _val) return _val / val end)
+			end
+		end
+	end
 	local ret = delete_run_ref(self)
 	SynthB.Globals.blackjacks_to_play = 0
 	SynthB.Globals.blackjack_open = nil

@@ -195,3 +195,46 @@ function SynthB.blackjack_info(info_queue)
 		info_queue[#info_queue+1] = {set = "MiscInfoQueue", key = "blackjack_rules", type = "descriptions"}
 	end
 end
+
+
+--- Manips card values
+--- @param card Card
+--- @param func fun(key: any, val: number): number function to manipulate the value with
+--- @param filter? fun(key: any, val: any): boolean function to filter what values are passed into func, defaults to only sending numbers
+function SynthB.manip_card(card, func, filter)
+	filter = filter or SynthB.base_manip_filter
+	for key, value in pairs(card.ability) do
+		if filter(key, value) then
+			card.ability[key] = func(key, value)
+		end
+	end
+	if card.ability.extra then
+		for key, value in pairs(card.ability.extra) do
+			if filter(key, value) then
+				card.ability.extra[key] = func(key, value)
+			end
+		end
+	end
+end
+
+--- Base filter for SynthB.manip_card
+--- @param key any
+--- @param val any
+--- @return boolean
+function SynthB.base_manip_filter(key, val)
+	return SynthB.is_number(val)
+end
+
+--- Check if value is number
+--- @param value any
+--- @return boolean
+function SynthB.is_number(value)
+	return type(value) == "number" or SynthB.is_big(value)
+end
+
+--- Check if value is bignum
+--- @param value any
+--- @return boolean
+function SynthB.is_big(value)
+	return is_big and is_big(value) or false
+end

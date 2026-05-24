@@ -277,6 +277,49 @@ SynthB.Joker{
 		SynthB.song_info(info_queue, "dance_delightful")
 		return {vars = {card.ability.extra.manip}}
 	end,
+	update = function (self, card, dt)
+		if G.jokers and G.jokers.cards and card.area == G.jokers then
+			local left_card
+			local looking_for = "left"
+			local modified_cards = {}
+			for i, _card in pairs(G.jokers.cards) do
+				if looking_for == "left" then
+					if _card == card then -- we've found our card, left_card is a target to modify
+						if left_card then -- no valid left card
+							if not left_card.synthb_dd_mod then left_card.synthb_dd_mod = {} end -- don't crash
+							if left_card.synthb_dd_mod[card] ~= card.ability.extra.manip then -- there has been a change since we last manipulated it
+								SynthB.manip_card(left_card, function(key, val) return val * card.ability.extra.manip / (left_card.synthb_dd_mod[card] or 1) end) -- remove old change, add new change
+								left_card.synthb_dd_mod[card] = card.ability.extra.manip -- store new change
+							end
+							modified_cards[left_card] = nil -- remove card from the list of cards to wipe
+						end
+						looking_for = "right" -- now look for right card
+					elseif _card.config.center.key ~= "j_synthb_dance_delightful" then -- store cards to the left of this card if they aren't other dd's
+						if not _card.synthb_dd_mod then _card.synthb_dd_mod = {} end
+						if _card.synthb_dd_mod[card] then modified_cards[_card] = i end -- card was moved and needs to have its bonus removed
+						left_card = _card
+					end
+				else -- looking for right card, or checking for any cards that were moved
+					if _card.config.center.key ~= "j_synthb_dance_delightful" then -- again, skip other dance delightfuls
+						if not _card.synthb_dd_mod then _card.synthb_dd_mod = {} end -- no crash
+						if looking_for == "right" then -- right card found
+							if _card.synthb_dd_mod[card] ~= card.ability.extra.manip then -- there has been a change, see above
+								SynthB.manip_card(_card, function(key, val) return val * card.ability.extra.manip / (_card.synthb_dd_mod[card] or 1) end)
+								_card.synthb_dd_mod[card] = card.ability.extra.manip
+							end
+							looking_for = "none" -- just store it as cards to wipe
+						elseif _card.synthb_dd_mod[card] then modified_cards[_card] = i end
+					end
+				end
+			end
+			for _card, index in pairs(modified_cards) do -- wipe cards
+				if _card.synthb_dd_mod[card] then
+					SynthB.manip_card(_card, function(key, val) return val / _card.synthb_dd_mod[card] end)
+					_card.synthb_dd_mod[card] = nil
+				end
+			end
+		end
+	end
 }
 
 
