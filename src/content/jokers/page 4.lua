@@ -255,3 +255,28 @@ SynthB.Joker{
 		end
 	end
 }
+
+
+-- Dance Delightful
+SynthB.Joker{
+	key = "dance_delightful",
+	pos = {x = 3, y = 0},
+	rarity = 4,
+	cost = 20,
+	config = {
+		extra = {
+			manip = 3
+		}
+	},
+	demicolon_compat = true,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	attributes = {"joker", "vocaloid", "vocaloid song", "Rei", "Jamie Paige"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "dance_delightful")
+		return {vars = {card.ability.extra.manip}}
+	end,
+}
+
+

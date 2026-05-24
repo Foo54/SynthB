@@ -535,9 +535,15 @@ local descriptions = {
 			},
 			j_synthb_blackjack = {
 				name = "Blackjack",
-				text = {}
+				text = {} -- this cards UI is handled with main_end
 			},
-
+			j_synthb_dance_delightful = {
+				name = "Dance Delightful",
+				text = {
+					"{C:attention}Adjacent{} Jokers have {X:attention,C:white}X#1#{} values",
+					"{C:inactive,s:0.8}I'll find the point where the two paths meet"
+				}
+			},
 
 			--- Crossmod
 			j_synthb_weathergirl = {
@@ -1100,7 +1106,17 @@ local descriptions = {
 					"{f:5}巡音ルカ",
 					"{C:inactive,s:0.8}Megurine Luka"
 				}
-			}
+			},
+			dance_delightful = {
+				text = {
+					"Dance Delightful",
+					"{C:attention}Producer:",
+					"Jamie Paige",
+					"{C:attention}Voice:",
+					"{f:5}足立レイ",
+					"{C:inactive,s:0.8}Adachi Rei"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {
