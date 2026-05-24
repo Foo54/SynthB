@@ -14,7 +14,8 @@ function Card:set_edition(edition, immediate, silent, delay)
 		end
 		if type(edition) == "table" then edition = nil end
 	end
-	if self.config.center.set ~= "Edition" and not SynthB.mod.config.allow_covers_on_any_card and edition and type(G.P_CENTERS[edition].valid_card) == 'function' then
+	-- 500 compatability checks
+	if self.config and self.config.center and self.config.center.set ~= "Edition" and not SynthB.mod.config.allow_covers_on_any_card and edition and G.P_CENTERS[edition] and G.P_CENTERS[edition].valid_card and type(G.P_CENTERS[edition].valid_card) == 'function' then
 		while type(G.P_CENTERS[edition].valid_card) == 'function' and not G.P_CENTERS[edition]:valid_card(self) do
 			edition = SMODS.poll_edition{guaranteed = true}
 		end
