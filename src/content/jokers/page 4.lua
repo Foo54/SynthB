@@ -265,7 +265,7 @@ SynthB.Joker{
 	cost = 20,
 	config = {
 		extra = {
-			manip = 3
+			manip = 2
 		}
 	},
 	demicolon_compat = true,
