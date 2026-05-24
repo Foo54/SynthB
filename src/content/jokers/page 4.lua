@@ -277,8 +277,17 @@ SynthB.Joker{
 		SynthB.song_info(info_queue, "dance_delightful")
 		return {vars = {card.ability.extra.manip}}
 	end,
+	remove_from_deck = function (self, card, from_debuff)
+		if G.jokers and G.jokers.cards then
+			for _, _card in ipairs(G.jokers.cards) do
+				if (_card.synthb_dd_mod or {})[card] then
+					SynthB.manip_card(_card, function (key, val) return val / _card.synthb_dd_mod[card] end)
+				end
+			end
+		end
+	end,
 	update = function (self, card, dt)
-		if G.jokers and G.jokers.cards and card.area == G.jokers then
+		if not card.debuff and G.jokers and G.jokers.cards and card.area == G.jokers then
 			local left_card
 			local looking_for = "left"
 			local modified_cards = {}
