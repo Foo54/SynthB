@@ -557,7 +557,12 @@ local descriptions = {
 				}
 			}, -- aikoshen
 			j_synthb_smokey_love = {
-				name = {"{f:5}"}
+				name = {"{f:5}導火愛", "{s:0.7}Smokey Love"},
+				text = {
+					"Destroy scoring cards",
+					"Between {C:attention}2{} scoring {C:hearts}Hearts",
+					"{C:inactive,f:5,s:0.8}繋いだ導火愛　濡らしたままで"
+				}
 			}
 		},
 		SongInfo = {
@@ -1122,6 +1127,18 @@ local descriptions = {
 					"{C:inactive,s:0.8}Adachi Rei"
 				}
 			},
+			smokey_love = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}導火愛",
+					"{C:inactive,s:0.8}Smokey Love",
+					"{C:attention}Producer:",
+					"Tonbi",
+					"{C:attention}Voice:",
+					"{f:5}メイコ",
+					"{C:inactive,s:0.8}MEIKO"
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {

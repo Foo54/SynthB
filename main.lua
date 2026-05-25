@@ -62,9 +62,9 @@ SynthB.load_file("api/uidef")
 SynthB.load_file("api/ownership")
 SynthB.load_file("api/drawstep")
 SynthB.load_file("api/sound")
+SynthB.load_file("api/shader")
 
 SynthB.debug("Loading Content Files")
-SynthB.load_file("content/shader")
 SynthB.load_file("content/jokers/page 1")
 SynthB.load_file("content/jokers/page 2")
 SynthB.load_file("content/jokers/page 3")
@@ -80,6 +80,7 @@ SynthB.load_file("content/tag")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
 SynthB.load_file("compat/aikoshen")
+SynthB.load_file("compat/baddirector")
 
 SynthB.debug("Loading Crossmod Files")
 -- cross mod loading modified from aikoshen
