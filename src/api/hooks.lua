@@ -218,28 +218,30 @@ function G:delete_run()
 	return ret
 end
 
-local card_save_ref = Card.save
-function Card:save()
----@diagnostic disable-next-line: undefined-field
-	if self.synthb_dd_mod then
-		local change
----@diagnostic disable-next-line: undefined-field
-		for _, val in pairs(self.synthb_dd_mod) do
-			change = true
-			break
+if SynthB.mod.config.dont_fix_infinite_value_manip then
+	local card_save_ref = Card.save
+	function Card:save()
+	---@diagnostic disable-next-line: undefined-field
+		if self.synthb_dd_mod then
+			local change
+	---@diagnostic disable-next-line: undefined-field
+			for _, val in pairs(self.synthb_dd_mod) do
+				change = true
+				break
+			end
+			if not change then goto skip end
+			local ret = card_save_ref(self)
+			if self.ability then ret.ability = copy_table(self.ability) end
+			if self.ability.extra then ret.ability.extra = copy_table(self.ability.extra) end
+	---@diagnostic disable-next-line: undefined-field
+			for _, val in pairs(self.synthb_dd_mod) do
+				SynthB.manip_card(ret, function (key, _val) return _val / val end)
+			end
+			return ret
 		end
-		if not change then goto skip end
-		local ret = card_save_ref(self)
-		if self.ability then ret.ability = copy_table(self.ability) end
-		if self.ability.extra then ret.ability.extra = copy_table(self.ability.extra) end
----@diagnostic disable-next-line: undefined-field
-		for _, val in pairs(self.synthb_dd_mod) do
-			SynthB.manip_card(ret, function (key, _val) return _val / val end)
-		end
-		return ret
+		::skip::
+		return card_save_ref(self)
 	end
-	::skip::
-	return card_save_ref(self)
 end
 
 local deck_info_ref = G.FUNCS.deck_info

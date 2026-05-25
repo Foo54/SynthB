@@ -208,7 +208,7 @@ function SynthB.manip_card(card, func, filter)
 			card.ability[key] = func(key, value)
 		end
 	end
-	if card.ability.extra then
+	if card.ability.extra and type(card.ability.extra) == "table" then
 		for key, value in pairs(card.ability.extra) do
 			if filter(key, value) then
 				card.ability.extra[key] = func(key, value)
