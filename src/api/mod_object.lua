@@ -88,7 +88,7 @@ function SynthB.mod.calculate(self, context)
 				scalar_value = "synthb_mult_gain"
 			})
 			context.other_card.ability.synthb_mult_duration = context.other_card.ability.synthb_mult_duration - 1
-			if context.other_card.ability.synthb_mult_duration == 0 then
+			if context.other_card.ability.synthb_mult_duration <= 0 then
 				context.other_card.ability.synthb_mult_duration = nil
 				context.other_card.ability.synthb_mult_gain = nil
 			end
@@ -102,9 +102,36 @@ function SynthB.mod.calculate(self, context)
 				scalar_value = "synthb_chips_gain"
 			})
 			context.other_card.ability.synthb_chips_duration = context.other_card.ability.synthb_chips_duration - 1
-			if context.other_card.ability.synthb_chips_duration == 0 then
+			if context.other_card.ability.synthb_chips_duration <= 0 then
 				context.other_card.ability.synthb_chips_duration = nil
 				context.other_card.ability.synthb_chips_gain = nil
+			end
+		end
+		-- upgrade cards that have perma xmult gain
+		if context.other_card.ability.synthb_xmult_gain then
+			SMODS.scale_card(context.other_card, {
+				ref_table = context.other_card.ability,
+				ref_value = "perma_x_mult",
+				scalar_value = "synthb_xmult_gain"
+			})
+			context.other_card.ability.synthb_xmult_duration = context.other_card.ability.synthb_xmult_duration - 1
+			if context.other_card.ability.synthb_xmult_duration <= 0 then
+				context.other_card.ability.synthb_xmult_duration = nil
+				context.other_card.ability.synthb_xmult_gain = nil
+			end
+		end
+
+		-- downgrade cards that have perma xchips loss
+		if context.other_card.ability.synthb_xchips_gain then
+			SMODS.scale_card(context.other_card, {
+				ref_table = context.other_card.ability,
+				ref_value = "perma_x_chips",
+				scalar_value = "synthb_xchips_gain"
+			})
+			context.other_card.ability.synthb_xchips_duration = context.other_card.ability.synthb_xchips_duration - 1
+			if context.other_card.ability.synthb_xchips_duration <= 0 then
+				context.other_card.ability.synthb_xchips_duration = nil
+				context.other_card.ability.synthb_xchips_gain = nil
 			end
 		end
 	end

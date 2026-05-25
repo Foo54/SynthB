@@ -12,7 +12,7 @@ extern PRECISION number temp;
 #define PI 3.14159
 
 vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
-		number y_change = 0.01 * sin(100 / temp * (texture_coords.y) + heatwaves.y * 0 + time) * temp;
+		number y_change = 0.01 * sin(100 / temp * (texture_coords.y) + heatwaves.y * 0.000001 + time) * temp;
 
     vec4 pixel_color = Texel(texture, vec2(texture_coords.x, texture_coords.y + y_change));
 

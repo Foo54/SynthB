@@ -2,9 +2,9 @@
 Vocaloid Themed Balatro Mod by Foo54
 
 ## Content
-- 47 New Jokers!
+- 49 New Jokers!
 	- 20 Voicebanks
-	- 39 Artists
+	- 40 Artists
 	- Links to all the songs
 - 8 New Tags!
 - 4 New Editions!
@@ -18,6 +18,7 @@ Vocaloid Themed Balatro Mod by Foo54
 - Crossmod Content
 	- [Feli's Jokeria](https://github.com/LasagnaFelidae/Balatro-FelisJokeria)
 	- [Aikoyori's Shenanigains](https://github.com/Aikoyori/Balatro-Aikoyoris-Shenanigans)
+	- [Bad Director](https://github.com/Clickseee/BadDirector)
 - Crossmod Support
 	- Cryptid Forcetriggers
 	- Paperback Music Attribute

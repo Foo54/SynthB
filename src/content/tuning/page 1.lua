@@ -260,9 +260,9 @@ SynthB.Tuning{
 SynthB.Tuning{
 	key = "tuning_lowpass",
 	pos = {x = 0, y = 1},
-	config = {max_rank = 10, new_rank = 2},
+	config = {max_rank = 10},
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.max_rank, card.ability.new_rank}}
+		return {vars = {card.ability.max_rank}}
 	end,
 	can_use = function(self, card)
 		if not (G.hand and #G.hand.cards > 0) then return false end
@@ -308,7 +308,7 @@ SynthB.Tuning{
 				trigger = 'after',
 				delay = 0.1,
 				func = function()
-					assert(SMODS.change_base(_card, nil, tostring(card.ability.new_rank)))
+					assert(SMODS.change_base(_card, nil, pseudorandom_element({"2", "3", "4", "5", "6", "7", "8", "9"}, "synthb_lowpass")))
 					return true
 				end
 			}))

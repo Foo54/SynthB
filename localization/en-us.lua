@@ -1360,7 +1360,28 @@ local descriptions = {
 					"the next {C:attention}#2#{} #3# scored",
 				}
 			},
+			card_synthb_xmult = {
+				text = {
+					"Gains {X:mult,C:white}X#1#{} Mult",
+					"the next {C:attention}#2#{} #3# scored",
+				}
+			},
+			card_synthb_xchips = {
+				text = {
+					"Loses {X:chips,C:white}X#1#{} Chips",
+					"the next {C:attention}#2#{} #3# scored",
+				}
+			},
 			undiscovered_tuning = {
+				name = "Not Discovered",
+				text={
+					"Purchase or use",
+					"this card in an",
+					"unseeded run to",
+					"learn what it does"
+				}
+			},
+			undiscovered_mistuning = {
 				name = "Not Discovered",
 				text={
 					"Purchase or use",
@@ -1376,6 +1397,13 @@ local descriptions = {
 					"if all played cards",
 					"have a {C:synthb_tuning_dark}UTAU Seal",
 					"{C:inactive}[Must have room]"
+				}
+			},
+			synthb_misutau_seal = {
+				name = "alUTAU Se",
+				text = {
+					"Create a {C:synthb_mistuning_dark}ingTun{} card",
+					"per unscored card without a {C:synthb_mistuning_dark}alUTAU Se",
 				}
 			},
 		},
@@ -1448,7 +1476,7 @@ local descriptions = {
 				name = "Lowpass",
 				text = {
 					"Convert all {C:attention}#1#'s{} or higher",
-					"in hand to {C:attention}#2#'s"
+					"in hand to a random rank below {C:attention}#1#"
 				}
 			},
 			c_synthb_tuning_normalize = {
@@ -1492,6 +1520,105 @@ local descriptions = {
 					"of {C:attention}#1#{} selected cards",
 				}
 			}
+		},
+		misTuning = {
+			c_synthb_mistuning_pitch_bend = {
+				name = "ch BendPit",
+				text = {
+					"Set the {E:bd_glitching,C:attention}rank{} of each",
+					"card held in hand",
+					"to the {C:attention}average{} of the other {E:bd_glitching}cards"
+				}
+			},
+			c_synthb_mistuning_velocity = {
+				name = "ocityVel",
+				text = {
+					"{E:bd_glitching}Multiply{} all stats",
+					"on a random {E:bd_glitching,C:attention}Joker{} by {X:attention,C:white}X#1#",
+					"{E:2,C:red}Cannot target the same {E:bd_glitching,C:attention}Joker{E:2,C:red} twice"
+				}
+			},
+			c_synthb_mistuning_attack = {
+				name = "ackAtt",
+				text = {
+					"{C:attention}#1#{} selected {E:bd_glitching}cards",
+					"permanently lose {X:mult,C:white}X#2#{} Mult",
+					"but gain {X:mult,C:white}X#3#{} {E:bd_glitching}Mult",
+					"the next {C:attention}#4#{} {E:bd_glitching}times{} they score"
+				}
+			},
+			c_synthb_mistuning_decay = {
+				name = "ayDec",
+				text = {
+					"{C:attention}#1#{} selected {E:bd_glitching}cards",
+					"permanently gain {X:chips,C:white}X#2#{} Chips",
+					"but lose {X:chips,C:white}X#3#{} {E:bd_glitching}Chips",
+					"the next {C:attention}#4#{} {E:bd_glitching}times{} they score"
+				}
+			},
+			c_synthb_mistuning_gender = {
+				name = "derGen",
+				text = {
+					"Each {E:bd_glitching,C:attention}card{} in hand",
+					"is either destroyed",
+					"or becomes a {E:bd_glitching,C:attention}queen"
+				}
+			},
+			c_synthb_mistuning_portamento = {
+				name = "tamentoPor",
+				text = {
+					"Distribute each {E:bd_glitching}card{}'s {E:bd_glitching,C:attention}modifications",
+					"between adjacent {C:attention}cards"
+				}
+			},
+			c_synthb_mistuning_lowpass = {
+				name = "Lowpass",
+				text = {
+					"Convert all {C:attention}#1#'s{} or higher",
+					"in hand to {C:attention}#2#'s"
+				}
+			},
+			c_synthb_mistuning_normalize = {
+				name = "Normalize",
+				text = {
+					"Convert {C:attention}#1#",
+					"selected cards into",
+					"{C:attention}#2#{} of {V:1}#3#"
+				}
+			},
+			c_synthb_mistuning_vibrato = {
+				name = "Vibrato",
+				text = {
+					"{C:attention}#1#{} selected",
+					"cards permanently gain between",
+					"{C:chips}-#3#{} and {C:chips}#2#{} Chips"
+				}
+			},
+			c_synthb_mistuning_modulation = {
+				name = "Modulation",
+				text = {
+					"{C:attention}#1#{} selected",
+					"cards permanently gain between",
+					"{C:mult}-#3#{} and {C:mult}#2#{} Mult"
+				}
+			},
+			c_synthb_mistuning_direct = {
+				name = "Direct",
+				text = {
+					"Remove all modifications",
+					"from up to {C:attention}#1#{} selected",
+					"cards and create a",
+					"{C:dark_edition}Negative{} Joker or Consumable",
+					"for every {C:attention}#1#{} modifications removed"
+				}
+			},
+			c_synthb_mistuning_tone_shift = {
+				name = "Tone Shift",
+				text = {
+					"Cycle the {C:attention}Suit{}",
+					"of {C:attention}#1#{} selected cards",
+				}
+			}
 		}
 	},
 	misc = {
@@ -1501,6 +1628,9 @@ local descriptions = {
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning Cards",
 			k_plus_tuning = "+1 Tuning Card",
+			k_mistuning = "ingTun",
+			b_mistuning_cards = "ing CardsTun",
+			k_plus_mistuning = "ing Card+1 Tun",
 			k_plus_energy_drink = "+1 Energy Drink",
 			k_synthb_plus_teto = "+1 Teto",
 			b_times_singular = "time",
@@ -1509,6 +1639,9 @@ local descriptions = {
 			k_blackjack_win = "Win!",
 			k_blackjack_lose = "Loss!",
 			k_blackjack_tie = "Tie!",
+		},
+		v_dictionary = {
+			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"
 		},
 		labels = {
 			synthb_cover_miku = "Miku Cover",
@@ -1519,6 +1652,8 @@ local descriptions = {
 			synthb_linked = "Linked",
 			tuning = "Tuning",
 			synthb_utau_seal = "UTAU Seal",
+			mistuning = "ingTun",
+			synthb_misutau_seal = "alUTAU Se",
 		}
 	}
 }

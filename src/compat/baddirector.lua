@@ -2,6 +2,8 @@ if not SynthB.is_mod_loaded("baddirector") then return end
 
 SynthB.debug("BadDirector loaded successfully")
 
+
+-- Smokey Love
 SynthB.Joker{
 	dependencies = {"baddirector"},
 	key = "smokey_love",
@@ -42,3 +44,273 @@ SynthB.Joker{
 }
 
 SynthB.inject_song_data{link = "https://www.youtube.com/watch?v=6_Fci4Y8CUk", key = "smokey_love", pos = {x = 2, y = 9}}
+
+--#region COLOURS
+
+SMODS.Gradient{
+	key = "mistuning",
+	colours = {
+		HEX("dff5fc"),
+		HEX("aaf7fd"),
+		HEX("55fbfe"),
+		HEX("00FFFF"),
+	},
+	cycle = 2,
+}
+
+SMODS.Gradient{
+	key = "mistuning_dark",
+	colours = {
+		darken(HEX("dff5fc"), 0.1),
+		darken(HEX("aaf7fd"), 0.1),
+		darken(HEX("55fbfe"), 0.1),
+		darken(HEX("00FFFF"), 0.1),
+	},
+	cycle = 2,
+}
+
+G.ARGS.LOC_COLOURS.synthb_mistuning_dark = SMODS.Gradients.synthb_mistuning_dark
+
+--#endregion
+
+--#region ATLI
+
+SMODS.Atlas{
+	key = "mistuning",
+	path = "mistuning.png",
+	px = 71,
+	py = 95
+}
+
+--#endregion
+
+--#region SEAL
+
+SMODS.Seal{
+	key = "misutau",
+	atlas = "placeholder",
+	pos = {x = 1, y = 2},
+	badge_colour = SMODS.Gradients.synthb_mistuning,
+	calculate = function(self, card, context)
+		if context.before and SMODS.in_scoring(card, context.scoring_hand) then
+			local added = 0
+			for _, _card in ipairs(context.full_hand) do
+				if not SMODS.in_scoring(_card, context.scoring_hand) and _card.seal ~= "synthb_misutau" then
+					print(0)
+					added = added + 1
+					G.E_MANAGER:add_event(Event({
+						trigger = 'before',
+						delay = 0.0,
+						func = function()
+							SMODS.add_card({ set = 'misTuning' })
+							return true
+						end
+					}))
+				end
+			end
+			if added > 0 then
+				return { message = localize{type = "variable", key = 'k_synthb_plus_mistuning', vars = {added, added > 1 and "s" or ""}}, colour = SMODS.Gradients.synthb_mistuning}
+			end
+		end
+	end,
+}
+
+--#endregion
+
+--#region CONSUMABLES
+
+SMODS.ConsumableType{
+	key = "misTuning",
+	primary_colour = HEX("FF0000"),
+	secondary_colour = SMODS.Gradients.synthb_mistuning,
+	collection_rows = {6, 6},
+	shop_rate = 2,
+	default = "c_synthb_mistuning_pitch_bend"
+}
+
+---@class SynthB.MisTuning: SMODS.Consumable
+SynthB.MisTuning = SMODS.Consumable:extend{
+	atlas = "synthb_mistuning",
+	set = 'misTuning',
+	soul_set = "Tuning",
+	soul_rate = 0.01,
+	in_pool = function (self, args)
+		return true
+	end,
+}
+
+--- Pitch Bend
+SynthB.MisTuning{
+	key = "mistuning_pitch_bend",
+	can_use = function(self, card)
+		return G.hand and G.hand.cards and #G.hand.cards >= 2
+	end,
+	use = function(self, card, area, copier)
+		local memory = {}
+		for i, _card in ipairs(G.hand.cards) do
+			memory[i] = _card.base.id
+		end
+		for i, _card in ipairs(G.hand.cards) do
+			local avg = 0
+			for ii, id in ipairs(memory) do
+				if ii ~= i then
+					avg = avg + id
+				end
+			end
+			avg = math.floor(avg / (#memory - 1))
+			-- go go gadget horrible code
+			_card:juice_up()
+			pcall(function()assert(SMODS.change_base(_card,nil,({0,'2','3','4','5','6','7','8','9','10','Jack','Queen','King','Ace'})[avg]))end)
+		end
+	end,
+}
+
+--- Velocity
+SynthB.MisTuning{
+	key = "mistuning_velocity",
+	pos = {x = 1, y = 0},
+	config = {
+		manip = 2
+	},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.manip}}
+	end,
+	can_use = function(self, card)
+		if G.jokers and G.jokers.cards then
+			for _, _card in ipairs(G.jokers.cards) do
+				if not _card.ability.synthb_mis_velocity then
+					return true
+				end
+			end
+		end
+		return false
+	end,
+	use = function (self, card, area, copier)
+		local cards = {}
+		for _, _card in ipairs(G.jokers.cards) do
+			if not _card.ability.synthb_mis_velocity then
+				cards[#cards+1] =  _card
+			end
+		end
+		local _card = pseudorandom_element(cards, "synthb_mistuning_velocity")
+		_card.ability.synthb_mis_velocity = true
+		SynthB.manip_card(_card, function (key, val) return val * card.ability.manip end)
+		_card:juice_up()
+	end
+}
+
+--- Attack
+SynthB.MisTuning{
+	key = "mistuning_attack",
+	pos = {x = 2, y = 0},
+	config = {max_highlighted = 3, xmult_loss = 0.5, xmult_gain = 0.2, xmult_duration = 5},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, card.ability.xmult_loss, card.ability.xmult_gain, card.ability.xmult_duration}}
+	end,
+	use = function(self, card, area, copier)
+		for _, _card in ipairs(G.hand.highlighted) do
+			_card.ability.perma_x_mult = _card.ability.perma_x_mult - card.ability.xmult_loss
+			_card.ability.synthb_xmult_gain = card.ability.xmult_gain
+			_card.ability.synthb_xmult_duration = (_card.ability.synthb_xmult_duration or 0) + card.ability.xmult_duration
+			_card:juice_up()
+		end
+		G.hand:unhighlight_all()
+	end,
+}
+
+
+--- Decay
+SynthB.MisTuning{
+	key = "mistuning_decay",
+	pos = {x = 3, y = 0},
+	config = {max_highlighted = 3, xchips_gain = 2, xchips_loss = 0.5, xchips_duration = 5},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, card.ability.xchips_gain, card.ability.xchips_loss, card.ability.xchips_duration}}
+	end,
+	use = function(self, card, area, copier)
+		for _, _card in ipairs(G.hand.highlighted) do
+			_card.ability.perma_x_chips = _card.ability.perma_x_chips + card.ability.xchips_gain
+			_card.ability.synthb_xchips_gain = -card.ability.xchips_loss
+			_card.ability.synthb_xchips_duration = (_card.ability.synthb_xchips_duration or 0) + card.ability.xchips_duration
+			_card:juice_up()
+		end
+		G.hand:unhighlight_all()
+	end,
+}
+
+
+--- Gender
+SynthB.MisTuning{
+	key = "mistuning_gender",
+	pos = {x = 4, y = 0},
+	can_use = function (self, card)
+		if G.hand and G.hand.cards then
+			for _, _card in ipairs(G.hand.cards) do
+				if _card:get_id() ~= 12 then
+					return true
+				end
+			end
+		end
+		return false
+	end,
+	use = function (self, card, area, copier)
+		local destroy = {}
+		for _, _card in ipairs(G.hand.cards) do
+			if _card:get_id() ~= 12 then
+				if pseudorandom("synthb_mis_gender", 1, 2) == 1 then
+					assert(SMODS.change_base(_card, nil, "Queen"))
+					_card:juice_up()
+				else
+					destroy[#destroy+1] = _card
+				end
+			end
+		end
+		SMODS.destroy_cards(destroy)
+	end
+}
+
+--- Portamento
+SynthB.MisTuning{
+	key = "mistuning_poratmento",
+	pos = {x = 5, y = 0},
+	can_use = function (self, card)
+		return G.hand and G.hand.cards and #G.hand.cards >= 2
+	end,
+	use = function (self, card, area, copier)
+		local memory = {}
+		for index, _card in ipairs(G.hand) do
+			memory[index] = copy_table(_card.ability)
+		end
+		for index, _card in ipairs(G.hand) do
+			local excluded_keys = {
+				order = true,
+				hands_played_at_create = true,
+				played_this_ante = true,
+				debuff_sources = true,
+				set = true,
+				effect = true,
+				type = true,
+				name = true,
+				delay_seal = true,
+				seal = true
+			}
+			local stupid_annoying_keys = {
+				x_chips = true,
+				x_mult = true,
+				h_x_chips = true,
+				h_x_mult = true
+			}
+			for key, value in pairs(memory[index]) do
+				if not excluded_keys[key] then
+					if not stupid_annoying_keys[key] and value ~= 0 or value ~= 1 then
+						pcall(function() G.hand.cards[index - 1].ability[key] = G.hand.cards[index - 1].ability[key] + (value / 2) end) -- pcall for table stuff
+						pcall(function() G.hand.cards[index + 1].ability[key] = G.hand.cards[index - 1].ability[key] + (value / 2) end) -- pcall for table stuff
+						pcall(function() _card.ability.key = _card.ability.key - value end)
+						if stupid_annoying_keys[key] then _card.ability[key] = 1 end
+						_card:juice_up()
+					end
+				end
+			end
+		end
+	end
+}
