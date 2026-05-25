@@ -206,8 +206,9 @@ local delete_run_ref = G.delete_run
 function G:delete_run()
 	if G.jokers and G.jokers.cards then
 		for _, card in ipairs(G.jokers.cards) do
-			for _, val in ipairs(card.synthb_dd_mod or {}) do
+			for _card, val in ipairs(card.synthb_dd_mod or {}) do
 				SynthB.manip_card(card, function (key, _val) return _val / val end)
+				card.synthb_dd_mod[_card] = nil
 			end
 		end
 	end
@@ -215,6 +216,30 @@ function G:delete_run()
 	SynthB.Globals.blackjacks_to_play = 0
 	SynthB.Globals.blackjack_open = nil
 	return ret
+end
+
+local card_save_ref = Card.save
+function Card:save()
+---@diagnostic disable-next-line: undefined-field
+	if self.synthb_dd_mod then
+		local change
+---@diagnostic disable-next-line: undefined-field
+		for _, val in pairs(self.synthb_dd_mod) do
+			change = true
+			break
+		end
+		if not change then goto skip end
+		local ret = card_save_ref(self)
+		if self.ability then ret.ability = copy_table(self.ability) end
+		if self.ability.extra then ret.ability.extra = copy_table(self.ability.extra) end
+---@diagnostic disable-next-line: undefined-field
+		for _, val in pairs(self.synthb_dd_mod) do
+			SynthB.manip_card(ret, function (key, _val) return _val / val end)
+		end
+		return ret
+	end
+	::skip::
+	return card_save_ref(self)
 end
 
 local deck_info_ref = G.FUNCS.deck_info

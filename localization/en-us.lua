@@ -555,7 +555,10 @@ local descriptions = {
 					"{C:inactive}1st card: 1 in 1, 5th card: 1 in 5",
 					"{C:inactive,s:0.8}I heard they said it looked like rain"
 				}
-			},
+			}, -- aikoshen
+			j_synthb_smokey_love = {
+				name = {"{f:5}"}
+			}
 		},
 		SongInfo = {
 			antani_itten_no = {

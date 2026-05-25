@@ -282,6 +282,7 @@ SynthB.Joker{
 			for _, _card in ipairs(G.jokers.cards) do
 				if (_card.synthb_dd_mod or {})[card] then
 					SynthB.manip_card(_card, function (key, val) return val / _card.synthb_dd_mod[card] end)
+					_card.synthb_dd_mod[card] = nil
 				end
 			end
 		end
