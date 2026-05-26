@@ -2,7 +2,7 @@
 Vocaloid Themed Balatro Mod by Foo54
 
 ## Content
-- 49 New Jokers!
+- 47 New Jokers!
 	- 20 Voicebanks
 	- 40 Artists
 	- Links to all the songs
@@ -17,7 +17,13 @@ Vocaloid Themed Balatro Mod by Foo54
 	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content
 	- [Feli's Jokeria](https://github.com/LasagnaFelidae/Balatro-FelisJokeria)
+		- +1 Joker
 	- [Aikoyori's Shenanigains](https://github.com/Aikoyori/Balatro-Aikoyoris-Shenanigans)
+		- +1 Joker
+	- [Bad Director](https://github.com/Clickseee/BadDirector)
+		- +1 Joker
+		- +13 Consumables
+		- +1 Seal
 - Crossmod Support
 	- Cryptid Forcetriggers
 	- Paperback Music Attribute

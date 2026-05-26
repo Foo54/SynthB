@@ -40,13 +40,13 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=YSBZFVSvqL0", key = "character_t", pos = {x = 3, y = 7}},
 	{link = "https://www.youtube.com/watch?v=4-QtK09Lfdk", key = "feedback", pos = {x = 4, y = 7}},
 	{link = "https://www.youtube.com/watch?v=PqJNc9KVIZE", key = "tell_your_world", pos = {x = 0, y = 8}},
-	-- weathergirl
+	-- weathergirl / Aikoshen
 	{link = "https://www.youtube.com/watch?v=WgYaGPNRjgI", key = "brain_implosion_energy", pos = {x = 2, y = 8}},
 	{link = "https://www.youtube.com/watch?v=POy0RvJeaqM", key = "shanti", pos = {x = 3, y = 8}},
 	{link = "https://www.youtube.com/watch?v=hbuNxmAXdNk", key = "human", pos = {x = 4, y = 8}},
 	{link = "https://www.youtube.com/watch?v=yIc8j0oMAW8", key = "blackjack", pos = {x = 0, y = 9}},
 	{link = "https://www.youtube.com/watch?v=u33469XYVWc", key = "dance_delightful", pos = {x = 1, y = 9}},
-	{link = "https://www.youtube.com/watch?v=6_Fci4Y8CUk", key = "smokey_love", pos = {x = 2, y = 9}},
+	-- smokey love / Bad Director
 	--{link = "temp", key = "deco_song", pos = {x = 1, y = 9}},
 	--{link = "temp", key = "iyowa_song", pos = {x = 2, y = 9}},
 	--[[

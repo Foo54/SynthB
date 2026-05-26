@@ -2,10 +2,6 @@ if not SynthB.is_mod_loaded("baddirector") then return end
 
 SynthB.debug("BadDirector loaded successfully")
 
-SynthB.debug("BadDirector Crossmod has been disabled")
-
-do return end
-
 
 -- Smokey Love
 SynthB.Joker{
