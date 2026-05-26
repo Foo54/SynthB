@@ -591,3 +591,72 @@ SynthB.MisTuning{
 	end
 }
 
+--#endregion
+
+--#region MISPRINT SPECTRAL
+
+BadDirector.MisSpect{
+	key = "misspectral_voicebank",
+	atlas = "placeholder",
+	misprint_original = "c_synthb_spectral_voicebank",
+	pos = {x = 2, y = 2},
+	config = {extra = {seal = "synthb_utau", seal_m = "synthb_misutau"}, dem = 6},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+		info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal_m]
+		local num, dem = SMODS.get_probability_vars(card, 1, card.ability.dem, "synthb_mis_voicebank")
+		return {vars = {num, dem}}
+	end,
+	can_use = function(self, card)
+		return G.hand and #G.hand.cards > 0
+	end,
+	use = function(self, card, area, copier)
+		play_sound('bd_inapmit')
+		for i = 1, #G.hand.cards do
+			local woah = G.hand.cards[i]
+			if SMODS.pseudorandom_probability(card, "synthb_mis_voicebank", 1, card.ability.dem) then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						woah:juice_up(0.3, 0.5)
+						return true
+					end
+				}))
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.1,
+					func = function()
+						if SMODS.pseudorandom_probability(card,"goodboy",1,5,nil,true) then
+							woah:set_seal(card.ability.extra.seal_m, nil, true)
+						else
+							woah:set_seal(card.ability.extra.seal, nil, true)
+						end
+						return true
+					end
+				}))
+				delay(0.5)
+			else
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.6,
+					func = function()
+						attention_text({
+							text = localize('k_nope_ex'),
+							scale = 1,
+							hold = 1,
+							major = woah,
+							backdrop_colour = G.C.SECONDARY_SET.Tarot,
+							align = 'cm',
+							offset = { x = 0 + ((G.hand.cards[(math.floor(#G.hand.cards / 2))].T.x - woah.T.x) / -50), y = -2 },
+							silent = true,
+						})
+						play_sound('generic1')
+						woah:juice_up(0.3, 0.5)
+						return true
+					end
+				}))
+			end
+		end
+	end
+}
+
+--#endregion

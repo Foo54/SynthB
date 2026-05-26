@@ -1625,6 +1625,17 @@ local descriptions = {
 					"of {E:bd_glitching}all{} cards in {E:bd_glitching,C:attention}hand",
 				}
 			}
+		},
+		mispectral = {
+			c_synthb_misspectral_voicebank = {
+				name = "ankVoiceb",
+				text = {
+						"{E:bd_glitching,C:green}#1#{}{C:green} in {C:green}#2#{} chance to",
+						"{E:bd_glitching}add a{} {C:synthb_tuning_dark}UTAU Seal{} or",
+						"a {C:synthb_mistuning_dark}alUTAU Se",
+						"to each {E:bd_glitching}card in{} your hand",
+				}
+			}
 		}
 	},
 	misc = {
