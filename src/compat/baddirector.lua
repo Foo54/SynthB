@@ -128,6 +128,7 @@ SMODS.Spectral:take_ownership("bd_heat", {
 	loc_vars = function(self, info_queue, card)
 	---@diagnostic disable-next-line: need-check-nil
 		local ret = bd_heat_loc_vars_ref(self, info_queue, card)
+		SynthB.heat_info(info_queue)
 		ret.key = "c_synthb_bd_heat"
 		return ret
 	end,
@@ -374,14 +375,12 @@ SynthB.MisTuning{
 	pos = {x = 1, y = 1},
 	config = {max_highlighted = 3, seal = "[Seal]", enhancement = "[Enhancement]"},
 	set_ability = function (self, card, initial, delay_sprites)
-		if not card.area.config.collection then
-			card.ability.seal = pseudorandom_element(SMODS.Seals, "synthb_normalize_rank")
-			_, card.ability.enhancement = pseudorandom_element(SMODS.P_CENTER_POOLS, "synthb_normalize_suit")
-			card.ability.enhancement = card.ability.enhancement.key
-		end
+		_, card.ability.seal = pseudorandom_element(SMODS.Seals, "synthb_mis_normalize_seal")
+		card.ability.enhancement = pseudorandom_element(G.P_CENTER_POOLS.Enhanced, "synthb_mis_normalize_enhancement")
+		card.ability.enhancement = card.ability.enhancement.key
 	end,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.max_highlighted, localize(card.ability.rank, "ranks"), localize(card.ability.suit, "suits_plural"), colours = {G.C.SUITS[card.ability.suit]}}}
+		return {vars = {card.ability.max_highlighted, card.area.config.collection and "[Seal]" or localize{type = "name_text", set = "Other", key = (card.ability.seal .. "_seal"):lower()}, card.area.config.collection and "[Enhancement]" or localize{type = "name_text", set = "Enhanced", key = card.ability.enhancement}, colours = {card.area.config.collection and G.ARGS.LOC_COLOURS.attention or SMODS.Seals[card.ability.seal].badge_colour}}}
 	end,
 	use = function(self, card, area, copier)
 		G.E_MANAGER:add_event(Event({
@@ -412,7 +411,10 @@ SynthB.MisTuning{
 				trigger = 'after',
 				delay = 0.1,
 				func = function()
-					assert(SMODS.change_base(G.hand.highlighted[i], card.ability.suit, card.ability.rank))
+					---@type Card
+					local _card = G.hand.highlighted[i]
+					_card:set_seal(card.ability.seal)
+					_card:set_ability(card.ability.enhancement)
 					return true
 				end
 			}))

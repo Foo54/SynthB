@@ -1590,7 +1590,7 @@ local descriptions = {
 				text = {
 					"Convert {C:attention}#1#",
 					"{E:bd_glitching}selected cards{} into",
-					"{V:1}#2#{} {C:attention}#3#"
+					"{V:1}#2#{} {C:attention}#3#s{}"
 				}
 			},
 			c_synthb_mistuning_vibrato = {
