@@ -57,12 +57,12 @@ pattern = '''if SMODS.shatters(card) then
                         end'''
 position = 'at'
 payload = '''if not SMODS.calculate_context({prevent_destroy_card = card}).prevent_destroy then
-												if SMODS.shatters(card) then
-                            card:shatter()
-                        else
-                            card:start_dissolve(nil, i == #G.hand.highlighted)
-                        end
-												end'''
+if SMODS.shatters(card) then
+    card:shatter()
+else
+    card:start_dissolve(nil, i == #G.hand.highlighted)
+end
+end'''
 match_indent = true
 
 #grim, incantation, familiar
@@ -76,12 +76,12 @@ pattern = '''if SMODS.shatters(card) then
                         end'''
 position = 'at'
 payload = '''if not SMODS.calculate_context({prevent_destroy_card = card}).prevent_destroy then
-												if SMODS.shatters(card) then
-                            card:shatter()
-                        else
-                            card:start_dissolve(nil, i ~= #destroyed_cards)
-                        end
-												end'''
+if SMODS.shatters(card) then
+    card:shatter()
+else
+    card:start_dissolve(nil, i ~= #destroyed_cards)
+end
+end'''
 match_indent = true
 
 # immolate
@@ -95,12 +95,12 @@ pattern = '''if SMODS.shatters(card) then
                         end'''
 position = 'at'
 payload = '''if not SMODS.calculate_context({prevent_destroy_card = card}).prevent_destroy then
-												if SMODS.shatters(card) then
-                            card:shatter()
-                        else
-                            card:start_dissolve(nil, i == #destroyed_cards)
-                        end
-												end'''
+if SMODS.shatters(card) then
+    card:shatter()
+else
+    card:start_dissolve(nil, i == #destroyed_cards)
+end
+end'''
 match_indent = true
 
 # sixth sense

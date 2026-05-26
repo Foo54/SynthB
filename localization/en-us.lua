@@ -1150,6 +1150,18 @@ local descriptions = {
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
+			shiawase_for_you = {
+				text = {
+					"{C:attention}Title:",
+					"SHIAWASE FOR YOU",
+					"{C:attention}Producer:",
+					"{f:5}いよわ",
+					"{C:inactive,s:0.8}Iyowa",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {
