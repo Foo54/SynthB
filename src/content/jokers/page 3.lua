@@ -516,7 +516,9 @@ SynthB.Joker{
 -- Character T
 SynthB.Joker{
 	key = "character_t",
-	pos = {x = 0, y = 0},
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 8,
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
@@ -525,7 +527,7 @@ SynthB.Joker{
 		SynthB.song_info(info_queue, "character_t")
 	end,
 	calculate = function(self, card, context)
-		if context.forcetrigger or (context.setting_blind and #G.jokers.cards == 1) then
+		if context.forcetrigger or context.setting_blind then
 			local do_teto_edition = SMODS.pseudorandom_probability(card, "synthb_character_t", 1, 10, nil, true)
 			G.GAME.joker_buffer = G.GAME.joker_buffer + 1
 			G.E_MANAGER:add_event(Event({
