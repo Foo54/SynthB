@@ -520,12 +520,6 @@ local descriptions = {
 			},
 
 			-- Page 4
-			j_synthb_needle = {
-				name = "needLe",
-				text = {
-					""
-				}
-			},
 			j_synthb_shiawase_for_you = {
 				name = "SHIAWASE FOR YOU",
 				text = {
@@ -562,7 +556,15 @@ local descriptions = {
 					"Between {C:attention}2{} scoring {C:hearts}Hearts",
 					"{C:inactive,f:5,s:0.8}繋いだ導火愛　濡らしたままで"
 				}
-			}
+			}, -- Bad Director
+			j_synthb_needle = {
+				name = "needLe",
+				text = {
+					"Prevents {C:hearts}Hearts{} from being destroyed",
+					"{C:green}#1# in #2#{} chance to fail",
+					"{C:inactive,s:0.8,f:5}lyrics"
+				}
+			}, -- Bad Director
 		},
 		SongInfo = {
 			antani_itten_no = {
@@ -1137,7 +1139,19 @@ local descriptions = {
 					"{f:5}メイコ",
 					"{C:inactive,s:0.8}MEIKO"
 				}
-			}
+			},
+			needle = {
+				text = {
+					"{C:attention}Title",
+					"needLe",
+					"{C:attention}Producer:",
+					"{f:5}デコニーナ",
+					"{C:inactive,s:0.8}Deco*27",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {

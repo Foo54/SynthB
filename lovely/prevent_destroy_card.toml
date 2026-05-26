@@ -1,0 +1,122 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# add context to prevent cards from being destroyed
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''for _, card in ipairs(cards) do
+        if bypass_eternal or not SMODS.is_eternal(card, {destroy_cards = true}) then'''
+position = 'before'
+payload = '''for i = #cards, 1, -1 do
+	local prevent = SMODS.calculate_context({prevent_destroy_card = cards[i]})
+	if prevent.prevent_destroy then
+		table.remove(cards, i)
+	end
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''-- TARGET: card destroyed'''
+position = 'after'
+payload = '''local prevent = SMODS.calculate_context({prevent_destroy_card = card})
+if prevent.prevent_destroy then
+	destroyed = false
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''    local key_return_flags = {'''
+position = 'after'
+payload = '''prevent_destroy = true,'''
+match_indent = true
+
+# hanged man
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''destroyed_cards[#destroyed_cards+1] = G.hand.highlighted[i]'''
+position = 'at'
+payload = '''destroyed_cards[#destroyed_cards+1] = not SMODS.calculate_context({prevent_destroy_card = card}).prevent_destroy and G.hand.highlighted[i] or nil'''
+match_indent = true
+
+#also hanged man
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''if SMODS.shatters(card) then
+                            card:shatter()
+                        else
+                            card:start_dissolve(nil, i == #G.hand.highlighted)
+                        end'''
+position = 'at'
+payload = '''if not SMODS.calculate_context({prevent_destroy_card = card}).prevent_destroy then
+												if SMODS.shatters(card) then
+                            card:shatter()
+                        else
+                            card:start_dissolve(nil, i == #G.hand.highlighted)
+                        end
+												end'''
+match_indent = true
+
+#grim, incantation, familiar
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''if SMODS.shatters(card) then
+                            card:shatter()
+                        else
+                            card:start_dissolve(nil, i ~= #destroyed_cards)
+                        end'''
+position = 'at'
+payload = '''if not SMODS.calculate_context({prevent_destroy_card = card}).prevent_destroy then
+												if SMODS.shatters(card) then
+                            card:shatter()
+                        else
+                            card:start_dissolve(nil, i ~= #destroyed_cards)
+                        end
+												end'''
+match_indent = true
+
+# immolate
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''if SMODS.shatters(card) then
+                            card:shatter()
+                        else
+                            card:start_dissolve(nil, i == #destroyed_cards)
+                        end'''
+position = 'at'
+payload = '''if not SMODS.calculate_context({prevent_destroy_card = card}).prevent_destroy then
+												if SMODS.shatters(card) then
+                            card:shatter()
+                        else
+                            card:start_dissolve(nil, i == #destroyed_cards)
+                        end
+												end'''
+match_indent = true
+
+# sixth sense
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''context.full_hand[1].sixth_sense = true'''
+position = 'at'
+payload = '''context.full_hand[1].sixth_sense = not SMODS.calculate_context({prevent_destroy_card = context.full_hand[1]}).prevent_destroy'''
+match_indent = true
+
+# trading card
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''remove = true,'''
+position = 'at'
+payload = '''remove = not SMODS.calculate_context({prevent_destroy_card = context.full_hand[1]}).prevent_destroy,'''
+match_indent = true

@@ -63,6 +63,7 @@ SynthB.load_file("api/ownership")
 SynthB.load_file("api/drawstep")
 SynthB.load_file("api/sound")
 SynthB.load_file("api/shader")
+SynthB.load_file("api/smods")
 
 SynthB.debug("Loading Content Files")
 SynthB.load_file("content/jokers/page 1")
