@@ -560,7 +560,7 @@ local descriptions = {
 				text = {
 					"Prevents {C:hearts}Hearts{} from being destroyed",
 					"{C:green}#1# in #2#{} chance to fail",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}簡単に愛は終わらないよ"
 				}
 			}, -- Bad Director
 		},

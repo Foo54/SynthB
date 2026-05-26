@@ -14,7 +14,8 @@ SMODS.Attribute{key = "Tonbi"}
 SynthB.Joker{
 	dependencies = {"baddirector"},
 	key = "smokey_love",
-	pos = {x = 1, y = 0},
+	atlas = "bd_jokers",
+	pos = {x = 0, y = 0},
 	rarity = 2,
 	cost = 7,
 	eternal_compat = true,
@@ -53,6 +54,8 @@ SynthB.Joker{
 -- needLe
 SynthB.Joker{
 	dependencies = {"baddirector"},
+	atlas = "bd_jokers",
+	pos = {x = 1, y = 0},
 	key = "needle",
 	cost = 5,
 	config = {
@@ -86,7 +89,7 @@ SynthB.Joker{
 
 SynthB.inject_song_data{
 	{link = "https://www.youtube.com/watch?v=6_Fci4Y8CUk", key = "smokey_love", pos = {x = 2, y = 9}},
-	{link = "temp", key = "needle", pos = {x = 3, y = 9}},
+	{link = "https://www.youtube.com/watch?v=viNruoTceiw", key = "needle", pos = {x = 3, y = 9}},
 }
 
 --#endregion
@@ -124,6 +127,13 @@ G.ARGS.LOC_COLOURS.synthb_mistuning_dark = SMODS.Gradients.synthb_mistuning_dark
 SMODS.Atlas{
 	key = "mistuning",
 	path = "mistuning.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas{
+	key = "bd_jokers",
+	path = "bad_director_jokers.png",
 	px = 71,
 	py = 95
 }
