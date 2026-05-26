@@ -1586,7 +1586,7 @@ local descriptions = {
 				}
 			},
 			c_synthb_mistuning_normalize = {
-				name = "Normalize",
+				name = "malizeNor",
 				text = {
 					"Convert {C:attention}#1#",
 					"{E:bd_glitching}selected cards{} into",
