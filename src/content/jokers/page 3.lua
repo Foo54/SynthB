@@ -56,9 +56,9 @@ SynthB.Joker{
 -- Heat Abnormal
 SynthB.Joker{
 	key = "heat_abnormal",
-	pos = {x = 2, y = 0},
-	rarity = 3,
-	cost = 8,
+	pos = {x = 3, y = 0},
+	rarity = 4,
+	cost = 20,
 	config = {
 		extra = {
 			raise = 1,
