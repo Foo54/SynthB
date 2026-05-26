@@ -117,6 +117,22 @@ SMODS.Seal{
 
 --#endregion
 
+--#region OWNERSHIP
+local bd_heat_loc_vars_ref = SMODS.Consumables.c_bd_heat.loc_vars
+local bd_heat_use_ref = SMODS.Consumables.c_bd_heat.use
+SMODS.Consumable:take_ownership("bd_heat", {
+	loc_vars = function (self, info_queue, card)
+		local ret = bd_heat_loc_vars_ref(self, info_queue, card)
+		ret.key = "c_synthb_bd_heat"
+		return ret
+	end,
+	use = function (self, card, area, copier)
+		bd_heat_use_ref(self, card, area, copier)
+		SynthB.ease_temp(30)()
+	end
+})
+--#endregion
+
 --#region CONSUMABLES
 
 SMODS.ConsumableType{
@@ -130,6 +146,7 @@ SMODS.ConsumableType{
 
 ---@class SynthB.MisTuning: SMODS.Consumable
 SynthB.MisTuning = SMODS.Consumable:extend{
+	dependencies = {"baddirector"},
 	atlas = "synthb_mistuning",
 	set = 'misTuning',
 	soul_set = "Tuning",
@@ -238,7 +255,6 @@ SynthB.MisTuning{
 	end,
 }
 
-
 --- Gender
 SynthB.MisTuning{
 	key = "mistuning_gender",
@@ -271,17 +287,17 @@ SynthB.MisTuning{
 
 --- Portamento
 SynthB.MisTuning{
-	key = "mistuning_poratmento",
+	key = "mistuning_portamento",
 	pos = {x = 5, y = 0},
 	can_use = function (self, card)
 		return G.hand and G.hand.cards and #G.hand.cards >= 2
 	end,
 	use = function (self, card, area, copier)
 		local memory = {}
-		for index, _card in ipairs(G.hand) do
+		for index, _card in ipairs(G.hand.cards) do
 			memory[index] = copy_table(_card.ability)
 		end
-		for index, _card in ipairs(G.hand) do
+		for index, _card in ipairs(G.hand.cards) do
 			local excluded_keys = {
 				order = true,
 				hands_played_at_create = true,
@@ -302,11 +318,15 @@ SynthB.MisTuning{
 			}
 			for key, value in pairs(memory[index]) do
 				if not excluded_keys[key] then
-					if not stupid_annoying_keys[key] and value ~= 0 or value ~= 1 then
-						pcall(function() G.hand.cards[index - 1].ability[key] = G.hand.cards[index - 1].ability[key] + (value / 2) end) -- pcall for table stuff
-						pcall(function() G.hand.cards[index + 1].ability[key] = G.hand.cards[index - 1].ability[key] + (value / 2) end) -- pcall for table stuff
-						pcall(function() _card.ability.key = _card.ability.key - value end)
-						if stupid_annoying_keys[key] then _card.ability[key] = 1 end
+					if not stupid_annoying_keys[key] and value ~= 0 then
+						pcall(function() G.hand.cards[index - 1].ability[key] = (G.hand.cards[index - 1].ability[key] or 0) + (value / 2) end) -- pcall for table stuff
+						pcall(function() G.hand.cards[index + 1].ability[key] = (G.hand.cards[index + 1].ability[key] or 0) + (value / 2) end) -- pcall for table stuff
+						pcall(function() _card.ability[key] = _card.ability[key] - value end)
+						_card:juice_up()
+					elseif stupid_annoying_keys[key] and value ~= 1 then
+						pcall(function() G.hand.cards[index - 1].ability[key] = (G.hand.cards[index - 1].ability[key] or 1) + ((value - 1) / 2) end) -- pcall for table stuff
+						pcall(function() G.hand.cards[index + 1].ability[key] = (G.hand.cards[index + 1].ability[key] or 1) + ((value - 1) / 2) end) -- pcall for table stuff
+						pcall(function() _card.ability[key] = _card.ability[key] - value + 1 end)
 						_card:juice_up()
 					end
 				end
@@ -314,3 +334,5 @@ SynthB.MisTuning{
 		end
 	end
 }
+
+

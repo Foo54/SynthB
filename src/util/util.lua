@@ -77,6 +77,7 @@ function SynthB.ease_temp(mod)
 				return true
 			end
 		})
+		return true
 	end
 end
 

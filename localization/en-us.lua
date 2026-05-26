@@ -1415,6 +1415,15 @@ local descriptions = {
 					"to {C:attention}1{} selected",
 					"card in your hand"
 				}
+			},
+			c_synthb_bd_heat = {
+				name = "Heat",
+				text = {
+					"Add {C:dark_edition}Thermal{} to",
+					"a random {C:attention}Joker,",
+					"{C:red}-#1#{} discard size",
+					"Raise the {C:temperature}Temperature{} by {X:temp,C:white}30C"
+				},
 			}
 		},
 		Tuning = {
