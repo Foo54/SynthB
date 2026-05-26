@@ -1594,19 +1594,19 @@ local descriptions = {
 				}
 			},
 			c_synthb_mistuning_vibrato = {
-				name = "Vibrato",
+				name = "ratoVib",
 				text = {
 					"{C:attention}#1#{} selected",
 					"cards permanently gain between",
-					"{C:chips}-#3#{} and {C:chips}#2#{} Chips"
+					"{X:chips,C:white}-X#3#{} and {X:chips,C:white}X#2#{} XChips"
 				}
 			},
 			c_synthb_mistuning_modulation = {
-				name = "Modulation",
+				name = "ulationMod",
 				text = {
 					"{C:attention}#1#{} selected",
 					"cards permanently gain between",
-					"{C:mult}-#3#{} and {C:mult}#2#{} Mult"
+					"{X:mult,C:white}-X#3#{} and {X:mult,C:white}X#2#{} XMult"
 				}
 			},
 			c_synthb_mistuning_direct = {

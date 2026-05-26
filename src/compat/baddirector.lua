@@ -444,3 +444,36 @@ SynthB.MisTuning{
 	end,
 }
 
+-- Vibrato
+SynthB.MisTuning{
+	key = "mistuning_vibrato",
+	pos = {x = 2, y = 1},
+	config = {max_highlighted = 5, gain = 2},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain/4}}
+	end,
+	use = function(self, card, area, copier)
+		for _, _card in ipairs(G.hand.highlighted) do
+			_card.ability.perma_x_chips = _card.ability.perma_x_chips + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain/4, card.ability.gain))
+			_card:juice_up()
+		end
+		G.hand:unhighlight_all()
+	end,
+}
+
+-- Modulation
+SynthB.MisTuning{
+	key = "mistuning_modulation",
+	pos = {x = 3, y = 1},
+	config = {max_highlighted = 5, gain = 2},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain / 4}}
+	end,
+	use = function(self, card, area, copier)
+		for _, _card in ipairs(G.hand.highlighted) do
+			_card.ability.perma_x_mult = _card.ability.perma_x_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain/4, card.ability.gain))
+			_card:juice_up()
+		end
+		G.hand:unhighlight_all()
+	end,
+}
