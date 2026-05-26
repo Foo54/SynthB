@@ -308,7 +308,8 @@ SynthB.Tuning{
 				trigger = 'after',
 				delay = 0.1,
 				func = function()
-					assert(SMODS.change_base(_card, nil, pseudorandom_element({"2", "3", "4", "5", "6", "7", "8", "9"}, "synthb_lowpass")))
+					local rank, _ = pseudorandom_element({"2", "3", "4", "5", "6", "7", "8", "9"}, "synthb_lowpass")
+					assert(SMODS.change_base(_card, nil, rank))
 					return true
 				end
 			}))
