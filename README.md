@@ -18,7 +18,6 @@ Vocaloid Themed Balatro Mod by Foo54
 - Crossmod Content
 	- [Feli's Jokeria](https://github.com/LasagnaFelidae/Balatro-FelisJokeria)
 	- [Aikoyori's Shenanigains](https://github.com/Aikoyori/Balatro-Aikoyoris-Shenanigans)
-	- [Bad Director](https://github.com/Clickseee/BadDirector)
 - Crossmod Support
 	- Cryptid Forcetriggers
 	- Paperback Music Attribute

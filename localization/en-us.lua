@@ -1590,8 +1590,8 @@ local descriptions = {
 				name = "Normalize",
 				text = {
 					"Convert {C:attention}#1#",
-					"selected cards into",
-					"{C:attention}#2#{} of {V:1}#3#"
+					"{E:bd_glitching}selected cards{} into",
+					"{V:1}#2#{} {C:attention}#3#"
 				}
 			},
 			c_synthb_mistuning_vibrato = {
