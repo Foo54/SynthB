@@ -351,8 +351,6 @@ local descriptions = {
 						"{C:mult}+#1#{} Mult per",
 						"hand played if it's",
 						"not the {C:attention}leftmost{} joker",
-						"and loses {C:mult}+#1#{} Mult",
-						"otherwise",
 						"{C:inactive}[Currently {C:mult}+#2#{C:inactive} Mult]"
 					},
 					{

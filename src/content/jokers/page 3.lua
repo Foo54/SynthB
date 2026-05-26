@@ -28,9 +28,7 @@ SynthB.Joker{
 			}
 		end
 		if context.before then
-			if G.jokers.cards[1] == card then
-				card.ability.extra.mult = math.max(0, card.ability.extra.mult - card.ability.extra.gain)
-			else
+			if G.jokers.cards[1] ~= card then
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
 			end
 		end
