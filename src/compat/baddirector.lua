@@ -335,4 +335,33 @@ SynthB.MisTuning{
 	end
 }
 
---- 
+--- Low Pass
+SynthB.MisTuning{
+	key = "mistuning_lowpass",
+	pos = {x = 0, y = 1},
+	config = {max_rank = 10},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.max_rank}}
+	end,
+	can_use = function(self, card)
+		if not (G.hand and #G.hand.cards > 0) then return false end
+		for _, _card in ipairs(G.hand.cards) do
+			if _card:get_id() >= card.ability.max_rank then
+				return true
+			end
+		end
+		return false
+	end,
+	use = function(self, card, area, copier)
+		local cards = {}
+		for _, _card in ipairs(G.hand.cards) do
+			if _card:get_id() >= card.ability.max_rank then
+				cards[#cards+1] = _card
+			end
+		end
+		SMODS.destroy_cards(cards)
+	end
+}
+
+
+

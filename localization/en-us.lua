@@ -1581,10 +1581,9 @@ local descriptions = {
 				}
 			},
 			c_synthb_mistuning_lowpass = {
-				name = "Lowpass",
+				name = "passLow",
 				text = {
-					"Convert all {C:attention}#1#'s{} or higher",
-					"in hand to {C:attention}#2#'s"
+					"Destroy all {C:attention}#1#'s{} or {E:bd_glitching}higher",
 				}
 			},
 			c_synthb_mistuning_normalize = {
