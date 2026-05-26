@@ -527,12 +527,18 @@ SynthB.Joker{
 		SynthB.song_info(info_queue, "character_t")
 	end,
 	calculate = function(self, card, context)
-		if context.forcetrigger or context.setting_blind then
+		if context.forcetrigger or (context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit) then
 			local do_teto_edition = SMODS.pseudorandom_probability(card, "synthb_character_t", 1, 10, nil, true)
 			G.GAME.joker_buffer = G.GAME.joker_buffer + 1
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					local _card = SMODS.add_card{key = pseudorandom_element(SMODS.get_attribute_pool(do_teto_edition and "chip" or "Teto")) or "j_synthb_miku"}
+					local pool = SMODS.get_attribute_pool(do_teto_edition and "chip" or "Teto")
+					for i = #pool, 1, -1 do
+						if G.P_CENTERS[pool[i]].rarity == 4 then
+							table.remove(pool, i)
+						end
+					end
+					local _card = SMODS.add_card{key = pseudorandom_element() or "j_synthb_miku"}
 					if not _card:has_attribute("Teto") then
 						_card:set_edition("e_synthb_cover_teto")
 					end

@@ -461,6 +461,7 @@ local descriptions = {
 				text = {
 					"Create a {C:garfields_thanksgiving}Teto{} Joker",
 					"when {C:attention}selecting blind",
+					"{C:inactive}[Must have room]",
 					"{C:inactive,s:0.8,f:5}何もない時代から生まれて"
 				}
 			},
