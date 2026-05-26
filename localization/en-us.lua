@@ -1619,10 +1619,10 @@ local descriptions = {
 				}
 			},
 			c_synthb_mistuning_tone_shift = {
-				name = "Tone Shift",
+				name = "e ShiftTon",
 				text = {
-					"Cycle the {C:attention}Suit{}",
-					"of {C:attention}#1#{} selected cards",
+					"Randomize the {C:attention}Suit{}",
+					"of {E:bd_glitching}all{} cards in {E:bd_glitching,C:attention}hand",
 				}
 			}
 		}
