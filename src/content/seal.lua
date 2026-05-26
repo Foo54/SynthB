@@ -23,7 +23,7 @@ SMODS.Seal{
 						return true
 					end
 				}))
-				return { message = localize('k_plus_tuning'), colour = G.C.SECONDARY_SET.Tuning }
+				return { message = localize('k_synthb_plus_tuning'), colour = G.C.SECONDARY_SET.Tuning }
 			end
 		end
 	end,

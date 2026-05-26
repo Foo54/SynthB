@@ -536,7 +536,7 @@ SynthB.Joker{
 							table.remove(pool, i)
 						end
 					end
-					local _card = SMODS.add_card{key = pseudorandom_element() or "j_synthb_miku"}
+					local _card = SMODS.add_card{key = pseudorandom_element(pool) or "j_synthb_miku"}
 					if not _card:has_attribute("Teto") then
 						_card:set_edition("e_synthb_cover_teto")
 					end
@@ -705,7 +705,7 @@ SynthB.Joker{
 				}))
 				return {
 					message = localize('k_saved_ex'),
-					saved = 'ph_shanti',
+					saved = 'ph_synthb_shanti',
 					colour = G.C.BLUE
 				}
 			end
@@ -792,7 +792,7 @@ SynthB.Joker{
 							return true
 						end
 					}))
-					SMODS.calculate_effect({ message = localize('k_plus_energy_drink'), colour = G.C.RED }, context.blueprint_card or card)
+					SMODS.calculate_effect({ message = localize('k_synthb_plus_energy_drink'), colour = G.C.RED }, context.blueprint_card or card)
 					return true
 				end)
 			}))

@@ -828,7 +828,7 @@ SynthB.Joker{
 				G.GAME.SynthB_retry_now_saved = true
 				return {
 					message = localize('k_saved_ex'),
-					saved = 'ph_retry_now',
+					saved = 'ph_synthb_retry_now',
 					colour = G.C.BLUE
 				}
 			end

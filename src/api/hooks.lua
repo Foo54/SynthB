@@ -126,16 +126,16 @@ local perma_bonuses_ref = SMODS.localize_perma_bonuses
 function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
 	local ret = perma_bonuses_ref(specific_vars, desc_nodes)
 	if specific_vars and specific_vars.synthb_mult_gain and specific_vars.synthb_mult_gain ~= 0 and specific_vars.synthb_mult_duration > 0 then
-		localize{type = "other", key = "card_synthb_mult", nodes = desc_nodes, vars = {specific_vars.synthb_mult_gain, specific_vars.synthb_mult_duration, localize(specific_vars.synthb_mult_duration > 1 and "b_times_plural" or "b_times_singular")}}
+		localize{type = "other", key = "card_synthb_mult", nodes = desc_nodes, vars = {specific_vars.synthb_mult_gain, specific_vars.synthb_mult_duration, localize(specific_vars.synthb_mult_duration > 1 and "k_synthb_times_plural" or "k_synthb_times_singular")}}
 	end
 	if specific_vars and specific_vars.synthb_chips_gain and specific_vars.synthb_chips_gain ~= 0 and specific_vars.synthb_chips_duration > 0 then
-		localize{type = "other", key = "card_synthb_chips", nodes = desc_nodes, vars = {-specific_vars.synthb_chips_gain, specific_vars.synthb_chips_duration, localize(specific_vars.synthb_chips_duration > 1 and "b_times_plural" or "b_times_singular")}}
+		localize{type = "other", key = "card_synthb_chips", nodes = desc_nodes, vars = {-specific_vars.synthb_chips_gain, specific_vars.synthb_chips_duration, localize(specific_vars.synthb_chips_duration > 1 and "k_synthb_times_plural" or "k_synthb_times_singular")}}
 	end
 	if specific_vars and specific_vars.synthb_xmult_gain and specific_vars.synthb_xmult_gain ~= 0 and specific_vars.synthb_xmult_duration > 0 then
-		localize{type = "other", key = "card_synthb_xmult", nodes = desc_nodes, vars = {specific_vars.synthb_xmult_gain, specific_vars.synthb_xmult_duration, localize(specific_vars.synthb_xmult_duration > 1 and "b_times_plural" or "b_times_singular")}}
+		localize{type = "other", key = "card_synthb_xmult", nodes = desc_nodes, vars = {specific_vars.synthb_xmult_gain, specific_vars.synthb_xmult_duration, localize(specific_vars.synthb_xmult_duration > 1 and "k_synthb_times_plural" or "k_synthb_times_singular")}}
 	end
 	if specific_vars and specific_vars.synthb_xchips_gain and specific_vars.synthb_xchips_gain ~= 0 and specific_vars.synthb_xchips_duration > 0 then
-		localize{type = "other", key = "card_synthb_xchips", nodes = desc_nodes, vars = {-specific_vars.synthb_xchips_gain, specific_vars.synthb_xchips_duration, localize(specific_vars.synthb_xchips_duration > 1 and "b_times_plural" or "b_times_singular")}}
+		localize{type = "other", key = "card_synthb_xchips", nodes = desc_nodes, vars = {-specific_vars.synthb_xchips_gain, specific_vars.synthb_xchips_duration, localize(specific_vars.synthb_xchips_duration > 1 and "k_synthb_times_plural" or "k_synthb_times_singular")}}
 	end
 	return ret
 end

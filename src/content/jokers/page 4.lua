@@ -229,7 +229,7 @@ SynthB.Joker{
 
 				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.immutable.betting * (outcome < 0 and 1 or outcome > 0 and -1 or 0)
 
-				if you ~= 0 then SMODS.calculate_effect({message = localize("k_blackjack_" .. (outcome < 0 and "win" or outcome > 0 and "lose" or "tie")), colour = G.C.MONEY}, card) end
+				if you ~= 0 then SMODS.calculate_effect({message = localize("k_synthb_blackjack_" .. (outcome < 0 and "win" or outcome > 0 and "lose" or "tie")), colour = G.C.MONEY}, card) end
 				
 				if card.ability.extra.xmult <= 0 then
 					SMODS.destroy_cards(card)
@@ -245,7 +245,7 @@ SynthB.Joker{
 			card.ability.immutable.STATE = card.ability.immutable.STATES.NEEDS_ATTENTION
 			card.ability.immutable.STATE_COMPLETE = false
 			return {
-				message = localize("b_needs_attention")
+				message = localize("k_synthb_needs_attention")
 			}
 		end
 		if context.joker_main then
