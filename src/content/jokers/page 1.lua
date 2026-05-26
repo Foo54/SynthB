@@ -273,8 +273,8 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "regret_rock",
 	atlas = "joker_placeholders",
-	pos = {x = 4, y = 0},
-	rarity = 3,
+	pos = {x = 3, y = 0},
+	rarity = 2,
 	cost = 7,
 	blueprint_compat = false,
 	eternal_compat = true,
