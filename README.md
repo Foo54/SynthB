@@ -21,7 +21,7 @@ Vocaloid Themed Balatro Mod by Foo54
 	- [Aikoyori's Shenanigains](https://github.com/Aikoyori/Balatro-Aikoyoris-Shenanigans)
 		- +1 Joker
 	- [Bad Director](https://github.com/Clickseee/BadDirector)
-		- +1 Joker
+		- +2 Jokers
 		- +13 Consumables
 		- +1 Seal
 - Crossmod Support
