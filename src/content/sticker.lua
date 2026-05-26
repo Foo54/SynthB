@@ -24,8 +24,14 @@ SMODS.Sticker{
 			for _, _card in ipairs(G.hand.highlighted) do
 				if _card == card then
 					for _, __card in ipairs(G.playing_cards) do
-						if __card ~= card and __card.ability.synthb_linked and __card.ability.synthb_linked.id == card.ability.synthb_linked.id then
-							draw_card(__card.area, G.play, 1, "front", nil, __card)
+						if __card ~= card and __card.ability.synthb_linked and __card.ability.synthb_linked.id == card.ability.synthb_linked.id and __card.area ~= G.play then
+							local found = false
+							for _, ___card in ipairs(G.hand.highlighted) do
+								if ___card == __card then found = true; break end
+							end
+							if not found then
+								draw_card(__card.area, G.play, 1, "front", nil, __card)
+							end
 						end
 					end
 					break
