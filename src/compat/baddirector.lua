@@ -2,6 +2,7 @@ if not SynthB.is_mod_loaded("baddirector") then return end
 
 SynthB.debug("BadDirector loaded successfully")
 
+--#region Jokers
 
 -- Smokey Love
 SynthB.Joker{
@@ -44,6 +45,8 @@ SynthB.Joker{
 }
 
 SynthB.inject_song_data{link = "https://www.youtube.com/watch?v=6_Fci4Y8CUk", key = "smokey_love", pos = {x = 2, y = 9}}
+
+--#endregion
 
 --#region COLOURS
 
@@ -89,6 +92,8 @@ SMODS.Atlas{
 SMODS.Seal{
 	key = "misutau",
 	atlas = "placeholder",
+	dependencies = {"baddirector"},
+	misprint_original = "sytnhb_utau_seal",
 	pos = {x = 1, y = 2},
 	badge_colour = SMODS.Gradients.synthb_mistuning,
 	calculate = function(self, card, context)
@@ -143,6 +148,8 @@ SMODS.Spectral:take_ownership("bd_heat", {
 
 SMODS.ConsumableType{
 	key = "misTuning",
+	dependencies = {"baddirector"},
+	misprint_original = "Tuning",
 	primary_colour = HEX("FF0000"),
 	secondary_colour = SMODS.Gradients.synthb_mistuning,
 	collection_rows = {6, 6},
@@ -165,6 +172,7 @@ SynthB.MisTuning = SMODS.Consumable:extend{
 --- Pitch Bend
 SynthB.MisTuning{
 	key = "mistuning_pitch_bend",
+	misprint_original = "c_synthb_tuning_pitch_bend",
 	can_use = function(self, card)
 		return G.hand and G.hand.cards and #G.hand.cards >= 2
 	end,
@@ -191,6 +199,7 @@ SynthB.MisTuning{
 --- Velocity
 SynthB.MisTuning{
 	key = "mistuning_velocity",
+	misprint_original = "c_synthb_tuning_velocity",
 	pos = {x = 1, y = 0},
 	config = {
 		manip = 2
@@ -225,6 +234,7 @@ SynthB.MisTuning{
 --- Attack
 SynthB.MisTuning{
 	key = "mistuning_attack",
+	misprint_original = "c_synthb_tuning_attack",
 	pos = {x = 2, y = 0},
 	config = {max_highlighted = 3, xmult_loss = 0.5, xmult_gain = 0.2, xmult_duration = 5},
 	loc_vars = function(self, info_queue, card)
@@ -241,10 +251,10 @@ SynthB.MisTuning{
 	end,
 }
 
-
 --- Decay
 SynthB.MisTuning{
 	key = "mistuning_decay",
+	misprint_original = "c_synthb_tuning_decay",
 	pos = {x = 3, y = 0},
 	config = {max_highlighted = 3, xchips_gain = 2, xchips_loss = 0.5, xchips_duration = 5},
 	loc_vars = function(self, info_queue, card)
@@ -264,6 +274,7 @@ SynthB.MisTuning{
 --- Gender
 SynthB.MisTuning{
 	key = "mistuning_gender",
+	misprint_original = "c_synthb_tuning_gender",
 	pos = {x = 4, y = 0},
 	can_use = function (self, card)
 		if G.hand and G.hand.cards then
@@ -294,6 +305,7 @@ SynthB.MisTuning{
 --- Portamento
 SynthB.MisTuning{
 	key = "mistuning_portamento",
+	misprint_original = "c_synthb_tuning_portamento",
 	pos = {x = 5, y = 0},
 	can_use = function (self, card)
 		return G.hand and G.hand.cards and #G.hand.cards >= 2
@@ -344,6 +356,7 @@ SynthB.MisTuning{
 --- Low Pass
 SynthB.MisTuning{
 	key = "mistuning_lowpass",
+	misprint_original = "c_synthb_tuning_lowpass",
 	pos = {x = 0, y = 1},
 	config = {max_rank = 10},
 	loc_vars = function(self, info_queue, card)
@@ -372,6 +385,7 @@ SynthB.MisTuning{
 --- Normalize
 SynthB.MisTuning{
 	key = "mistuning_normalize",
+	misprint_original = "c_synthb_tuning_normalize",
 	pos = {x = 1, y = 1},
 	config = {max_highlighted = 3, seal = "[Seal]", enhancement = "[Enhancement]"},
 	set_ability = function (self, card, initial, delay_sprites)
@@ -380,7 +394,12 @@ SynthB.MisTuning{
 		card.ability.enhancement = card.ability.enhancement.key
 	end,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.max_highlighted, card.area.config.collection and "[Seal]" or localize{type = "name_text", set = "Other", key = (card.ability.seal .. "_seal"):lower()}, card.area.config.collection and "[Enhancement]" or localize{type = "name_text", set = "Enhanced", key = card.ability.enhancement}, colours = {card.area.config.collection and G.ARGS.LOC_COLOURS.attention or SMODS.Seals[card.ability.seal].badge_colour}}}
+		local fake = card.fake_card or card.config.area.collection
+		if not fake then
+			info_queue[#info_queue+1] = G.P_CENTERS[card.ability.enhancement]
+			info_queue[#info_queue+1] = G.P_SEALS[card.ability.seal]
+		end
+		return {vars = {card.ability.max_highlighted, fake and "[Seal]" or localize{type = "name_text", set = "Other", key = (card.ability.seal .. "_seal"):lower()}, fake and "[Enhancement]" or localize{type = "name_text", set = "Enhanced", key = card.ability.enhancement}, colours = {fake and G.ARGS.LOC_COLOURS.attention or SMODS.Seals[card.ability.seal].badge_colour}}}
 	end,
 	use = function(self, card, area, copier)
 		G.E_MANAGER:add_event(Event({
@@ -447,6 +466,7 @@ SynthB.MisTuning{
 -- Vibrato
 SynthB.MisTuning{
 	key = "mistuning_vibrato",
+	misprint_original = "c_synthb_tuning_vibrato",
 	pos = {x = 2, y = 1},
 	config = {max_highlighted = 5, gain = 2},
 	loc_vars = function(self, info_queue, card)
@@ -464,6 +484,7 @@ SynthB.MisTuning{
 -- Modulation
 SynthB.MisTuning{
 	key = "mistuning_modulation",
+	misprint_original = "c_synthb_tuning_modulation",
 	pos = {x = 3, y = 1},
 	config = {max_highlighted = 5, gain = 2},
 	loc_vars = function(self, info_queue, card)
@@ -481,6 +502,7 @@ SynthB.MisTuning{
 -- Direct
 SynthB.MisTuning{
 	key = "mistuning_direct",
+	misprint_original = "c_synthb_tuning_direct",
 	pos = {x = 4, y = 1},
 	can_use = function (self, card)
 		return G.hand and G.hand.cards and #G.hand.cards > 0
@@ -528,6 +550,7 @@ SynthB.MisTuning{
 --- Tone Shift
 SynthB.MisTuning{
 	key = "mistuning_tone_shift",
+	misprint_original = "c_synthb_tuning_tone_shift",
 	pos = {x = 5, y = 1},
 	can_use = function (self, card)
 		return G.hand and G.hand.cards and #G.hand.cards > 0
@@ -598,6 +621,7 @@ SynthB.MisTuning{
 BadDirector.MisSpect{
 	key = "misspectral_voicebank",
 	atlas = "placeholder",
+	dependencies = {"baddirector"},
 	misprint_original = "c_synthb_spectral_voicebank",
 	pos = {x = 2, y = 2},
 	config = {extra = {seal = "synthb_utau", seal_m = "synthb_misutau"}, dem = 6},
