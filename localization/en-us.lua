@@ -1610,13 +1610,12 @@ local descriptions = {
 				}
 			},
 			c_synthb_mistuning_direct = {
-				name = "Direct",
+				name = "ectDir",
 				text = {
-					"Remove all modifications",
-					"from up to {C:attention}#1#{} selected",
-					"cards and create a",
+					"Destroy all {E:bd_glitching,C:attention}modified{}",
+					"cards in hand and create a",
 					"{C:dark_edition}Negative{} Joker or Consumable",
-					"for every {C:attention}#1#{} modifications removed"
+					"for every {E:bd_glitching}card{} destroyed"
 				}
 			},
 			c_synthb_mistuning_tone_shift = {

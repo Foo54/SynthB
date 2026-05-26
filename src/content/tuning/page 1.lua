@@ -503,8 +503,7 @@ SynthB.Tuning{
 						_card:set_seal()
 					end
 					for key, value in pairs(_card.ability) do
-						if type(value) == "number" and value ~= dummy_card.ability[key] and stupid_fricking_keys_that_i_hate[key] == nil then
-							SynthB.debug(key)
+						if SynthB.is_number(value) and value ~= dummy_card.ability[key] and not stupid_fricking_keys_that_i_hate[key] then
 							_card.ability[key] = dummy_card.ability[key]
 							modifications_removed = modifications_removed + 1
 						end

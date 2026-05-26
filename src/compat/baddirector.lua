@@ -477,3 +477,52 @@ SynthB.MisTuning{
 		G.hand:unhighlight_all()
 	end,
 }
+
+-- Direct
+SynthB.MisTuning{
+	key = "mistuning_direct",
+	pos = {x = 4, y = 1},
+	can_use = function (self, card)
+		return G.hand and G.hand.cards and #G.hand.cards > 0
+	end,
+	use = function (self, card, area, copier)
+		local destroy = {}
+		local dummy_card = SMODS.create_card{set = "Base"}
+		local stupid_fricking_keys_that_i_hate = {
+			hands_played_at_create = true,
+			order = true,
+			played_this_ante = true
+		}
+		for _, _card in ipairs(G.hand.cards) do
+			if _card.edition or _card.ability.effect ~= "Base" or _card.seal then
+				destroy[#destroy+1] = _card
+			else
+				for key, value in pairs(_card.ability) do
+					if SynthB.is_number(value) and value ~= dummy_card.ability[key] and not stupid_fricking_keys_that_i_hate[key] then
+						destroy[#destroy + 1] = _card
+						break
+					end
+				end
+			end
+		end
+		SMODS.destroy_cards(destroy)
+		dummy_card:remove()
+		G.hand:unhighlight_all()
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				for _ = 1, #destroy do
+					if SMODS.pseudorandom_probability(card, "synthb_mis_direct", 1, 4, nil, true) then
+						SMODS.add_card{set = "Joker", edition = "e_negative"}
+					else
+						SMODS.add_card{set = "Consumeables", edition = 'e_negative'}
+					end
+				end
+				return true
+			end
+		}))
+	end
+}
+
+
