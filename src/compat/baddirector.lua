@@ -118,11 +118,15 @@ SMODS.Seal{
 --#endregion
 
 --#region OWNERSHIP
-do return end
-local bd_heat_loc_vars_ref = G.P_CENTERS.c_bd_heat.loc_vars
-local bd_heat_use_ref = G.P_CENTERS.c_bd_heat.use
-SMODS.Consumable:take_ownership("bd_heat", {
-	loc_vars = function (self, info_queue, card)
+local bd_heat_loc_vars_ref = SMODS.Consumable.obj_table.c_bd_heat.loc_vars
+local bd_heat_use_ref = SMODS.Consumable.obj_table.c_bd_heat.use
+SMODS.Spectral:take_ownership("bd_heat", {
+	prefix_config = {
+		atlas = false
+	},
+	atlas = "bd_spectrals_ghost",
+	loc_vars = function(self, info_queue, card)
+	---@diagnostic disable-next-line: need-check-nil
 		local ret = bd_heat_loc_vars_ref(self, info_queue, card)
 		ret.key = "c_synthb_bd_heat"
 		return ret

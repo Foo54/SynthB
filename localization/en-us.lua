@@ -1421,7 +1421,7 @@ local descriptions = {
 					"Add {C:dark_edition}Thermal{} to",
 					"a random {C:attention}Joker,",
 					"{C:red}-#1#{} discard size",
-					"Raise the {C:temperature}Temperature{} by {X:temp,C:white}30C"
+					"Raise the {C:temperature}Temperature{} by {X:temperature,C:white}30C"
 				},
 			}
 		},
