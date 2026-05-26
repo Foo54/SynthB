@@ -437,7 +437,7 @@ SynthB.MisTuning{
 		card.ability.enhancement = card.ability.enhancement.key
 	end,
 	loc_vars = function(self, info_queue, card)
-		local fake = card.fake_card or card.config.area.collection
+		local fake = card.fake_card or card.area.config.collection
 		if not fake then
 			info_queue[#info_queue+1] = G.P_CENTERS[card.ability.enhancement]
 			info_queue[#info_queue+1] = G.P_SEALS[card.ability.seal]
@@ -511,7 +511,7 @@ SynthB.MisTuning{
 	key = "mistuning_vibrato",
 	misprint_original = "c_synthb_tuning_vibrato",
 	pos = {x = 2, y = 1},
-	config = {max_highlighted = 5, gain = 2},
+	config = {max_highlighted = 5, gain = 1},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain/4}}
 	end,
@@ -529,7 +529,7 @@ SynthB.MisTuning{
 	key = "mistuning_modulation",
 	misprint_original = "c_synthb_tuning_modulation",
 	pos = {x = 3, y = 1},
-	config = {max_highlighted = 5, gain = 2},
+	config = {max_highlighted = 5, gain = 1},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain / 4}}
 	end,
