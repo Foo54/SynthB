@@ -254,9 +254,7 @@ SynthB.Joker{
 	end,
 	use = function(self, card)
 		card.ability.immutable.active = false
-		local card = G.deck.cards[#G.deck.cards]
-		G.deck.cards[#G.deck.cards] = nil
-		table.insert(G.deck.cards, 1, card)
+		SMODS.destroy_cards(G.deck.cards[#G.deck.cards])
 	end
 }
 

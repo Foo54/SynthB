@@ -401,9 +401,8 @@ local descriptions = {
 						"of your deck",
 						"is visible below.",
 						"{C:attention}Use{} this card",
-						"to move the {C:attention}top",
+						"to destroy the {C:attention}top",
 						"card of deck",
-						"to the {C:attention}bottom",
 						"{C:inactive}Once per round",
 						"{C:inactive,s:0.8,f:5}ハロー　どうも　僕はここ"
 					},
