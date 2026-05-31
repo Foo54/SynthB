@@ -36,5 +36,5 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 
     vec4 tex = texture2D(texture, texture_coords);
 
-    return lerp(tex, vec4(0.8, 0.5, 0.1, tex.a), temp * 0.2 + thermo.x * 0.00000001);
+    return lerp(tex, vec4(0.8, 0.5, 0.1, tex.a + step(uie_details.g, 1000000), temp * 0.2 + thermo.x * 0.00000001);
 }
