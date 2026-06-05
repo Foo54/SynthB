@@ -47,4 +47,15 @@ SMODS.Consumable{
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "approve_please_genie")
 	end,
+	can_use = function (self, card)
+		return #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+	end,
+	use = function (self, card, area, copier)
+		G.FUNCS.overlay_menu{
+			definition = G.UIDEF.synthb_wish_full_menu(),
+			config = {
+				no_esc = true
+			}
+		}
+	end
 }

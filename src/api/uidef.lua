@@ -138,3 +138,18 @@ function G.FUNCS.synthb_continue (e)
 	e.config.ref_table.ability.immutable.STATE = e.config.ref_table.ability.immutable.STATES.CONTINUE
 	e.config.ref_table.ability.immutable.STATE_COMPLETE = false
 end
+
+-- Wish
+function G.UIDEF.synthb_wish_full_menu ()
+	G.GAME.synthb_wish_options = {}
+	G.GAME.synthb_choosing_wish = true
+	for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
+		if joker.rarity <= 2 then
+			G.GAME.synthb_wish_options[#G.GAME.synthb_wish_options+1] = joker
+		end
+	end
+	return SMODS.card_collection_UIBox(G.GAME.synthb_wish_options, {5,5,5}, {
+		no_materialize = true,
+		h_mod = 0.95,
+	})
+end

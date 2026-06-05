@@ -89,6 +89,23 @@ function Card:click ()
 			self.ability.immutable.STATE = self.ability.immutable.STATES.BETTING
 			self.ability.immutable.STATE_COMPLETE = false
 		end
+		if G.GAME.synthb_choosing_wish then
+			if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+				G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+				G.E_MANAGER:add_event(Event{
+					func = function()
+						SMODS.add_card {key = self.config.center.key}
+						G.GAME.joker_buffer = 0
+						return true
+					end
+				})
+				G.consumeables:change_size(-1)
+				G.GAME.synthb_temp_consumable_size = (G.GAME.synthb_temp_consumable_size or 0) - 1
+				G.GAME.synthb_temp_consumable_duration = 3
+			end
+			G.GAME.synthb_choosing_wish = false
+			G.FUNCS.exit_overlay_menu()
+		end
 		card_click_ref(self)
 	end
 end

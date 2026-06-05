@@ -149,12 +149,21 @@ function SynthB.mod.calculate(self, context)
 		end
 	end
 
-	-- heat money loss
 	if context.end_of_round and context.main_eval then
+		-- heat money loss
 		if SynthB.too_hot() then
 			return {
 				dollars = -math.ceil(G.GAME.dollars * SynthB.heat_mod())
 			}
+		end
+		
+		-- wish consumable slots loss
+		if G.GAME.synthb_temp_consumable_duration then
+			G.GAME.synthb_temp_consumable_duration = G.GAME.synthb_temp_consumable_duration - 1
+			if G.GAME.synthb_temp_consumable_duration <= 0 then
+				G.GAME.synthb_temp_consumable_duration = nil
+				G.consumeables:change_size(-G.GAME.synthb_temp_consumable_size)
+			end
 		end
 	end
 
