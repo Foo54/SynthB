@@ -217,6 +217,11 @@ function SynthB.mod.calculate(self, context)
 			G.GAME.SynthB_oneshot_last_boss = false
 		end
 	end
+
+	-- Keep track of last consumable type used
+	if context.using_consumeable then
+		G.GAME.synthb_last_used_consumable_type = context.consumeable.config.center.set
+	end
 end
 
 function SynthB.mod.reset_game_globals(run_start)

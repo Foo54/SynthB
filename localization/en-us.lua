@@ -1478,7 +1478,16 @@ local descriptions = {
 			},
 		},
 		Tarot = {
-			c_synthb_tarot_explorer
+			c_synthb_tarot_treasure_hunter = {
+				name = "The Treasure Hunter",
+				text = {
+					"Create a {C:attention}Consumable{} of the",
+					"same type as the last",
+					"{C:attention}Consumable{} used",
+					" {element:1} ",
+					"{C:inactive,s:0.8,f:5}OKOK あっちもこっちも大探検"
+				}
+			}
 		},
 		Spectral = {
 			c_synthb_spectral_voicebank = {
