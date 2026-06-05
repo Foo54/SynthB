@@ -355,6 +355,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"generation", "discards", "joker", "song", "vocaloid song", "Teto", "Miku", "AnythingBecomeMoe"},
 	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "yararara")
 		return {vars = {card.ability.extra.scoring, card.ability.extra.discarding, card.ability.immutable.scored, card.ability.immutable.discarded}}
 	end,
 	calculate = function(self, card, context)

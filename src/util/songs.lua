@@ -49,6 +49,7 @@ SynthB.songs = {
 	-- smokey love / Bad Director
 	-- needLe / Bad Director
 	{link = "https://www.youtube.com/watch?v=XKZIQlqVjjk", key = "approve_please_genie", pos = {x = 4, y = 9}},
+	{link = "https://www.youtube.com/watch?v=_oTaQXf_iX8", key = "yararara", pos = {x = 0, y = 10}},
 	--{link = "temp", key = "shiawase_for_you", pos = {x = 4, y = 9}},
 	--[[
 	for cross mod do this
