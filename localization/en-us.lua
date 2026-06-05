@@ -1494,7 +1494,7 @@ local descriptions = {
 			c_synthb_spectral_wish = {
 				name = "Wish",
 				text = {
-					"Create a {C:uncommon}Uncommon",
+					"Create an {C:uncommon}Uncommon",
 					"or {C:common}Common{} Joker",
 					"of your choice.",
 					"{C:red}-1{} consumable slot for {C:attention}3{} rounds",
