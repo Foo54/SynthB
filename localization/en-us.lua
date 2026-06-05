@@ -1378,6 +1378,10 @@ local descriptions = {
 			}
 		},
 		Other = {
+			song_synthb_approve_please_genie = {
+				name = {"{f:4}승인해주세요지니님!", "{s:0.7}Approve Please, Genie!"},
+				text = {}
+			},
 			synthb_fake = {
 				name = "Fake Card",
 				text = {
@@ -1472,6 +1476,9 @@ local descriptions = {
 					"per unscored card without a {C:synthb_mistuning_dark}alUTAU Se",
 				}
 			},
+		},
+		Tarot = {
+			c_synthb_tarot_explorer
 		},
 		Spectral = {
 			c_synthb_spectral_voicebank = {

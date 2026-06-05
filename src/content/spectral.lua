@@ -44,6 +44,9 @@ SMODS.Consumable{
 	atlas = "placeholder",
 	pos = {x = 1, y = 1},
 	set = "Spectral",
+	synthb_song = "song_synthb_approve_please_genie",
+	synthb_count = 0,
+	synthb_timer = 0,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "approve_please_genie")
 	end,
