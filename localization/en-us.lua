@@ -536,7 +536,7 @@ local descriptions = {
 				}
 			},
 			j_synthb_yararara = {
-				name = {"{f:5}temp", "{s:0.7}YARARARA"},
+				name = {"{f:5}ヤラララ", "{s:0.7}YARARARA"},
 				text = {
 					"After scoring {C:attention}#1#{} and",
 					"discarding {C:attention}#2#{} cards,",
@@ -544,7 +544,7 @@ local descriptions = {
 					"of a random Joker",
 					"{C:red,E:2}Self Destructs",
 					"{C:inactive}[#3# of #1#, #4# of #2#]",
-					"{C:inactive,s:0.8,f:5}lyrics"
+					"{C:inactive,s:0.8,f:5}ヤラララ、程遠くても"
 				}
 			},
 
@@ -1180,10 +1180,23 @@ local descriptions = {
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
+			yararara = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}ヤラララ",
+					"{C:inactive,s:0.8}YARARARA",
+					"{C:attention}Producer:",
+					"AnythingBecomeMoe",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
 			approve_please_genie = {
 				text = {
 					"{C:attention}Title:",
 					"{f:4}승인해주세요지니님!",
+					"{C:inactive,s:0.8}Approve Please, Genie!",
 					"{C:attention}Producer:",
 					"{f:4}트랩칙",
 					"{C:inactive,s:0.8}TRAP CHICK",
