@@ -333,3 +333,54 @@ SynthB.Joker{
 }
 
 
+-- YARARARA
+SynthB.Joker{
+	key = "yararara",
+	pos = {x = 2, y = 0},
+	rarity = 3,
+	cost = 9,
+	config = {
+		extra = {
+			scoring = 128,
+			discarding = 39
+		},
+		immutable = {
+			scored = 0,
+			discarded = 0
+		}
+	},
+	blueprint_compat = false,
+	eternal_compat = false,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"generation", "discards", "joker", "song", "vocaloid song", "Teto", "Miku", "AnythingBecomeMoe"},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.extra.scoring, card.ability.extra.discarding, card.ability.immutable.scored, card.ability.immutable.discarded}}
+	end,
+	calculate = function(self, card, context)
+		if not context.blueprint then
+			if context.discard then
+				card.ability.immutable.discarded = card.ability.immutable.discarded + 1
+			end
+			if context.individual and context.cardarea == G.play then
+				card.ability.immutable.scored = card.ability.immutable.scored + 1
+			end
+			if context.forcetrigger or ((context.after or context.discard) and card.ability.immutable.scored >= card.ability.extra.scoring and card.ability.immutable.discarded >= card.ability.extra.discarding) then
+				local jokers = {}
+				for i = 1, #G.jokers.cards do
+					if G.jokers.cards[i] ~= card then
+						jokers[#jokers + 1] = G.jokers.cards[i]
+					end
+				end
+				local chosen_joker = pseudorandom_element(jokers, 'synthb_yararara')
+				local copied_joker = copy_card(chosen_joker)
+				copied_joker:add_to_deck()
+				copied_joker:set_edition("e_negative")
+				G.jokers:emplace(copied_joker)
+				SMODS.destroy_cards(card)
+				return { message = localize('k_duplicated_ex') }
+			end
+		end
+	end,
+}
+

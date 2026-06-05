@@ -711,7 +711,7 @@ SynthB.Joker{
 			end
 		end
 	end,
---- @param card Card
+	--- @param card Card
 	set_ability = function(self, card, initial, delay_sprites)
 		card:add_sticker("eternal", true)
 	end,

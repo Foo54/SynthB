@@ -541,6 +541,8 @@ SynthB.Joker{
 -- kyu-kurarin
 SynthB.Joker{
 	key = "kyu_kurarin",
+	pos = {x = 1, y = 0},
+	rarity = 2,
 	cost = 5,
 	config = {
 		extra = {
@@ -552,7 +554,7 @@ SynthB.Joker{
 	eternal_compat = true,
 	perishable_compat = true,
 	demicolon_compat = true,
-	attributes = {"chips", "scaling", "song", "vocaloid song", "KAFU", "Iyowa"},
+	attributes = {"mult", "scaling", "song", "vocaloid song", "KAFU", "Iyowa"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "kyu_kurarin")
 		return {vars = {card.ability.extra.scaling, card.ability.extra.chips}}
@@ -566,7 +568,7 @@ SynthB.Joker{
 				no_message = true
 			})
 			return {
-				chips = card.ability.extra.chips
+				mult = card.ability.extra.chips
 			}
 		end
 		if context.remove_playing_cards and not context.blueprint then
@@ -574,14 +576,14 @@ SynthB.Joker{
 				ref_table = card.ability.extra,
 				ref_value = "chips",
 				scalar_table = {card.ability.extra.scaling * #context.removed},
----@diagnostic disable-next-line: assign-type-mismatch
+	---@diagnostic disable-next-line: assign-type-mismatch
 				scalar_value = 1,
 				no_message = true
 			})
 		end
 		if context.joker_main then
 			return {
-				chips = card.ability.extra.chips
+				mult = card.ability.extra.chips
 			}
 		end
 	end,
@@ -592,7 +594,7 @@ SynthB.Joker{
 				{ text = "+" },
 				{ ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
 			},
-			text_config = { colour = G.C.CHIPS },
+			text_config = { colour = G.C.MULT },
 		}
 	end
 }

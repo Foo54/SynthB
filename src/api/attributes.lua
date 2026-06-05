@@ -83,3 +83,4 @@ SMODS.Attribute{key = "wotaku"}
 SMODS.Attribute{key = "YuchaP"}
 SMODS.Attribute{key = "DarvishP"}
 SMODS.Attribute{key = "kaichi"}
+SMODS.Attribute{key = "AnythingBecomeMoe"}

@@ -262,9 +262,9 @@ local descriptions = {
 			j_synthb_kyu_kurarin = {
 				name = {"{f:5}きゅうくらりん", "{s:0.7}Kyu-kurarin"},
 				text = {
-					"This Joker gains {C:chips}+#1#{} Chips",
+					"This Joker gains {C:mult}+#1#{} Mult",
 					"when a playing card is {C:red}destroyed",
-					"{C:inactive}[Currently {C:chips}+#2#{C:inactive} Chips]",
+					"{C:inactive}[Currently {C:mult}+#2#{C:inactive} Mult]",
 					"{C:inactive,s:0.8,f:5}わたし　ちゅうぶらりん"
 				}
 			},
@@ -533,6 +533,18 @@ local descriptions = {
 				text = {
 					"{C:attention}Adjacent{} Jokers have {X:attention,C:white}X#1#{} values",
 					"{C:inactive,s:0.8}I'll find the point where the two paths meet"
+				}
+			},
+			j_synthb_yararara = {
+				name = {"{f:5}temp", "{s:0.7}YARARARA"},
+				text = {
+					"After scoring {C:attention}#1#{} and",
+					"discarding {C:attention}#2#{} cards,",
+					"create a {C:dark_edition}negative{} copy",
+					"of a random Joker",
+					"{C:red,E:2}Self Destructs",
+					"{C:inactive}[#3# of #1#, #4# of #2#]",
+					"{C:inactive,s:0.8,f:5}lyrics"
 				}
 			},
 
