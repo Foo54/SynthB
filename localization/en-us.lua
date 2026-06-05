@@ -1496,8 +1496,8 @@ local descriptions = {
 				text = {
 					"Create a {C:uncommon}Uncommon",
 					"or {C:common}Common{} Joker",
-					"of your choice",
-					"{C:red}-1{} consumable slot for {C:attention}3{} Rounds",
+					"of your choice.",
+					"{C:red}-1{} consumable slot for {C:attention}3{} rounds",
 					"{C:inactive}[Must have room]",
 					"{C:inactive,s:0.8,f:5}OK! OK! 他人を助けるなら、大歓迎"
 				}
