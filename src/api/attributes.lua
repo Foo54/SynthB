@@ -41,6 +41,7 @@ SMODS.Attribute{key = "Luka"}
 SMODS.Attribute{key = "Forte"}
 SMODS.Attribute{key = "miki"}
 SMODS.Attribute{key = "Hiyama"}
+SMODS.Attribute{key = "Una"}
 
 
 --#region ARTISTS
@@ -84,3 +85,4 @@ SMODS.Attribute{key = "YuchaP"}
 SMODS.Attribute{key = "DarvishP"}
 SMODS.Attribute{key = "kaichi"}
 SMODS.Attribute{key = "AnythingBecomeMoe"}
+SMODS.Attribute{key = "TRAP CHICK"}

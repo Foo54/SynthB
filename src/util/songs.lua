@@ -48,6 +48,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=u33469XYVWc", key = "dance_delightful", pos = {x = 1, y = 9}},
 	-- smokey love / Bad Director
 	-- needLe / Bad Director
+	{link = "https://www.youtube.com/watch?v=XKZIQlqVjjk", key = "approve_please_genie", pos = {x = 4, y = 9}},
 	--{link = "temp", key = "shiawase_for_you", pos = {x = 4, y = 9}},
 	--[[
 	for cross mod do this

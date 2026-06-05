@@ -575,6 +575,12 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}簡単に愛は終わらないよ"
 				}
 			}, -- Bad Director
+			j_synthb_marshmallow = {
+				name = {"{f:5}temp", "Marshmallow"},
+				text = {
+					""
+				}
+			}, -- Bad Director
 		},
 		SongInfo = {
 			antani_itten_no = {
@@ -1173,6 +1179,18 @@ local descriptions = {
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
+			},
+			approve_please_genie = {
+				text = {
+					"{C:attention}Title:",
+					"{f:4}승인해주세요지니님!",
+					"{C:attention}Producer:",
+					"{f:4}트랩칙",
+					"{C:inactive,s:0.8}TRAP CHICK",
+					"{C:attention}Voice:",
+					"{f:5}重音テト{C:inactive} & {f:5}音街ウナ",
+					"{C:inactive,s:0.8}Kasane Teto & Otomachi Una"
+				}
 			}
 		},
 		MiscInfoQueue = {
@@ -1459,6 +1477,15 @@ local descriptions = {
 					"{C:red}-#1#{} discard size",
 					"Raise the {C:temperature}Temperature{} by {X:temperature,C:white}30C"
 				},
+			},
+			c_synthb_spectral_wish = {
+				name = "Wish",
+				text = {
+					"Create a {C:uncommon}Uncommon",
+					"or {C:common}Common{} Joker",
+					"of your choice",
+					"{C:inactive,s:0.8,f:5}OK! OK! 他人を助けるなら、大歓迎"
+				}
 			}
 		},
 		Tuning = {
