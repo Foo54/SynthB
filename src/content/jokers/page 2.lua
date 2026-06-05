@@ -180,7 +180,7 @@ SynthB.Joker{
 -- Brain Rot
 SynthB.Joker{
 	key = "brainrot",
-	pos = {x = 2, y = 0},
+	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 6,
 	attributes = {"generation", "enhancements", "song", "vocaloid song", "Teto", "Tokyo Manaka"},
