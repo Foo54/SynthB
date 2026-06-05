@@ -1485,7 +1485,7 @@ local descriptions = {
 					"same type as the last",
 					"{C:attention}Consumable{} used",
 					" {element:1} ",
-					"{C:inactive,s:0.8,f:5}OKOK あっちもこっちも大探検"
+					"{C:inactive,s:0.8,f:5}OK! OK! あっちもこっちも大探検"
 				}
 			}
 		},
