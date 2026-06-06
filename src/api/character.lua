@@ -7,8 +7,6 @@ SynthB.Character = SMODS.Center:extend {
 	pos = { x = 2, y = 0 },
 	atlas = "synthb_characters",
 	cost = 8,
-	--pixel_size = {w = 71, h = 71},
-	--display_size = {w = 71, h = 71},
 	set = 'synthb_Character',
 	config = {},
 	class_prefix = 'char',
@@ -22,42 +20,83 @@ SynthB.Character = SMODS.Center:extend {
 		-- call the parent function to ensure all pools are set
 		SMODS.Center.inject(self)
 	end,
-	set_ability = function (self, card, initial, delay_sprites)
+	set_ability = function(self, card, initial, delay_sprites)
 		if initial then
 			card.T.h = G.CARD_W
 		end
 	end,
-	load = function (self, card, card_table, other_card)
-		card.T.h = card.T.w
-		-- if in character card area
-			card.T.w = SynthB.CHAR_W
-			card.T.h = SynthB.CHAR_H
+	load = function(self, card, card_table, other_card)
+		card.T.h = G.CARD_W
 	end
 }
 G.C.SET.synthb_Character = SynthB.custom_colors.CHARACTER
 G.C.SECONDARY_SET.synthb_Character = SynthB.custom_colors.CHARACTER
 
+local card_set_card_area_ref = Card.set_card_area
+---@diagnostic disable-next-line: duplicate-set-field
+function Card:set_card_area(area)
+	if self.config.center.set == "synthb_Character" and area == G.synthb_character_area then
+		self.T.h = SynthB.CHAR_H
+		self.T.w = SynthB.CHAR_W
+	end
+	card_set_card_area_ref(self, area)
+end
 
 function SynthB.mod.custom_card_areas(game)
+	local w = SynthB.CHAR_W * 5
+	local h = SynthB.CHAR_H * 1.2
 	game.synthb_character_area = CardArea(
-		game.jokers.T.x, game.jokers.T.y - SynthB.CHAR_H * 1.2,
-		SynthB.CHAR_W * 5, SynthB.CHAR_H * 1.2,
+		game.jokers.T.x + game.jokers.T.w - w, game.jokers.T.y + game.jokers.T.h + 0.1,
+		w, h,
 		{
 			card_limit = 5,
-			type = "joker",
+			type = "characters",
+			card_count = true,
 			highlight_limit = 1,
-			no_card_count = true,
+			highlighted_limit = 1,
 			align_buttons = true,
 		}
 	)
 end
 
-SMODS.UndiscoveredSprite{
+local card_area_can_highlight_ref = CardArea.can_highlight
+---@diagnostic disable: duplicate-set-field
+function CardArea:can_highlight(card)
+	if self.config.type == "characters" then return true end
+	return card_area_can_highlight_ref(self, card)
+end
+
+local card_area_align_cards_ref = CardArea.align_cards
+---@diagnostic disable-next-line: duplicate-set-field
+function CardArea:align_cards(...)
+	if self.config.type == "characters" then
+		for k, card in ipairs(self.cards or {}) do
+			if not card.states.drag.is and not card.disable_align then
+				card.T.r = 0
+				card.T.x = self.T.x + (self.T.w / 5) * (k - 1)
+				card.T.y = self.T.y + self.T.h / 2 - card.T.h / 2 - (card.highlighted and 0.1 or 0) + (G.SETTINGS.reduced_motion and 0 or 1) * 0.03 * math.sin(0.666 * G.TIMERS.REAL + card.T.x)
+				card.T.x = card.T.x + card.shadow_parrallax.x / 30
+			end
+		end
+	end
+	return card_area_align_cards_ref(self, ...)
+end
+
+local card_can_sell_card_ref = Card.can_sell_card
+---@diagnostic disable-next-line: duplicate-set-field
+function Card:can_sell_card()
+	if (G.SETTINGS.tutorial_complete or G.GAME.pseudorandom.seed ~= 'TUTORIAL' or G.GAME.round_resets.ante > 1) and self.area and self.area.config.type == "characters" then
+		return true
+	end
+	return card_can_sell_card_ref(self)
+end
+
+SMODS.UndiscoveredSprite {
 	key = 'synthb_Character',
 	atlas = 'characters',
-	pos = {x=0,y=0},
+	pos = { x = 0, y = 0 },
 	no_overlay = true,
-	pixel_size = {h = 66 + 20},
+	pixel_size = { h = 66 + 20 },
 }
 SMODS.UndiscoveredCompat.synthb_Character = true
 
@@ -66,21 +105,21 @@ function SynthB.mod.custom_collection_tabs()
 	for _, v in pairs(G.P_CENTER_POOLS.synthb_Character) do
 		tally = tally + (v.discovered and 1 or 0)
 	end
-	return {UIBox_button{
+	return { UIBox_button {
 		button = "synthb_your_collection_characters",
-		label = {localize("b_synthb_characters")},
-		count = {tally = tally, of = #G.P_CENTER_POOLS.synthb_Character},
+		label = { localize("b_synthb_characters") },
+		count = { tally = tally, of = #G.P_CENTER_POOLS.synthb_Character },
 		minw = 5,
 		id = "synthb_your_collection_characters"
-	}}
+	} }
 end
 
 function G.UIDEF.create_UIBox_your_collection_characters()
 	local pool = {}
 	for k, v in pairs(G.P_CENTER_POOLS.synthb_Character) do
-		if not v.no_collection then pool[#pool+1] = v end
+		if not v.no_collection then pool[#pool + 1] = v end
 	end
-	return SMODS.card_collection_UIBox(pool, {5,5,5}, {
+	return SMODS.card_collection_UIBox(pool, { 5, 5, 5 }, {
 		no_materialize = true,
 		h_mod = 0.95,
 	})
@@ -88,7 +127,7 @@ end
 
 function G.FUNCS.synthb_your_collection_characters(e)
 	G.SETTINGS.paused = true
-	G.FUNCS.overlay_menu{
+	G.FUNCS.overlay_menu {
 		definition = G.UIDEF.create_UIBox_your_collection_characters(),
 	}
 end
@@ -97,8 +136,8 @@ local cfbshook = G.FUNCS.check_for_buy_space
 ---@diagnostic disable-next-line: duplicate-set-field
 function G.FUNCS.check_for_buy_space(card)
 	if card.ability.set == 'synthb_Character' then
-
-		local a = #G.synthb_character_area.cards + (1 + card.ability.extra_slots_used) <= G.synthb_character_area.config.card_limit + card.ability.card_limit
+		local a = #G.synthb_character_area.cards + (1 + card.ability.extra_slots_used) <=
+		G.synthb_character_area.config.card_limit + card.ability.card_limit
 		if not a then alert_no_space(card, G.synthb_character_area) end
 		return a
 	end
@@ -107,7 +146,7 @@ end
 
 local cae = CardArea.emplace
 ---@diagnostic disable-next-line: duplicate-set-field
-function CardArea:emplace(card,...)
+function CardArea:emplace(card, ...)
 	if self == G.consumeables and card.ability.set == 'synthb_characters' then
 		card:remove_from_area()
 		G.synthb_character_area:emplace(card, ...)

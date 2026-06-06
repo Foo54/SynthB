@@ -1490,7 +1490,7 @@ local descriptions = {
 			char_synthb_miku1 = {
 				name = "Hatsune Miku",
 				text = {
-					"test"
+					""
 				}
 			}
 		},

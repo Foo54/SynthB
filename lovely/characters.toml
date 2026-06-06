@@ -82,3 +82,40 @@ for _, v in ipairs(G.synthb_character_area.cards) do
 end
 '''
 match_indent = true
+
+# draw cards in custom card area
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "if self.config.type == 'joker' or self.config.type == 'consumeable' or self.config.type == 'shop' or self.config.type == 'title_2' then "
+position = 'at'
+payload = '''if self.config.type == 'joker' or self.config.type == 'consumeable' or self.config.type == 'shop' or self.config.type == 'title_2' or self.config.type == "characters" then '''
+match_indent = true
+
+# highlight cards in custom card area
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "elseif self.config.type == 'joker' or self.config.type == 'consumeable' then"
+position = 'at'
+payload = '''elseif self.config.type == 'joker' or self.config.type == 'consumeable' or self.config.type == "characters" then'''
+match_indent = true
+
+
+# sell buttons
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.consumeable or self.ability.set == 'Joker' or (self.area and self.area == G.pack_cards) then"
+position = 'at'
+payload = '''if self.ability.consumeable or self.ability.set == 'Joker' or (self.area and self.area == G.pack_cards) or self.ability.set == "synthb_Character" then'''
+match_indent = true
+
+# sell  buttons
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.consumeable or self.ability.set == 'Joker' then"
+position = 'at'
+payload = '''if self.ability.consumeable or self.ability.set == 'Joker' or self.ability.set == "synthb_Character" then'''
+match_indent = true
