@@ -33,8 +33,8 @@ SynthB.custom_colors = {
 	CHARACTER = HEX("EE5F93"),
 }
 
-SynthB.CHAR_W = G.CARD_W / 4
-SynthB.CHAR_H = G.CARD_W / 4
+SynthB.CHAR_W = G.CARD_W / 3
+SynthB.CHAR_H = G.CARD_W / 3
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
 function SynthB.debug(...) 

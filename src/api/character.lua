@@ -43,10 +43,10 @@ function Card:set_card_area(area)
 end
 
 function SynthB.mod.custom_card_areas(game)
-	local w = SynthB.CHAR_W * 5
-	local h = SynthB.CHAR_H * 1.2
+	local h = SynthB.CHAR_W * 5
+	local w = SynthB.CHAR_H * 1.2
 	game.synthb_character_area = CardArea(
-		game.jokers.T.x + game.jokers.T.w - w, game.jokers.T.y + game.jokers.T.h + 0.1,
+		game.consumeables.T.x + game.consumeables.T.w + 0.1, game.consumeables.T.y,
 		w, h,
 		{
 			card_limit = 5,
@@ -73,11 +73,12 @@ function CardArea:align_cards(...)
 		for k, card in ipairs(self.cards or {}) do
 			if not card.states.drag.is and not card.disable_align then
 				card.T.r = 0
-				card.T.x = self.T.x + (self.T.w / 5) * (k - 1)
-				card.T.y = self.T.y + self.T.h / 2 - card.T.h / 2 - (card.highlighted and 0.1 or 0) + (G.SETTINGS.reduced_motion and 0 or 1) * 0.03 * math.sin(0.666 * G.TIMERS.REAL + card.T.x)
+				card.T.x = self.T.x + self.T.w / 2 - card.T.w / 2 - (card.highlighted and 0.1 or 0) + (G.SETTINGS.reduced_motion and 0 or 1) * 0.03 * math.sin(0.666 * G.TIMERS.REAL + card.T.y)
+				card.T.y = self.T.y + (self.T.h / 5) * (k - 1)
 				card.T.x = card.T.x + card.shadow_parrallax.x / 30
 			end
 		end
+		table.sort(self.cards, function (a, b) return a.T.y + a.T.h/2 - 100*((a.pinned and not a.ignore_pinned) and a.sort_id or 0) < b.T.y + b.T.h/2 - 100*((b.pinned and not b.ignore_pinned) and b.sort_id or 0) end)
 	end
 	return card_area_align_cards_ref(self, ...)
 end
