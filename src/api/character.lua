@@ -18,15 +18,37 @@ SynthB.Character = SMODS.Center:extend {
 	end,
 	inject = function(self)
 		-- call the parent function to ensure all pools are set
-		SMODS.Center.inject(self)
-	end,
-	set_ability = function(self, card, initial, delay_sprites)
-		if initial then
-			card.T.h = G.CARD_W
+		self.config = self.config or {}
+		self.config.immutable = self.config.immutable or {}
+		local set_ability_ref = self.set_ability or function() end
+		function self.set_ability (self, card, initial, delay_sprites)
+			if initial then
+				card.T.h = G.CARD_W
+				card.ability.immutable.level = pseudorandom("synthb_character_level", 1, 60)
+				if card.ability.immutable.level > 50 then
+					card.children.center:set_sprite_pos({x = self.pos.x, y = self.pos.y + 1})
+				end
+			end
+			set_ability_ref(self, card, initial, delay_sprites)
 		end
+		SMODS.Center.inject(self)
 	end,
 	load = function(self, card, card_table, other_card)
 		card.T.h = G.CARD_W
+	end,
+	set_sprites = function(self, card, front)
+    G.E_MANAGER:add_event(Event({
+			blockable = false,
+			func = function()
+				card.canvas_text = SMODS.CanvasSprite{
+					ref_table = card.ability.immutable,
+					ref_value = "level",
+					text_height = 6,
+					text_offset = {x = 18, y = 50}
+				}
+				return true
+			end
+		}))
 	end
 }
 G.C.SET.synthb_Character = SynthB.custom_colors.CHARACTER

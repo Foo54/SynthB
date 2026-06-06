@@ -239,3 +239,12 @@ end
 function SynthB.is_big(value)
 	return is_big and is_big(value) or false
 end
+
+--- Lerp from one value to another
+--- @param start number
+--- @param _end number
+--- @param amount number from [0, 1]
+--- @return number
+function SynthB.lerp(start, _end, amount)
+	return start + (_end - start) * amount
+end

@@ -31,6 +31,11 @@ function eval_card(card, context)
 			G.P_CENTERS[card.edition.key].modify_effect(card, key, partial_effect)
 		end
 	end
+	if not context.synthb_no_mod_scoring then -- prevent most cases on infinte recursion
+		for key, partial_effect in pairs(effect) do
+			SMODS.calculate_context{synthb_mod_scoring = partial_effect, synthb_mod_key = key,  synthb_no_mod_scoring = true}
+		end
+	end
 	if SynthB.too_hot() then
 		for key, partial_effect in pairs(effect) do
 			SynthB.heat_modify_effect(card, key, partial_effect)

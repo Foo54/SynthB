@@ -1490,7 +1490,17 @@ local descriptions = {
 			char_synthb_miku1 = {
 				name = "Hatsune Miku",
 				text = {
-					""
+					"The first {C:attention}#2#{} times",
+					"you gain chips each hand,",
+					"gain {X:chips,C:white}#1#{} the amount"
+				}
+			},
+			char_synthb_miku_ln = {
+				name = {"Hatsune Miku", "{s:0.7}Leo/Need"},
+				text = {
+					"Poker hands gain an",
+					"additional {X:planet,C:white}X#1#{} stats",
+					"when leveled up"
 				}
 			}
 		},
