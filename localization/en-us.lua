@@ -1460,6 +1460,15 @@ local descriptions = {
 					"learn what it does"
 				}
 			},
+			undiscovered_synthb_character = {
+				name = "Not Discovered",
+				text={
+					"Purchase or use",
+					"this card in an",
+					"unseeded run to",
+					"learn what it does"
+				}
+			},
 			synthb_utau_seal = {
 				name = "UTAU Seal",
 				text = {
@@ -1476,6 +1485,14 @@ local descriptions = {
 					"per unscored card without a {C:synthb_mistuning_dark}alUTAU Se",
 				}
 			},
+		},
+		synthb_Character = {
+			char_synthb_miku1 = {
+				name = "Hatsune Miku",
+				text = {
+					"test"
+				}
+			}
 		},
 		Tarot = {
 			c_synthb_tarot_treasure_hunter = {
@@ -1750,6 +1767,8 @@ local descriptions = {
 			k_synthb_blackjack_win = "Win!",
 			k_synthb_blackjack_lose = "Loss!",
 			k_synthb_blackjack_tie = "Tie!",
+			b_synthb_characters = "Greenroom",
+			k_synthb_character = "Character",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

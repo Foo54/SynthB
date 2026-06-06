@@ -29,8 +29,12 @@ SynthB.custom_colors = {
 		MELON = HEX("11DA4E"),
 		TRITIP = HEX("E95C5C"),
 		DURIAN = HEX("0F7917")
-	}
+	},
+	CHARACTER = HEX("EE5F93"),
 }
+
+SynthB.CHAR_W = G.CARD_W / 4
+SynthB.CHAR_H = G.CARD_W / 4
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
 function SynthB.debug(...) 
@@ -64,6 +68,7 @@ SynthB.load_file("api/drawstep")
 SynthB.load_file("api/sound")
 SynthB.load_file("api/shader")
 SynthB.load_file("api/smods")
+SynthB.load_file("api/character")
 
 SynthB.debug("Loading Content Files")
 SynthB.load_file("content/jokers/page 1")
@@ -79,6 +84,9 @@ SynthB.load_file("content/edition")
 SynthB.load_file("content/seal")
 SynthB.load_file("content/sticker")
 SynthB.load_file("content/tag")
+
+SynthB.debug("Loading Character Files")
+SynthB.load_file("content/characters/virtual_singers/miku")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
 SynthB.load_file("compat/aikoshen")
