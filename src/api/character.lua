@@ -13,6 +13,8 @@ SynthB.Character = SMODS.Center:extend {
 	required_params = {
 		'key',
 	},
+	synthb_major = {},
+	synthb_minor = {},
 	set_card_type_badge = function(self, card, badges)
 		badges[#badges + 1] = create_badge(localize("k_synthb_character"), SynthB.custom_colors.CHARACTER, G.C.WHITE, 1.2)
 	end,
@@ -24,8 +26,8 @@ SynthB.Character = SMODS.Center:extend {
 		function self.set_ability (self, card, initial, delay_sprites)
 			if initial then
 				card.T.h = G.CARD_W
-				card.ability.immutable.level = pseudorandom("synthb_character_level", 1, 60)
-				if card.ability.immutable.level > 50 then
+				card.ability.immutable.level = pseudorandom("synthb_character_level", 1, 60) >= 50
+				if card.ability.immutable.level then
 					card.children.center:set_sprite_pos({x = self.pos.x, y = self.pos.y + 1})
 				end
 			end
@@ -34,22 +36,8 @@ SynthB.Character = SMODS.Center:extend {
 		SMODS.Center.inject(self)
 	end,
 	load = function(self, card, card_table, other_card)
-		card.T.h = G.CARD_W
+		card.T.h = card.T.w
 	end,
-	set_sprites = function(self, card, front)
-    G.E_MANAGER:add_event(Event({
-			blockable = false,
-			func = function()
-				card.canvas_text = SMODS.CanvasSprite{
-					ref_table = card.ability.immutable,
-					ref_value = "level",
-					text_height = 6,
-					text_offset = {x = 18, y = 50}
-				}
-				return true
-			end
-		}))
-	end
 }
 G.C.SET.synthb_Character = SynthB.custom_colors.CHARACTER
 G.C.SECONDARY_SET.synthb_Character = SynthB.custom_colors.CHARACTER

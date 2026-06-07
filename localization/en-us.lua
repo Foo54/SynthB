@@ -1492,7 +1492,7 @@ local descriptions = {
 				text = {
 					"The first {C:attention}#2#{} times",
 					"you gain chips each hand,",
-					"gain {X:chips,C:white}#1#{} the amount"
+					"gain {X:chips,C:white}X#1#{} the amount"
 				}
 			},
 			char_synthb_miku_ln = {

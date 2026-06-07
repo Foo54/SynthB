@@ -4,14 +4,22 @@ SynthB.Character{
 		extra = {
 			min_chips = 1.25,
 			max_chips = 2,
+			minor_boost = 1.25,
+			major_boost = 1.5,
 			count = 10
 		},
 		immutable = {
 			counted = 0
 		}
 	},
+	synthb_minor = {
+		"j_synthb_needle",
+		"j_synthb_dna",
+
+	}, -- every single song used in other characters
 	loc_vars = function(self, info_queue, card)
-		return {vars = {(card.fake_card or (card.area and card.area.config.collection)) and (card.ability.extra.min_chips .. "-" .. card.ability.extra.max_chips) or card.ability.extra.chips, card.ability.extra.count}}
+		local chips = SynthB.get_character_boosted_value(card, "chips")
+		return {vars = {(card.fake_card or (card.area and card.area.config.collection)) and (card.ability.extra.min_chips .. "/" .. card.ability.extra.max_chips) or chips, card.ability.extra.count}}
 	end,
 	calculate = function(self, card, context)
 		if context.press_play then
@@ -19,29 +27,27 @@ SynthB.Character{
 		end
 		if context.synthb_mod_scoring then
 			if card.ability.immutable.counted <= card.ability.extra.count then
+				local chips = SynthB.get_character_boosted_value(card, "chips")
 				local mod = false
-				if context.synthb_mod_scoring.chips then
-					context.synthb_mod_scoring.chips = context.synthb_mod_scoring.chips * card.ability.extra.chips
+				if context.synthb_mod_scoring.chips and context.synthb_mod_scoring.chips > 0 then
+					context.synthb_mod_scoring.chips = context.synthb_mod_scoring.chips * chips
 					card.ability.immutable.counted = card.ability.immutable.counted + 1
 					mod = true
 				end
-				if context.synthb_mod_scoring.mod_chips then
-					context.synthb_mod_scoring.mod_chips = context.synthb_mod_scoring.mod_chips * card.ability.extra.chips
+				if context.synthb_mod_scoring.mod_chips and context.synthb_mod_scoring.mod_chips > 0 then
+					context.synthb_mod_scoring.mod_chips = context.synthb_mod_scoring.mod_chips * chips
 					card.ability.immutable.counted = card.ability.immutable.counted + 1
 					mod = true
 				end
 				if mod then
 					return {
-						message = "X" .. number_format(card.ability.extra.chips),
+						message = "X" .. number_format(chips),
 						colour = G.C.CHIPS
 					}
 				end
 			end
 		end
 	end,
-	set_ability = function (self, card, initial, delay_sprites)
-		card.ability.extra.chips = math.floor(SynthB.lerp(card.ability.extra.min_chips, card.ability.extra.max_chips, card.ability.immutable.level / 60 ) * 100) / 100
-	end
 }
 
 SynthB.Character{

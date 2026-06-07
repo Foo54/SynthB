@@ -35,7 +35,7 @@ function G.UIDEF.use_and_sell_buttons(card)
 		return {
 			-- TODO: make this smaller
 			n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
-			{n=G.UIT.C, config={padding = 0.15, align = 'cr'}, nodes={
+			{n=G.UIT.C, config={padding = 0.15, align = 'cl'}, nodes={
 				{n=G.UIT.R, config={align = 'cl'}, nodes={
 					{n=G.UIT.C, config={align = "cr"}, nodes={
 						{n=G.UIT.C, config={ref_table = card, align = "cr",padding = 0.1, r=0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card', handy_insta_action = 'sell'}, nodes={

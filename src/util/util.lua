@@ -248,3 +248,45 @@ end
 function SynthB.lerp(start, _end, amount)
 	return start + (_end - start) * amount
 end
+
+--- Determine what value should be used based on level (numbers only) with boost
+--- @param card Card
+--- @param value string card.ability.extra[value]
+--- @return number
+function SynthB.get_character_boosted_value(card, value)
+	local val = SynthB.get_character_value(card, value)
+	local bonus = SynthB.get_character_boost(card, value)
+	return val * bonus
+end
+
+--- Determine what value should be used based on level
+--- @param card Card
+--- @param value string card.ability.extra[value]
+--- @return any
+function SynthB.get_character_value(card, value)
+	return card.ability.extra[(SynthB.get_character_level(card) and "max_" or "min_") .. value]
+end
+
+--- Determine a characters level (hooking purposes)
+--- @param card Card
+--- @return boolean level true for 60, false for 1
+function SynthB.get_character_level(card)
+	return card.ability.immutable.level
+end
+
+--- Determines the current boost a character is getting
+--- @param card Card
+--- @param key? string
+--- @return number multiplier mulitplier for stat-based effects
+--- @return integer boost lever of boost, 2 is major, 0 is none
+function SynthB.get_character_boost(card, key)
+	if not G.jokers or #G.jokers.cards == 0 then return 1, 0 end
+	key = key and ("_" .. key) or ""
+	for _, song in ipairs(card.config.center.synthb_major) do
+		if next(SMODS.find_card(song)) then return card.ability.extra["major_boost" .. key] or card.ability.extra.major_boost, 2 end
+	end
+	for _, song in ipairs(card.config.center.synthb_minor) do
+		if next(SMODS.find_card(song)) then return card.ability.extra["minor_boost" .. key] or card.ability.extra.minor_boost, 1 end
+	end
+	return 1, 0
+end
