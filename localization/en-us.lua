@@ -1512,21 +1512,21 @@ local descriptions = {
 				}
 			},
 			char_synthb_miku_vbs = {
-				name = {"Hatsune Miku", "Vivid Bad Squad"},
+				name = {"Hatsune Miku", "{s:0.7}Vivid Bad Squad"},
 				text = {
 					"Score {C:purple}#1#%{} of the",
 					"blind requirement each hand"
 				}
 			},
 			char_synthb_miku_wxs = {
-				name = {"Hatsune Miku", "Wonderlands X Showtime"},
+				name = {"Hatsune Miku", "{s:0.7}Wonderlands X Showtime"},
 				text = {
 					"All sources of {C:red}Mult",
 					"give at least {C:red}+#1#{} Mult"
 				}
 			},
 			char_synthb_miku_n25 = {
-				name = {"Hatsune Miku", "Nightcord at 25:00"},
+				name = {"Hatsune Miku", "{s:0.7}Nightcord at 25:00"},
 				text = {
 					"{C:blue}+#1#{} hand#2#"
 				}
