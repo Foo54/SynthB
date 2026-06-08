@@ -4,8 +4,6 @@ SynthB.Character{
 		extra = {
 			min_chips = 1.25,
 			max_chips = 2,
-			minor_boost = 1.25,
-			major_boost = 1.5,
 			count = 10
 		},
 		immutable = {
@@ -18,8 +16,7 @@ SynthB.Character{
 
 	}, -- every single song used in other characters
 	loc_vars = function(self, info_queue, card)
-		local chips = SynthB.get_character_boosted_value(card, "chips")
-		return {vars = {(card.fake_card or (card.area and card.area.config.collection)) and (card.ability.extra.min_chips .. "/" .. card.ability.extra.max_chips) or chips, card.ability.extra.count}}
+		return {vars = {SynthB.get_character_loc_vars(card, "chips"), card.ability.extra.count}}
 	end,
 	calculate = function(self, card, context)
 		if context.press_play then
@@ -54,7 +51,29 @@ SynthB.Character{
 	key = "miku_ln",
 	config = {
 		extra = {
-
+			min_boost = 1.25,
+			max_boost = 2,
 		}
 	},
+	synthb_minor = {
+	},
+	synthb_major = {
+		"j_synthb_needle"
+	},
+	loc_vars = function(self, info_queue, card)
+		return {vars = {SynthB.get_character_loc_vars(card, "boost")}}
+	end,
+	calculate = function(self, card, context)
+		if context.synthb_mod_poker_hand_scaling then
+			local boost = SynthB.get_character_boosted_value(card, "boost")
+			context.synthb_dif = context.synthb_dif * boost
+			return {
+				message = "X" .. number_format(boost),
+				colour = G.ARGS.LOC_COLOURS.planet
+			}
+		end
+	end,
 }
+
+
+

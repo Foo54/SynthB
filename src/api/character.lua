@@ -21,6 +21,9 @@ SynthB.Character = SMODS.Center:extend {
 	inject = function(self)
 		-- call the parent function to ensure all pools are set
 		self.config = self.config or {}
+		self.config.extra = self.config.extra or {}
+		self.config.extra.minor_boost = self.config.extra.minor_boost or 1.25
+		self.config.extra.major_boost = self.config.extra.major_boost or 1.5
 		self.config.immutable = self.config.immutable or {}
 		local set_ability_ref = self.set_ability or function() end
 		function self.set_ability (self, card, initial, delay_sprites)

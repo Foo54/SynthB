@@ -1,0 +1,22 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -10
+
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''assert(type(args.func) == 'function', "Invalid func provided to SMODS.upgrade_hands")'''
+position = "after"
+payload = '''
+local func_ref = args.func
+function args.func (value, ...)
+	local ret = func_ref(value, ...)
+	local dif = ret - value
+	local context = {synthb_mod_poker_hand_scaling = true, synthb_dif = dif, synthb_args = {value, ...}}
+	SMODS.calculate_context(context)
+	return value + context.synthb_dif
+end
+'''
+match_indent = true

@@ -290,3 +290,12 @@ function SynthB.get_character_boost(card, key)
 	end
 	return 1, 0
 end
+
+--- Gets text for displaying min/max level values in collection
+--- @param card Card
+--- @param value string see SynthB.get_character_boosted_value
+--- @param seperator? string defaults to " / " (spaces will not be shown with {X:})
+--- @returns string
+function SynthB.get_character_loc_vars(card, value, seperator)
+	return (card.fake_card or (card.area and card.area.config.collection)) and (card.ability.extra["min_" .. value] .. (seperator or " / ") .. card.ability.extra["max_" .. value]) or SynthB.get_character_boosted_value(card, value)
+end
