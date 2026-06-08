@@ -133,7 +133,7 @@ function G.UIDEF.create_UIBox_your_collection_characters()
 	for k, v in pairs(G.P_CENTER_POOLS.synthb_Character) do
 		if not v.no_collection then pool[#pool + 1] = v end
 	end
-	return SMODS.card_collection_UIBox(pool, { 5, 5, 5 }, {
+	return SMODS.card_collection_UIBox(pool, { 5, 5 }, {
 		no_materialize = true,
 		h_mod = 0.95,
 	})
@@ -167,7 +167,7 @@ end
 local cae = CardArea.emplace
 ---@diagnostic disable-next-line: duplicate-set-field
 function CardArea:emplace(card, ...)
-	if self == G.consumeables and card.ability.set == 'synthb_characters' then
+	if self == G.consumeables and card.ability.set == 'synthb_Character' then
 		card:remove_from_area()
 		G.synthb_character_area:emplace(card, ...)
 		discover_card(card.config.center)

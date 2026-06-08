@@ -1,4 +1,19 @@
 SynthB.Character{
+	key = "padding1",
+	synthb_character = "padding",
+	in_pool = function (self, args) return false end,
+	pos = {x = 1, y = 0},
+	discovered = true,
+}
+SynthB.Character{
+	key = "padding2",
+	synthb_character = "padding",
+	in_pool = function (self, args) return false end,
+	pos = {x = 1, y = 0},
+	discovered = true,
+}
+
+SynthB.Character{
 	key = "miku1",
 	config = {
 		extra = {
@@ -49,7 +64,24 @@ SynthB.Character{
 }
 
 SynthB.Character{
+	key = "padding3",
+	synthb_character = "padding",
+	in_pool = function (self, args) return false end,
+	pos = {x = 1, y = 0},
+	discovered = true,
+}
+SynthB.Character{
+	key = "padding4",
+	synthb_character = "padding",
+	in_pool = function (self, args) return false end,
+	pos = {x = 1, y = 0},
+	discovered = true,
+}
+
+
+SynthB.Character{
 	key = "miku_ln",
+	pos = {x = 0, y = 2},
 	config = {
 		extra = {
 			min_boost = 1.25,
@@ -79,6 +111,7 @@ SynthB.Character{
 
 SynthB.Character{
 	key = "miku_mmj",
+	pos = {x = 1, y = 2},
 	config = {
 		extra = {
 			min_retrigger = 1,
@@ -113,6 +146,7 @@ SynthB.Character{
 SynthB.Character{
 	key = "miku_vbs",
 	synthb_character = "miku",
+	pos = {x = 2, y = 2},
 	synthb_minor = {
 
 	},
@@ -140,6 +174,7 @@ SynthB.Character{
 SynthB.Character{
 	key = "miku_wxs",
 	synthb_character = "miku",
+	pos = {x = 3, y = 2},
 	synthb_minor = {
 
 	},
@@ -180,6 +215,7 @@ SynthB.Character{
 SynthB.Character{
 	key = "miku_n25",
 	synthb_character = "miku",
+	pos = {x = 4, y = 2},
 	synthb_major = {
 	},
 	synthb_minor = {

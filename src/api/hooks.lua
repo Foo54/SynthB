@@ -117,7 +117,7 @@ end
 
 local card_hover_ref = Card.hover
 function Card:hover()
-	if not SynthB.Globals.blackjack_open then
+	if not SynthB.Globals.blackjack_open and not (self.ability.set == "synthb_Character" and self.config.center.synthb_character == "padding") then
 		card_hover_ref(self)
 	end
 end
