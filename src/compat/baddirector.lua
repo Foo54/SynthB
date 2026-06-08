@@ -94,13 +94,6 @@ SMODS.Atlas{
 	py = 95
 }
 
-SMODS.Atlas{
-	key = "bd_jokers",
-	path = "bad_director_jokers.png",
-	px = 71,
-	py = 95
-}
-
 --#endregion
 
 --#region SEAL

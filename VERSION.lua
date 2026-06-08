@@ -1,1 +1,1 @@
-return "SynthB-1.4.6-260608a"
+return "SynthB-1.4.6-260608b"
