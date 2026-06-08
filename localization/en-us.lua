@@ -1506,11 +1506,18 @@ local descriptions = {
 			char_synthb_miku_mmj = {
 				name = {"Hatsune Miku", "{s:0.7}More More Jump"},
 				text = {
-					"{C:attention}Retrigger the first",
+					"{C:attention}Retrigger{} the first",
 					"{C:attention}#1#{} cards in hand",
 					"{C:attention}#2#{} times"
 				}
 			},
+			char_synthb_miku_vbs = {
+				name = {"Hatsune Miku", "Vivid Bad Squad"},
+				text = {
+					"Score {C:purple}#1#%{} of the",
+					"blind requirement each hand"
+				}
+			}
 		},
 		Tarot = {
 			c_synthb_tarot_treasure_hunter = {

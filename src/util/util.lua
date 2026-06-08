@@ -304,10 +304,10 @@ end
 
 function SynthB.alert_character_copy(card, area)
   G.CONTROLLER.locks.no_space = true
-  attention_text({
+  SynthB.attention_text({
 		scale = 0.9, text = localize('k_synthb_no_copies_ex'), hold = 0.9, align = 'cm',
 		cover = area, cover_padding = 0.1, cover_colour = adjust_alpha(G.C.BLACK, 0.7),
-		rotate = math.pi/2
+		text_rot = math.pi/2
   })
   card:juice_up(0.3, 0.2)
   for i = 1, #area.cards do
@@ -333,6 +333,115 @@ function SynthB.alert_character_copy(card, area)
 		func = function()
 			G.CONTROLLER.locks.no_space = nil
 			return true
+		end
+	}))
+end
+
+function SynthB.attention_text(args)
+	args = args or {}
+	args.text = args.text or 'test'
+	args.scale = args.scale or 1
+	args.colour = SMODS.shallow_copy(args.colour or G.C.WHITE)
+	args.hold = (args.hold or 0) + 0.1*(G.SPEEDFACTOR)
+	args.pos = args.pos or {x = 0, y = 0}
+	args.align = args.align or 'cm'
+	args.emboss = args.emboss or nil
+
+	args.fade = 1
+
+	if args.cover then
+		args.cover_colour = SMODS.shallow_copy(args.cover_colour or G.C.RED)
+		args.cover_colour_l = SMODS.shallow_copy(lighten(args.cover_colour, 0.2))
+		args.cover_colour_d = SMODS.shallow_copy(darken(args.cover_colour, 0.2))
+	else
+		args.cover_colour = copy_table(G.C.CLEAR)
+	end
+
+	args.uibox_config = {
+		align = args.align or 'cm',
+		offset = args.offset or {x=0,y=0}, 
+		major = args.cover or args.major or nil,
+	}
+
+	G.E_MANAGER:add_event(Event({
+		trigger = 'after',
+		delay = 0,
+		blockable = false,
+		blocking = false,
+		func = function()
+			args.AT = UIBox{
+				T = {args.pos.x,args.pos.y,0,0},
+				definition = 
+					{n=G.UIT.ROOT, config = {align = args.cover_align or 'cm', minw = (args.cover and args.cover.T.w or 0.001) + (args.cover_padding or 0), maxw = (args.cover and args.cover.T.w or 0.001) + (args.cover_padding or 0), no_overflow = "h", minh = (args.cover and args.cover.T.h or 0.001) + (args.cover_padding or 0), padding = 0.03, r = 0.1, emboss = args.emboss, colour = args.cover_colour}, nodes={
+						{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, text_rot = args.text_rot, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font})}},
+					}}, 
+				config = args.uibox_config
+			}
+			args.AT.attention_text = true
+
+			if type(args.text) == 'string' then
+				args.text = args.AT.UIRoot.children[1].config.object
+---@diagnostic disable-next-line: undefined-field
+				args.text:pulse(0.5)
+			end
+			
+			if args.cover then
+				Particles(args.pos.x,args.pos.y, 0,0, {
+					timer_type = 'TOTAL',
+					timer = 0.01,
+					pulse_max = 15,
+					max = 0,
+					scale = 0.3,
+					vel_variation = 0.2,
+					padding = 0.1,
+					fill=true,
+					lifespan = 0.5,
+					speed = 2.5,
+					attach = args.AT.UIRoot,
+					colours = {args.cover_colour, args.cover_colour_l, args.cover_colour_d},
+			})
+			end
+			if args.backdrop_colour then
+				args.backdrop_colour = SMODS.shallow_copy(args.backdrop_colour)
+				Particles(args.pos.x,args.pos.y,0,0,{
+					timer_type = 'TOTAL',
+					timer = 5,
+					scale = 2.4*(args.backdrop_scale or 1), 
+					lifespan = 5,
+					speed = 0,
+					attach = args.AT,
+					colours = {args.backdrop_colour}
+				})
+			end
+			return true
+		end
+	}))
+
+	G.E_MANAGER:add_event(Event({
+		trigger = 'after',
+		delay = args.hold,
+		blockable = false,
+		blocking = false,
+		func = function()
+			if not args.start_time then
+				args.start_time = G.TIMERS.TOTAL
+---@diagnostic disable-next-line: undefined-field
+				if Object.is(args.text, DynaText) then
+---@diagnostic disable-next-line: undefined-field
+					args.text:pop_out(3)
+				end
+			else
+				args.fade = math.max(0, 1 - 3*(G.TIMERS.TOTAL - args.start_time))
+				if args.cover_colour then args.cover_colour[4] = math.min(args.cover_colour[4], 2*args.fade) end
+				if args.cover_colour_l then args.cover_colour_l[4] = math.min(args.cover_colour_l[4], args.fade) end
+				if args.cover_colour_d then args.cover_colour_d[4] = math.min(args.cover_colour_d[4], args.fade) end
+				if args.backdrop_colour then args.backdrop_colour[4] = math.min(args.backdrop_colour[4], args.fade) end
+				args.colour[4] = math.min(args.colour[4], args.fade)
+				if args.fade <= 0 then
+					args.AT:remove()
+					return true
+				end
+			end
 		end
 	}))
 end
