@@ -15,6 +15,7 @@ SynthB.Character{
 		"j_synthb_dna",
 
 	}, -- every single song used in other characters
+	synthb_character = "miku",
 	loc_vars = function(self, info_queue, card)
 		return {vars = {SynthB.get_character_loc_vars(card, "chips"), card.ability.extra.count}}
 	end,
@@ -60,6 +61,7 @@ SynthB.Character{
 	synthb_major = {
 		"j_synthb_needle"
 	},
+	synthb_character = "miku",
 	loc_vars = function(self, info_queue, card)
 		return {vars = {SynthB.get_character_loc_vars(card, "boost")}}
 	end,
@@ -75,5 +77,36 @@ SynthB.Character{
 	end,
 }
 
+SynthB.Character{
+	key = "miku_mmj",
+	config = {
+		extra = {
+			min_retrigger = 1,
+			max_retrigger = 2,
+			cards = 2,
+			minor_boost = 1.5,
+			major_boost = 2,
+		}
+	},
+	synthb_minor = {
 
+	},
+	synthb_major = {
+
+	},
+	synthb_character = "miku",
+	loc_vars = function(self, info_queue, card)
+		return {vars = {SynthB.get_character_loc_vars(card, "cards"), SynthB.get_character_loc_vars(card, "retrigger", nil, true)}}
+	end,
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play then
+			local cards = SynthB.get_character_boosted_value(card, "cards")
+			local retriggers = SynthB.get_character_value(card, "retrigger")
+			for i, _card in ipairs(context.scoring_hand) do
+				if i > cards then break end
+				if _card == context.other_card then return {repetitions = retriggers} end
+			end
+		end
+	end,
+}
 

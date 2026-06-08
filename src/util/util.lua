@@ -264,7 +264,7 @@ end
 --- @param value string card.ability.extra[value]
 --- @return any
 function SynthB.get_character_value(card, value)
-	return card.ability.extra[(SynthB.get_character_level(card) and "max_" or "min_") .. value]
+	return card.ability.extra[value] or card.ability.extra[(SynthB.get_character_level(card) and "max_" or "min_") .. value]
 end
 
 --- Determine a characters level (hooking purposes)
@@ -295,7 +295,44 @@ end
 --- @param card Card
 --- @param value string see SynthB.get_character_boosted_value
 --- @param seperator? string defaults to " / " (spaces will not be shown with {X:})
+--- @param no_boost? boolean true to not take boosts into account
 --- @returns string
-function SynthB.get_character_loc_vars(card, value, seperator)
-	return (card.fake_card or (card.area and card.area.config.collection)) and (card.ability.extra["min_" .. value] .. (seperator or " / ") .. card.ability.extra["max_" .. value]) or SynthB.get_character_boosted_value(card, value)
+function SynthB.get_character_loc_vars(card, value, seperator, no_boost)
+---@diagnostic disable-next-line: undefined-field
+	return (card.fake_card or (card.area and card.area.config.collection)) and (card.ability.extra[value] or (card.ability.extra["min_" .. value] .. (seperator or " / ") .. card.ability.extra["max_" .. value])) or (no_boost and SynthB.get_character_value or SynthB.get_character_boosted_value)(card, value)
+end
+
+function SynthB.alert_character_copy(card, area)
+  G.CONTROLLER.locks.no_space = true
+  attention_text({
+		scale = 0.9, text = localize('k_synthb_no_copies_ex'), hold = 0.9, align = 'cm',
+		cover = area, cover_padding = 0.1, cover_colour = adjust_alpha(G.C.BLACK, 0.7),
+		rotate = math.pi/2
+  })
+  card:juice_up(0.3, 0.2)
+  for i = 1, #area.cards do
+    area.cards[i]:juice_up(0.15)
+  end
+  G.E_MANAGER:add_event(Event({
+		trigger = 'after',
+		delay = 0.06*G.SETTINGS.GAMESPEED,
+		blockable = false,
+		blocking = false,
+		func = function()
+			play_sound('tarot2', 0.76, 0.4)
+			return true
+		end
+	}))
+	play_sound('tarot2', 1, 0.4)
+
+	G.E_MANAGER:add_event(Event({
+		trigger = 'after',
+		delay = 0.5*G.SETTINGS.GAMESPEED,
+		blockable = false,
+		blocking = false,
+		func = function()
+			G.CONTROLLER.locks.no_space = nil
+			return true
+		end
+	}))
 end

@@ -521,7 +521,7 @@ local descriptions = {
 			j_synthb_shiawase_for_you = {
 				name = "SHIAWASE FOR YOU",
 				text = {
-					""
+					"do something idk"
 				}
 			},
 			j_synthb_blackjack = {
@@ -547,6 +547,14 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}ヤラララ、程遠くても"
 				}
 			},
+			j_synthb_needle = {
+				name = "needLe",
+				text = {
+					"Prevents {C:hearts}Hearts{} from being destroyed",
+					"{C:green}#1# in #2#{} chance to fail",
+					"{C:inactive,s:0.8,f:5}簡単に愛は終わらないよ"
+				}
+			},
 
 			--- Crossmod
 			j_synthb_weathergirl = {
@@ -567,18 +575,10 @@ local descriptions = {
 					"{C:inactive,f:5,s:0.8}繋いだ導火愛　濡らしたままで"
 				}
 			}, -- Bad Director
-			j_synthb_needle = {
-				name = "needLe",
-				text = {
-					"Prevents {C:hearts}Hearts{} from being destroyed",
-					"{C:green}#1# in #2#{} chance to fail",
-					"{C:inactive,s:0.8,f:5}簡単に愛は終わらないよ"
-				}
-			}, -- Bad Director
 			j_synthb_marshmallow = {
 				name = {"{f:5}temp", "Marshmallow"},
 				text = {
-					""
+					"also do something"
 				}
 			}, -- Bad Director
 		},
@@ -1498,11 +1498,19 @@ local descriptions = {
 			char_synthb_miku_ln = {
 				name = {"Hatsune Miku", "{s:0.7}Leo/Need"},
 				text = {
-					"Poker hands gain an",
+					"{C:attention}Poker hands{} gain an",
 					"additional {X:planet,C:white}X#1#{} stats",
 					"when leveled up"
 				}
-			}
+			},
+			char_synthb_miku_mmj = {
+				name = {"Hatsune Miku", "{s:0.7}More More Jump"},
+				text = {
+					"{C:attention}Retrigger the first",
+					"{C:attention}#1#{} cards in hand",
+					"{C:attention}#2#{} times"
+				}
+			},
 		},
 		Tarot = {
 			c_synthb_tarot_treasure_hunter = {
@@ -1779,6 +1787,7 @@ local descriptions = {
 			k_synthb_blackjack_tie = "Tie!",
 			b_synthb_characters = "Greenroom",
 			k_synthb_character = "Character",
+			k_synthb_no_copies_ex = "No Copies!",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

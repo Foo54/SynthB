@@ -153,6 +153,12 @@ function G.FUNCS.check_for_buy_space(card)
 		local a = #G.synthb_character_area.cards + (1 + card.ability.extra_slots_used) <=
 		G.synthb_character_area.config.card_limit + card.ability.card_limit
 		if not a then alert_no_space(card, G.synthb_character_area) end
+		for _, _card in ipairs(G.synthb_character_area.cards) do
+			if _card.config.center.synthb_character == card.config.center.synthb_character then
+				SynthB.alert_character_copy(card, G.synthb_character_area)
+				return false
+			end
+		end
 		return a
 	end
 	return cfbshook(card)
