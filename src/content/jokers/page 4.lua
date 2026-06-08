@@ -385,3 +385,39 @@ SynthB.Joker{
 	end,
 }
 
+
+
+-- needLe
+SynthB.Joker{
+	atlas = "bd_jokers",
+	pos = {x = 1, y = 0},
+	key = "needle",
+	cost = 5,
+	config = {
+		extra = {
+			num = 1,
+			dem = 4
+		}
+	},
+	eternal_compat = true,
+	perishable_compat = true,
+	blueprint_compat = false,
+	demicolon_compat = false,
+	attributes = {"suit", "hearts", "chance", "song", "vocaloid song", "Miku", "Deco*27"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "needle")
+		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_needle")
+		return {vars = {num, dem}}
+	end,
+	calculate = function(self, card, context)
+		if context.prevent_destroy_card and not context.blueprint then
+			if context.prevent_destroy_card:is_suit("Hearts") then
+				if not SMODS.pseudorandom_probability(card, "synthb_needle", card.ability.extra.num, card.ability.extra.dem) then
+					return {
+						prevent_destroy = true
+					}
+				end
+			end
+		end
+	end,
+}

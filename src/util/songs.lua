@@ -47,7 +47,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=yIc8j0oMAW8", key = "blackjack", pos = {x = 0, y = 9}},
 	{link = "https://www.youtube.com/watch?v=u33469XYVWc", key = "dance_delightful", pos = {x = 1, y = 9}},
 	-- smokey love / Bad Director
-	-- needLe / Bad Director
+	{link = "https://www.youtube.com/watch?v=viNruoTceiw", key = "needle", pos = {x = 3, y = 9}},
 	{link = "https://www.youtube.com/watch?v=XKZIQlqVjjk", key = "song_synthb_approve_please_genie", prefix = "", pos = {x = 4, y = 9}, set = "Other"},
 	{link = "https://www.youtube.com/watch?v=_oTaQXf_iX8", key = "yararara", pos = {x = 0, y = 10}},
 	--{link = "temp", key = "shiawase_for_you", pos = {x = 4, y = 9}},
