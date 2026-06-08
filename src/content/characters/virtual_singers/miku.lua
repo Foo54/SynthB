@@ -53,7 +53,7 @@ SynthB.Character{
 	config = {
 		extra = {
 			min_boost = 1.25,
-			max_boost = 2,
+			max_boost = 1.75,
 		}
 	},
 	synthb_minor = {
