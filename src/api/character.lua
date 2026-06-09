@@ -19,7 +19,6 @@ SynthB.Character = SMODS.Center:extend {
 		badges[#badges + 1] = create_badge(localize("k_synthb_character"), SynthB.custom_colors.CHARACTER, G.C.WHITE, 1.2)
 	end,
 	inject = function(self)
-		-- call the parent function to ensure all pools are set
 		self.config = self.config or {}
 		self.config.extra = self.config.extra or {}
 		self.config.extra.minor_boost = self.config.extra.minor_boost or 1.25
@@ -30,11 +29,20 @@ SynthB.Character = SMODS.Center:extend {
 			if initial then
 				card.T.h = G.CARD_W
 				card.ability.immutable.level = pseudorandom("synthb_character_level", 1, 60) >= 50
-				if card.ability.immutable.level then
+				if card.ability.immutable.level and card.config.center.discovered then
 					card.children.center:set_sprite_pos({x = self.pos.x, y = self.pos.y + 1})
 				end
 			end
 			set_ability_ref(self, card, initial, delay_sprites)
+		end
+		local calculate_ref = self.calculate or function() end
+		function self.calculate (self, card, context)
+			card.synthb_triggered = false
+			local ret = calculate_ref(self, card, context)
+			if not context.synthb_character_triggered and (card.synthb_triggered or (ret and card.synthb_triggered ~= nil)) then -- override to force no activation
+				SMODS.calculate_context({synthb_character_triggered = card})
+			end
+			return ret
 		end
 		SMODS.Center.inject(self)
 	end,
@@ -152,10 +160,10 @@ function G.FUNCS.check_for_buy_space(card)
 	if card.ability.set == 'synthb_Character' then
 		local a = #G.synthb_character_area.cards + (1 + card.ability.extra_slots_used) <=
 		G.synthb_character_area.config.card_limit + card.ability.card_limit
-		if not a then alert_no_space(card, G.synthb_character_area) end
+		if not a then SynthB.alert_cardarea(card, G.synthb_character_area, 'k_no_space_ex'); return false end
 		for _, _card in ipairs(G.synthb_character_area.cards) do
 			if _card.config.center.synthb_character == card.config.center.synthb_character then
-				SynthB.alert_character_copy(card, G.synthb_character_area)
+				SynthB.alert_cardarea(card, G.synthb_character_area, 'k_synthb_no_copies_ex')
 				return false
 			end
 		end

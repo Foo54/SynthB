@@ -25,11 +25,8 @@ SynthB.Character{
 			counted = 0
 		}
 	},
-	synthb_minor = {
-		"j_synthb_needle",
-		"j_synthb_dna",
-
-	}, -- every single song used in other characters
+	synthb_minor = SynthB.character_song_list,
+	synthb_major = SynthB.character_major_song_list,
 	synthb_character = "miku",
 	loc_vars = function(self, info_queue, card)
 		return {vars = {SynthB.get_character_loc_vars(card, "chips"), card.ability.extra.count}}
@@ -44,19 +41,19 @@ SynthB.Character{
 				local mod = false
 				if context.synthb_mod_scoring.chips and context.synthb_mod_scoring.chips > 0 then
 					context.synthb_mod_scoring.chips = context.synthb_mod_scoring.chips * chips
-					card.ability.immutable.counted = card.ability.immutable.counted + 1
+					if not context.retrigger_joker then card.ability.immutable.counted = card.ability.immutable.counted + 1 end
 					mod = true
 				end
 				if context.synthb_mod_scoring.chips_mod and context.synthb_mod_scoring.chips_mod > 0 then
 					context.synthb_mod_scoring.chips_mod = context.synthb_mod_scoring.chips_mod * chips
-					card.ability.immutable.counted = card.ability.immutable.counted + 1
+					if not context.retrigger_joker then card.ability.immutable.counted = card.ability.immutable.counted + 1 end
 					mod = true
 				end
 				if mod then
-					return {
+					return SynthB.character_optional_return(card, {
 						message = "X" .. number_format(chips),
 						colour = G.C.CHIPS
-					}
+					})
 				end
 			end
 		end
@@ -101,10 +98,10 @@ SynthB.Character{
 		if context.synthb_mod_poker_hand_scaling then
 			local boost = SynthB.get_character_boosted_value(card, "boost")
 			context.synthb_dif = context.synthb_dif * boost
-			return {
+			return SynthB.character_optional_return(card, {
 				message = "X" .. number_format(boost),
 				colour = G.ARGS.LOC_COLOURS.planet
-			}
+			})
 		end
 	end,
 }
@@ -203,10 +200,10 @@ SynthB.Character{
 				mod = true
 			end
 			if mod then
-				return {
+				return SynthB.character_optional_return(card, {
 					message = "+!",
 					colour = G.C.MULT
-				}
+				})
 			end
 		end
 	end,

@@ -8,6 +8,7 @@ return {
 	allow_covers_on_any_card = false,
 	DEBUG = false,
 	triple_click_for_song = true,
+	disable_non_scoring_character_animations = false,
 
 	-- this is here cuase my laptop is a potato
 	dont_fix_infinite_value_manip = false

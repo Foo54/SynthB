@@ -1530,7 +1530,44 @@ local descriptions = {
 				text = {
 					"{C:blue}+#1#{} hand#2#"
 				}
-			}
+			},
+			char_synthb_rin1 = {
+				name = "Kagamine Rin",
+				text = {
+					"Earn {C:money}$#1#{} extra",
+					"Whenever money is gained"
+				}
+			},
+			char_synthb_len1 = {
+				name = "Kagamine Len",
+				text = {
+					"Lose {C:money}$#1#{} less",
+					"Whenever money is lost"
+				}
+			},
+			char_synthb_luka1 = {
+				name = "Megurine Luka",
+				text = {
+					"This Character gains {C:chips}+#1#{} Chip#2#",
+					"when other characters trigger",
+					"{C:inactive}[Currently {C:chips}#3#{C:inactive} Chip#4#]"
+				}
+			},
+			char_synthb_meiko1 = {
+				name = "MEIKO",
+				text = {
+					"First {C:attention}#1#{} scored card#2#",
+					"each round gains an {C:attention}enhancement"
+				}
+			},
+			char_synthb_kaito1 = {
+				name = "KAITO",
+				text = {
+					"Retriggers Character above {C:attention}#1#{} time#2#",
+					"Each retrigger has a {C:green}#3# in #4#{} chance",
+					"to occur"
+				}
+			},
 		},
 		Tarot = {
 			c_synthb_tarot_treasure_hunter = {

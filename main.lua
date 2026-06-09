@@ -33,8 +33,17 @@ SynthB.custom_colors = {
 	CHARACTER = HEX("EE5F93"),
 }
 
+SMODS.optional_features.retrigger_joker = true
+
 SynthB.CHAR_W = G.CARD_W / 2
 SynthB.CHAR_H = G.CARD_W / 2
+SynthB.character_song_list = {
+	"j_synthb_needle",
+	"j_synthb_dna"
+} -- every song
+SynthB.character_major_song_list = {
+	"j_synthb_needle"
+} -- main songs
 
 --- Prefaces print statements with some information, and doesn't do anything if debug is off
 function SynthB.debug(...) 
@@ -87,6 +96,7 @@ SynthB.load_file("content/tag")
 
 SynthB.debug("Loading Character Files")
 SynthB.load_file("content/characters/virtual_singers/miku")
+SynthB.load_file("content/characters/virtual_singers/first_variation")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
 SynthB.load_file("compat/aikoshen")

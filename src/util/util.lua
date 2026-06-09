@@ -302,10 +302,10 @@ function SynthB.get_character_loc_vars(card, value, seperator, no_boost)
 	return (card.fake_card or (card.area and card.area.config.collection)) and (card.ability.extra[value] or (card.ability.extra["min_" .. value] .. (seperator or " / ") .. card.ability.extra["max_" .. value])) or (no_boost and SynthB.get_character_value or SynthB.get_character_boosted_value)(card, value)
 end
 
-function SynthB.alert_character_copy(card, area)
+function SynthB.alert_cardarea(card, area, msg)
   G.CONTROLLER.locks.no_space = true
   SynthB.attention_text({
-		scale = 0.9, text = localize('k_synthb_no_copies_ex'), hold = 0.9, align = 'cm',
+		scale = 0.9, text = localize(msg), hold = 0.9, align = 'cm',
 		cover = area, cover_padding = 0.1, cover_colour = adjust_alpha(G.C.BLACK, 0.7),
 		text_rot = math.pi/2
   })
@@ -444,4 +444,21 @@ function SynthB.attention_text(args)
 			end
 		end
 	}))
+end
+
+--- Handles config stuff i dunno how to explain it
+--- @param card Card
+--- @param ret table
+--- @return table?
+--- @return boolean?
+function SynthB.character_optional_return(card, ret)
+	if SynthB.mod.config.disable_non_scoring_character_animations then
+---@diagnostic disable-next-line: inject-field
+		if card.synthb_triggered ~= nil then card.synthb_triggered = true end
+		if ret.func then ret.func() end
+		if ret.extra then SynthB.character_optional_return(card, ret.extra) end
+		return {}, true
+	else
+		return ret
+	end
 end

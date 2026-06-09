@@ -60,6 +60,13 @@ function SynthB.mod.config_tab()
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
+						label = "Disable Non-Scoring Character Animations",
+						ref_table = SynthB.mod.config,
+						ref_value = 'disable_non_scoring_character_animations'
+					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
 						label = "Allow Covers on Any Card",
 						ref_table = SynthB.mod.config,
 						ref_value = 'allow_covers_on_any_card'
