@@ -1,6 +1,9 @@
 # SynthB
 Vocaloid Themed Balatro Mod by Foo54
 
+# ℹ NOTICE
+This mod is currently in desperate need for art. If you are an artist and want to contribute, please join the [SynthB Discord Server](https://discord.gg/UP3YPFwEhH) and ping me.
+
 ## Content
 - 47 New Jokers!
 	- 20 Voicebanks
