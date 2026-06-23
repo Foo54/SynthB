@@ -97,6 +97,7 @@ SynthB.load_file("content/tag")
 SynthB.debug("Loading Character Files")
 SynthB.load_file("content/characters/virtual_singers/miku")
 SynthB.load_file("content/characters/virtual_singers/first_variation")
+SynthB.load_file("content/characters/virtual_singers/second_variation")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
 SynthB.load_file("compat/aikoshen")

@@ -1531,6 +1531,7 @@ local descriptions = {
 					"{C:blue}+#1#{} hand#2#"
 				}
 			},
+
 			char_synthb_rin1 = {
 				name = "Kagamine Rin",
 				text = {
@@ -1566,6 +1567,33 @@ local descriptions = {
 					"Retriggers Character above {C:attention}#1#{} time#2#",
 					"Each retrigger has a {C:green}#3# in #4#{} chance",
 					"to occur"
+				}
+			},
+
+			char_synthb_rin2 = {
+				name = {"Kagamine Rin", "{s:0.7}More More Jump"},
+				text = {
+					""
+				}
+			},
+			char_synthb_len2 = {
+				name = {"Kagamine Len", "{s:0.7}Vivid Bad Squad"},
+				text = {
+				}
+			},
+			char_synthb_luka2 = {
+				name = {"Megurine Luka", "{s:0.7}Leo/Need"},
+				text = {
+				}
+			},
+			char_synthb_meiko2 = {
+				name = {"MEIKO", "{s:0.7}Vivid Bad Squad"},
+				text = {
+				}
+			},
+			char_synthb_kaito2 = {
+				name = {"KAITO", "{s:0.7}Wonderlands X Showtime"},
+				text = {
 				}
 			},
 		},
