@@ -1573,27 +1573,31 @@ local descriptions = {
 			char_synthb_rin2 = {
 				name = {"Kagamine Rin", "{s:0.7}More More Jump"},
 				text = {
-					""
+					"This card currently cannot appear in game"
 				}
 			},
 			char_synthb_len2 = {
 				name = {"Kagamine Len", "{s:0.7}Vivid Bad Squad"},
 				text = {
+					"This card currently cannot appear in game"
 				}
 			},
 			char_synthb_luka2 = {
 				name = {"Megurine Luka", "{s:0.7}Leo/Need"},
 				text = {
+					"This card currently cannot appear in game"
 				}
 			},
 			char_synthb_meiko2 = {
 				name = {"MEIKO", "{s:0.7}Vivid Bad Squad"},
 				text = {
+					"This card currently cannot appear in game"
 				}
 			},
 			char_synthb_kaito2 = {
 				name = {"KAITO", "{s:0.7}Wonderlands X Showtime"},
 				text = {
+					"This card currently cannot appear in game"
 				}
 			},
 		},
