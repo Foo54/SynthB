@@ -224,6 +224,7 @@ SynthB.Joker{
 		delay(0.4)
 		G.E_MANAGER:add_event(Event{
 			func = function()
+				card.children.center:set_sprite_pos({x = card.ability.immutable and 8 or 5, y = self.pos.y})
 				card:flip()
 				return true
 			end
