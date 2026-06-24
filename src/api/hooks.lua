@@ -283,3 +283,17 @@ function G.FUNCS.options (args)
 	if SynthB.Globals.blackjacks_to_play > 0 then return false end
 	return options_ref(args)
 end
+
+
+local card_h_popup_ref = G.UIDEF.card_h_popup
+function G.UIDEF.card_h_popup (card, ...)
+	local ret = card_h_popup_ref(card, ...)
+	if card.config and card.config.center and card.config.center.synthb_credits then
+		for description, name in pairs(card.config.center.synthb_credits) do
+			table.insert(ret.nodes[1].nodes[1].nodes, {n = G.UIT.R, config={align = "cm", padding = 0.03}, nodes = {
+				type(name) == "function" and name(card) or {n = G.UIT.T, config = {colour = G.C.UI.TEXT_DARK, scale = 0.3, text = description .. ": " .. name}}
+			}})
+		end
+	end
+	return ret
+end

@@ -1,7 +1,7 @@
 SynthB.Character{
 	key = "rin2",
 	pos = {x = 5, y = 4},
-	synthb_character = "rin"
+	synthb_character = "rin",
 }
 
 SynthB.Character{
