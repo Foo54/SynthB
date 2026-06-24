@@ -127,6 +127,9 @@ SMODS.Seal{
 			end
 		end
 	end,
+	synthb_credits = {
+		Artist = "Guaraná"
+	}
 }
 
 --#endregion

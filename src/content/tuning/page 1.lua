@@ -94,6 +94,9 @@ SynthB.Tuning{
 		end
 		G.hand:unhighlight_all()
 	end,
+	synthb_credits = {
+		Artist = "Guaraná"
+	}
 }
 
 -- Gender

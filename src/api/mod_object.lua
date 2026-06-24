@@ -277,6 +277,16 @@ function SynthB.mod.extra_tabs()
 									{n = G.UIT.R, nodes = {
 										{n = G.UIT.C, config = {align = "tl", padding = 0.1}, nodes = {
 											{n = G.UIT.R, nodes = {
+												{n = G.UIT.T, config = {text = "Pepix", scale = 0.3, colour = G.C.UI.TEXT_DARK}},
+											}},
+											{n = G.UIT.R, nodes = {
+												{n = G.UIT.T, config = {text = "Guaraná", scale = 0.3, colour = G.C.UI.TEXT_DARK}},
+											}}
+										}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.C, config = {align = "tl", padding = 0.1}, nodes = {
+											{n = G.UIT.R, nodes = {
 												{n = G.UIT.T, config = {text = "Text Only Placeholder Sprites - ThunderEdge", scale = 0.3, colour = G.C.UI.TEXT_DARK}},
 											}},
 											{n = G.UIT.R, nodes = {
