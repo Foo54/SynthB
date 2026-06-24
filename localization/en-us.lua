@@ -1579,13 +1579,14 @@ local descriptions = {
 			char_synthb_rin2 = {
 				name = {"Kagamine Rin", "{s:0.7}More More Jump"},
 				text = {
-					"This card currently cannot appear in game"
+					"Earn {C:money}$#1#{} when",
+					"a playing card is retriggered"
 				}
 			},
 			char_synthb_len2 = {
 				name = {"Kagamine Len", "{s:0.7}Vivid Bad Squad"},
 				text = {
-					"This card currently cannot appear in game"
+					"Each Joker gives {X:purple,C:white}X#1#{} score"
 				}
 			},
 			char_synthb_luka2 = {
