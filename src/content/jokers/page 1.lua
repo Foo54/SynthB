@@ -5,6 +5,9 @@
 SynthB.Joker{
 	key = "antani_itten_no",
 	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 0, y = 0},
 	attributes = {"mult", "suit", "clubs", "Teto", "song", "Pinata", "vocaloid song"},
 	config = {
@@ -378,8 +381,11 @@ SynthB.Joker{
 -- Machine Love
 SynthB.Joker{
 	key = "machine_love",
-	atlas = "joker_placeholders",
-	pos = {x = 6, y = 0},
+	atlas = "pepix jokers",
+	pos = {x = 2, y = 0},
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	rarity = 2,
 	cost = 6,
 	config = {
@@ -521,6 +527,9 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "rolling_girl",
 	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 8, y = 0},
 	cost = 4,
 	attributes = {"song", "vocaloid song", "Miku", "Wowaka"},
@@ -647,7 +656,11 @@ SynthB.Joker{
 -- Tetoris
 SynthB.Joker{
 	key = "tetoris",
-	pos = {x = 0, y = 0},
+	pos = {x = 6, y = 0},
+	atlas = "pepix jokers",
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	config = {
 		extra = {
 			scaling = 10,
@@ -784,6 +797,9 @@ SynthB.Joker{
 	key = "retry_now_normal",
 	atlas = "joker_placeholders",
 	pos = {x = 3, y = 1},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	config = {
 		immutable = {
 			brightness = 0
@@ -863,6 +879,9 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "retry_now_change",
 	atlas = "retry_now_placeholder",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 0, y = 0},
 	soul_pos = {x = 1, y = 0},
 	rarity = 4,

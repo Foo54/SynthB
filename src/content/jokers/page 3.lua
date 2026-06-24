@@ -183,6 +183,11 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "spoken_for",
 	cost = 5,
+	synthb_credits = {
+		Artist = "Pepix"
+	},
+	atlas = "pepix jokers",
+	pos = {x = 5, y = 0},
 	config = {
 		extra = {
 			mult = 30
@@ -386,7 +391,11 @@ SynthB.Joker{
 -- Nyan Cat
 SynthB.Joker{
 	key = "nyan_cat",
-	pos = {x = 1, y = 0},
+	synthb_credits = {
+		Artist = "Pepix"
+	},
+	atlas = "pepix jokers",
+	pos = {x = 4, y = 0},
 	rarity = 2,
 	cost = 6,
 	config = {
@@ -767,6 +776,10 @@ SynthB.Joker{
 -- Brain Implosion Energy
 SynthB.Joker{
 	key = "brain_implosion_energy",
+	synthb_credits = {
+		Artist = "Pepix"
+	},
+	atlas = "pepix jokers",
 	pos = {x = 1, y = 0},
 	rarity = 2,
 	cost = 6,
@@ -786,7 +799,7 @@ SynthB.Joker{
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							local tag = Tag(SynthB.random_energy_drink("synthb_brain_implosion_energy"))
-							tag:set_ability(tag)
+							tag:set_ability()
 							add_tag(tag)
 							play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
 							return true

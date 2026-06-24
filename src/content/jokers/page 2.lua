@@ -164,7 +164,10 @@ SynthB.Joker{
 -- Birdbrain
 SynthB.Joker{
 	key = "birdbrain",
-	pos = {x = 1, y = 0},
+	synthb_credits = {
+		Artist = "Pepix"
+	},
+	atlas = "pepix jokers",
 	rarity = 2,
 	cost = 6,
 	loc_vars = function(self, info_queue, card)
@@ -602,6 +605,11 @@ SynthB.Joker{
 -- Medicine
 SynthB.Joker{
 	key = "medicine",
+	synthb_credits = {
+		Artist = "Pepix"
+	},
+	atlas = "pepix jokers",
+	pos = {x = 3, y = 0},
 	cost = 5,
 	blueprint_compat = true,
 	demicolon_compat = true,
@@ -723,6 +731,7 @@ SynthB.Joker{
 					local text, _, scoring_hand = JokerDisplay.evaluate_hand()
 					if text ~= 'Unknown' then
 						for _, _card in ipairs(JokerDisplay.current_hand) do
+---@diagnostic disable-next-line: undefined-field
 							if _card:get_id() == card.ability.immutable.rank then
 								for _, __card in ipairs(scoring_hand) do
 									if _card == __card then

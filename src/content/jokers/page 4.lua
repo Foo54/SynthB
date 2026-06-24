@@ -392,6 +392,9 @@ SynthB.Joker{
 	atlas = "bd_jokers",
 	pos = {x = 1, y = 0},
 	key = "needle",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	cost = 5,
 	config = {
 		extra = {
