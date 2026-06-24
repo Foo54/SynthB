@@ -190,7 +190,11 @@ SynthB.Joker{
 	pos = {x = 5, y = 0},
 	config = {
 		extra = {
-			mult = 30
+			mult = 10,
+			chips = 50,
+		},
+		immutable = {
+			current = true
 		}
 	},
 	blueprint_compat = true,
@@ -200,23 +204,50 @@ SynthB.Joker{
 	attributes = {"mult", "chance", "song", "vocaloid song", "Teto", "Flavor Foley"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "spoken_for")
-		return {vars = {card.ability.extra.mult}}
+		return {vars = {card.ability.immutable.current and card.ability.extra.mult or card.ability.extra.chips}, key = "j_synthb_spoken_for_" .. (card.ability.immutable.current and "mult" or "chips")}
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main or context.forcetrigger then
 			return {
-				mult = card.ability.extra.mult * (SMODS.pseudorandom_probability(card, "synthb_spoken_for", 1, 2, nil, true) and 1 or -1)
+				[card.ability.immutable.current and "mult" or "chips"] = card.ability.immutable.current and card.ability.extra.mult or card.ability.extra.chips
 			}
 		end
+	end,
+	use = function(self, card, area, copier)
+		card.ability.immutable.current = not card.ability.immutable.current
+		G.E_MANAGER:add_event(Event{
+			func = function()
+				card:flip()
+				return true
+			end
+		})
+		delay(0.4)
+		G.E_MANAGER:add_event(Event{
+			func = function()
+				card:flip()
+				return true
+			end
+		})
+	end,
+	can_use = function(self, card)
+		return true
 	end,
 	joker_display_def = function(JokerDisplay)
 		---@type JDJokerDefinition
 		return {
 			text = {
-				{ text = "+/- " },
-				{ ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" }
+				{ text = "+" },
+				{ ref_table = "card.joker_display_values", ref_value = "val", retrigger_type = "mult" }
 			},
-			text_config = {colour = G.C.MULT}
+			calc_function = function (card)
+				card.joker_display_values.val = card.ability.immutable.current and card.ability.extra.mult or card.ability.extra.chips
+			end,
+			style_function = function(card, text, reminder_text, extra)
+				if text and text.children[1] and text.children[2] then
+					text.children[1].config.colour = card.ability.immutable.current and G.C.MULT or G.C.CHIPS
+					text.children[2].config.colour = card.ability.immutable.current and G.C.MULT or G.C.CHIPS
+				end
+			end
 		}
 	end
 }

@@ -383,11 +383,17 @@ local descriptions = {
 					}
 				}
 			},
-			j_synthb_spoken_for = {
+			j_synthb_spoken_for_mult = {
 				name = "Spoken For",
 				text = {
-					"{C:mult}+/- #1#{} Mult",
-					"{C:inactive,s:0.8}I could be a friend,",
+					"{C:mult}+#1#{} Mult",
+					"{C:inactive,s:0.8}I could be a friend,"
+				}
+			},
+			j_synthb_spoken_for_chips = {
+				name = "Spoken For",
+				text = {
+					"{C:chips}+#1#{} Chips",
 					"{C:inactive,s:0.8}or I could be a foe"
 				}
 			},
