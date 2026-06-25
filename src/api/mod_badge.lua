@@ -6,14 +6,21 @@ function SMODS.create_mod_badges(obj, badges)
 	smcmb(obj, badges)
 	if obj then
 		for i = 1, #badges do
-			if badges[i].nodes and
-				badges[i].nodes[1] and
-				badges[i].nodes[1].nodes and
-				badges[i].nodes[1].nodes[2] and
-				badges[1].nodes[1].nodes[2].config and
-				badges[i].nodes[1].nodes[2].config.object and
-				badges[i].nodes[1].nodes[2].config.object.content and
-				badges[i].nodes[1].nodes[2].config.object.content.string == SynthB.mod.display_name then
+			local data = badges[i].nodes
+			if not data then return end
+			data = data[1]
+			if not data then return end
+			data = data.nodes
+			if not data then return end
+			data = data[2]
+			if not data then return end
+			data = data.config
+			if not data then return end
+			data = data.object
+			if not data then return end
+			data = data.content
+			if not data then return end
+			if badges[i].nodes[1].nodes[2].config.object.content.string == SynthB.mod.display_name then
 				if not obj.no_shader_on_modbadge then
 					badges[i].nodes[1].config.shader = "synthb_mod_badge"
 				end
