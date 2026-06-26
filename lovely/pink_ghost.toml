@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 50
 
-# include synthb bonus chips
+# draw behind jokers
 [[patches]]
 [patches.pattern]
 target = 'game.lua'

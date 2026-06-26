@@ -318,3 +318,75 @@ function Game:main_menu(...)
 	end
 	return ret
 end
+
+local card_set_card_area_ref = Card.set_card_area
+function Card:set_card_area(area)
+	if self.config.center.set == "synthb_Character" and area == G.synthb_character_area then
+		self.T.h = SynthB.CHAR_H
+		self.T.w = SynthB.CHAR_W
+	end
+	card_set_card_area_ref(self, area)
+end
+
+
+local card_area_align_cards_ref = CardArea.align_cards
+function CardArea:align_cards(...)
+	if self.config.type == "characters" then
+		for k, card in ipairs(self.cards or {}) do
+			if not card.states.drag.is and not card.disable_align then
+				card.T.r = 0
+				card.T.x = self.T.x + self.T.w / 2 - card.T.w / 2 - (card.highlighted and 0.1 or 0) + (G.SETTINGS.reduced_motion and 0 or 1) * 0.03 * math.sin(0.666 * G.TIMERS.REAL + card.T.y)
+				card.T.y = self.T.y + (self.T.h / 5) * (k - 1)
+				card.T.x = card.T.x + card.shadow_parrallax.x / 30
+			end
+		end
+		table.sort(self.cards, function (a, b) return a.T.y + a.T.h/2 - 100*((a.pinned and not a.ignore_pinned) and a.sort_id or 0) < b.T.y + b.T.h/2 - 100*((b.pinned and not b.ignore_pinned) and b.sort_id or 0) end)
+	end
+	return card_area_align_cards_ref(self, ...)
+end
+
+local card_can_sell_card_ref = Card.can_sell_card
+function Card:can_sell_card()
+	if (G.SETTINGS.tutorial_complete or G.GAME.pseudorandom.seed ~= 'TUTORIAL' or G.GAME.round_resets.ante > 1) and self.area and self.area.config.type == "characters" then
+		return true
+	end
+	return card_can_sell_card_ref(self)
+end
+
+
+
+local cfbshook = G.FUNCS.check_for_buy_space
+function G.FUNCS.check_for_buy_space(card)
+	if card.ability.set == 'synthb_Character' then
+		local a = #G.synthb_character_area.cards + (1 + card.ability.extra_slots_used) <=
+		G.synthb_character_area.config.card_limit + card.ability.card_limit
+		if not a then SynthB.alert_cardarea(card, G.synthb_character_area, 'k_no_space_ex'); return false end
+		for _, _card in ipairs(G.synthb_character_area.cards) do
+			if _card.config.center.synthb_character == card.config.center.synthb_character then
+				SynthB.alert_cardarea(card, G.synthb_character_area, 'k_synthb_no_copies_ex')
+				return false
+			end
+		end
+		return a
+	end
+	return cfbshook(card)
+end
+
+local cae = CardArea.emplace
+function CardArea:emplace(card, ...)
+	if self == G.consumeables and card.ability.set == 'synthb_Character' then
+		card:remove_from_area()
+		G.synthb_character_area:emplace(card, ...)
+		discover_card(card.config.center)
+		card.bypass_discovery_center = true
+		card.bypass_discovery_ui = true
+		card.discovered = true
+		return
+	end
+	if self == G.synthb_character_area then
+		card.T.w = SynthB.CHAR_W
+		card.T.h = SynthB.CHAR_H
+	end
+
+	cae(self, card, ...)
+end
