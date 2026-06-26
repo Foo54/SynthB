@@ -34,6 +34,7 @@ SynthB.custom_colors = {
 }
 
 SMODS.optional_features.retrigger_joker = true
+SMODS.optional_features.post_trigger = true
 
 SynthB.CHAR_W = G.CARD_W / 2
 SynthB.CHAR_H = G.CARD_W / 2

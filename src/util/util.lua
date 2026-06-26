@@ -462,3 +462,35 @@ function SynthB.character_optional_return(card, ret)
 		return ret
 	end
 end
+
+
+SynthB.safe_return_keys = {
+	chips = true, h_chips = true, chip_mod = true,
+	mult = true, h_mult = true, mult_mod = true,
+	x_chips = true, xchips = true, Xchip_mod = true,
+	x_mult = true, Xmult = true, xmult = true, x_mult_mod = true, Xmult_mod = true,
+	message = true, level_up = true,
+	p_dollars = true, dollars = true, h_dollars = true,
+	score = true, h_score = true,
+	xscore = true, x_score = true, h_x_score = true, h_xscore = true,
+	blind_size = true, blindsize = true, h_blind_size = true,  h_blindsize = true,
+	xblind_size = true, x_blind_size = true, xblindsize = true, x_blindsize = true, h_x_blind_size = true, h_xblind_size = true,  h_x_blindsize = true, h_xblindsize = true,
+	swap = true, balance = true,
+}
+
+--- Makes return tables safe to store in G.GAME
+--- @param ret table
+--- @return table
+function SynthB.prune_return_table(ret)
+	local out = {}
+	for key in pairs(ret) do
+		if SynthB.safe_return_keys[key] then out[key] = ret[key] end
+	end
+	if ret.extra then
+		local extra = SynthB.safe_return_keys(ret.extra)
+		if next(extra) then
+			out.extra = extra
+		end
+	end
+	return out
+end

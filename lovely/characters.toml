@@ -27,6 +27,7 @@ pattern = "-- TARGET: add your own CardAreas for joker evaluation"
 position = "after"
 payload = '''
 table.insert(t,1,G.synthb_character_area)
+table.insert(t,1,G.synthb_ghost_area)
 '''
 match_indent = true
 

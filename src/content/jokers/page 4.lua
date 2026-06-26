@@ -429,7 +429,8 @@ SynthB.Joker{
 -- Pink
 SynthB.Joker{
 	key = "pink",
-	pos = {x = 3, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 9, y = 4},
 	rarity = 4,
 	cost = 20,
 	config = {
@@ -441,7 +442,7 @@ SynthB.Joker{
 	},
 	set_sprites = function (self, card, front)
 		if SynthB.mod.config.spoilers.deltarune then
-			card.children.center:set_sprite_pos({x = 0, y = 0}) -- replace this with a spoiler sprite
+			card.children.center:set_sprite_pos({x = 4, y = 1}) -- replace this with a spoiler sprite
 		end
 	end,
 	in_pool = function (self, args)
@@ -464,8 +465,9 @@ SynthB.Joker{
 -- Pink Body
 SynthB.Joker{
 	key = "pink_body",
+	atlas = "joker_placeholders",
 	synthb_song = "pink",
-	pos = {x = 3, y = 0},
+	pos = {x = 0, y = 5},
 	rarity = 4,
 	cost = 20,
 	config = {
@@ -479,7 +481,7 @@ SynthB.Joker{
 	end,
 	set_sprites = function (self, card, front)
 		if SynthB.mod.config.spoilers.deltarune then
-			card.children.center:set_sprite_pos({x = 0, y = 0}) -- replace this with a spoiler sprite
+			card.children.center:set_sprite_pos({x = 4, y = 1}) -- replace this with a spoiler sprite
 		end
 	end,
 	attributes = {"xmult", "hearts", "suit", "Camellia", "Toby Fox", "miku"},
@@ -496,11 +498,12 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "pink_ghost",
 	synthb_song = "pink",
-	pos = {x = 3, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 1, y = 5},
 	rarity = 4,
 	cost = 20,
 	config = {
-		slots_used = -1,
+		extra_slots_used = -1,
 		immutable = {
 			possessed = nil,
 			return_table = nil -- so i remember this exists
@@ -517,7 +520,7 @@ SynthB.Joker{
 	end,
 	set_sprites = function (self, card, front)
 		if SynthB.mod.config.spoilers.deltarune then
-			card.children.center:set_sprite_pos({x = 0, y = 0}) -- replace this with a spoiler sprite
+			card.children.center:set_sprite_pos({x = 4, y = 1}) -- replace this with a spoiler sprite
 		end
 	end,
 	use = function(self, card, area, copier)
@@ -565,4 +568,29 @@ SynthB.Joker{
 		info_queue[#info_queue+1] = {set = "Other", key = "synthb_possessed"}
 		if card.ability.immutable.possessed then return {key = "j_synthb_pink_ghost_possessing"} end
 	end,
+	calculate = function (self, card, context)
+		if context.selling_card and context.card.ability.synthb_pink_possess == card.ability.immutable.possessed then
+			draw_card(G.synthb_ghost_area, G.jokers, 0, "up", nil, card)
+			card.T.w = G.CARD_W
+			card.T.h = G.CARD_H
+			card.ability.immutable.possessed = nil
+		end
+		if context.individual and context.cardarea == G.play and (context.other_card:is_suit("Diamonds") or context.other_card:is_suit("Hearts")) then
+			if card.ability.immutable.return_table then
+				for _, _card in ipairs(G.jokers.cards) do
+					if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
+						local c = copy_table(card.ability.immutable.return_table)
+						c.card = _card
+						return c
+					end
+				end
+			end
+		end
+		if context.post_trigger and context.other_card.ability.synthb_pink_possess == card.ability.immutable.possessed and context.other_ret and context.other_ret.jokers then
+			local valid_storing_table = SynthB.prune_return_table(context.other_ret.jokers)
+			if next(valid_storing_table) then
+				card.ability.immutable.return_table = valid_storing_table
+			end
+		end
+	end
 }
