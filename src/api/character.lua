@@ -54,13 +54,6 @@ G.C.SET.synthb_Character = SynthB.custom_colors.CHARACTER
 G.C.SECONDARY_SET.synthb_Character = SynthB.custom_colors.CHARACTER
 
 
-local card_area_can_highlight_ref = CardArea.can_highlight
----@diagnostic disable: duplicate-set-field
-function CardArea:can_highlight(card)
-	if self.config.type == "characters" then return true end
-	return card_area_can_highlight_ref(self, card)
-end
-
 SMODS.UndiscoveredSprite {
 	key = 'synthb_Character',
 	atlas = 'characters',

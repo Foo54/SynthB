@@ -390,3 +390,10 @@ function CardArea:emplace(card, ...)
 
 	cae(self, card, ...)
 end
+
+
+local card_area_can_highlight_ref = CardArea.can_highlight
+function CardArea:can_highlight(card)
+	if self.config.type == "characters" then return true end
+	return card_area_can_highlight_ref(self, card)
+end
