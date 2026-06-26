@@ -92,8 +92,10 @@ function SynthB.mod.custom_card_areas(game)
 	function game.synthb_ghost_area:align_cards (...)
 		for k, card in ipairs(self.cards or {}) do
 			if not card.states.drag.is and not card.disable_align then
-				card.T.w = SynthB.GHOST_W
-				card.T.h = SynthB.GHOST_H
+				if card.ability.immutable.possessed then
+					card.T.w = SynthB.GHOST_W
+					card.T.h = SynthB.GHOST_H
+				end
 				local parent
 				for _, _card in ipairs(G.jokers.cards) do
 					if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
@@ -108,6 +110,9 @@ function SynthB.mod.custom_card_areas(game)
 						card.T.r = math.max(-0.1, math.min(0.1, math.atan(card.T.y - card.VT.y, card.T.x - card.VT.x)))
 						break
 					end
+				end
+				if not parent then
+					card.synthb_infront = true
 				end
 			end
 		end

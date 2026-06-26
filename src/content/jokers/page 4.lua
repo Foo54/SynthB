@@ -596,11 +596,11 @@ SynthB.Joker{
 			for _, _card in ipairs(G.jokers.cards) do
 				if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
 					_card.ability.synthb_pink_possess = nil
-					card.ability.immutable.possessed = nil
-					card.ability.immutable.return_table = nil
 					break
 				end
 			end
+			card.ability.immutable.possessed = nil
+			card.ability.immutable.return_table = nil
 			draw_card(G.synthb_ghost_area, G.jokers, 0, "up", nil, card)
 			card.T.w = G.CARD_W
 			card.T.h = G.CARD_H
@@ -636,7 +636,7 @@ SynthB.Joker{
 		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
 		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
 		info_queue[#info_queue+1] = {set = "Other", key = "synthb_possessed"}
-		if card.ability.immutable.possessed then return {key = "j_synthb_pink_ghost_possessing"} end
+		if card.area == G.synthb_ghost_area then return {key = "j_synthb_pink_ghost_possessing"} end
 	end,
 	calculate = function (self, card, context)
 		if card.area == G.synthb_ghost_area then
@@ -645,6 +645,7 @@ SynthB.Joker{
 				card.T.w = G.CARD_W
 				card.T.h = G.CARD_H
 				card.ability.immutable.possessed = nil
+				card.ability.immutable.return_table = nil
 			end
 			if context.individual and context.cardarea == G.play and (context.other_card:is_suit("Diamonds") or context.other_card:is_suit("Hearts")) then
 				if card.ability.immutable.return_table then
