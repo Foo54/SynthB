@@ -561,6 +561,44 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}簡単に愛は終わらないよ"
 				}
 			},
+			j_synthb_pink = {
+				name = "Pink",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"After scoring {C:attention}#2#{} {C:hearts}Hearts{}",
+					"outside of flushes,",
+					"this Joker splits into",
+					"{C:attention}Body{} and {C:attention}Ghost",
+					"{C:inactive}[#3#/#2# scored]",
+					"{C:inactive,f:5,s:0.8}lyrics"
+				}
+			},
+			j_synthb_pink_body = {
+				name = "Pink's Body",
+				text = {
+					"This Jokers gains {X:mult,C:white}X#1#{} Mult",
+					"if played non-flush contains a {C:attention}Heart",
+					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive}]",
+					"{C:inactive,f:5,s:0.8}lyrics"
+				}
+			},
+			j_synthb_pink_ghost = {
+				name = "Pink's Ghost",
+				text = {
+					"Use this Joker to",
+					"possess Joker to the left.",
+					"{C:inactive}Cannot Possess Pink's Ghost",
+					"{C:inactive,f:5,s:0.8}lyrics"
+				}
+			},
+			j_synthb_pink_ghost_possessing = {
+				name = "Pink's Ghost",
+				text = {
+					"Use this Joker to",
+					"STOP possessing current Joker.",
+					"{C:inactive,f:5,s:0.8}lyrics"
+				}
+			},
 
 			--- Crossmod
 			j_synthb_weathergirl = {
@@ -1210,7 +1248,19 @@ local descriptions = {
 					"{f:5}重音テト{C:inactive} & {f:5}音街ウナ",
 					"{C:inactive,s:0.8}Kasane Teto & Otomachi Una"
 				}
-			}
+			},
+			pink = {
+				text = {
+					"{C:attention}Title:",
+					"Cutie Mew Mew Magic",
+					"{C:attention}Producer:",
+					"{f:5}かめりあ{C:inactive} & {}Toby Fox",
+					"{C:inactive,s:0.8}Camellia",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -1491,6 +1541,15 @@ local descriptions = {
 					"per unscored card without a {C:synthb_mistuning_dark}alUTAU Se",
 				}
 			},
+			synthb_possessed = {
+				name = "Possessed",
+				text = {
+					"This Joker's last",
+					"applied effect",
+					"is repeated whenever",
+					"a {C:attention}Light Suit{} is scored"
+				}
+			}
 		},
 		synthb_Character = {
 			char_synthb_miku1 = {

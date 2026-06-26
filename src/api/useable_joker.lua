@@ -55,6 +55,26 @@ function G.UIDEF.use_and_sell_buttons(card)
 			}},
 		}}
 	end
+	if card.area == G.synthb_ghost_area then
+		return {
+			-- TODO: make this smaller
+			n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
+			{n=G.UIT.C, config={padding = 0.15, align = 'cl'}, nodes={
+				{n=G.UIT.R, config={align = 'cl'}, nodes={
+					{n=G.UIT.C, config={align = "cr"}, nodes={
+						{n=G.UIT.C, config={ref_table = card, align = "cm",padding = 0.1, r=0.08, minw = 1.25, minh = 0.8, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, button = 'synthb_use_joker', func = "synthb_can_use_joker", handy_insta_action = 'use'}, nodes={
+							{n=G.UIT.B, config = {w=0.1,h=0.6}},
+							{n=G.UIT.C, config={align = "cm"}, nodes={
+								{n=G.UIT.R, config={align = "cm", maxw = 1.25}, nodes={
+									{n=G.UIT.T, config={text = localize("b_use"), colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
+								}},
+							}},
+						}},
+					}}
+				}},
+			}},
+		}}
+	end
 	if (card.area == G.jokers and G.jokers and card.config.center.use) and not card.debuff and card.config.center.set == "Joker" and (not card.config.center.needs_use_button or card.config.center:needs_use_button(card)) then
 		local sell = {n=G.UIT.C, config={align = "cr"}, nodes={
 				{n=G.UIT.C, config={ref_table = card, align = "cr",padding = 0.1, r=0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card', handy_insta_action = 'sell'}, nodes={

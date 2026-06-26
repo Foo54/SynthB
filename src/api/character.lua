@@ -78,6 +78,120 @@ function SynthB.mod.custom_card_areas(game)
 			align_buttons = true,
 		}
 	)
+
+	game.synthb_ghost_area = CardArea(
+		game.ROOM.T.x + game.ROOM.T.w, 0,
+		SynthB.GHOST_W, SynthB.GHOST_H,
+		{
+			card_limit = 2,
+			type = "joker",
+			highlight_limit = 1,
+			highlighted_limit = 1,
+		}
+	)
+	function game.synthb_ghost_area:align_cards (...)
+		for k, card in ipairs(self.cards or {}) do
+			if not card.states.drag.is and not card.disable_align then
+				card.T.w = SynthB.GHOST_W
+				card.T.h = SynthB.GHOST_H
+				local parent
+				for _, _card in ipairs(G.jokers.cards) do
+					if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
+						parent = _card
+						break
+					end
+				end
+				card.T.x = parent.VT.x - G.ROOM.T.x / 2 + 0.05 + parent.VT.w / 2 - 0.9 * (parent.VT.w / 2 + SynthB.GHOST_W + 0.1) * math.sin(card.synthb_orbit_timer or 0)
+				if ((card.synthb_orbit_timer or 0) + math.pi / 2) % (math.pi * 2) <= math.pi then
+					card.synthb_infront = true
+				else
+					card.synthb_infront = false
+				end
+				card.T.y = parent.VT.y - G.ROOM.T.y + parent.VT.h / 2 + (parent.VT.h / 4) * math.sin((card.synthb_orbit_timer or 0))
+				card.T.r = math.max(-0.1, math.min(0.1, math.atan(card.T.y - card.VT.y, card.T.x - card.VT.x)))
+			end
+		end
+	end
+	function game.synthb_ghost_area:draw(behind, ...)
+		if not self.states.visible then return end 
+		if G.VIEWING_DECK and (self==G.deck or self==G.hand or self==G.play) then return end
+
+		local state = G.TAROT_INTERRUPT or G.STATE
+		if behind then
+			self.ARGS.invisible_area_types = self.ARGS.invisible_area_types or {discard=1, voucher=1, play=1, consumeable=1, title = 1, title_2 = 1}
+			if self.ARGS.invisible_area_types[self.config.type] or
+					(self.config.type == 'hand' and ({[G.STATES.SHOP]=1, [G.STATES.TAROT_PACK]=1, [G.STATES.SPECTRAL_PACK]=1, [G.STATES.STANDARD_PACK]=1,[G.STATES.BUFFOON_PACK]=1,[G.STATES.PLANET_PACK]=1, [G.STATES.ROUND_EVAL]=1, [G.STATES.BLIND_SELECT]=1})[state]) or
+					(self.config.type == 'hand' and state == G.STATES.SMODS_BOOSTER_OPENED) or
+					(self.config.type == 'deck' and self ~= G.deck and not self.draw_uibox) or
+					(self.config.type == 'shop' and self ~= G.shop_vouchers) then
+			else
+					if not self.children.area_uibox then 
+									local card_count = not self.config.no_card_count and self ~= G.shop_vouchers and {n=G.UIT.R, config={align = self == G.jokers and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={
+											{n=G.UIT.B, config={w = 0.1,h=0.1}},
+											{n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_count', scale = 0.3, colour = G.C.WHITE}},
+											{n=G.UIT.T, config={text = '/', scale = 0.3, colour = G.C.WHITE}},
+											{n=G.UIT.T, config={ref_table = self.config.card_limits, ref_value = 'total_slots', scale = 0.3, colour = G.C.WHITE}},
+											{n=G.UIT.B, config={w = 0.1,h=0.1}}
+									}} or nil
+
+									self.children.area_uibox = UIBox{
+											definition = 
+													{n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+															{n=G.UIT.R, config={minw = self.T.w,minh = self.T.h,align = "cm", padding = 0.1, mid = true, r = 0.1, colour = self.config.bg_colour or self ~= G.shop_vouchers and {0,0,0,0.1} or nil, ref_table = self}, nodes={
+																	self == G.shop_vouchers and 
+																	{n=G.UIT.C, config={align = "cm", paddin = 0.1, func = 'shop_voucher_empty', visible = false}, nodes={
+																			{n=G.UIT.R, config={align = "cm"}, nodes={
+																					{n=G.UIT.T, config={text = 'DEFEAT', scale = 0.6, colour = G.C.WHITE}}
+																			}},
+																			{n=G.UIT.R, config={align = "cm"}, nodes={
+																					{n=G.UIT.T, config={text = 'BOSS BLIND', scale = 0.4, colour = G.C.WHITE}}
+																			}},
+																			{n=G.UIT.R, config={align = "cm"}, nodes={
+																					{n=G.UIT.T, config={text = 'TO RESTOCK', scale = 0.4, colour = G.C.WHITE}}
+																			}},
+																	}} or nil,
+															}},
+															card_count
+													}},
+											config = { align = 'cm', offset = {x=0,y=0}, major = self, parent = self}
+									}
+							end
+					self.children.area_uibox:draw()
+			end
+
+			self:draw_boundingrect()
+			add_to_drawhash(self)
+
+			self.ARGS.draw_layers = self.ARGS.draw_layers or self.config.draw_layers or {'shadow', 'card'}
+			for k, v in ipairs(self.ARGS.draw_layers) do
+					for i = 1, #self.cards do 
+							if self.cards[i] ~= G.CONTROLLER.focused.target then
+									if not self.cards[i].highlighted and not self.cards[i].synthb_infront then
+											if G.CONTROLLER.dragging.target ~= self.cards[i] then self.cards[i]:draw(v) end
+									end
+							end
+					end
+			end
+		else
+			self.ARGS.draw_layers = self.ARGS.draw_layers or self.config.draw_layers or {'shadow', 'card'}
+			for k, v in ipairs(self.ARGS.draw_layers) do
+					for i = 1, #self.cards do 
+							if self.cards[i] ~= G.CONTROLLER.focused.target then
+									if not self.cards[i].highlighted and self.cards[i].synthb_infront then
+											if G.CONTROLLER.dragging.target ~= self.cards[i] then self.cards[i]:draw(v) end
+									end
+							end
+					end
+					for i = 1, #self.cards do  
+							if self.cards[i] ~= G.CONTROLLER.focused.target then
+									if self.cards[i].highlighted then
+											if G.CONTROLLER.dragging.target ~= self.cards[i] then self.cards[i]:draw(v) end
+									end
+							end
+					end
+			end
+		end
+	end
 end
 
 local card_area_can_highlight_ref = CardArea.can_highlight

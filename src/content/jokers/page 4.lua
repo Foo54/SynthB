@@ -424,3 +424,124 @@ SynthB.Joker{
 		end
 	end,
 }
+
+
+-- Pink
+SynthB.Joker{
+	key = "pink",
+	pos = {x = 3, y = 0},
+	rarity = 4,
+	cost = 20,
+	config = {
+		extra = {
+			xmult = 5,
+			scoring = 20,
+			scored = 0
+		}
+	},
+	attributes = {"xmult", "hearts", "suit", "generation", "Camellia", "Toby Fox", "miku"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "pink")
+		info_queue[#info_queue+1] = G.P_CENTERS.j_synthb_pink_body
+		info_queue[#info_queue+1] = G.P_CENTERS.j_synthb_pink_ghost
+		return {vars = {card.ability.extra.xmult, card.ability.extra.scoring, card.ability.extra.scored}}
+	end,
+	calculate = function(self, card, context)
+		
+	end,
+}
+
+
+-- Pink Body
+SynthB.Joker{
+	key = "pink_body",
+	synthb_song = "pink",
+	pos = {x = 3, y = 0},
+	rarity = 4,
+	cost = 20,
+	config = {
+		extra = {
+			xmult = 1,
+			gain = 0.4
+		}
+	},
+	in_pool = function (self, args)
+		return false
+	end,
+	attributes = {"xmult", "hearts", "suit", "Camellia", "Toby Fox", "miku"},
+	loc_vars = function(self, info_queue, card)
+		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
+		return {vars = {card.ability.extra.gain, card.ability.extra.xmult}}
+	end,
+}
+
+
+
+-- Pink Body
+SynthB.Joker{
+	key = "pink_ghost",
+	synthb_song = "pink",
+	pos = {x = 3, y = 0},
+	rarity = 4,
+	cost = 20,
+	config = {
+		slots_used = -1,
+		immutable = {
+			possessed = nil,
+			return_table = nil -- so i remember this exists
+		}
+	},
+	can_use = function (self, card)
+		if card.area == G.synthb_ghost_area then return true end
+		for i, _card in ipairs(G.jokers.cards) do
+			if _card == card then
+				if i > 1 and G.jokers.cards[i - 1].config.center.key ~= "j_synthb_pink_ghost" then return true end
+			end
+		end
+		return false
+	end,
+	use = function(self, card, area, copier)
+		if card.area == G.synthb_ghost_area then
+			for _, _card in ipairs(G.jokers.cards) do
+				if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
+					_card.ability.synthb_pink_possess = nil
+					break
+				end
+			end
+			draw_card(G.synthb_ghost_area, G.jokers, 0, "up", nil, card)
+			card.T.w = G.CARD_W
+			card.T.h = G.CARD_H
+			card.area:remove_from_highlighted(card)
+		else
+			local possess
+			for i, _card in ipairs(G.jokers.cards) do
+				if _card == card then
+					possess = G.jokers.cards[i - 1]
+				end
+			end
+			if possess.config.center.key == "j_synthb_pink_body" then
+				possess:remove()
+				card:remove()
+				SMODS.add_card{key = "j_synthb_pink"}
+			else
+				card.ability.immutable.possessed = random_string(20)
+				possess.ability.synthb_pink_possess = card.ability.immutable.possessed
+				draw_card(G.jokers, G.synthb_ghost_area, 0, "up", nil, card)
+				card.synthb_orbit_timer = 0
+				card.area:remove_from_highlighted(card)
+			end
+		end
+	end,
+	update = function (self, card, dt)
+		if not card.highlighted and card.ability.immutable.possessed then card.synthb_orbit_timer = (card.synthb_orbit_timer or 0) + dt / 5 end
+	end,
+	in_pool = function (self, args)
+		return false
+	end,
+	attributes = {"xmult", "hearts", "suit", "Camellia", "Toby Fox", "miku"},
+	loc_vars = function(self, info_queue, card)
+		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
+		info_queue[#info_queue+1] = {set = "Other", key = "synthb_possessed"}
+		if card.ability.immutable.possessed then return {key = "j_synthb_pink_ghost_possessing"} end
+	end,
+}

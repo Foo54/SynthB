@@ -37,6 +37,8 @@ SMODS.optional_features.retrigger_joker = true
 
 SynthB.CHAR_W = G.CARD_W / 2
 SynthB.CHAR_H = G.CARD_W / 2
+SynthB.GHOST_W = G.CARD_W / 2
+SynthB.GHOST_H = G.CARD_H / 2
 SynthB.character_song_list = {
 	"j_synthb_needle",
 	"j_synthb_dna"

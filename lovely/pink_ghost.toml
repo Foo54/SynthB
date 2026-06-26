@@ -1,0 +1,25 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# include synthb bonus chips
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''for k, v in pairs(self.I.CARDAREA) do'''
+position = 'after'
+payload = '''
+if not v.parent and v == G.jokers then 
+		love.graphics.push()
+		G.synthb_ghost_area:translate_container()
+		G.synthb_ghost_area:draw(true)
+		love.graphics.pop()
+end
+'''
+match_indent = true
+
+
+
+
+
