@@ -7,19 +7,19 @@ function SMODS.create_mod_badges(obj, badges)
 	if obj then
 		for i = 1, #badges do
 			local data = badges[i].nodes
-			if not data then return end
+			if not data then goto continue end
 			data = data[1]
-			if not data then return end
+			if not data then goto continue end
 			data = data.nodes
-			if not data then return end
+			if not data then goto continue end
 			data = data[2]
-			if not data then return end
+			if not data then goto continue end
 			data = data.config
-			if not data then return end
+			if not data then goto continue end
 			data = data.object
-			if not data then return end
+			if not data then goto continue end
 			data = data.content
-			if not data then return end
+			if not data then goto continue end
 			if badges[i].nodes[1].nodes[2].config.object.content.string == SynthB.mod.display_name then
 				if not obj.no_shader_on_modbadge then
 					badges[i].nodes[1].config.shader = "synthb_mod_badge"
@@ -31,6 +31,7 @@ function SMODS.create_mod_badges(obj, badges)
 				table.insert(badges[i].nodes[1].nodes, 1, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
 				table.insert(badges[i].nodes[1].nodes, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
 			end
+			::continue::
 		end
 	end
 end
