@@ -606,7 +606,8 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "medicine",
 	synthb_credits = {
-		Artist = "Pepix"
+		Artist = "Pepix",
+		Idea = "Ice"
 	},
 	atlas = "pepix jokers",
 	pos = {x = 3, y = 0},
@@ -623,7 +624,6 @@ SynthB.Joker{
 	},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "medicine")
-		SynthB.card_credits(info_queue, "idea_credits", {"Ice"})
 		return {vars = {card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)
@@ -918,11 +918,16 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "miku",
 	cost = 3,
+	pos = {x = 8, y = 0},
+	atlas = "pepix jokers",
 	config = {
 		extra_slots_used = -1,
 		extra = {
 			chips = 3.9
 		}
+	},
+	synthb_credits = {
+		Artist = "Pepix",
 	},
 	blueprint_compat = true,
 	eternal_compat = true,

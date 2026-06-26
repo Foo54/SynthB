@@ -576,7 +576,7 @@ local descriptions = {
 			j_synthb_pink_body = {
 				name = "Pink's Body",
 				text = {
-					"This Jokers gains {X:mult,C:white}X#1#{} Mult",
+					"This Joker gains {X:mult,C:white}X#1#{} Mult",
 					"if played non-flush contains a {C:attention}Heart",
 					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive}]",
 					"{C:inactive,f:5,s:0.8}歌詞わからねー"

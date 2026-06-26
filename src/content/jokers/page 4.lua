@@ -431,6 +431,9 @@ SynthB.Joker{
 	key = "pink",
 	atlas = "joker_placeholders",
 	pos = {x = 9, y = 4},
+	synthb_credits = {
+		Background = "Foo54",
+	},
 	rarity = 4,
 	cost = 20,
 	config = {
@@ -466,6 +469,9 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "pink_body",
 	atlas = "joker_placeholders",
+	synthb_credits = {
+		Background = "Foo54",
+	},
 	synthb_song = "pink",
 	pos = {x = 0, y = 5},
 	rarity = 4,
@@ -499,6 +505,9 @@ SynthB.Joker{
 	key = "pink_ghost",
 	synthb_song = "pink",
 	atlas = "joker_placeholders",
+	synthb_credits = {
+		Background = "Foo54",
+	},
 	pos = {x = 1, y = 5},
 	rarity = 4,
 	cost = 20,
@@ -528,6 +537,8 @@ SynthB.Joker{
 			for _, _card in ipairs(G.jokers.cards) do
 				if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
 					_card.ability.synthb_pink_possess = nil
+					card.ability.immutable.possessed = nil
+					card.ability.immutable.return_table = nil
 					break
 				end
 			end
