@@ -482,6 +482,10 @@ SynthB.Joker{
 			gain = 0.4
 		}
 	},
+	eternal_compat = false,
+	blueprint_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
 	in_pool = function (self, args)
 		return false
 	end,
@@ -496,11 +500,37 @@ SynthB.Joker{
 		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
 		return {vars = {card.ability.extra.gain, card.ability.extra.xmult}}
 	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger or (context.before and not next(context.poker_hands['Flush'])) then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "xmult",
+				scalar_value = "gain"
+			})
+		end
+		if context.joker_main or context.forcetrigger then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+					},
+				}
+			}
+		}
+	end
 }
 
 
-
--- Pink Body
+-- Pink Ghost
 SynthB.Joker{
 	key = "pink_ghost",
 	synthb_song = "pink",
@@ -511,6 +541,10 @@ SynthB.Joker{
 	pos = {x = 1, y = 5},
 	rarity = 4,
 	cost = 20,
+	eternal_compat = false,
+	blueprint_compat = false,
+	perishable_compat = true,
+	demicolon_compat = false,
 	config = {
 		extra_slots_used = -1,
 		immutable = {
