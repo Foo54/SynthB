@@ -460,8 +460,33 @@ SynthB.Joker{
 		return {vars = {card.ability.extra.xmult, card.ability.extra.scoring, card.ability.extra.scored}}
 	end,
 	calculate = function(self, card, context)
-		
+		if context.individual and context.cardarea == G.play and not context.blueprint and not next(context.poker_hands['Flush']) and context.other_card:is_suit("Hearts") then
+			card.ability.extra.scored = card.ability.extra.scored + 1
+			if card.ability.extra.scored >= card.ability.extra.scoring then
+				card:remove()
+				SMODS.add_card{key = "j_synthb_pink_body"}
+				SMODS.add_card{key = "j_synthb_pink_ghost"}
+			end
+		end
+		if context.joker_main or context.forcetrigger then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+					},
+				}
+			}
+		}
+	end
 }
 
 
@@ -501,7 +526,7 @@ SynthB.Joker{
 		return {vars = {card.ability.extra.gain, card.ability.extra.xmult}}
 	end,
 	calculate = function(self, card, context)
-		if context.forcetrigger or (context.before and not next(context.poker_hands['Flush'])) then
+		if context.forcetrigger or (context.before and not next(context.poker_hands['Flush']) and not context.blueprint) then
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "xmult",
@@ -614,27 +639,29 @@ SynthB.Joker{
 		if card.ability.immutable.possessed then return {key = "j_synthb_pink_ghost_possessing"} end
 	end,
 	calculate = function (self, card, context)
-		if context.selling_card and context.card.ability.synthb_pink_possess == card.ability.immutable.possessed then
-			draw_card(G.synthb_ghost_area, G.jokers, 0, "up", nil, card)
-			card.T.w = G.CARD_W
-			card.T.h = G.CARD_H
-			card.ability.immutable.possessed = nil
-		end
-		if context.individual and context.cardarea == G.play and (context.other_card:is_suit("Diamonds") or context.other_card:is_suit("Hearts")) then
-			if card.ability.immutable.return_table then
-				for _, _card in ipairs(G.jokers.cards) do
-					if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
-						local c = copy_table(card.ability.immutable.return_table)
-						c.card = _card
-						return c
+		if card.area == G.synthb_ghost_area then
+			if context.selling_card and context.card.ability.synthb_pink_possess == card.ability.immutable.possessed then
+				draw_card(G.synthb_ghost_area, G.jokers, 0, "up", nil, card)
+				card.T.w = G.CARD_W
+				card.T.h = G.CARD_H
+				card.ability.immutable.possessed = nil
+			end
+			if context.individual and context.cardarea == G.play and (context.other_card:is_suit("Diamonds") or context.other_card:is_suit("Hearts")) then
+				if card.ability.immutable.return_table then
+					for _, _card in ipairs(G.jokers.cards) do
+						if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
+							local c = copy_table(card.ability.immutable.return_table)
+							c.card = _card
+							return c
+						end
 					end
 				end
 			end
-		end
-		if context.post_trigger and context.other_card.ability.synthb_pink_possess == card.ability.immutable.possessed and context.other_ret and context.other_ret.jokers then
-			local valid_storing_table = SynthB.prune_return_table(context.other_ret.jokers)
-			if next(valid_storing_table) then
-				card.ability.immutable.return_table = valid_storing_table
+			if context.post_trigger and context.other_card.ability.synthb_pink_possess == card.ability.immutable.possessed and context.other_ret and context.other_ret.jokers then
+				local valid_storing_table = SynthB.prune_return_table(context.other_ret.jokers)
+				if next(valid_storing_table) then
+					card.ability.immutable.return_table = valid_storing_table
+				end
 			end
 		end
 	end

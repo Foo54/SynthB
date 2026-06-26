@@ -98,17 +98,17 @@ function SynthB.mod.custom_card_areas(game)
 				for _, _card in ipairs(G.jokers.cards) do
 					if card.ability.immutable.possessed == _card.ability.synthb_pink_possess then
 						parent = _card
+						card.T.x = parent.VT.x - G.ROOM.T.x / 2 + 0.05 + parent.VT.w / 2 - 0.9 * (parent.VT.w / 2 + SynthB.GHOST_W + 0.1) * math.sin(card.synthb_orbit_timer or 0)
+						if ((card.synthb_orbit_timer or 0) + math.pi / 2) % (math.pi * 2) <= math.pi then
+							card.synthb_infront = true
+						else
+							card.synthb_infront = false
+						end
+						card.T.y = parent.VT.y - G.ROOM.T.y + parent.VT.h / 2 + (parent.VT.h / 4) * math.sin((card.synthb_orbit_timer or 0))
+						card.T.r = math.max(-0.1, math.min(0.1, math.atan(card.T.y - card.VT.y, card.T.x - card.VT.x)))
 						break
 					end
 				end
-				card.T.x = parent.VT.x - G.ROOM.T.x / 2 + 0.05 + parent.VT.w / 2 - 0.9 * (parent.VT.w / 2 + SynthB.GHOST_W + 0.1) * math.sin(card.synthb_orbit_timer or 0)
-				if ((card.synthb_orbit_timer or 0) + math.pi / 2) % (math.pi * 2) <= math.pi then
-					card.synthb_infront = true
-				else
-					card.synthb_infront = false
-				end
-				card.T.y = parent.VT.y - G.ROOM.T.y + parent.VT.h / 2 + (parent.VT.h / 4) * math.sin((card.synthb_orbit_timer or 0))
-				card.T.r = math.max(-0.1, math.min(0.1, math.atan(card.T.y - card.VT.y, card.T.x - card.VT.x)))
 			end
 		end
 	end
