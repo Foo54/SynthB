@@ -439,8 +439,17 @@ SynthB.Joker{
 			scored = 0
 		}
 	},
+	set_sprites = function (self, card, front)
+		if SynthB.mod.config.spoilers.deltarune then
+			card.children.center:set_sprite_pos({x = 0, y = 0}) -- replace this with a spoiler sprite
+		end
+	end,
+	in_pool = function (self, args)
+		return not SynthB.mod.config.spoilers.deltarune
+	end,
 	attributes = {"xmult", "hearts", "suit", "generation", "Camellia", "Toby Fox", "miku"},
 	loc_vars = function(self, info_queue, card)
+		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
 		SynthB.song_info(info_queue, "pink")
 		info_queue[#info_queue+1] = G.P_CENTERS.j_synthb_pink_body
 		info_queue[#info_queue+1] = G.P_CENTERS.j_synthb_pink_ghost
@@ -468,8 +477,14 @@ SynthB.Joker{
 	in_pool = function (self, args)
 		return false
 	end,
+	set_sprites = function (self, card, front)
+		if SynthB.mod.config.spoilers.deltarune then
+			card.children.center:set_sprite_pos({x = 0, y = 0}) -- replace this with a spoiler sprite
+		end
+	end,
 	attributes = {"xmult", "hearts", "suit", "Camellia", "Toby Fox", "miku"},
 	loc_vars = function(self, info_queue, card)
+		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
 		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
 		return {vars = {card.ability.extra.gain, card.ability.extra.xmult}}
 	end,
@@ -499,6 +514,11 @@ SynthB.Joker{
 			end
 		end
 		return false
+	end,
+	set_sprites = function (self, card, front)
+		if SynthB.mod.config.spoilers.deltarune then
+			card.children.center:set_sprite_pos({x = 0, y = 0}) -- replace this with a spoiler sprite
+		end
 	end,
 	use = function(self, card, area, copier)
 		if card.area == G.synthb_ghost_area then
@@ -540,6 +560,7 @@ SynthB.Joker{
 	end,
 	attributes = {"xmult", "hearts", "suit", "Camellia", "Toby Fox", "miku"},
 	loc_vars = function(self, info_queue, card)
+		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
 		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
 		info_queue[#info_queue+1] = {set = "Other", key = "synthb_possessed"}
 		if card.ability.immutable.possessed then return {key = "j_synthb_pink_ghost_possessing"} end

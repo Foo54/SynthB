@@ -297,3 +297,24 @@ function G.UIDEF.card_h_popup (card, ...)
 	end
 	return ret
 end
+
+local game_main_menu_ref = Game.main_menu
+function Game:main_menu(...)
+	local ret = game_main_menu_ref(self, ...)
+	for _, spoiler in pairs(SynthB.mod.config.seen_spoilers) do
+		if not spoiler then
+			G.E_MANAGER:add_event(Event{
+				func = function()
+					G.FUNCS.overlay_menu{
+						definition = G.UIDEF.synthb_spoiler_warning(),
+						config = {}
+					}
+					return true
+				end
+			})
+			for _spoiler in pairs(SynthB.mod.config.seen_spoilers) do SynthB.mod.config.seen_spoilers[_spoiler] = true end
+			break
+		end
+	end
+	return ret
+end

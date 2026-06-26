@@ -570,7 +570,7 @@ local descriptions = {
 					"this Joker splits into",
 					"{C:attention}Body{} and {C:attention}Ghost",
 					"{C:inactive}[#3#/#2# scored]",
-					"{C:inactive,f:5,s:0.8}lyrics"
+					"{C:inactive,f:5,s:0.8}全力で突き進めばいいのキューティ革命"
 				}
 			},
 			j_synthb_pink_body = {
@@ -579,7 +579,7 @@ local descriptions = {
 					"This Jokers gains {X:mult,C:white}X#1#{} Mult",
 					"if played non-flush contains a {C:attention}Heart",
 					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive}]",
-					"{C:inactive,f:5,s:0.8}lyrics"
+					"{C:inactive,f:5,s:0.8}歌詞わからねー"
 				}
 			},
 			j_synthb_pink_ghost = {
@@ -588,7 +588,7 @@ local descriptions = {
 					"Use this Joker to",
 					"possess Joker to the left.",
 					"{C:inactive}Cannot Possess Pink's Ghost",
-					"{C:inactive,f:5,s:0.8}lyrics"
+					"{C:inactive,f:5,s:0.8}世界殺戮　今度は水中"
 				}
 			},
 			j_synthb_pink_ghost_possessing = {
@@ -596,7 +596,17 @@ local descriptions = {
 				text = {
 					"Use this Joker to",
 					"STOP possessing current Joker.",
-					"{C:inactive,f:5,s:0.8}lyrics"
+					"{C:inactive,f:5,s:0.8}世界殺戮　今度は水中" -- so evil
+				}
+			},
+
+			--- spoilers
+			j_synthb_spoiler = {
+				name = "SPOILER",
+				text = {
+					"This card is a spoiler for",
+					"#1#",
+					"It will not show up in gameplay"
 				}
 			},
 
@@ -1943,6 +1953,9 @@ local descriptions = {
 			b_synthb_characters = "Greenroom",
 			k_synthb_character = "Character",
 			k_synthb_no_copies_ex = "No Copies!",
+			b_synthb_proceed = "Proceed",
+			k_synthb_spoiler_warning_ex = "Spoiler Warning!",
+			k_synthb_deltarune = "Deltarune Chapter 5",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

@@ -153,3 +153,68 @@ function G.UIDEF.synthb_wish_full_menu ()
 		h_mod = 0.95,
 	})
 end
+
+-- Spolier Warning
+function G.UIDEF.synthb_spoiler_warning ()
+	return create_UIBox_generic_options{
+		back_colour = darken(SynthB.custom_colors.LIGHT_GREEN, 0.2),
+		back_label = localize("b_synthb_proceed"),
+		contents = {
+			{n = G.UIT.R, config = {align = "cm"}, nodes = {
+				{n = G.UIT.R, config = {align = "cm"}, nodes = {
+					{n = G.UIT.R, config = {align = "cm"}, nodes = {
+						{n = G.UIT.T, config = {text = localize("k_synthb_spoiler_warning_ex"), scale = 1, colour = G.C.UI.TEXT_LIGHT}}
+					}},
+					{n = G.UIT.R, config = {align = "cm"}, nodes = {
+						{n = G.UIT.B, config = {w = 8, h = 0.2}}
+					}},
+					{n = G.UIT.R, config = {align = "cm"}, nodes = {
+						{n = G.UIT.B, config = {w = 8, h = 0.1, r = 0.1, colour = G.C.UI.TEXT_DARK}}
+					}}
+				}},
+				{n = G.UIT.R, config = {align = "cm", padding = 0.3}, nodes = {
+					{n = G.UIT.C, config = {align = "cm", colour = G.C.UI.BACKGROUND_WHITE, r = 0.2, padding = 0.2}, nodes = {
+						{n = G.UIT.R, config = {align = "cm"}, nodes = {
+							{n = G.UIT.R, nodes = {
+								{n = G.UIT.T, config = {text = "SynthB contains spoilers", scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+							}},
+							{n = G.UIT.R, nodes = {
+								{n = G.UIT.T, config = {text = "for the following games:", scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+							}}
+						}},
+						{n = G.UIT.R, config = {align = "cm", colour = G.C.UI.TRANSPARENT_DARK, r = 0.2, padding = 0.1}, nodes = {
+							{n = G.UIT.R, nodes = {
+								{n = G.UIT.T, config = {text = localize("k_synthb_deltarune"), scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+							}}
+						}},
+						{n = G.UIT.R, config = {align = "cm"}, nodes = {
+							{n = G.UIT.R, config = {align = "cm"}, nodes = {
+								{n = G.UIT.T, config = {text = "You may disable related content", scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+							}},
+							{n = G.UIT.R, config = {align = "cm"}, nodes = {
+								{n = G.UIT.T, config = {text = "on the right now,", scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+							}},
+							{n = G.UIT.R, config = {align = "cm"}, nodes = {
+								{n = G.UIT.T, config = {text = "or in the mods config page", scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+							}},
+							{n = G.UIT.R, config = {align = "cm"}, nodes = {
+								{n = G.UIT.T, config = {text = "at any time.", scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+							}}
+						}},
+					}},
+					{n = G.UIT.C, config = {align = "cm", colour = G.C.UI.BACKGROUND_INACTIVE, r = 0.2, padding = 0.2}, nodes = {
+						{n = G.UIT.R, config = {align = "cm"}, nodes = {
+							{n = G.UIT.R, nodes = {
+								create_toggle({
+									label = "Disable Deltarune Spoilers",
+									ref_table = SynthB.mod.config.spoilers,
+									ref_value = 'deltarune'
+								})
+							}},
+						}},
+					}},
+				}}
+			}}
+		}
+	}
+end

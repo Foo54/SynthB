@@ -10,6 +10,13 @@ return {
 	triple_click_for_song = true,
 	disable_non_scoring_character_animations = false,
 
+	spoilers = {
+		deltarune = false,
+	},
+	seen_spoilers = {
+		deltarune = false,
+	},
+
 	-- this is here cuase my laptop is a potato
 	dont_fix_infinite_value_manip = false
 }
