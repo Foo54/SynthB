@@ -1743,6 +1743,12 @@ local descriptions = {
 					"{C:inactive}[Must have room]",
 					"{C:inactive,s:0.8,f:5}OK! OK! 他人を助けるなら、大歓迎"
 				}
+			},
+			c_synthb_spectral_training = {
+				name = "Training",
+				text = {
+					"Levels up Selected Character"
+				}
 			}
 		},
 		Tuning = {
