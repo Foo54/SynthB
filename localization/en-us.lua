@@ -1673,7 +1673,7 @@ local descriptions = {
 				name = {"Kagamine Rin", "{s:0.7}More More Jump"},
 				text = {
 					"Earn {C:money}$#1#{} when",
-					"a playing card is retriggered"
+					"a playing card is {C:attention}retriggered"
 				}
 			},
 			char_synthb_len2 = {
@@ -1685,19 +1685,21 @@ local descriptions = {
 			char_synthb_luka2 = {
 				name = {"Megurine Luka", "{s:0.7}Leo/Need"},
 				text = {
-					"This card currently cannot appear in game"
+					"Played Poker Hand gains {C:chips}+#1#{} chips"
 				}
 			},
 			char_synthb_meiko2 = {
 				name = {"MEIKO", "{s:0.7}Vivid Bad Squad"},
 				text = {
-					"This card currently cannot appear in game"
+					"If played hand would score {C:attention}less{} than",
+					"last played hand {C:inactive}(#2#){}, {X:mult,C:white}X#1#{} Mult"
 				}
 			},
 			char_synthb_kaito2 = {
 				name = {"KAITO", "{s:0.7}Wonderlands X Showtime"},
 				text = {
-					"This card currently cannot appear in game"
+					"All scaling values are",
+					"raised by {X:attention,C:white}X#1#"
 				}
 			},
 		},

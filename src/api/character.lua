@@ -38,11 +38,11 @@ SynthB.Character = SMODS.Center:extend {
 		local calculate_ref = self.calculate or function() end
 		function self.calculate (self, card, context)
 			card.synthb_triggered = false
-			local ret = calculate_ref(self, card, context)
-			if not context.synthb_character_triggered and (card.synthb_triggered or (ret and card.synthb_triggered ~= nil)) then -- override to force no activation
+			local ret, retrigger = calculate_ref(self, card, context)
+			if not context.synthb_character_triggered and (card.synthb_triggered or ((ret or retrigger) and card.synthb_triggered ~= nil)) then -- override to force no activation
 				SMODS.calculate_context({synthb_character_triggered = card})
 			end
-			return ret
+			return ret, retrigger
 		end
 		SMODS.Center.inject(self)
 	end,

@@ -163,7 +163,7 @@ SynthB.Character{
 	end,
 	calculate = function(self, card, context)
 		if context.retrigger_joker_check then
-			if card.area == G.synthb_character_area then
+			if context.other_card.area == G.synthb_character_area then
 				if context.other_card.rank == card.rank - 1 then
 					local possible_retriggers = SynthB.get_character_value(card, "retriggers")
 					local _, prob_boost = SynthB.get_character_boost(card)
