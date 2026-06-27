@@ -50,6 +50,8 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=viNruoTceiw", key = "needle", pos = {x = 3, y = 9}},
 	{link = "https://www.youtube.com/watch?v=XKZIQlqVjjk", key = "song_synthb_approve_please_genie", prefix = "", pos = {x = 4, y = 9}, set = "Other"},
 	{link = "https://www.youtube.com/watch?v=_oTaQXf_iX8", key = "yararara", pos = {x = 0, y = 10}},
+	{link = "https://www.youtube.com/watch?v=tlFnfEWZCtQ", key = "song_synthb_pink", prefix = "", set = "Other", pos = {x = 1, y = 10}, spoiler = "deltarune"},
+	{link = "https://www.youtube.com/watch?v=UTcZHzDY3LU", key = "affection_addiction", pos = {x = 2, y = 10}},
 	--{link = "temp", key = "shiawase_for_you", pos = {x = 4, y = 9}},
 	--[[
 	for cross mod do this
@@ -89,9 +91,13 @@ function G.FUNCS.go_to_song(e)
 	love.system.openURL(e.config.ref_table.link)
 end
 
-function SynthB.generate_song_button(key, index, prefix, set)
+function SynthB.generate_song_button(key, index, prefix, set, spoiler)
 	-- adjust fixed scale and necessary to ensure all buttons are of uniform size
-	local out = {n = G.UIT.C, config = {align = "tm", minw = 4.6, minh = 4.6, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, scale = 0.6, button = "go_to_song", ref_table = SynthB.songs[index]}, nodes = localize{type = "name", set = (set or "Joker"), key = (prefix or "j_synthb_") .. key, fixed_scale = 0.67}}
+	local nodes = localize{type = "name", set = (set or "Joker"), key = (prefix or "j_synthb_") .. key, fixed_scale = 0.67}
+	if spoiler and SynthB.mod.config.spoilers[spoiler] then
+		nodes = {{n = G.UIT.R, nodes = {{n = G.UIT.T, config = {scale = 0.2, colour = G.C.UI.TEXT_LIGHT, text = localize("k_synthb_spoiler")}}}}}
+	end
+	local out = {n = G.UIT.C, config = {align = "tm", minw = 4.6, minh = 4.6, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, scale = 0.6, button = "go_to_song", ref_table = SynthB.songs[index]}, nodes = nodes}
 ---@diagnostic disable-next-line: param-type-mismatch
 	table.insert(out.nodes, 1, {n = G.UIT.R, config = {align = "cm"}, nodes = {
 		{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 3.5, 3.5, SynthB.songs[index].atlas or "synthb_covers", SynthB.songs[index].pos or {x = 0, y = 0})}}

@@ -599,6 +599,16 @@ local descriptions = {
 					"{C:inactive,f:5,s:0.8}世界殺戮　今度は水中" -- so evil
 				}
 			},
+			j_synthb_affection_addiction = {
+				name = "Affection Addiction",
+				text = {
+					"This Joker gains {X:mult,C:white}X#1#{} mult",
+					"per {C:attention}consecutive{} hand played scoring",
+					"{C:attention}greater{} than the previous hand {C:inactive}(#3#)",
+					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive}]",
+					"{C:inactive,s:0.8}But I can't survive without the high"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1271,6 +1281,17 @@ local descriptions = {
 					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
+			affection_addiction = {
+				text = {
+					"{C:attention}Title:",
+					"Affection Edition",
+					"{C:attention}Producer:",
+					"VocaloKat{C:inactive} & {}AkuP{C:inactive} & {}Ryu{C:inactive} & {}Jamie Paige",
+					"{C:attention}Voice:",
+					"{f:5}ポピー",
+					"{C:inactive,s:0.8}POPY"
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -1447,6 +1468,9 @@ local descriptions = {
 			song_synthb_approve_please_genie = {
 				name = {"{f:4}승인해주세요지니님!", "{s:0.7}Approve Please, Genie!"},
 				text = {}
+			},
+			song_synthb_pink = {
+				name = "Cutie Mew Mew Magic"
 			},
 			synthb_fake = {
 				name = "Fake Card",
@@ -1955,7 +1979,9 @@ local descriptions = {
 			k_synthb_no_copies_ex = "No Copies!",
 			b_synthb_proceed = "Proceed",
 			k_synthb_spoiler_warning_ex = "Spoiler Warning!",
+			k_synthb_spoiler = "Content Hidden due to Spoiler Restrictions",
 			k_synthb_deltarune = "Deltarune Chapter 5",
+			k_synthb_affection = "QWZmZWN0aW9u",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

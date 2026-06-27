@@ -306,8 +306,7 @@ function Game:main_menu(...)
 			G.E_MANAGER:add_event(Event{
 				func = function()
 					G.FUNCS.overlay_menu{
-						definition = G.UIDEF.synthb_spoiler_warning(),
-						config = {}
+						definition = G.UIDEF.synthb_spoiler_warning()
 					}
 					return true
 				end

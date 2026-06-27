@@ -386,7 +386,6 @@ SynthB.Joker{
 }
 
 
-
 -- needLe
 SynthB.Joker{
 	atlas = "bd_jokers",
@@ -429,6 +428,7 @@ SynthB.Joker{
 -- Pink
 SynthB.Joker{
 	key = "pink",
+	synthb_song = "song_synthb_pink",
 	atlas = "joker_placeholders",
 	pos = {x = 9, y = 4},
 	synthb_credits = {
@@ -451,7 +451,7 @@ SynthB.Joker{
 	in_pool = function (self, args)
 		return not SynthB.mod.config.spoilers.deltarune
 	end,
-	attributes = {"xmult", "hearts", "suit", "generation", "Camellia", "Toby Fox", "miku"},
+	attributes = {"xmult", "hearts", "suit", "generation", "song", "vocaloid song", "Camellia", "Toby Fox", "Miku"},
 	loc_vars = function(self, info_queue, card)
 		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
 		SynthB.song_info(info_queue, "pink")
@@ -497,7 +497,7 @@ SynthB.Joker{
 	synthb_credits = {
 		Background = "Foo54",
 	},
-	synthb_song = "pink",
+	synthb_song = "song_synthb_pink",
 	pos = {x = 0, y = 5},
 	rarity = 4,
 	cost = 20,
@@ -519,7 +519,7 @@ SynthB.Joker{
 			card.children.center:set_sprite_pos({x = 4, y = 1}) -- replace this with a spoiler sprite
 		end
 	end,
-	attributes = {"xmult", "hearts", "suit", "Camellia", "Toby Fox", "miku"},
+	attributes = {"xmult", "hearts", "suit", "song", "vocaloid song", "Camellia", "Toby Fox", "Miku"},
 	loc_vars = function(self, info_queue, card)
 		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
 		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
@@ -558,11 +558,12 @@ SynthB.Joker{
 -- Pink Ghost
 SynthB.Joker{
 	key = "pink_ghost",
-	synthb_song = "pink",
+	synthb_song = "song_synthb_pink",
 	atlas = "joker_placeholders",
 	synthb_credits = {
 		Background = "Foo54",
 	},
+	attributes = {"suit", "hearts", "diamonds", "song", "vocaloid song", "Camellia", "Toby Fox", "Miku"},
 	pos = {x = 1, y = 5},
 	rarity = 4,
 	cost = 20,
@@ -631,7 +632,6 @@ SynthB.Joker{
 	in_pool = function (self, args)
 		return false
 	end,
-	attributes = {"xmult", "hearts", "suit", "Camellia", "Toby Fox", "miku"},
 	loc_vars = function(self, info_queue, card)
 		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
 		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
@@ -667,3 +667,56 @@ SynthB.Joker{
 		end
 	end
 }
+
+
+-- Affection Addiction
+SynthB.Joker{
+	key = "affection_addiction",
+	pos = {x = 1, y = 0},
+	rarity = 2,
+	cost = 7,
+	config = {
+		extra = {
+			scale = 0.25,
+			reset = 1,
+			xmult = 1
+		},
+		immutable = {
+			last_scored = 0
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"scaling", "reset", "xmult", "vocaloid song", "song", "POPY", "VocaloKat", "AkuP", "ryu", "Jamie Paige"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "affection_addiction")
+		return {vars = {card.ability.extra.scale, card.ability.extra.xmult, card.ability.immutable.last_scored}}
+	end,
+	calculate = function(self, card, context)
+		if context.after and not context.blueprint then
+			local scoring = SMODS.calculate_round_score()
+			if scoring <= card.ability.immutable.last_scored then
+				card.ability.immutable.last_scored = scoring
+				card.ability.extra.xmult = card.ability.extra.reset
+				return {
+					message = localize("k_synthb_affection")
+				}
+			else
+				card.ability.immutable.last_scored = scoring
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "scale"
+				})
+			end
+		end
+		if context.joker_main or context.forcetrigger then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
+	end,
+}
+

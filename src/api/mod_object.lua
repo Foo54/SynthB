@@ -380,7 +380,7 @@ function SynthB.mod.extra_tabs()
 						song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
 						song_buttons[#song_buttons+1] = {n = G.UIT.R, nodes = {}}
 					end
-					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i, data.prefix, data.set)
+					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = SynthB.generate_song_button(data.key, i, data.prefix, data.set, data.spoiler)
 					song_buttons[#song_buttons].nodes[#song_buttons[#song_buttons].nodes+1] = {n = G.UIT.C, nodes = {{n = G.UIT.B, config = {w=0.1, h=0.1}}}}
 				end
 				local scrollbox = SMODS.UIScrollBox{
@@ -515,47 +515,7 @@ function SynthB.mod.custom_card_areas(game)
 
 		local state = G.TAROT_INTERRUPT or G.STATE
 		if behind then
-			self.ARGS.invisible_area_types = self.ARGS.invisible_area_types or {discard=1, voucher=1, play=1, consumeable=1, title = 1, title_2 = 1}
-			if self.ARGS.invisible_area_types[self.config.type] or
-					(self.config.type == 'hand' and ({[G.STATES.SHOP]=1, [G.STATES.TAROT_PACK]=1, [G.STATES.SPECTRAL_PACK]=1, [G.STATES.STANDARD_PACK]=1,[G.STATES.BUFFOON_PACK]=1,[G.STATES.PLANET_PACK]=1, [G.STATES.ROUND_EVAL]=1, [G.STATES.BLIND_SELECT]=1})[state]) or
-					(self.config.type == 'hand' and state == G.STATES.SMODS_BOOSTER_OPENED) or
-					(self.config.type == 'deck' and self ~= G.deck and not self.draw_uibox) or
-					(self.config.type == 'shop' and self ~= G.shop_vouchers) then
-			else
-					if not self.children.area_uibox then 
-									local card_count = not self.config.no_card_count and self ~= G.shop_vouchers and {n=G.UIT.R, config={align = self == G.jokers and 'cl' or self == G.hand and 'cm' or 'cr', padding = 0.03, no_fill = true}, nodes={
-											{n=G.UIT.B, config={w = 0.1,h=0.1}},
-											{n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_count', scale = 0.3, colour = G.C.WHITE}},
-											{n=G.UIT.T, config={text = '/', scale = 0.3, colour = G.C.WHITE}},
-											{n=G.UIT.T, config={ref_table = self.config.card_limits, ref_value = 'total_slots', scale = 0.3, colour = G.C.WHITE}},
-											{n=G.UIT.B, config={w = 0.1,h=0.1}}
-									}} or nil
-
-									self.children.area_uibox = UIBox{
-											definition = 
-													{n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
-															{n=G.UIT.R, config={minw = self.T.w,minh = self.T.h,align = "cm", padding = 0.1, mid = true, r = 0.1, colour = self.config.bg_colour or self ~= G.shop_vouchers and {0,0,0,0.1} or nil, ref_table = self}, nodes={
-																	self == G.shop_vouchers and 
-																	{n=G.UIT.C, config={align = "cm", paddin = 0.1, func = 'shop_voucher_empty', visible = false}, nodes={
-																			{n=G.UIT.R, config={align = "cm"}, nodes={
-																					{n=G.UIT.T, config={text = 'DEFEAT', scale = 0.6, colour = G.C.WHITE}}
-																			}},
-																			{n=G.UIT.R, config={align = "cm"}, nodes={
-																					{n=G.UIT.T, config={text = 'BOSS BLIND', scale = 0.4, colour = G.C.WHITE}}
-																			}},
-																			{n=G.UIT.R, config={align = "cm"}, nodes={
-																					{n=G.UIT.T, config={text = 'TO RESTOCK', scale = 0.4, colour = G.C.WHITE}}
-																			}},
-																	}} or nil,
-															}},
-															card_count
-													}},
-											config = { align = 'cm', offset = {x=0,y=0}, major = self, parent = self}
-									}
-							end
-					self.children.area_uibox:draw()
-			end
-
+			
 			self:draw_boundingrect()
 			add_to_drawhash(self)
 

@@ -88,3 +88,6 @@ SMODS.Attribute{key = "AnythingBecomeMoe"}
 SMODS.Attribute{key = "TRAP CHICK"}
 SMODS.Attribute{key = "Camellia"}
 SMODS.Attribute{key = "Toby Fox"}
+SMODS.Attribute{key = "AkuP"}
+SMODS.Attribute{key = "VocaloKat"}
+SMODS.Attribute{key = "Ryu"}
