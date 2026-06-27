@@ -555,12 +555,12 @@ end
 function SynthB.mod.custom_collection_tabs()
 	local tally = 0
 	for _, v in pairs(G.P_CENTER_POOLS.synthb_Character) do
-		tally = tally + (v.discovered and 1 or 0)
+		tally = tally + ((v.discovered and v.synthb_character ~= "padding") and 1 or 0)
 	end
 	return { UIBox_button {
 		button = "synthb_your_collection_characters",
 		label = { localize("b_synthb_characters") },
-		count = { tally = tally, of = #G.P_CENTER_POOLS.synthb_Character },
+		count = { tally = tally, of = #G.P_CENTER_POOLS.synthb_Character - 4 },
 		minw = 5,
 		id = "synthb_your_collection_characters"
 	} }
