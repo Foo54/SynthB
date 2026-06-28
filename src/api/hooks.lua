@@ -396,3 +396,13 @@ function CardArea:can_highlight(card)
 	if self.config.type == "characters" then return true end
 	return card_area_can_highlight_ref(self, card)
 end
+
+local smods_drawstep_tilt_ref = SMODS.DrawSteps.tilt.func
+function SMODS.DrawSteps.tilt.func (card, ...)
+	if not card.synthb_key then
+---@diagnostic disable-next-line: need-check-nil
+		return smods_drawstep_tilt_ref(card, ...)
+	else
+		card.tilt_var = {mx = 0, my = 0, dx = 0, dy = 0, amt = 0}
+	end
+end

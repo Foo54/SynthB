@@ -1600,6 +1600,16 @@ local descriptions = {
 					"hi i'm foo54",
 					"uh i'll fill this out later"
 				}
+			},
+
+			--- Banners
+			synthb_gacha_n25 = {
+				name = 'Nightcord at 25:00',
+				description = {
+					"Pulls a random",
+					"{C:attention}Nightcord at 25:00{}",
+					"character"
+				}
 			}
 		},
 		synthb_Character = {

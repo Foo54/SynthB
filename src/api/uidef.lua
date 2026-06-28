@@ -241,15 +241,98 @@ end
 
 -- Gacha Banner UI
 function G.UIDEF.synthb_create_gacha_banner()
+	local banner = Card(G.ROOM.T.x, G.ROOM.T.y, 2.5, 4, nil, G.P_CENTERS.c_base)
+	banner.children.center:remove()
+	banner.children.center = SMODS.create_sprite(0, 0, 2.5, 4, "synthb_banners", {x = 0, y = 0})
+	banner.children.center.states.hover = banner.states.hover
+	banner.children.center.states.click = banner.states.click
+	banner.children.center.states.drag.can = false
+	banner.children.center.states.collide.can = true
+	banner.children.center:set_role({major = banner, role_type = 'Glued', draw_major = banner})
+	banner.synthb_key = "synthb_gacha_n25"
+	banner.ambient_tilt = 0
+	banner.no_shadow = true
+	function banner:click ()
+		print("hi")
+	end
+	function banner:hover()
+		local desc_nodes = {}
+		--localize{type = "description", set = "Other", key = self.synthb_key, nodes = desc_nodes}
+		for i, node in ipairs(desc_nodes) do
+			desc_nodes[i] = {n = G.UIT.R, nodes = node}
+		end
+		local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
+			{n=G.UIT.C, config={align = "cm", func = 'show_infotip',object = Moveable()}, nodes={
+				{n=G.UIT.R, config={padding = 0.05, r = 0.12, colour = lighten(G.C.JOKER_GREY, 0.5), emboss = 0.07}, nodes={
+					{n=G.UIT.R, config={align = "cm", padding = 0.07, r = 0.1, colour = adjust_alpha(darken(G.C.JOKER_GREY, 0.3), 0.8)}, nodes={
+						(localize{type = "name", set = "Other", key = self.synthb_key})[1],
+						--desc_from_rows(desc_nodes),
+					}}
+				}}
+			}},
+		}}
+		self.popup = UIBox{
+			definition = t,
+			config = {
+				align = "tm",
+				offset = {x = 0, y = -0.2},
+				major = self
+			}
+		}
+	end
+	function banner:stop_hover()
+		if self.popup then
+			self.popup:remove()
+			self.popup = nil
+		end
+	end
+	local cardarea = CardArea(G.ROOM.T.x, G.ROOM.T.y, 2.5, 4, {type = 'title_2', card_limit = 1, highlight_limit = 0})
+	function cardarea:draw()
+		if not self.states.visible then return end 
+    if G.VIEWING_DECK and (self==G.deck or self==G.hand or self==G.play) then return end
+
+    self:draw_boundingrect()
+    add_to_drawhash(self)
+
+    self.ARGS.draw_layers = self.ARGS.draw_layers or self.config.draw_layers or {'shadow', 'card'}
+		local mem_settings = G.SETTINGS.reduced_motion
+		G.SETTINGS.reduced_motion = true
+		self.cards[1].VT.r = 0
+		self.cards[1].VT.scale = 1
+		self.cards[1].T.r = 0
+		self.cards[1].T.scale = 1
+		self.cards[1].velocity.r = 0
+		if math.abs(self.cards[1].velocity.x) > math.abs(self.cards[1].VT.x - self.cards[1].T.x) then self.cards[1].velocity.x = self.cards[1].T.x - self.cards[1].VT.x end
+		if math.abs(self.cards[1].velocity.y) > math.abs(self.cards[1].VT.y - self.cards[1].T.y) then self.cards[1].velocity.y = self.cards[1].T.y - self.cards[1].VT.y end
+    for k, v in ipairs(self.ARGS.draw_layers) do
+        for i = 1, #self.cards do 
+						if self.cards[i] ~= G.CONTROLLER.focused.target then
+								if not self.cards[i].highlighted then
+										if G.CONTROLLER.dragging.target ~= self.cards[i] then self.cards[i]:draw(v) end
+								end
+						end
+				end
+				for i = 1, #self.cards do  
+						if self.cards[i] ~= G.CONTROLLER.focused.target then
+								if self.cards[i].highlighted then
+										if G.CONTROLLER.dragging.target ~= self.cards[i] then self.cards[i]:draw(v) end
+								end
+						end
+				end
+    end
+		G.SETTINGS.reduced_motion = mem_settings
+	end
+	cardarea:emplace(banner)
+	banner.states.drag.can = false
   return {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
 		{n=G.UIT.R, config={align = "cm", r = 0.3, minw = 2.6, maxw=2.6, minh = 4, maxh = 4, colour = G.C.DYN_UI.MAIN, emboss = 0.1}, nodes={
 			{n = G.UIT.C, nodes = {
-				{n = G.UIT.B, config = {w = 0.1, h = 4}}
+				{n = G.UIT.B, config = {w = 0.25, h = 4}}
 			}},
 			{n = G.UIT.C, config = {padding = 0.05}, nodes = {
-				{n=G.UIT.R, config={align = "cm", minh = 1,r = 0.2, padding = 0.2, minw = 1, colour = G.C.DYN_UI.DARK}, nodes={
-					{n=G.UIT.C, config={align = "cm",padding = 0.2, colour = G.C.L_BLACK, minh = 4, maxh = 4, minw = 2.5, maxw = 2.5}, nodes={
-						{n = G.UIT.T, config = {text = "banner here", scale = 0.6, colour = G.C.UI.TEXT_LIGHT, vertical = true}}
+				{n=G.UIT.R, config={align = "cm", minh = 1,r = 0.2, padding = 0.1, minw = 1, colour = G.C.DYN_UI.DARK}, nodes={
+					{n=G.UIT.C, config={align = "cm",padding = 0.1, colour = G.C.L_BLACK, minh = 4, maxh = 4, minw = 2.5, maxw = 2.5}, nodes={
+						{n = G.UIT.O, config = {id = "synthb_shop_banner", object = cardarea}}
 					}}
 				}}
 			}}

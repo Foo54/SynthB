@@ -44,9 +44,10 @@ pattern = '''}))
           G.STATE_COMPLETE = true'''
 position = 'after'
 payload = '''
+delay(2)
 G.E_MANAGER:add_event(Event{
 	func = function()
-		G.synthb_gacha_banner.alignment.offset.x = 2.7
+		G.synthb_gacha_banner.alignment.offset.x = 2.8
 		return true
 	end
 })

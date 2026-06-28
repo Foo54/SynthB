@@ -81,3 +81,10 @@ SMODS.Atlas{
 	px = 71,
 	py = 95
 }
+
+SMODS.Atlas{
+	key = "banners",
+	path = "banners.png",
+	px = 252,
+	py = 402
+}
