@@ -238,3 +238,21 @@ function G.UIDEF.synthb_create_credits_page(index)
 		{n = G.UIT.C, config = {align = "tm", colour = G.C.WHITE, r = 0.2, padding = 0.2}, nodes = nodes}
 	}}
 end
+
+-- Gacha Banner UI
+function G.UIDEF.synthb_create_gacha_banner()
+  return {n=G.UIT.ROOT, config = {align = 'cl', colour = G.C.CLEAR}, nodes={
+		{n=G.UIT.R, config={align = "cm", r = 0.3, minw = 2.6, maxw=2.6, minh = 4, maxh = 4, colour = G.C.DYN_UI.MAIN, emboss = 0.1}, nodes={
+			{n = G.UIT.C, nodes = {
+				{n = G.UIT.B, config = {w = 0.1, h = 4}}
+			}},
+			{n = G.UIT.C, config = {padding = 0.05}, nodes = {
+				{n=G.UIT.R, config={align = "cm", minh = 1,r = 0.2, padding = 0.2, minw = 1, colour = G.C.DYN_UI.DARK}, nodes={
+					{n=G.UIT.C, config={align = "cm",padding = 0.2, colour = G.C.L_BLACK, minh = 4, maxh = 4, minw = 2.5, maxw = 2.5}, nodes={
+						{n = G.UIT.T, config = {text = "banner here", scale = 0.6, colour = G.C.UI.TEXT_LIGHT, vertical = true}}
+					}}
+				}}
+			}}
+		}}
+	}}
+end

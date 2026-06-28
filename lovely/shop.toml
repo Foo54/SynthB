@@ -1,0 +1,57 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# disable buttons
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+11},major = G.hand, bond = 'Weak'}
+        }'''
+position = 'after'
+payload = '''
+G.synthb_gacha_banner = UIBox{
+	definition = G.UIDEF.synthb_create_gacha_banner(),
+	config = {
+		offset = {x = 0, y = 0.05},
+		major = G.shop,
+		bond = "Strong",
+		align = "tri"
+	}
+}
+local shop_index
+for i, box in ipairs(G.I.UIBOX) do
+	if box == G.shop then
+		shop_index = i
+	end
+	if box == G.synthb_gacha_banner then
+		if shop_index then
+			G.I.UIBOX[shop_index] = box
+			G.I.UIBOX[i] = G.shop
+		end
+	end
+end
+'''
+match_indent = true
+
+
+# disable buttons
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''}))
+          G.STATE_COMPLETE = true'''
+position = 'after'
+payload = '''
+G.E_MANAGER:add_event(Event{
+	func = function()
+		G.synthb_gacha_banner.alignment.offset.x = 2.7
+		return true
+	end
+})
+'''
+match_indent = true
+
+
+
