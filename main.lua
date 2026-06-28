@@ -12,6 +12,13 @@ SynthB.Globals.blackjack = {
 	}
 }
 
+SynthB.Credits = {
+	index_to_key = {},
+	list_of_people = {},
+	data = {},
+	Contributor = nil
+}
+
 SynthB.GUI = {}
 
 SynthB.custom_colors = {
@@ -81,6 +88,7 @@ SynthB.load_file("api/sound")
 SynthB.load_file("api/shader")
 SynthB.load_file("api/smods")
 SynthB.load_file("api/character")
+SynthB.load_file("api/credits")
 
 SynthB.debug("Loading Content Files")
 SynthB.load_file("content/jokers/page 1")
@@ -101,6 +109,9 @@ SynthB.debug("Loading Character Files")
 SynthB.load_file("content/characters/virtual_singers/miku")
 SynthB.load_file("content/characters/virtual_singers/first_variation")
 SynthB.load_file("content/characters/virtual_singers/second_variation")
+
+SynthB.debug("Loading Credits")
+SynthB.load_file("util/credits/foo")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
 SynthB.load_file("compat/aikoshen")

@@ -645,6 +645,15 @@ local descriptions = {
 					"also do something"
 				}
 			}, -- Bad Director
+
+			--- Credits
+			j_synthb_credits_foo54 = {
+				name = "Foo54",
+				text = {
+					"chud"
+				}
+			}
+
 		},
 		SongInfo = {
 			antani_itten_no = {
@@ -1582,6 +1591,15 @@ local descriptions = {
 					"applied effect",
 					"is repeated whenever",
 					"a {C:attention}Light Suit{} is scored"
+				}
+			},
+			
+			--- Credits
+			synthb_credits_foo54 = {
+				text = {
+					"hi i'm foo54",
+					"multiline test",
+					"{C:red}and formatting"
 				}
 			}
 		},

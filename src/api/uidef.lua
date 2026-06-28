@@ -218,3 +218,23 @@ function G.UIDEF.synthb_spoiler_warning ()
 		}
 	}
 end
+
+-- Credits UI
+function G.UIDEF.synthb_create_credits_page(index)
+	local key = SynthB.Credits.index_to_key[index]
+	local data = SynthB.Credits.data[key]
+	if data.custom_layout then return data:custom_layout() end
+	local area = data:create_area()
+	data:create_sprite(area)
+	local nodes = {}
+	localize{type = "other", key = "synthb_" .. key, nodes = nodes}
+	for i, node in ipairs(nodes) do
+		nodes[i] = {n = G.UIT.R, nodes = node}
+	end
+	return {n = G.UIT.ROOT, config = {padding = 0.5, r = 0.2, colour = G.C.CLEAR, align = "cm"}, nodes = {
+		{n = G.UIT.C, config = {align = "cm"}, nodes = {
+			{n = G.UIT.O, config = {id = "synthb_credit_card", object = area}}
+		}},
+		{n = G.UIT.C, config = {align = "tm", colour = G.C.WHITE, r = 0.2, padding = 0.2}, nodes = nodes}
+	}}
+end

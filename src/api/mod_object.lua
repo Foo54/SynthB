@@ -247,6 +247,17 @@ function SynthB.mod.reset_game_globals(run_start)
 	end
 end
 
+function G.FUNCS.synthb_change_credits_page(args)
+---@type UIElement
+---@diagnostic disable-next-line: undefined-field
+	local e = G.OVERLAY_MENU:get_UIE_by_ID("synthb_credits_cycle")
+	e.config.object:remove()
+	e.config.object = UIBox{
+		definition = G.UIDEF.synthb_create_credits_page(args.to_key),
+		config = {parent = e}
+	}
+end
+
 function SynthB.mod.extra_tabs()
 	local column_min_w = 6
 	return {
@@ -254,6 +265,20 @@ function SynthB.mod.extra_tabs()
 			label = "Credits",
 			tab_definition_function = function()
 				return {n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "tm", padding = 0.2, colour = G.C.BLACK }, nodes = {
+					{n = G.UIT.R, nodes = {
+						{n = G.UIT.O, config = {id = "synthb_credits_cycle", object = UIBox{
+							definition = G.UIDEF.synthb_create_credits_page(1),
+							config = {}
+						}}}
+					}},
+					{n = G.UIT.R, config = {align = "cm"}, nodes = {
+						create_option_cycle{
+							options = SynthB.Credits.list_of_people,
+							opt_callback = "synthb_change_credits_page"
+						}
+					}}
+				}}
+				--[[return {n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "tm", padding = 0.2, colour = G.C.BLACK }, nodes = {
 					{n = G.UIT.R, config = { padding = 0.2, align = "tm" }, nodes = {
 						{n = G.UIT.C, config = {align = "tm"}, nodes = {
 							{n = G.UIT.R, nodes = {
@@ -364,7 +389,7 @@ function SynthB.mod.extra_tabs()
 							}},
 						}},
 					}}
-				}}
+				}}]]
 			end
 		},
 		{
