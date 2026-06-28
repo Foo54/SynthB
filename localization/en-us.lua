@@ -650,7 +650,7 @@ local descriptions = {
 			j_synthb_credits_foo54 = {
 				name = "Foo54",
 				text = {
-					"chud"
+					"this too"
 				}
 			}
 
@@ -1598,8 +1598,7 @@ local descriptions = {
 			synthb_credits_foo54 = {
 				text = {
 					"hi i'm foo54",
-					"multiline test",
-					"{C:red}and formatting"
+					"uh i'll fill this out later"
 				}
 			}
 		},

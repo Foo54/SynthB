@@ -16,6 +16,7 @@ SynthB.Credits.Contributor = SMODS.Joker:extend{
 	create_sprite = function(self, area)
 		local joker = SMODS.create_card{key = self.key, area = area}
 		if self.no_ui then joker.no_ui = true end
+		joker.synthb_in_credits = true
 		local joker_hover_ref = joker.hover
 		function joker.hover (_self)
 			joker_hover_ref(_self)

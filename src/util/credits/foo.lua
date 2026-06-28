@@ -3,5 +3,5 @@ SynthB.Credits.Contributor{
 	name = "Foo54",
 	click = function (self)
 		play_sound("synthb_teto")
-	end
+	end,
 }
