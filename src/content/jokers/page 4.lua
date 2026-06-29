@@ -5,9 +5,13 @@
 -- Blackjack
 SynthB.Joker{
 	key = "blackjack",
-	pos = {x = 2, y = 0},
+	pos = {x = 0, y = 1},
+	atlas = "pepix jokers",
 	rarity = 3,
 	cost = 7,
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	config = {
 		extra = {
 			xmult = 2,

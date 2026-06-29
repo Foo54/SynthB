@@ -12,6 +12,7 @@ SynthB.energy_drinks = {
 -- Overthinking Orange
 SMODS.Tag{
 	key = "drink_orange",
+	atlas = "tags",
 	config = {
 		extra = {
 			cards = 2
@@ -39,6 +40,7 @@ SMODS.Tag{
 -- Socially Anxious Strawberry
 SMODS.Tag{
 	key = "drink_strawberry",
+	atlas = "tags",
 	pos = {x = 1, y = 0},
 	loc_vars = function(self, info_queue, tag)
 		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
@@ -62,6 +64,7 @@ SMODS.Tag{
 -- Burnout Banana
 SMODS.Tag{
 	key = "drink_banana",
+	atlas = "tags",
 	pos = {x = 2, y = 0},
 	config = {
 		extra = {
@@ -95,6 +98,7 @@ SMODS.Tag{
 -- Repressed Raspberry
 SMODS.Tag{
 	key = "drink_raspberry",
+	atlas = "tags",
 	pos = {x = 3, y = 0},
 	config = {
 		extra = {
@@ -143,6 +147,7 @@ SMODS.Tag{
 -- Grieving Grape
 SMODS.Tag{
 	key = "drink_grape",
+	atlas = "tags",
 	pos = {x = 0, y = 1},
 	config = {
 		rounds = 3,
@@ -185,6 +190,7 @@ SMODS.Tag{
 -- Misery Melon
 SMODS.Tag{
 	key = "drink_melon",
+	atlas = "tags",
 	pos = {x = 1, y = 1},
 	config = {
 		debt = 10
@@ -217,6 +223,7 @@ SMODS.Tag{
 -- Trauma Tri-Tip
 SMODS.Tag{
 	key = "drink_tritip",
+	atlas = "tags",
 	pos = {x = 2, y = 1},
 	config = {
 		cards = 3
@@ -250,6 +257,7 @@ SMODS.Tag{
 -- Depression Durian
 SMODS.Tag{
 	key = "drink_durian",
+	atlas = "tags",
 	pos = {x = 3, y = 1},
 	loc_vars = function (self, info_queue, tag)
 		SynthB.song_info(info_queue, "brain_implosion_energy")

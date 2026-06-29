@@ -652,6 +652,20 @@ local descriptions = {
 				text = {
 					"this too"
 				}
+			},
+			j_synthb_credits_pepix = {
+        name = 'Pepix',
+        text = {
+					'Look, its {E:1,C:green}Pepix{}!',
+					'it {C:attention}creates{} a {C:dark_edition}Negative{}',
+					'{C:attention}Machine love{} when {C:attention}Blind{} is selected'
+        },
+			},
+			j_synthb_credits_pepix_2 = {
+				name = "Pepix",
+				text = {
+					"play balatro refreshed, trust me, its peak"
+				}
 			}
 
 		},
@@ -1599,6 +1613,11 @@ local descriptions = {
 				text = {
 					"hi i'm foo54",
 					"uh i'll fill this out later"
+				}
+			},
+			synthb_credits_pepix = {
+				text = {
+					"its me! {C:green}Pepix{} {C:attention}creator and artist{} of {C:blue} Balatro refreshed{}"
 				}
 			},
 

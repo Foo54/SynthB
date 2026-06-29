@@ -251,11 +251,14 @@ function G.FUNCS.synthb_change_credits_page(args)
 ---@type UIElement
 ---@diagnostic disable-next-line: undefined-field
 	local e = G.OVERLAY_MENU:get_UIE_by_ID("synthb_credits_cycle")
-	e.config.object:remove()
-	e.config.object = UIBox{
+	local box = UIBox{
 		definition = G.UIDEF.synthb_create_credits_page(args.to_key),
 		config = {parent = e}
 	}
+	e.config.object:remove()
+	e.UIBox.definition.nodes[1].nodes[1].config.object = box
+	e.UIBox:recalculate()
+	e.config.object = box
 end
 
 function SynthB.mod.extra_tabs()

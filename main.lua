@@ -112,6 +112,7 @@ SynthB.load_file("content/characters/virtual_singers/second_variation")
 
 SynthB.debug("Loading Credits")
 SynthB.load_file("util/credits/foo")
+SynthB.load_file("util/credits/pepix")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
 SynthB.load_file("compat/aikoshen")

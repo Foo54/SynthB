@@ -88,3 +88,20 @@ SMODS.Atlas{
 	px = 252,
 	py = 402
 }
+
+SMODS.Atlas{
+	atlas_table = "ANIMATION_ATLAS",
+	key = "pepix_credits",
+	path = "credits/pepix.png",
+	px = 71,
+	py = 95,
+	frames = 2,
+	fps = 1
+}
+
+SMODS.Atlas{
+	key = "tags",
+	path = "tags.png",
+	px = 34,
+	py = 34
+}
