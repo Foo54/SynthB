@@ -93,9 +93,12 @@ end
 
 function SynthB.generate_song_button(key, index, prefix, set, spoiler)
 	-- adjust fixed scale and necessary to ensure all buttons are of uniform size
-	local nodes = localize{type = "name", set = (set or "Joker"), key = (prefix or "j_synthb_") .. key, fixed_scale = 0.67}
+	local nodes = {}
 	if spoiler and SynthB.mod.config.spoilers[spoiler] then
 		nodes = {{n = G.UIT.R, nodes = {{n = G.UIT.T, config = {scale = 0.2, colour = G.C.UI.TEXT_LIGHT, text = localize("k_synthb_spoiler")}}}}}
+	else
+---@diagnostic disable-next-line: cast-local-type
+		nodes = localize{type = "name", set = (set or "Joker"), key = (prefix or "j_synthb_") .. key, fixed_scale = 0.67}
 	end
 	local out = {n = G.UIT.C, config = {align = "tm", minw = 4.6, minh = 4.6, r = 0.1, padding = 0.2, emboss = 0.1, colour = HEX('5865F2'), shadow = true, scale = 0.6, button = "go_to_song", ref_table = SynthB.songs[index]}, nodes = nodes}
 ---@diagnostic disable-next-line: param-type-mismatch

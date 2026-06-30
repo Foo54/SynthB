@@ -507,3 +507,17 @@ function SynthB.has_duplicates(char)
 	end
 	return false
 end
+
+--- removes child UI box if parent is removed
+--- @param parent UIBox
+--- @param ... UIBox children
+function SynthB.link_UIBox(parent, ...)
+	local parent_remove_ref = parent.remove
+	local iter = {...}
+	function parent:remove()
+		parent_remove_ref(self)
+		for _, box in ipairs(iter) do
+			box:remove()
+		end
+	end
+end

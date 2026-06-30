@@ -10,11 +10,19 @@ SynthB.Credits.Contributor = SMODS.Joker:extend{
 	set_badges = function (self, card, badges)
 		badges[#badges+1] = create_badge("Credit Card", SynthB.custom_colors.LIGHT_GREEN)
 	end,
-	create_area = function(self)
-		return CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, {type = "title"})
+	create_area = function(self, w, h, extra_params)
+		w = w or G.CARD_W
+		h = h or G.CARD_H
+		extra_params = extra_params or {}
+		extra_params.type = "title"
+		return CardArea(G.ROOM.T.x, G.ROOM.T.y, w, h, extra_params)
 	end,
-	create_sprite = function(self, area)
-		local joker = SMODS.create_card{key = self.key, area = area}
+	create_sprite = function(self, area, extra_params)
+		extra_params = extra_params or {}
+		extra_params.key = self.key
+		extra_params.area = area
+		local joker = SMODS.create_card(extra_params)
+		joker:set_edition(nil)
 		if self.no_ui then joker.no_ui = true end
 		joker.synthb_in_credits = true
 		local joker_hover_ref = joker.hover

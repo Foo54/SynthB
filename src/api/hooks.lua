@@ -394,7 +394,7 @@ end
 
 local smods_drawstep_tilt_ref = SMODS.DrawSteps.tilt.func
 function SMODS.DrawSteps.tilt.func (card, ...)
-	if not card.synthb_key then
+	if not card.synthb_key and not card.synthb_no_tilt then
 ---@diagnostic disable-next-line: need-check-nil
 		return smods_drawstep_tilt_ref(card, ...)
 	else

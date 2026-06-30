@@ -223,7 +223,7 @@ end
 function G.UIDEF.synthb_create_credits_page(index)
 	local key = SynthB.Credits.index_to_key[index]
 	local data = SynthB.Credits.data[key]
-	if data.custom_layout then return data:custom_layout() end
+	if data.custom_ui then return data:custom_ui() end
 	local area = data:create_area()
 	data:create_sprite(area)
 	local nodes = {}

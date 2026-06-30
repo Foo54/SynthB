@@ -105,3 +105,24 @@ SMODS.Atlas{
 	px = 34,
 	py = 34
 }
+
+SMODS.Atlas{
+	key = "credits_foo_background",
+	path = "credits/foo/background.png",
+	px = 256,
+	py = 128
+}
+
+SMODS.Atlas{
+	key = "credits_foo54",
+	path = "credits/foo/teto.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas{
+	key = "credits_foo_mizuki",
+	path = "credits/foo/mizuki.png",
+	px = 750,
+	py = 1000
+}

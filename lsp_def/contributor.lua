@@ -2,8 +2,8 @@
 
 
 ---@class SynthB.Credits.Contributor: SMODS.Joker
----@field create_area? fun(self: SynthB.Credits.Contributor): CardArea Creates the card area for the credits
----@field create_sprite? fun(self: SynthB.Credits.Contributor, area: CardArea): SMODS.Joker creates the joker for the credits and emplaces it into the provided area
+---@field create_area? fun(self: SynthB.Credits.Contributor, w?: number, h?: number, extra_params?: table): CardArea Creates the card area for the credits
+---@field create_sprite? fun(self: SynthB.Credits.Contributor, area: CardArea, extra_params?: table): SMODS.Joker creates the joker for the credits and emplaces it into the provided area
 ---@field hover? fun(self: SynthB.Credits.Contributor) called when the card is hovered while in the credits
 ---@field stop_hover? fun(self: SynthB.Credits.Contributor) called when the card is not hovered while in the credits
 ---@field click? fun(self: SynthB.Credits.Contributor) called when the card is clicked in the credits

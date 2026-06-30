@@ -650,7 +650,7 @@ local descriptions = {
 			j_synthb_credits_foo54 = {
 				name = "Foo54",
 				text = {
-					"this too"
+					"Mike, rebuild my kids!"
 				}
 			},
 			j_synthb_credits_pepix = {
@@ -1611,8 +1611,8 @@ local descriptions = {
 			--- Credits
 			synthb_credits_foo54 = {
 				text = {
-					"hi i'm foo54",
-					"uh i'll fill this out later"
+					"this text won't actually appear",
+					"its just here as an example"
 				}
 			},
 			synthb_credits_pepix = {

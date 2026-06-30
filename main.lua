@@ -38,6 +38,18 @@ SynthB.custom_colors = {
 		DURIAN = HEX("0F7917")
 	},
 	CHARACTER = HEX("EE5F93"),
+	credits = {
+		foo = {
+			BOOK = HEX("7779a2"),
+			BOOK_2 = HEX("7678a1"),
+			BOOK_3 = HEX("6a6b97"),
+			TEXT = HEX("9ea1c2"),
+			BUTTON = HEX("e6e6ee"),
+			BUTTON_TEXT = HEX("444466"),
+			OPEN_BOOK_BORDER = HEX("8b8baf"),
+			OPEN_BOOK_INSIDE = HEX("c7cce0")
+		}
+	},
 	banners = {
 		n25 = {
 			BACKGROUND = HEX("DB8CE9"),
