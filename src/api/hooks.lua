@@ -406,3 +406,17 @@ function SMODS.DrawSteps.tilt.func (card, ...)
 		card.tilt_var = {mx = 0, my = 0, dx = 0, dy = 0, amt = 0}
 	end
 end
+
+local g_update_ref = Game.update
+function Game:update(dt)
+	g_update_ref(self, dt)
+	if G.STATE == G.STATES.SYNTHB_GACHA_BANNER then
+		G:update_synthb_gacha_banner(dt)
+		G.hand.states.visible = false
+	end
+	if G.STATE == G.STATES.SHOP and (G.SYNTHB_PREV_STATE or 0) > 0 then
+		G.SYNTHB_PREV_STATE = G.SYNTHB_PREV_STATE - 1
+		G.shop.alignment.offset.y = -5.3
+		G.shop.alignment.offset.py = nil
+	end
+end

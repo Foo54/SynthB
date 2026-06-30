@@ -245,6 +245,7 @@ function SynthB.mod.reset_game_globals(run_start)
 		G.GAME.synthb_linked_id = 0
 		G.GAME.synthb_character_rate = 3
 	end
+	_, G.GAME.synthb_current_banner_key = pseudorandom_element(SynthB.banners, "synthb_round_banner")
 end
 
 function G.FUNCS.synthb_change_credits_page(args)

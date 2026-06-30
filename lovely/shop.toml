@@ -55,4 +55,48 @@ G.E_MANAGER:add_event(Event{
 match_indent = true
 
 
+# return to shop after synthb_gacha_banner
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''prev_state == G.STATES.BUFFOON_PACK) and G.booster_pack then'''
+position = 'before'
+payload = '''prev_state == G.STATES.SYNTHB_GACHA_BANNER or'''
+match_indent = true
+
+
+
+# add card to character area
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''elseif card.ability.set == 'Joker' then 
+      card:add_to_deck()
+      G.jokers:emplace(card)
+      play_sound('card1', 0.8, 0.6)
+      play_sound('generic1')
+      dont_dissolve = true
+      delay_fac = 0.2'''
+position = 'before'
+payload = '''elseif card.ability.set == 'synthb_Character' then 
+			if G.FUNCS.check_for_buy_space(card) then
+				card:add_to_deck()
+				G.synthb_character_area:emplace(card)
+				play_sound('card1', 0.8, 0.6)
+				play_sound('generic1')
+				dont_dissolve = true
+				delay_fac = 0.2
+			else return end
+			'''
+match_indent = true
+
+# return to shop after synthb_gacha_banner
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''(G.STATE == G.STATES.BUFFOON_PACK and G.STATES.BUFFOON_PACK) or'''
+position = 'before'
+payload = '''(G.STATE == G.STATES.SYNTHB_GACHA_BANNER and G.STATES.SYNTHB_GACHA_BANNER) or'''
+match_indent = true
+
 

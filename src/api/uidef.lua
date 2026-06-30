@@ -241,23 +241,31 @@ end
 
 -- Gacha Banner UI
 function G.UIDEF.synthb_create_gacha_banner()
+	local data = SynthB.banners[G.GAME.synthb_current_banner_key]
 	local banner = Card(G.ROOM.T.x, G.ROOM.T.y, 2.5, 4, nil, G.P_CENTERS.c_base)
 	banner.children.center:remove()
-	banner.children.center = SMODS.create_sprite(0, 0, 2.5, 4, "synthb_banners", {x = 0, y = 0})
+	banner.children.center = SMODS.create_sprite(0, 0, 2.5, 4, "synthb_banners", data.pos)
 	banner.children.center.states.hover = banner.states.hover
 	banner.children.center.states.click = banner.states.click
 	banner.children.center.states.drag.can = false
 	banner.children.center.states.collide.can = true
 	banner.children.center:set_role({major = banner, role_type = 'Glued', draw_major = banner})
-	banner.synthb_key = "synthb_gacha_n25"
+	banner.synthb_key = data.key
 	banner.ambient_tilt = 0
 	banner.no_shadow = true
 	function banner:click ()
-		print("hi")
+		if G.GAME.dollars >= 10 then
+			ease_dollars(-10)
+			G.GAME.PACK_INTERRUPT = G.STATE
+			G.STATE = G.STATES.SYNTHB_GACHA_BANNER
+			G.STATE_COMPLETE = false
+		else
+			play_sound("timpani")
+		end
 	end
 	function banner:hover()
 		local desc_nodes = {}
-		--localize{type = "description", set = "Other", key = self.synthb_key, nodes = desc_nodes}
+		localize{set = "Other", key = self.synthb_key, nodes = desc_nodes}
 		for i, node in ipairs(desc_nodes) do
 			desc_nodes[i] = {n = G.UIT.R, nodes = node}
 		end
@@ -265,8 +273,10 @@ function G.UIDEF.synthb_create_gacha_banner()
 			{n=G.UIT.C, config={align = "cm", func = 'show_infotip',object = Moveable()}, nodes={
 				{n=G.UIT.R, config={padding = 0.05, r = 0.12, colour = lighten(G.C.JOKER_GREY, 0.5), emboss = 0.07}, nodes={
 					{n=G.UIT.R, config={align = "cm", padding = 0.07, r = 0.1, colour = adjust_alpha(darken(G.C.JOKER_GREY, 0.3), 0.8)}, nodes={
-						(localize{type = "name", set = "Other", key = self.synthb_key})[1],
-						--desc_from_rows(desc_nodes),
+						{n = G.UIT.R, config ={align = "cm"}, nodes = {
+							(localize{type = "name", set = "Other", key = self.synthb_key})[1]
+						}},
+						{n = G.UIT.R, config = {align = "cm"}, nodes = desc_nodes}
 					}}
 				}}
 			}},
@@ -338,4 +348,51 @@ function G.UIDEF.synthb_create_gacha_banner()
 			}}
 		}}
 	}}
+end
+
+function G.UIDEF.synthb_create_UIBox_gacha_banner (key)
+	local _size = 1
+	G.pack_cards = CardArea(
+		G.ROOM.T.x + 9 + G.hand.T.x, G.hand.T.y,
+		math.max(1,math.min(_size,5))*G.CARD_W*1.1,
+		1.05*G.CARD_W,
+		{card_limit = _size, type = 'consumeable', highlight_limit = 1, negative_info = true})
+
+	local t = {n=G.UIT.ROOT, config = {align = 'tm', r = 0.15, colour = G.C.CLEAR, padding = 0.15}, nodes={
+			{n=G.UIT.R, config={align = "cl", colour = G.C.CLEAR,r=0.15, padding = 0.1, minh = 2, shadow = true}, nodes={
+					{n=G.UIT.R, config={align = "cm"}, nodes={
+					{n=G.UIT.C, config={align = "cm", padding = 0.1}, nodes={
+							{n=G.UIT.C, config={align = "cm", r=0.2, colour = G.C.CLEAR, shadow = true}, nodes={
+									{n=G.UIT.O, config={object = G.pack_cards}},}}}}}},
+			{n=G.UIT.R, config={align = "cm"}, nodes={}},
+			{n=G.UIT.R, config={align = "tm"}, nodes={
+					Cartomancer and {n=G.UIT.C,config={align = "tm", padding = 0.05, minw = 2.4}, nodes= (not Cartomancer.show_peek_shop()) and {} or {
+						{n=G.UIT.R,config={minh =0.2}, nodes={}},
+						{n=G.UIT.R,config={align = "tm",padding = 0.2, minh = 1.2, minw = 1.8, r=0.15,colour = G.C.GREY, button = 'carto_peek_shop', hover = true,
+						hover_offset = {x = 3.5, y = 1},
+						hover_ease_to = {x = 3.5, y = -3.8},
+						hover_align = 'tm',
+						cart_hover_func = Cartomancer.get_hover_tab,
+						shadow = true, }, nodes = {
+							{n=G.UIT.C, config={align = "tm"}, nodes= {
+								{n=G.UIT.R, config={align = "tm"}, nodes = {
+									{n=G.UIT.T, config={text = localize('carto_peek_shop_1'), scale = 0.5, colour = G.C.WHITE, shadow = true, }},
+								}},
+								{n=G.UIT.R, config={align = "tm"}, nodes = {
+									{n=G.UIT.T, config={text = localize('carto_peek_shop_2'), scale = 0.5, colour = G.C.WHITE, shadow = true, }}
+								}},
+							}}
+						}}
+					}} or nil,
+					{n=G.UIT.C,config={align = "tm", padding = 0.05}, nodes={
+							UIBox_dyn_container({
+									{n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 4}, nodes={
+											{n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+													{n=G.UIT.O, config={object = DynaText({string = localize('k_gacha_banner_synthb_gacha_'..key), colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.7, maxw = 4, pop_in = 0.5})}}}},}}
+							}),}},
+					{n=G.UIT.C,config={align = "tm", padding = 0.05, minw = 2.4}, nodes={
+							{n=G.UIT.R,config={minh =0.2}, nodes={}},
+							{n=G.UIT.R,config={align = "tm",padding = 0.2, minh = 1.2, minw = 1.8, r=0.15,colour = G.C.GREY, one_press = true, button = 'skip_booster', hover = true,shadow = true, func = 'can_skip_booster'}, nodes = {
+									{n=G.UIT.T, config={text = localize('b_skip'), scale = 0.5, colour = G.C.WHITE, shadow = true, focus_args = {button = 'y', orientation = 'bm'}, func = 'set_button_pip'}}}}}}}}}}}}
+	return t
 end

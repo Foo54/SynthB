@@ -38,6 +38,12 @@ SynthB.custom_colors = {
 		DURIAN = HEX("0F7917")
 	},
 	CHARACTER = HEX("EE5F93"),
+	banners = {
+		n25 = {
+			BACKGROUND = HEX("DB8CE9"),
+			UI = HEX("DB8CE9")
+		}
+	}
 }
 
 SMODS.optional_features.retrigger_joker = true
@@ -109,6 +115,7 @@ SynthB.debug("Loading Character Files")
 SynthB.load_file("content/characters/virtual_singers/miku")
 SynthB.load_file("content/characters/virtual_singers/first_variation")
 SynthB.load_file("content/characters/virtual_singers/second_variation")
+SynthB.load_file("content/characters/banners")
 
 SynthB.debug("Loading Credits")
 SynthB.load_file("util/credits/foo")

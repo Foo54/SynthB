@@ -2036,6 +2036,7 @@ local descriptions = {
 			k_synthb_spoiler = "Content Hidden due to Spoiler Restrictions",
 			k_synthb_deltarune = "Deltarune Chapter 5",
 			k_synthb_affection = "QWZmZWN0aW9u",
+			k_gacha_banner_synthb_gacha_n25 = "Nightcord at 25"
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

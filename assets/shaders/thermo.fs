@@ -27,9 +27,9 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     vec2 uv = (screen_coords - uie_details.xy) / max(uie_details.g - 2, uie_details.a - 2);
 
 		// I don't know what these do
-    if (uie_scale < 0.00001) {
-        uv.x = uv.x + 0.0001;
-    }
+    //if (uie_scale < 0.00001) {
+        uv.x = uv.x + max(0.00001, uie_scale);
+    //}
     if (uie_rot < 0.00001) {
         uv.x = uv.x + 0.0001;
     }
