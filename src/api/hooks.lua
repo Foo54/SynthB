@@ -417,18 +417,12 @@ function Game:update(dt)
 	end
 end
 
-print("wtf")
-local can_select_from_booster_ref = G.FUNCS.can_select_from_booster
-G.FUNCS.can_select_from_booster = function(e)
-	print(1)
-	can_select_from_booster_ref(e)
+local can_select_card_ref = G.FUNCS.can_select_card
+G.FUNCS.can_select_card = function(e)
+	can_select_card_ref(e)
 	local card = e.config.ref_table
-	SynthB.temp_var = card
-	print(3)
 	if card.ability.set == "synthb_Character" then
-		local area = booster_obj and card:selectable_from_pack(booster_obj)
-		print(2)
-		if area and #G[area].cards < G[area].config.card_limit and not SynthB.has_duplicates(card.config.center.synthb_character) then
+		if #G.synthb_character_area.cards < G.synthb_character_area.config.card_limit and not SynthB.has_duplicates(card.config.center.synthb_character) then
 				e.config.colour = G.C.GREEN
 				e.config.button = 'use_card'
 		else
@@ -437,7 +431,3 @@ G.FUNCS.can_select_from_booster = function(e)
 		end
 	end
 end
-print("how")
-
-SynthB.wtf = G.FUNCS.can_select_from_booster
-print(G.FUNCS.can_select_from_booster == can_select_from_booster_ref)

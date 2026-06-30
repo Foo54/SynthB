@@ -111,7 +111,6 @@ SMODS.Tag{
 		return {vars = {tag.ability.score or tag.config.extra.score, tag.ability.active and "Active!" or "Inactive"}}
 	end,
 	set_ability = function (self, tag)
-		print("what")
 		tag.ability.score = 0
 		tag.ability.active = false
 	end,

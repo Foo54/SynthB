@@ -110,7 +110,6 @@ SMODS.Seal{
 			local added = 0
 			for _, _card in ipairs(context.full_hand) do
 				if not SMODS.in_scoring(_card, context.scoring_hand) and _card.seal ~= "synthb_misutau" then
-					print(0)
 					added = added + 1
 					G.E_MANAGER:add_event(Event({
 						trigger = 'before',
