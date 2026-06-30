@@ -414,7 +414,7 @@ function Game:update(dt)
 		G:update_synthb_gacha_banner(dt)
 		G.hand.states.visible = false
 	end
-	if G.STATE == G.STATES.SHOP and (G.SYNTHB_PREV_STATE or 0) > 0 then
+	if G.STATE == G.STATES.SHOP and G.shop and (G.SYNTHB_PREV_STATE or 0) > 0 then
 		G.SYNTHB_PREV_STATE = G.SYNTHB_PREV_STATE - 1
 		G.shop.alignment.offset.y = -5.3
 		G.shop.alignment.offset.py = nil
