@@ -469,7 +469,7 @@ SynthB.safe_return_keys = {
 	mult = true, h_mult = true, mult_mod = true,
 	x_chips = true, xchips = true, Xchip_mod = true,
 	x_mult = true, Xmult = true, xmult = true, x_mult_mod = true, Xmult_mod = true,
-	message = true, level_up = true,
+	level_up = true,
 	p_dollars = true, dollars = true, h_dollars = true,
 	score = true, h_score = true,
 	xscore = true, x_score = true, h_x_score = true, h_xscore = true,
@@ -493,4 +493,17 @@ function SynthB.prune_return_table(ret)
 		end
 	end
 	return out
+end
+
+
+--- Checks if any other versions a character is obtained
+--- @param char string
+--- @return boolean
+function SynthB.has_duplicates(char)
+	for _, _card in ipairs(G.synthb_character_area.cards) do
+		if _card.config.center.synthb_character == char then
+			return true
+		end
+	end
+	return false
 end

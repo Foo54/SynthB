@@ -360,12 +360,7 @@ function G.FUNCS.check_for_buy_space(card)
 		local a = #G.synthb_character_area.cards + (1 + card.ability.extra_slots_used) <=
 		G.synthb_character_area.config.card_limit + card.ability.card_limit
 		if not a then SynthB.alert_cardarea(card, G.synthb_character_area, 'k_no_space_ex'); return false end
-		for _, _card in ipairs(G.synthb_character_area.cards) do
-			if _card.config.center.synthb_character == card.config.center.synthb_character then
-				SynthB.alert_cardarea(card, G.synthb_character_area, 'k_synthb_no_copies_ex')
-				return false
-			end
-		end
+		if SynthB.has_duplicates(card.config.center.synthb_character) then SynthB.alert_cardarea(card, G.synthb_character_area, 'k_synthb_no_copies_ex'); return false end
 		return a
 	end
 	return cfbshook(card)
@@ -416,7 +411,33 @@ function Game:update(dt)
 	end
 	if G.STATE == G.STATES.SHOP and G.shop and (G.SYNTHB_PREV_STATE or 0) > 0 then
 		G.SYNTHB_PREV_STATE = G.SYNTHB_PREV_STATE - 1
+		G.hand.states.visible = true
 		G.shop.alignment.offset.y = -5.3
 		G.shop.alignment.offset.py = nil
 	end
 end
+
+print("wtf")
+local can_select_from_booster_ref = G.FUNCS.can_select_from_booster
+G.FUNCS.can_select_from_booster = function(e)
+	print(1)
+	can_select_from_booster_ref(e)
+	local card = e.config.ref_table
+	SynthB.temp_var = card
+	print(3)
+	if card.ability.set == "synthb_Character" then
+		local area = booster_obj and card:selectable_from_pack(booster_obj)
+		print(2)
+		if area and #G[area].cards < G[area].config.card_limit and not SynthB.has_duplicates(card.config.center.synthb_character) then
+				e.config.colour = G.C.GREEN
+				e.config.button = 'use_card'
+		else
+			e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+			e.config.button = nil
+		end
+	end
+end
+print("how")
+
+SynthB.wtf = G.FUNCS.can_select_from_booster
+print(G.FUNCS.can_select_from_booster == can_select_from_booster_ref)

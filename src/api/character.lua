@@ -6,6 +6,7 @@ SynthB.Character = SMODS.Center:extend {
 	discovered = false,
 	pos = { x = 2, y = 0 },
 	atlas = "synthb_characters",
+	select_card = "synthb_character_area",
 	cost = 8,
 	set = 'synthb_Character',
 	config = {},

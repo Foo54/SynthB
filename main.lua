@@ -41,7 +41,15 @@ SynthB.custom_colors = {
 	banners = {
 		n25 = {
 			BACKGROUND = HEX("DB8CE9"),
-			UI = HEX("DB8CE9")
+			UI = HEX("DB8CE9"),
+			PARTICLES_1 = HEX("6d0ea8"),
+			PARTICLES_2 = HEX("9775ad")
+		},
+		vs = {
+			BACKGROUND = HEX("00ccbb"),
+			UI = HEX("00ccbb"),
+			PARTICLES_1 = HEX("2bd1c4"),
+			PARTICLES_2 = HEX("50bfb6")
 		}
 	}
 }

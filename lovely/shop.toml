@@ -64,6 +64,15 @@ position = 'before'
 payload = '''prev_state == G.STATES.SYNTHB_GACHA_BANNER or'''
 match_indent = true
 
+# remove gacha banner
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''G.shop:remove()'''
+position = 'after'
+payload = '''G.synthb_gacha_banner:remove()
+G.synthb_gacha_banner = nil'''
+match_indent = true
 
 
 # add card to character area
@@ -86,6 +95,7 @@ payload = '''elseif card.ability.set == 'synthb_Character' then
 				play_sound('generic1')
 				dont_dissolve = true
 				delay_fac = 0.2
+				G.hand.states.visible = true
 			else return end
 			'''
 match_indent = true

@@ -1629,6 +1629,14 @@ local descriptions = {
 					"{C:attention}Nightcord at 25:00{}",
 					"character for {C:money}$10"
 				}
+			},
+			synthb_gacha_vs = {
+				name = 'Virtual Singers',
+				text = {
+					"Pulls a random",
+					"{C:attention}Virtual Signer{}",
+					"character for {C:money}$10"
+				}
 			}
 		},
 		synthb_Character = {
@@ -2036,7 +2044,8 @@ local descriptions = {
 			k_synthb_spoiler = "Content Hidden due to Spoiler Restrictions",
 			k_synthb_deltarune = "Deltarune Chapter 5",
 			k_synthb_affection = "QWZmZWN0aW9u",
-			k_gacha_banner_synthb_gacha_n25 = "Nightcord at 25"
+			k_gacha_banner_synthb_gacha_n25 = "Nightcord at 25",
+			k_gacha_banner_synthb_gacha_vs = "Virtual Singers",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

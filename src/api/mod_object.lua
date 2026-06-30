@@ -243,7 +243,7 @@ function SynthB.mod.reset_game_globals(run_start)
 	if run_start then
 		G.GAME.synthb_temp = 0
 		G.GAME.synthb_linked_id = 0
-		G.GAME.synthb_character_rate = 3
+		G.GAME.synthb_character_rate = 0
 	end
 	_, G.GAME.synthb_current_banner_key = pseudorandom_element(SynthB.banners, "synthb_round_banner")
 end
