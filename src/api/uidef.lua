@@ -265,9 +265,9 @@ function G.UIDEF.synthb_create_gacha_banner()
 	end
 	function banner:hover()
 		local desc_nodes = {}
-		localize{set = "Other", key = self.synthb_key, nodes = desc_nodes}
+		localize{type = "other", key = self.synthb_key, nodes = desc_nodes}
 		for i, node in ipairs(desc_nodes) do
-			desc_nodes[i] = {n = G.UIT.R, nodes = node}
+			desc_nodes[i] = {n = G.UIT.R, config = {align = "cm"}, nodes = node}
 		end
 		local t = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR}, nodes={
 			{n=G.UIT.C, config={align = "cm", func = 'show_infotip',object = Moveable()}, nodes={
@@ -276,7 +276,9 @@ function G.UIDEF.synthb_create_gacha_banner()
 						{n = G.UIT.R, config ={align = "cm"}, nodes = {
 							(localize{type = "name", set = "Other", key = self.synthb_key})[1]
 						}},
-						{n = G.UIT.R, config = {align = "cm"}, nodes = desc_nodes}
+						{n = G.UIT.R, config = {colour = G.C.WHITE, padding = 0.2, r = 0.2, align = "cm"}, nodes = {
+							{n = G.UIT.R, config = {align = "cm"}, nodes = desc_nodes}
+						}}
 					}}
 				}}
 			}},
@@ -285,8 +287,9 @@ function G.UIDEF.synthb_create_gacha_banner()
 			definition = t,
 			config = {
 				align = "tm",
-				offset = {x = 0, y = -0.2},
-				major = self
+				offset = {x = 0, y = -0.5},
+				major = self,
+				instance_type = "POPUP"
 			}
 		}
 	end
