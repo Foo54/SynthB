@@ -14,6 +14,9 @@ SynthB.Character = SMODS.Center:extend {
 	required_params = {
 		'key',
 	},
+	pre_inject_class = function(self)
+		G.P_CENTER_POOLS[self.set] = {}
+	end,
 	synthb_major = {},
 	synthb_minor = {},
 	set_card_type_badge = function(self, card, badges)
