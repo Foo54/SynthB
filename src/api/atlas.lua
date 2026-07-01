@@ -126,3 +126,10 @@ SMODS.Atlas{
 	px = 750,
 	py = 1000
 }
+
+SMODS.Atlas{
+	key = "inky jokers",
+	path = "inky jokers.png",
+	px = 71,
+	py = 95
+}

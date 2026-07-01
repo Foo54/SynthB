@@ -225,7 +225,11 @@ SynthB.Joker{
 -- lump of caramel in the air fryer
 SynthB.Joker{
 	key = "caramel_airfryer",
-	pos = {x = 1, y = 0},
+	pos = {x = 1, y = 1},
+	atlas = "pepix jokers",
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	config = {
 		extra = {
 			num = 1,
@@ -596,8 +600,11 @@ SynthB.Joker{
 -- Lemonade
 SynthB.Joker{
 	key = "lemonade",
-	atlas = "joker_placeholders",
-	pos = {x = 0, y = 1},
+	atlas = "inky jokers",
+	pos = {x = 0, y = 0},
+	synthb_credits = {
+		Artist = "Inky"
+	},
 	rarity = 2,
 	cost = 8,
 	config = {
@@ -721,7 +728,11 @@ SynthB.Joker{
 -- Relay Outer
 SynthB.Joker{
 	key = "relayouter",
-	pos = {x = 1, y = 0},
+	pos = {x = 2, y = 1},
+	atlas = "pepix jokers",
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	rarity = 2,
 	cost = 7,
 	config = {
