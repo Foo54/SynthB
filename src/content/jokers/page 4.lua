@@ -264,7 +264,12 @@ SynthB.Joker{
 -- Dance Delightful
 SynthB.Joker{
 	key = "dance_delightful",
-	pos = {x = 3, y = 0},
+	pos = {x = 3, y = 1},
+	soul_pos = {x = 4, y = 1},
+	atlas = "pepix jokers",
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	rarity = 4,
 	cost = 20,
 	config = {
