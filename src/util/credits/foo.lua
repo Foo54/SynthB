@@ -135,7 +135,7 @@ SynthB.Credits.Contributor{
 							{n = G.UIT.R, config = {minw = 2.5, maxw = 2.5, minh = 1, maxh = 1, padding = 0.2, r = 0.2, colour = SynthB.custom_colors.credits.foo.BUTTON, emboss = 0.1, align = "cm", button = "synthb_credits_foo_1"}, nodes = {
 								{n = G.UIT.C, config = {align = "cm"}, nodes = {
 									{n = G.UIT.R, config = {align = "cm"}, nodes = {
-										{n = G.UIT.T, config = {text = "Contributions", colour = SynthB.custom_colors.credits.foo.BUTTON_TEXT, scale = 0.5}}
+										{n = G.UIT.T, config = {text = "About & More", colour = SynthB.custom_colors.credits.foo.BUTTON_TEXT, scale = 0.5}}
 									}},
 									{n = G.UIT.R, nodes = {
 										{n = G.UIT.B, config = {colour = SynthB.custom_colors.credits.foo.BUTTON_TEXT, w = 2.4, h = 0.05}}
@@ -202,7 +202,73 @@ SynthB.Credits.Contributor{
 
 		G.synthb_credits_contributions_box = UIBox{
 			definition = {n = G.UIT.ROOT, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_BORDER, minw = 14, minh = 6.4, r = 0.1, padding = 0.2}, nodes = {
-				{n = G.UIT.R, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_INSIDE, minw = 13.5, minh = 6, padding = 0.5}}
+				{n = G.UIT.C, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_INSIDE, minw = 13.5, minh = 6, padding = 0.5}, nodes = {
+					{n = G.UIT.R, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_FURTHER_INSIDE, minw = 12.5, minh = 5}, nodes = {
+						{n = G.UIT.C, config = {minw = 6, maxw = 6, minh = 5, maxh = 5, padding = 0.2}, nodes = {
+							{n = G.UIT.R, nodes = {
+								{n = G.UIT.C, nodes = {
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "About", scale = 0.75, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.B, config = {h = 0.05, w = 4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_EVEN_FURTHER_INSIDE}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "Hi! I'm the main developer of the mod.", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "I don't really know what", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "to put here for now...", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "Have another Mizuki ig", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 1.5, 2, "synthb_credits_foo_mizuki", {x = 0, y = 0})}}
+									}}
+								}}
+							}}
+						}},
+						{n = G.UIT.C, nodes = {
+							{n = G.UIT.B, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_SPINE_OUTER, h = 5, w = 0.15}}
+						}},
+						{n = G.UIT.C, nodes = {
+							{n = G.UIT.B, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_SPINE_INNER, h = 5, w = 0.2}}
+						}},
+						{n = G.UIT.C, nodes = {
+							{n = G.UIT.B, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_SPINE_OUTER, h = 5, w = 0.15}}
+						}},
+						{n = G.UIT.C, config = {minw = 6, maxw = 6, minh = 5, maxh = 5, padding = 0.2}, nodes = {
+							{n = G.UIT.R, nodes = {
+								{n = G.UIT.C, nodes = {
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "Contributions", scale = 0.75, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.B, config = {h = 0.05, w = 4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_EVEN_FURTHER_INSIDE}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "Nearly all the programming", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "All the UI work", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "Concepting and Ideas", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "A few pieces of art", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "Basicly everything that isn't attributed to someone else", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+								}}
+							}}
+						}},
+					}}
+				}}
 			}},
 			config = {
 				major = G.synthb_credits_background_box,
@@ -214,13 +280,98 @@ SynthB.Credits.Contributor{
 		G.synthb_credits_contributions_box.states.visible = false
 		G.synthb_credits_backarrow_box.states.visible = false
 
+		
+
+		G.synthb_credits_special_thanks_box = UIBox{
+			definition = {n = G.UIT.ROOT, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_BORDER, minw = 14, minh = 6.4, r = 0.1, padding = 0.2}, nodes = {
+				{n = G.UIT.C, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_INSIDE, minw = 13.5, minh = 6, padding = 0.5}, nodes = {
+					{n = G.UIT.R, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_FURTHER_INSIDE, minw = 12.5, minh = 5}, nodes = {
+						{n = G.UIT.C, config = {minw = 6, maxw = 6, minh = 5, maxh = 5, padding = 0.2}, nodes = {
+							{n = G.UIT.R, nodes = {
+								{n = G.UIT.C, nodes = {
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "Special Thanks", scale = 0.75, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.B, config = {h = 0.05, w = 4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_EVEN_FURTHER_INSIDE}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "Placeholder textures - ThunderEdge", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "UI Help - SleepyG11", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "Mod Name - MarioFan", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "Mod Icon - LasagnaFelidae", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 5, 5 * 88 / 518, "synthb_revo", {x = 0, y = 0})}}
+									}}
+								}}
+							}}
+						}},
+						{n = G.UIT.C, nodes = {
+							{n = G.UIT.B, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_SPINE_OUTER, h = 5, w = 0.15}}
+						}},
+						{n = G.UIT.C, nodes = {
+							{n = G.UIT.B, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_SPINE_INNER, h = 5, w = 0.2}}
+						}},
+						{n = G.UIT.C, nodes = {
+							{n = G.UIT.B, config = {colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_SPINE_OUTER, h = 5, w = 0.15}}
+						}},
+						{n = G.UIT.C, config = {minw = 6, maxw = 6, minh = 5, maxh = 5, padding = 0.2}, nodes = {
+							{n = G.UIT.R, nodes = {
+								{n = G.UIT.C, nodes = {
+									{n = G.UIT.R, nodes = {
+										{n = G.UIT.T, config = {text = "Special Thanks", scale = 0.75, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.B, config = {h = 0.05, w = 4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_EVEN_FURTHER_INSIDE}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "Potato Patch Discord", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "Balatro Discord", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "SMODS Wiki", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "VanillaRemade", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "Vocaloid Lyrics Wiki", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}},
+									{n = G.UIT.R, config = {maxw = 6}, nodes = {
+										{n = G.UIT.T, config = {text = "chigago", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+									}}
+								}}
+							}}
+						}},
+					}}
+				}}
+			}},
+			config = {
+				major = G.synthb_credits_background_box,
+				bond = "Strong",
+				align = "cmi",
+				instance_type = "POPUP"
+			}
+		}
+		G.synthb_credits_special_thanks_box.states.visible = false
+
 		SynthB.link_UIBox(
 			G.synthb_credits_background_box,
 			G.synthb_credits_cardarea_box,
 			G.synthb_credits_main_info_box,
 			G.synthb_credits_book_box,
 			G.synthb_credits_contributions_box,
-			G.synthb_credits_backarrow_box
+			G.synthb_credits_backarrow_box,
+			G.synthb_credits_special_thanks_box
 		)
 		return {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
 			{n = G.UIT.O, config = {object = G.synthb_credits_background_box}}
@@ -247,6 +398,7 @@ end
 function G.FUNCS.synthb_credits_foo_back (e)
 	G.FUNCS.synthb_credits_foo_show_ui()
 	G.synthb_credits_contributions_box.states.visible = false
+	G.synthb_credits_special_thanks_box.states.visible = false
 	G.synthb_credits_backarrow_box.states.visible = false
 end
 
@@ -257,5 +409,6 @@ function G.FUNCS.synthb_credits_foo_1 (e)
 end
 function G.FUNCS.synthb_credits_foo_2 (e)
 	G.FUNCS.synthb_credits_foo_hide_ui()
+	G.synthb_credits_special_thanks_box.states.visible = true
 	G.synthb_credits_backarrow_box.states.visible = true
 end

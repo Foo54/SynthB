@@ -133,3 +133,10 @@ SMODS.Atlas{
 	px = 71,
 	py = 95
 }
+
+SMODS.Atlas{
+	key = "revo",
+	path = "credits/foo/revo.png",
+	px = 518,
+	py = 88
+}

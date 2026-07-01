@@ -47,7 +47,14 @@ SynthB.custom_colors = {
 			BUTTON = HEX("e6e6ee"),
 			BUTTON_TEXT = HEX("444466"),
 			OPEN_BOOK_BORDER = HEX("8b8baf"),
-			OPEN_BOOK_INSIDE = HEX("c7cce0")
+			OPEN_BOOK_INSIDE = HEX("c7cce0"),
+			OPEN_BOOK_FURTHER_INSIDE = HEX("f2f1f7"),
+			OPEN_BOOK_SPINE_OUTER = HEX("d6d6e2"),
+			OPEN_BOOK_SPINE_INNER = HEX("c0bfcf"),
+			OPEN_BOOK_EVEN_FURTHER_INSIDE = HEX("6e6ea4"),
+			OPEN_BOOK_TAB_TOP = HEX("ebecf1"),
+			OPEN_BOOK_TAB_BOTTOM = HEX("feffff"),
+			OPEN_BOOK_TAB_TEXT = HEX("70708a")
 		}
 	},
 	banners = {
