@@ -47,9 +47,11 @@ SynthB.Credits.Contributor = SMODS.Joker:extend{
 	stop_hover = function(self) end,
 	click = function(self) end,
 	inject = function (self, i)
-		SynthB.Credits.data[self.original_key] = self
-		SynthB.Credits.index_to_key[#SynthB.Credits.index_to_key+1] = self.original_key
-		SynthB.Credits.list_of_people[#SynthB.Credits.list_of_people+1] = self.name
+		if not SynthB.Credits.data[self.original_key] then
+			SynthB.Credits.data[self.original_key] = self
+			SynthB.Credits.index_to_key[#SynthB.Credits.index_to_key+1] = self.original_key
+			SynthB.Credits.list_of_people[#SynthB.Credits.list_of_people+1] = self.name
+		end
 		return SMODS.Joker.inject(self, i)
 	end
 }
