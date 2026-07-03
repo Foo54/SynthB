@@ -22,7 +22,10 @@ SynthB.Credits.Contributor = SMODS.Joker:extend{
 		extra_params.key = self.key
 		extra_params.area = area
 		local joker = SMODS.create_card(extra_params)
+		local del_jokers = false
+		if not G.jokers then del_jokers = true; G.jokers = {cards = {}} end
 		joker:set_edition(nil)
+		if del_jokers then G.jokers = nil end
 		if self.no_ui then joker.no_ui = true end
 		joker.synthb_in_credits = true
 		local joker_hover_ref = joker.hover
