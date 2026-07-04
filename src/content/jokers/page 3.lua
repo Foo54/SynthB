@@ -15,7 +15,7 @@ SynthB.Joker{
 	eternal_compat = true,
 	perishable_compat = true,
 	demicolon_compat = true,
-	attributes = {"mult", "scaling", "song", "vocaloid song", "inabakumori", "yuki"},
+	attributes = {"mult", "scaling", "song", "vocaloid song", "inabakumori", "Yuki"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "spot_late")
 		return {vars = {card.ability.extra.gain, card.ability.extra.mult}}

@@ -335,8 +335,8 @@ SynthB.Joker{
 -- My Bread was Burnt to a Crisp
 SynthB.Joker{
 	key = "burnt_toast",
-	atlas = "joker_placeholders",
-	pos = {x = 5, y = 0},
+	atlas = "pepix jokers",
+	pos = {x = 5, y = 1},
 	config = {
 		extra = {
 			gain = 5,
