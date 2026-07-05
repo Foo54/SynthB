@@ -58,6 +58,7 @@ SynthB.Joker{
 	key = "heat_abnormal",
 	pos = {x = 6, y = 1},
 	soul_pos = {x = 7, y = 1},
+	atlas = "pepix jokers",
 	synthb_credits = {
 		Artist = "Pepix"
 	},
