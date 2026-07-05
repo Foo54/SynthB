@@ -24,7 +24,7 @@ vec4 lerp(vec4 colour1, vec4 colour2, number val) {
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords ) {
 
 	if (uie_details == uie_details * 2) {
-        vec4.a = 0
+        vec4.a = 0;
     }
 
     vec4 tex = texture2D(texture, texture_coords);
