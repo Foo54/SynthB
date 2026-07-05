@@ -23,11 +23,11 @@ vec4 lerp(vec4 colour1, vec4 colour2, number val) {
 
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords ) {
 
-	if (uie_details == uie_details * 2) {
-        vec4.a = 0;
-    }
 
     vec4 tex = texture2D(texture, texture_coords);
+	if (uie_details == uie_details * 2) {
+        tex.a = 0;
+    }
 
     return lerp(tex, vec4(0.8, 0.5, 0.1, tex.a + step(uie_details.g, 1000000)), temp * 0.2 + thermo.x * 0.00000001);
 }
