@@ -56,7 +56,11 @@ SynthB.Joker{
 -- Heat Abnormal
 SynthB.Joker{
 	key = "heat_abnormal",
-	pos = {x = 3, y = 0},
+	pos = {x = 6, y = 1},
+	soul_pos = {x = 7, y = 1},
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	rarity = 4,
 	cost = 20,
 	config = {

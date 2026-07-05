@@ -23,15 +23,8 @@ vec4 lerp(vec4 colour1, vec4 colour2, number val) {
 
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords ) {
 
-		//transform the coords or something I don't really know
-    vec2 uv = (screen_coords - uie_details.xy) / max(uie_details.g - 2, uie_details.a - 2);
-
-		// I don't know what these do
-    //if (uie_scale < 0.00001) {
-        uv.x = uv.x + max(0.00001, uie_scale);
-    //}
-    if (uie_rot < 0.00001) {
-        uv.x = uv.x + 0.0001;
+	if (uie_details == uie_details * 2) {
+        vec4.a = 0
     }
 
     vec4 tex = texture2D(texture, texture_coords);
