@@ -10,7 +10,7 @@
   "main_file": "main.lua",
   "priority": 0,
   "badge_colour": "D94169",
-  "version": "1.4.7-260706a",
+  "version": "1.5.0-260706a",
   "icon_path": "modicon.png",
   "no_marquee": true,
   "dependencies": [
