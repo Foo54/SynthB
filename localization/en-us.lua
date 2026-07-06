@@ -1637,6 +1637,38 @@ local descriptions = {
 					"{C:attention}Virtual Signer{}",
 					"character for {C:money}$10"
 				}
+			},
+			synthb_gacha_ln = {
+				name = 'Leo/Need',
+				text = {
+					"Pulls a random",
+					"{C:attention}Leo/Need{}",
+					"character for {C:money}$10"
+				}
+			},
+			synthb_gacha_mmj = {
+				name = 'More More Jump',
+				text = {
+					"Pulls a random",
+					"{C:attention}More More Jump{}",
+					"character for {C:money}$10"
+				}
+			},
+			synthb_gacha_vbs = {
+				name = 'Vivid Bad Squad',
+				text = {
+					"Pulls a random",
+					"{C:attention}Vivid Bad Squad{}",
+					"character for {C:money}$10"
+				}
+			},
+			synthb_gacha_wxs = {
+				name = 'Wonderlands x Showtime',
+				text = {
+					"Pulls a random",
+					"{C:attention}Wonderlands x Showtime{}",
+					"character for {C:money}$10"
+				}
 			}
 		},
 		synthb_Character = {

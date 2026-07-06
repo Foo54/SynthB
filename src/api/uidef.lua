@@ -144,7 +144,7 @@ function G.UIDEF.synthb_wish_full_menu ()
 	G.GAME.synthb_wish_options = {}
 	G.GAME.synthb_choosing_wish = true
 	for _, joker in ipairs(G.P_CENTER_POOLS.Joker) do
-		if joker.rarity <= 2 then
+		if joker.rarity == 1 or joker.rarity == 2 then
 			G.GAME.synthb_wish_options[#G.GAME.synthb_wish_options+1] = joker
 		end
 	end

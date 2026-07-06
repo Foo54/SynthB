@@ -69,6 +69,30 @@ SynthB.custom_colors = {
 			UI = HEX("00ccbb"),
 			PARTICLES_1 = HEX("2bd1c4"),
 			PARTICLES_2 = HEX("50bfb6")
+		},
+		ln = {
+			BACKGROUND = HEX("4455dd"),
+			UI = HEX("4455dd"),
+			PARTICLES_1 = HEX("5d6bd6"),
+			PARTICLES_2 = HEX("7a83c8")
+		},
+		mmj = {
+			BACKGROUND = HEX("88dd44"),
+			UI = HEX("88dd44"),
+			PARTICLES_1 = HEX("91d659"),
+			PARTICLES_2 = HEX("a7cd89")
+		},
+		vbs = {
+			BACKGROUND = HEX("ee1166"),
+			UI = HEX("ee1166"),
+			PARTICLES_1 = HEX("e8367a"),
+			PARTICLES_2 = HEX("d65b8a")
+		},
+		wxs = {
+			BACKGROUND = HEX("ff9900"),
+			UI = HEX("ff9900"),
+			PARTICLES_1 = HEX("f1ab41"),
+			PARTICLES_2 = HEX("f1bd70")
 		}
 	}
 }
