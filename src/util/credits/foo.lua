@@ -381,6 +381,9 @@ SynthB.Credits.Contributor{
 
 function G.FUNCS.synthb_align_book_box (e)
 	G.synthb_credits_book_box.T.r = -0.02
+	if SynthB.mod.config.mizuki_zoomies then
+		G.synthb_credits_book_box.T.r = 2 * math.pi * math.sin(math.sin(G.TIMERS.REAL) + 2 * math.sin(G.TIMERS.REAL * 2) + 0.5 * math.sin(G.TIMERS.REAL * 8))
+	end
 end
 
 function G.FUNCS.synthb_credits_foo_hide_ui ()
@@ -412,3 +415,7 @@ function G.FUNCS.synthb_credits_foo_2 (e)
 	G.synthb_credits_special_thanks_box.states.visible = true
 	G.synthb_credits_backarrow_box.states.visible = true
 end
+
+
+
+

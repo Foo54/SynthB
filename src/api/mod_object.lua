@@ -81,6 +81,13 @@ function SynthB.mod.config_tab()
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
+						label = "Give Mizuki Zoomies",
+						ref_table = SynthB.mod.config,
+						ref_value = 'mizuki_zoomies'
+					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
 						label = "Disable Deltarune Spoilers",
 						ref_table = SynthB.mod.config.spoilers,
 						ref_value = 'deltarune'
