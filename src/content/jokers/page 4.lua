@@ -729,3 +729,136 @@ SynthB.Joker{
 	end,
 }
 
+-- on the rocks
+SynthB.Joker{
+	key = "song_synthb_on_the_rocks",
+	pos = {x = 1, y = 0},
+	rarity  = 2,
+	cost = 6,
+	config = {
+		extra = {
+			xmult = 2,
+			temp = 5,
+			cost = 20
+		},
+		immutable = {
+			side = true
+		}
+	},
+	synthb_song = "on_the_rocks_1",
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"xmult", "temperature", "modify_card", "song", "vocaloid song", "MEIKO", "KAITO", "OSTER Project"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "on_the_rocks")
+		if not card.ability.immutable.side then
+			info_queue[#info_queue+1] = G.P_CENTERS.e_glass
+		else
+			SynthB.heat_info(info_queue)
+		end
+		return {vars = {card.ability.extra.mult, card.ability.extra.temp, card.ability.extra.cost}, key = "j_synthb_on_the_rocks_" .. (card.ability.immutable.side and "1" or "2")}
+	end,
+	calculate = function(self, card, context)
+		local ret
+		if context.joker_main or context.force_trigger then
+			if card.ability.immutable.side then
+				ret = {
+					xmult = card.ability.extra.xmult
+				}
+			else
+				ret = {
+					func = SynthB.ease_temp(card.ability.extra.temp)
+				}
+			end
+		end
+		if context.joker_main and not context.blueprint then
+			card.ability.immutable.side = not card.ability.immutable.side
+			G.E_MANAGER:add_event(Event{
+				func = function()
+					card:flip()
+					return true
+				end
+			})
+			delay(0.5)
+			G.E_MANAGER:add_event(Event{
+				func = function()
+					-- set sprites
+					return true
+				end
+			})
+			delay(0.5)
+			G.E_MANAGER:add_event(Event{
+				func = function()
+					card:flip()
+					return true
+				end
+			})
+		end
+		return ret
+	end,
+	can_use = function (self, card)
+		return G.GAME.synthb_temp >= card.ability.extra.cost and #G.hand.highlighted == 1
+	end,
+	use = function(self, card)
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		for i = 1, #G.hand.highlighted do
+			local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('card1', percent)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		delay(0.2)
+		for i = 1, #G.hand.highlighted do
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					G.hand.highlighted[i]:set_ability("e_glass")
+					return true
+				end
+			}))
+		end
+		for i = 1, #G.hand.highlighted do
+			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('tarot2', percent, 0.6)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end,
+}
+
+
+

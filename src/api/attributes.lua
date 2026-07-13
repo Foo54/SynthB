@@ -91,3 +91,4 @@ SMODS.Attribute{key = "Toby Fox"}
 SMODS.Attribute{key = "AkuP"}
 SMODS.Attribute{key = "VocaloKat"}
 SMODS.Attribute{key = "Ryu"}
+SMODS.Attribute{key = "OSTER Project"}

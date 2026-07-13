@@ -52,7 +52,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=_oTaQXf_iX8", key = "yararara", pos = {x = 0, y = 10}},
 	{link = "https://www.youtube.com/watch?v=tlFnfEWZCtQ", key = "song_synthb_pink", prefix = "", set = "Other", pos = {x = 1, y = 10}, spoiler = "deltarune"},
 	{link = "https://www.youtube.com/watch?v=UTcZHzDY3LU", key = "affection_addiction", pos = {x = 2, y = 10}},
-	--{link = "temp", key = "shiawase_for_you", pos = {x = 4, y = 9}},
+	{link = "https://www.youtube.com/watch?v=hk1L0ZV2bVc", key = "on_the_rocks_1", pos = {x = 3, y = 10}},
 	--[[
 	for cross mod do this
 	

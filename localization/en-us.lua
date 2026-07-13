@@ -609,6 +609,42 @@ local descriptions = {
 					"{C:inactive,s:0.8}But I can't survive without the high"
 				}
 			},
+			j_synthb_on_the_rocks_1 = {
+				name = "on the rocks",
+				text = {
+					{
+						"{X:red,C:white}X#1#{} Mult",
+						"Ability flips every round",
+						"{C:inactive,s:0.8,f:5}今日はシングルよりダブルで",
+					},
+					{
+						"{C:attention}Use{} this card to",
+						"one selected card",
+						"in hand to a {C:attention}Glass Card",
+						"and lower the {C:temperature}Temperature",
+						"by {X:temperature,C:white}#3#C",
+						"{C:inactive,s:0.8,f:5}グラス越しに見える世界は"
+					}
+				}
+			},
+			j_synthb_on_the_rocks_2 = {
+				name = "on the rocks",
+				text = {
+					{
+						"{X:temperature,C:white}+#2#C",
+						"Ability flips every round",
+						"{C:inactive,s:0.8,f:5}喉元から熱く灼いて"
+					},
+					{
+						"{C:attention}Use{} this card to",
+						"one selected card",
+						"in hand to a {C:attention}Glass Card",
+						"and lower the {C:temperature}Temperature",
+						"by {X:temperature,C:white}#3#C",
+						"{C:inactive,s:0.8,f:5}グラス越しに見える世界は"
+					}
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1314,7 +1350,18 @@ local descriptions = {
 					"{f:5}ポピー",
 					"{C:inactive,s:0.8}POPY"
 				}
-			}
+			},
+			on_the_rocks = {
+				text = {
+					"{C:attention}Title:",
+					"on the rocks",
+					"{C:attention}Producer:",
+					"OSTER Project",
+					"{C:attention}Voice:",
+					"{f:5}メイコ{C:inactive} & {f:5}カイト",
+					"{C:inactive,s:0.8}MEIKO & KAITO"
+				}
+			},
 		},
 		MiscInfoQueue = {
 			idea_credits = {
