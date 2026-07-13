@@ -140,10 +140,3 @@ SMODS.Atlas{
 	px = 518,
 	py = 88
 }
-
-SMODS.Atlas{
-	key = "chirp jokers",
-	path = "chirp_jokers.png",
-	px = 71,
-	py = 95
-}

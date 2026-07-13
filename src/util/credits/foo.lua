@@ -308,9 +308,6 @@ SynthB.Credits.Contributor{
 										{n = G.UIT.T, config = {text = "Mod Icon - LasagnaFelidae", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
 									}},
 									{n = G.UIT.R, config = {maxw = 6}, nodes = {
-										{n = G.UIT.T, config = {text = "NPC - CapitalChirp", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
-									}},
-									{n = G.UIT.R, config = {maxw = 6}, nodes = {
 										{n = G.UIT.T, config = {text = "Lemonade - Inky", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
 									}},
 									{n = G.UIT.R, nodes = {

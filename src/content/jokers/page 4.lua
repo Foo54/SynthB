@@ -869,14 +869,17 @@ SynthB.Joker{
 		}
 	},
 	cost = 4,
-	atlas = "chirp jokers",
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
 	demicolon_compat = true,
 	attributes = {"xmult", "song", "vocaloid song", "Teto", "Eipu"},
 	synthb_credits = {
-		Artist = "CapitalChirp"
+		artist = "some guy",
+		concept = "some guy",
+		lusha = "lusha",
+		["X1.5 mult"] = "phoebe",
+		["the nerd who pointed out"] = "Papu"
 	},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "npc")
