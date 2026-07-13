@@ -652,6 +652,19 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}それもどれもなにもかも中途半端"
 				}
 			},
+			j_synthb_sosorry = {
+				name = "SOSORRY",
+				text = {
+					"{X:chips,C:white}X#1#{} Chips per",
+					"consecutive hand under {C:attention}#2#%{}",
+					"of the blind requirement.",
+					"Doesn't reset until after",
+					"the hand is played",
+					"{C:inactive}[Currently {X:chips,C:white}X#3#{C:inactive} XChips]",
+					"{C:inactive,s:0.8}Ending every day with a",
+					"{C:inactive,s:0.8}sorry will do, but..."
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1379,6 +1392,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			sosorry = {
+				text = {
+					"{C:attention}Title:",
+					"SOSORRY",
+					"{C:attention}Producer:",
+					"ePiaeon",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
 		},

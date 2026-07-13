@@ -880,5 +880,47 @@ SynthB.Joker{
 	end,
 }
 
+-- SOSORRY
+SynthB.Joker{
+	key = "sosorry",
+	config = {
+		extra = {
+			gain = 1,
+			xchips = 1,
+			req = 12
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"xchips", "scaling", "reset", "song", "vocaloid song", "Miku", "ePiaeon"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "sosorry")
+		return {vars = {card.ability.extra.gain, card.ability.extra.req, card.ability.extra.xchips}}
+	end,
+	calculate = function(self, card, context)
+		if context.after and not context.blueprint then
+			if SMODS.calculate_round_score() / G.GAME.blind.chips < card.ability.extra.req / 100 then
+				card.ability.extra.gain = 1
+				return {
+					message = localize("k_reset")
+				}
+			else
+				SMODS.scale_card(card, {
+					scalar_value = "gain",
+					ref_table = card,
+					ref_value = "xchips"
+				})
+			end
+		end
+		if context.joker_main or context.forcetrigger then
+			return {
+				xchips = card.ability.extra.xchips
+			}
+		end
+	end,
+}
+
 
 
