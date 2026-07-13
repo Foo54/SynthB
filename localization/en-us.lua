@@ -645,6 +645,13 @@ local descriptions = {
 					}
 				}
 			},
+			j_synthb_npc = {
+				name = "NPC",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:inactive,s:0.8,f:5}それもどれもなにもかも中途半端"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1360,6 +1367,18 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}メイコ{C:inactive} & {f:5}カイト",
 					"{C:inactive,s:0.8}MEIKO & KAITO"
+				}
+			},
+			npc = {
+				text = {
+					"{C:attention}Title:",
+					"NPC",
+					"{C:attention}Producer:",
+					"{f:5}えいぷ",
+					"{C:inactive,s:0.8}Eipu",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
 		},

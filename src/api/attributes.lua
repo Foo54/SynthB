@@ -92,3 +92,4 @@ SMODS.Attribute{key = "AkuP"}
 SMODS.Attribute{key = "VocaloKat"}
 SMODS.Attribute{key = "Ryu"}
 SMODS.Attribute{key = "OSTER Project"}
+SMODS.Attribute{key = "Eipu"}

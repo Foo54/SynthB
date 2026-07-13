@@ -860,5 +860,29 @@ SynthB.Joker{
 	end,
 }
 
+-- NPC
+SynthB.Joker{
+	key = "npc",
+	config = {
+		extra = {
+			xmult = 1.55
+		}
+	},
+	cost = 4,
+	atlas = "chirp jokers",
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"xmult", "song", "vocaloid song", "Teto", "Eipu"},
+	synthb_credits = {
+		Artist = "CapitalChirp"
+	},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "npc")
+		return {vars = {card.ability.extra.xmult}}
+	end,
+}
+
 
 

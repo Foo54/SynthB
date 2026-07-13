@@ -7,3 +7,7 @@ end
 function SynthB.effect.birdbrain()
 	return next(SMODS.find_card("j_synthb_birdbrain", false))
 end
+
+function SynthB.effect.npc()
+	return next(SMODS.find_card("j_synthb_npc", true))
+end
