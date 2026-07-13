@@ -874,13 +874,6 @@ SynthB.Joker{
 	perishable_compat = true,
 	demicolon_compat = true,
 	attributes = {"xmult", "song", "vocaloid song", "Teto", "Eipu"},
-	synthb_credits = {
-		artist = "some guy",
-		concept = "some guy",
-		lusha = "lusha",
-		["X1.5 mult"] = "phoebe",
-		["the nerd who pointed out"] = "Papu"
-	},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, "npc")
 		return {vars = {card.ability.extra.xmult}}
