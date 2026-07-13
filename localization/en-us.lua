@@ -665,6 +665,18 @@ local descriptions = {
 					"{C:inactive,s:0.8}sorry will do, but..."
 				}
 			},
+			j_synthb_russian_roulette = {
+				name = "RUSSIAN ROULETTE",
+				text = {
+					"Scored {C:hearts}Hearts{} give",
+					"this Joker {C:chips}+#1#{} Chips but",
+					"have a {C:green}#2# in #3#{} chance",
+					"to be {C:red}destroyed",
+					"{C:inactive}[Currently {C:chips}+#4#{C:inactive} Chips]",
+					"{C:inactive,s:0.8}A love far-off hidden",
+					"{C:inactive,s:0.8}the world, so silent"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1400,6 +1412,17 @@ local descriptions = {
 					"SOSORRY",
 					"{C:attention}Producer:",
 					"ePiaeon",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			russian_roulette = {
+				text = {
+					"{C:attention}Title:",
+					"RUSSIAN ROULETTE",
+					"{C:attention}Producer:",
+					"Staircatte",
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"

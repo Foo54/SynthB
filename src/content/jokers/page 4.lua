@@ -890,6 +890,7 @@ SynthB.Joker{
 			req = 12
 		}
 	},
+	cost = 5,
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
@@ -909,7 +910,7 @@ SynthB.Joker{
 			else
 				SMODS.scale_card(card, {
 					scalar_value = "gain",
-					ref_table = card,
+					ref_table = card.ability.extra,
 					ref_value = "xchips"
 				})
 			end
@@ -918,6 +919,53 @@ SynthB.Joker{
 			return {
 				xchips = card.ability.extra.xchips
 			}
+		end
+	end,
+}
+
+-- Russian Roulette
+SynthB.Joker{
+	key = "russian_roulette",
+	config = {
+		extra = {
+			chips = 0,
+			gain = 5,
+			num = 1,
+			dem = 6,
+		}
+	},
+	rarity = 2,
+	cost = 7,
+	pos = {x = 1, y = 0},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"hearts", "suit", "chips", "scaling", "chance", "song", "vocaloid song", "Miku", "Staircatte"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "russian_roulette")
+		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_russian_roulette")
+		return {vars = {card.ability.extra.gain, num, dem, card.ability.extra.chips}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main or context.forcetrigger then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+		if context.individual and not context.blueprint and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "gain"
+			})
+		end
+		if context.destroy_card and not context.blueprint and context.destroy_card:is_suit("Hearts") then
+			if SMODS.pseudorandom_probability(card, "synthb_russian_roulette", card.ability.extra.num, card.ability.extra.dem) then
+				return {
+					remove = true
+				}
+			end
 		end
 	end,
 }
