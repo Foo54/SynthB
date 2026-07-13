@@ -254,7 +254,7 @@ function G.UIDEF.synthb_create_gacha_banner()
 	banner.ambient_tilt = 0
 	banner.no_shadow = true
 	function banner:click ()
-		if G.GAME.dollars >= 10 then
+		if G.GAME.dollars + (G.GAME.bankrupt_at or 0) >= 10 then
 			ease_dollars(-10)
 			G.GAME.PACK_INTERRUPT = G.STATE
 			G.STATE = G.STATES.SYNTHB_GACHA_BANNER
