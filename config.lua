@@ -10,6 +10,7 @@ return {
 	triple_click_for_song = true,
 	disable_non_scoring_character_animations = false,
 	mizuki_zoomies = false,
+	experimental_features = false,
 
 	spoilers = {
 		deltarune = false,
