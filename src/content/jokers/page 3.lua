@@ -582,7 +582,7 @@ SynthB.Joker{
 							table.remove(pool, i)
 						end
 					end
-					local _card = SMODS.add_card{key = pseudorandom_element(pool) or "j_synthb_miku"}
+					local _card = SMODS.add_card{key = pseudorandom_element(pool, "synthb_character_t_generate") or "j_synthb_miku"}
 					if not _card:has_attribute("Teto") then
 						_card:set_edition("e_synthb_cover_teto")
 					end

@@ -981,5 +981,71 @@ SynthB.Joker{
 	end,
 }
 
-
+-- CONTRADICTIONS
+SynthB.Joker{
+	key = "contradictions",
+	config = {
+		extra = {
+			hands = 3
+		},
+		immutable = {
+			remaining = 3,
+			hand = "Straight Flush"
+		}
+	},
+	rarity = 2,
+	pos = {x = 1, y = 0},
+	cost = 7,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = false,
+	attributes = {"hand_type", "hands", "song", "vocaloid song", "Teto", "darkbluecat", "AnbaLen", "vphantom97", "MINTi"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, "contradictions")
+		local nominal = card.ability.extra.hands
+		local v = math.floor(nominal) % 100
+		if (v < 20 and v > 10) or v % 10 == 0 or v % 10 > 3 then
+			nominal = nominal .. "th"
+		elseif v % 10 == 1 then
+			nominal = nominal .. "st"
+		elseif v % 10 == 2 then
+			nominal = nominal .. "nd"
+		elseif v % 10 == 3 then
+			nominal = nominal .. "rd"
+		else
+			nominal = nominal .. "th"
+		end
+		local msg = ""
+		if card.ability.immutable.remaining > 0 then
+			msg = card.ability.immutable.remaining .. " remaining"
+		elseif card.ability.immutable.remaining == 0 then
+			msg = "Active!"
+		else
+			msg = "Inactive"
+		end
+		return {vars = {nominal, localize(card.ability.immutable.hand, "poker_hands"), msg}}
+	end,
+	calculate = function(self, card, context)
+		if context.after and not context.blueprint then
+			card.ability.immutable.remaining = card.ability.immutable.remaining - 1
+			if card.ability.immutable.remaining == 0 then
+				juice_card_until(card, function() return card.ability.immutable.remaining == 0 and not G.RESET_JIGGLES end)
+			end
+		end
+		if context.end_of_round and context.main_eval and not context.blueprint then
+			card.ability.immutable.remaning = card.ability.extra.hands
+			return {
+				message = localize("k_reset")
+			}
+		end
+		if context.evaluate_poker_hand and not context.blueprint then
+			if card.ability.immutable.remaining == 0 then
+				return {
+					replace_scoring_name = card.ability.immutable.hand
+				}
+			end
+		end
+	end,
+}
 

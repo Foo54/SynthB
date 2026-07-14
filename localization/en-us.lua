@@ -677,6 +677,16 @@ local descriptions = {
 					"{C:inactive,s:0.8}the world, so silent"
 				}
 			},
+			j_synthb_contradictions = {
+				name = "CONTRADICTIONS",
+				text = {
+					"The {C:attention}#1#{} hand played",
+					"Every round is treated",
+					"as a {C:attention}#2#",
+					"{C:inactive}#3#",
+					"{C:inactive,s:0.8,f:5}引っくり返す"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1426,6 +1436,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			contradictions = {
+				text = {
+					"{C:attention}Title:",
+					"CONTRADICTIONS",
+					"{C:attention}Producer:",
+					"darkbluecat{C:inactive} & {}AnbaLen{C:inactive} & {}phantom97{C:inactive} & {}MINTi",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
 		},

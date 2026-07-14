@@ -56,6 +56,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=q_MokwclZF8", key = "npc", pos = {x = 4, y = 10}},
 	{link = "https://www.youtube.com/watch?v=5LbpDCPKen0", key = "sosorry", pos = {x = 5, y = 0}},
 	{link = "https://www.youtube.com/watch?v=ofPBu1stIxc", key = "russian_roulette", pos = {x = 6, y = 0}},
+	{link = "https://www.youtube.com/watch?v=A0ih5EaG4yw", key = "contradictions", pos = {x = 7, y = 0}},
 	--[[
 	for cross mod do this
 	

@@ -5,9 +5,9 @@ Vocaloid Themed Balatro Mod by Foo54
 This mod is currently in desperate need for art. If you are an artist and want to contribute, please join the [SynthB Discord Server](https://discord.gg/UP3YPFwEhH) and ping me.
 
 ## Content
-- 57 New Jokers!
+- 57 New Jokers! (58)
 	- 21 Voicebanks
-	- 50 Artists
+	- 50 Artists (54)
 	- Links to all the songs
 - 1 New Object Type! (Requires experimental features)
 	- 16 Characters based on Project Sekai Character Cards
@@ -33,6 +33,8 @@ This mod is currently in desperate need for art. If you are an artist and want t
 - Crossmod Support
 	- Cryptid Forcetriggers
 	- Paperback Music Attribute
+
+(#) indicates developer version content
 
 ## 3rd Party Crossmod API
 When implementing crossmod songs, make sure the following standards are met:

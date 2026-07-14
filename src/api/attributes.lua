@@ -95,3 +95,7 @@ SMODS.Attribute{key = "OSTER Project"}
 SMODS.Attribute{key = "Eipu"}
 SMODS.Attribute{key = "ePiaeon"}
 SMODS.Attribute{key = "Staircatte"}
+SMODS.Attribute{key = "darkbluecat"}
+SMODS.Attribute{key = "AnbaLen"}
+SMODS.Attribute{key = "phantom97"}
+SMODS.Attribute{key = "MINTi"}
