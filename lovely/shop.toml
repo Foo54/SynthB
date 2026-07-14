@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 50
 
-# disable buttons
+# add gacha banner
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
@@ -11,24 +11,26 @@ pattern = '''config = {align='tmi', offset = {x=0,y=G.ROOM.T.y+11},major = G.han
         }'''
 position = 'after'
 payload = '''
-G.synthb_gacha_banner = UIBox{
-	definition = G.UIDEF.synthb_create_gacha_banner(),
-	config = {
-		offset = {x = 0, y = 0.05},
-		major = G.shop,
-		bond = "Strong",
-		align = "tri"
+if SynthB.mod.config.experimental_features then
+	G.synthb_gacha_banner = UIBox{
+		definition = G.UIDEF.synthb_create_gacha_banner(),
+		config = {
+			offset = {x = 0, y = 0.05},
+			major = G.shop,
+			bond = "Strong",
+			align = "tri"
+		}
 	}
-}
-local shop_index
-for i, box in ipairs(G.I.UIBOX) do
-	if box == G.shop then
-		shop_index = i
-	end
-	if box == G.synthb_gacha_banner then
-		if shop_index then
-			G.I.UIBOX[shop_index] = box
-			G.I.UIBOX[i] = G.shop
+	local shop_index
+	for i, box in ipairs(G.I.UIBOX) do
+		if box == G.shop then
+			shop_index = i
+		end
+		if box == G.synthb_gacha_banner then
+			if shop_index then
+				G.I.UIBOX[shop_index] = box
+				G.I.UIBOX[i] = G.shop
+			end
 		end
 	end
 end
@@ -36,7 +38,7 @@ end
 match_indent = true
 
 
-# disable buttons
+# i dont remember what this does
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
@@ -44,13 +46,17 @@ pattern = '''}))
           G.STATE_COMPLETE = true'''
 position = 'after'
 payload = '''
+if SynthB.mod.config.experimental_features then
 delay(2)
-G.E_MANAGER:add_event(Event{
-	func = function()
-		G.synthb_gacha_banner.alignment.offset.x = 2.8
-		return true
-	end
-})
+	G.E_MANAGER:add_event(Event{
+		func = function()
+			if G.synthb_gacha_banner.alignment then
+				G.synthb_gacha_banner.alignment.offset.x = 2.8
+			end
+			return true
+		end
+	})
+end
 '''
 match_indent = true
 
@@ -70,8 +76,10 @@ match_indent = true
 target = 'functions/button_callbacks.lua'
 pattern = '''G.shop:remove()'''
 position = 'after'
-payload = '''G.synthb_gacha_banner:remove()
-G.synthb_gacha_banner = nil'''
+payload = '''if G.synthb_gacha_banner then
+	G.synthb_gacha_banner:remove()
+	G.synthb_gacha_banner = nil
+end'''
 match_indent = true
 
 

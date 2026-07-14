@@ -162,11 +162,13 @@ SynthB.load_file("content/seal")
 SynthB.load_file("content/sticker")
 SynthB.load_file("content/tag")
 
-SynthB.debug("Loading Character Files")
-SynthB.load_file("content/characters/virtual_singers/miku")
-SynthB.load_file("content/characters/virtual_singers/first_variation")
-SynthB.load_file("content/characters/virtual_singers/second_variation")
-SynthB.load_file("content/characters/banners")
+if SynthB.mod.config.experimental_features then
+	SynthB.debug("Loading Character Files")
+	SynthB.load_file("content/characters/virtual_singers/miku")
+	SynthB.load_file("content/characters/virtual_singers/first_variation")
+	SynthB.load_file("content/characters/virtual_singers/second_variation")
+	SynthB.load_file("content/characters/banners")
+end
 
 SynthB.debug("Loading Credits")
 SynthB.load_file("util/credits/foo")

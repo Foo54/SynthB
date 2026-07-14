@@ -31,31 +31,6 @@ table.insert(t,1,G.synthb_ghost_area)
 '''
 match_indent = true
 
-# Add characters appearing in shop
-[[patches]]
-[patches.pattern]
-target = 'functions/UI_definitions.lua'
-pattern = "for _,v in ipairs(SMODS.ConsumableType.obj_buffer) do"
-position = "before"
-payload = 'total_rate = total_rate + G.GAME.synthb_character_rate'
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = 'functions/UI_definitions.lua'
-pattern = "for _, v in ipairs(rates) do"
-position = "before"
-payload = "table.insert(rates, {type = 'synthb_Character', val = G.GAME.synthb_character_rate})"
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/utils/weights.lua"]'
-pattern = "for _,v in ipairs(SMODS.ConsumableType.obj_buffer) do"
-position = "before"
-payload = "args.types[#args.types + 1] = 'synthb_Character'"
-match_indent = true
-
 # Put characters in the correct area when buying from the shop
 [[patches]]
 [patches.pattern]
@@ -78,8 +53,10 @@ target = "blind.lua"
 pattern = "--add new debuffs"
 position = 'after'
 payload = '''
-for _, v in ipairs(G.synthb_character_area.cards) do
-    if not reset then self:debuff_card(v, true) end
+if G.synthb_character_area then
+    for _, v in ipairs(G.synthb_character_area.cards) do
+        if not reset then self:debuff_card(v, true) end
+    end
 end
 '''
 match_indent = true

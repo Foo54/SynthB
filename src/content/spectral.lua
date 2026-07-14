@@ -63,65 +63,67 @@ SMODS.Consumable{
 	end
 }
 
--- Training
-SMODS.Consumable{
-	key = "spectral_training",
-	atlas = "placeholder",
-	pos = {x = 1, y = 1},
-	set = "Spectral",
-	can_use = function (self, card)
-		return #G.synthb_character_area.highlighted == 1 and not G.synthb_character_area.highlighted[1].ability.immutable.level
-	end,
-	in_pool = function (self, args)
-		for _, char in ipairs(G.synthb_character_area.cards) do
-			if not char.ability.immutable.level then return true end
+if SynthB.mod.config.experimental_features then
+	-- Training
+	SMODS.Consumable{
+		key = "spectral_training",
+		atlas = "placeholder",
+		pos = {x = 1, y = 1},
+		set = "Spectral",
+		can_use = function (self, card)
+			return #G.synthb_character_area.highlighted == 1 and not G.synthb_character_area.highlighted[1].ability.immutable.level
+		end,
+		in_pool = function (self, args)
+			for _, char in ipairs(G.synthb_character_area.cards) do
+				if not char.ability.immutable.level then return true end
+			end
+			return false
+		end,
+		use = function (self, card, area, copier)
+			local char = G.synthb_character_area.highlighted[1]
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					play_sound('tarot1')
+					card:juice_up(0.3, 0.5)
+					return true
+				end
+			}))
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					char:flip()
+					return true
+				end
+			}))
+			delay(0.5)
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					char.ability.immutable.level = true
+					char.children.center:set_sprite_pos({x = char.config.center.pos.x, y = char.config.center.pos.y + 1})
+					return true
+				end
+			}))
+			delay(0.5)
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.1,
+				func = function()
+					char:flip()
+					return true
+				end
+			}))
+			delay(0.5)
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.2,
+				func = function()
+					G.hand:unhighlight_all()
+					return true
+				end
+			}))
 		end
-		return false
-	end,
-	use = function (self, card, area, copier)
-		local char = G.synthb_character_area.highlighted[1]
-		G.E_MANAGER:add_event(Event({
-			func = function()
-				play_sound('tarot1')
-				card:juice_up(0.3, 0.5)
-				return true
-			end
-		}))
-		G.E_MANAGER:add_event(Event({
-			trigger = 'after',
-			delay = 0.1,
-			func = function()
-				char:flip()
-				return true
-			end
-		}))
-		delay(0.5)
-		G.E_MANAGER:add_event(Event({
-			trigger = 'after',
-			delay = 0.1,
-			func = function()
-				char.ability.immutable.level = true
-				char.children.center:set_sprite_pos({x = char.config.center.pos.x, y = char.config.center.pos.y + 1})
-				return true
-			end
-		}))
-		delay(0.5)
-		G.E_MANAGER:add_event(Event({
-			trigger = 'after',
-			delay = 0.1,
-			func = function()
-				char:flip()
-				return true
-			end
-		}))
-		delay(0.5)
-		G.E_MANAGER:add_event(Event({
-			trigger = 'after',
-			delay = 0.2,
-			func = function()
-				G.hand:unhighlight_all()
-				return true
-			end
-		}))
-	end
-}
+	}
+end

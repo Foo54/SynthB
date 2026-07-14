@@ -22,13 +22,6 @@ function SynthB.mod.config_tab()
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
-						label = "Display Additional Card Credits",
-						ref_table = SynthB.mod.config,
-						ref_value = 'display_card_credits'
-					})
-				}},
-				{n = G.UIT.R, config = { align = "cm", padding = 0.01 }, nodes = {
-					create_toggle({
 						label = "Display Temperature Information",
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_heat_info'
@@ -84,6 +77,13 @@ function SynthB.mod.config_tab()
 						label = "Give Mizuki Zoomies",
 						ref_table = SynthB.mod.config,
 						ref_value = 'mizuki_zoomies'
+					})
+				}},
+				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
+					create_toggle({
+						label = "Enabled Experimental Features (requires restart)",
+						ref_table = SynthB.mod.config,
+						ref_value = 'experimental_features'
 					})
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
@@ -252,7 +252,9 @@ function SynthB.mod.reset_game_globals(run_start)
 		G.GAME.synthb_linked_id = 0
 		G.GAME.synthb_character_rate = 0
 	end
-	_, G.GAME.synthb_current_banner_key = pseudorandom_element(SynthB.banners, "synthb_round_banner")
+	if SynthB.mod.config.experimental_features then
+		_, G.GAME.synthb_current_banner_key = pseudorandom_element(SynthB.banners, "synthb_round_banner")
+	end
 end
 
 function G.FUNCS.synthb_change_credits_page(args)
@@ -492,20 +494,22 @@ end
 
 
 function SynthB.mod.custom_card_areas(game)
-	local h = SynthB.CHAR_W * 5
-	local w = SynthB.CHAR_H * 1.2
-	game.synthb_character_area = CardArea(
-		game.consumeables.T.x + game.consumeables.T.w + 0.1, game.consumeables.T.y,
-		w, h,
-		{
-			card_limit = 5,
-			type = "characters",
-			card_count = true,
-			highlight_limit = 1,
-			highlighted_limit = 1,
-			align_buttons = true,
-		}
-	)
+	if SynthB.mod.config.experimental_features then
+		local h = SynthB.CHAR_W * 5
+		local w = SynthB.CHAR_H * 1.2
+		game.synthb_character_area = CardArea(
+			game.consumeables.T.x + game.consumeables.T.w + 0.1, game.consumeables.T.y,
+			w, h,
+			{
+				card_limit = 5,
+				type = "characters",
+				card_count = true,
+				highlight_limit = 1,
+				highlighted_limit = 1,
+				align_buttons = true,
+			}
+		)
+	end
 
 	game.synthb_ghost_area = CardArea(
 		game.ROOM.T.x + game.ROOM.T.w, 0,
@@ -587,17 +591,18 @@ function SynthB.mod.custom_card_areas(game)
 	end
 end
 
-
-function SynthB.mod.custom_collection_tabs()
-	local tally = 0
-	for _, v in pairs(G.P_CENTER_POOLS.synthb_Character) do
-		tally = tally + ((v.discovered and v.synthb_character ~= "padding") and 1 or 0)
+if SynthB.mod.config.experimental_features then
+	function SynthB.mod.custom_collection_tabs()
+		local tally = 0
+		for _, v in pairs(G.P_CENTER_POOLS.synthb_Character) do
+			tally = tally + ((v.discovered and v.synthb_character ~= "padding") and 1 or 0)
+		end
+		return { UIBox_button {
+			button = "synthb_your_collection_characters",
+			label = { localize("b_synthb_characters") },
+			count = { tally = tally, of = #G.P_CENTER_POOLS.synthb_Character - 4 },
+			minw = 5,
+			id = "synthb_your_collection_characters"
+		} }
 	end
-	return { UIBox_button {
-		button = "synthb_your_collection_characters",
-		label = { localize("b_synthb_characters") },
-		count = { tally = tally, of = #G.P_CENTER_POOLS.synthb_Character - 4 },
-		minw = 5,
-		id = "synthb_your_collection_characters"
-	} }
 end
