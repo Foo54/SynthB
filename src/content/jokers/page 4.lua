@@ -758,7 +758,7 @@ SynthB.Joker{
 		else
 			SynthB.heat_info(info_queue)
 		end
-		return {vars = {card.ability.extra.mult, card.ability.extra.temp, card.ability.extra.cost}, key = "j_synthb_on_the_rocks_" .. (card.ability.immutable.side and "1" or "2")}
+		return {vars = {card.ability.extra.xmult, card.ability.extra.temp, card.ability.extra.cost}, key = "j_synthb_on_the_rocks_" .. (card.ability.immutable.side and "1" or "2")}
 	end,
 	calculate = function(self, card, context)
 		local ret
@@ -890,6 +890,8 @@ SynthB.Joker{
 			req = 12
 		}
 	},
+	pos = {x = 6, y = 5},
+	atlas = "joker_placeholders",
 	cost = 5,
 	blueprint_compat = true,
 	eternal_compat = true,
