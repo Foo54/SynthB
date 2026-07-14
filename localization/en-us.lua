@@ -655,12 +655,12 @@ local descriptions = {
 			j_synthb_sosorry = {
 				name = "SOSORRY",
 				text = {
-					"{X:chips,C:white}X#1#{} Chips per",
+					"This Joker gains {X:chips,C:white}X#1#{} Chips per",
 					"consecutive hand under {C:attention}#2#%{}",
 					"of the blind requirement.",
 					"Doesn't reset until after",
 					"the hand is played",
-					"{C:inactive}[Currently {X:chips,C:white}X#3#{C:inactive} XChips]",
+					"{C:inactive}[Currently {X:chips,C:white}X#3#{C:inactive} Chips]",
 					"{C:inactive,s:0.8}Ending every day with a",
 					"{C:inactive,s:0.8}sorry will do, but..."
 				}
