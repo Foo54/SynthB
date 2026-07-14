@@ -941,9 +941,13 @@ SynthB.Joker{
 			dem = 6,
 		}
 	},
+	pos = {x = 7, y = 5},
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	rarity = 2,
 	cost = 7,
-	pos = {x = 1, y = 0},
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
