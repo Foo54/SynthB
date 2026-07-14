@@ -868,6 +868,11 @@ SynthB.Joker{
 			xmult = 1.55
 		}
 	},
+	pos = {x = 5, y = 5},
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	cost = 4,
 	blueprint_compat = true,
 	eternal_compat = true,
