@@ -970,8 +970,8 @@ SynthB.Joker{
 	end,
 	calculate = function(self, card, context)
 		if context.after and not context.blueprint then
-			if SMODS.calculate_round_score() / G.GAME.blind.chips < card.ability.extra.req / 100 then
-				card.ability.extra.gain = 1
+			if SMODS.calculate_round_score() / G.GAME.blind.chips > card.ability.extra.req / 100 then
+				card.ability.extra.xchips = 1
 				return {
 					message = localize("k_reset")
 				}
