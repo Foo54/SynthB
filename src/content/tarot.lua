@@ -41,7 +41,7 @@ SMODS.Tarot{
 	key = "tarot_empurple",
 	atlas = "placeholder",
 	pos = {x = 0, y = 1},
-	synthb_song = "song_synthb_approve_please_genie",
+	synthb_song = "song_synthb_empurple",
 	synthb_count = 0,
 	synthb_timer = 0,
 	config = {max_highlighted = 2, mod_conv = 'm_synthb_purple'},

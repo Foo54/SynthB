@@ -1453,10 +1453,10 @@ local descriptions = {
 				text = {
 					"{C:attention}Title:",
 					"{f:5}エンパープル",
-					"{C:inactive}Empurple",
+					"{C:inactive,s:0.8}Empurple",
 					"{C:attention}Producer:",
 					"{f:5}はるまきごはん",
-					"{C:inactive}Harumaki Gohan",
+					"{C:inactive,s:0.8}Harumaki Gohan",
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
@@ -1661,6 +1661,10 @@ local descriptions = {
 		Other = {
 			song_synthb_approve_please_genie = {
 				name = {"{f:4}승인해주세요지니님!", "{s:0.7}Approve Please, Genie!"},
+				text = {}
+			},
+			song_synthb_empurple = {
+				name = {"{f:5}エンパープル", "{s:0.7}Empurple"},
 				text = {}
 			},
 			song_synthb_pink = {
