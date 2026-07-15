@@ -803,9 +803,9 @@ SynthB.Joker{
 		return {
 			reminder_text = {
 				{ text = "(" },
-				{ ref_table = "card.joker_display_values", ref_value = "Diamonds", colour = G.ARGS.LOC_COLOURS.diamonds },
+				{ text = "Diamonds", colour = G.ARGS.LOC_COLOURS.diamonds },
 				{ text = ")" },
-			}
+			},
 		}
 	end
 }
