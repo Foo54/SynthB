@@ -956,6 +956,9 @@ SynthB.Joker{
 			req = 12
 		}
 	},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 6, y = 5},
 	atlas = "joker_placeholders",
 	cost = 5,
