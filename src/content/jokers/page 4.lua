@@ -883,6 +883,13 @@ SynthB.Joker{
 		SynthB.song_info(info_queue, "npc")
 		return {vars = {card.ability.extra.xmult}}
 	end,
+	calculate = function(self, card, context)
+		if context.joker_main or context.forcetrigger then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
+	end,
 }
 
 -- SOSORRY
