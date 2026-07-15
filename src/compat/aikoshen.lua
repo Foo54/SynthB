@@ -20,7 +20,7 @@ SynthB.Joker{
 	attributes = {"modify_card", "chance", "enhancements", "position", "song", "vocaloid song", "Forte", "Flavor Foley"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS.m_akyrs_droplet_card
-		SynthB.song_info(info_queue, "weathergirl")
+		SynthB.song_info(info_queue, card, "weathergirl")
 		local num, _ = SMODS.get_probability_vars(card, card.ability.extra.num, 5, "synthb_aikoshen_weathergirl")
 		return {vars = {num, localize{type = "name_text", set = "Enhanced", key = "m_akyrs_droplet_card"}}}
 	end,

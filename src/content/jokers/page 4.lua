@@ -38,7 +38,7 @@ SynthB.Joker{
 	attributes = {"scaling", "xmult", "song", "vocaloid song", "Luka", "YuchaP", "DarvishP", "kaichi"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.blackjack_info(info_queue)
-		SynthB.song_info(info_queue, "blackjack")
+		SynthB.song_info(info_queue, card, "blackjack")
 		local loc_nodes = {}
 		localize{type = "other", vars = {card.ability.extra.xmult}, key = "synthb_blackjack", nodes = loc_nodes}
 		for i, nodes in ipairs(loc_nodes) do
@@ -283,7 +283,7 @@ SynthB.Joker{
 	perishable_compat = true,
 	attributes = {"joker", "vocaloid", "vocaloid song", "Rei", "Jamie Paige"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "dance_delightful")
+		SynthB.song_info(info_queue, card, "dance_delightful")
 		return {vars = {card.ability.extra.manip}}
 	end,
 	remove_from_deck = function (self, card, from_debuff)
@@ -364,7 +364,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"generation", "discards", "joker", "song", "vocaloid song", "Teto", "Miku", "AnythingBecomeMoe"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "yararara")
+		SynthB.song_info(info_queue, card, "yararara")
 		return {vars = {card.ability.extra.scoring, card.ability.extra.discarding, card.ability.immutable.scored, card.ability.immutable.discarded}}
 	end,
 	calculate = function(self, card, context)
@@ -416,7 +416,7 @@ SynthB.Joker{
 	demicolon_compat = false,
 	attributes = {"suit", "hearts", "chance", "song", "vocaloid song", "Miku", "Deco*27"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "needle")
+		SynthB.song_info(info_queue, card, "needle")
 		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_needle")
 		return {vars = {num, dem}}
 	end,
@@ -463,7 +463,7 @@ SynthB.Joker{
 	attributes = {"xmult", "hearts", "suit", "generation", "song", "vocaloid song", "Camellia", "Toby Fox", "Miku"},
 	loc_vars = function(self, info_queue, card)
 		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
-		SynthB.song_info(info_queue, "pink")
+		SynthB.song_info(info_queue, card, "pink")
 		info_queue[#info_queue+1] = G.P_CENTERS.j_synthb_pink_body
 		info_queue[#info_queue+1] = G.P_CENTERS.j_synthb_pink_ghost
 		return {vars = {card.ability.extra.xmult, card.ability.extra.scoring, card.ability.extra.scored}}
@@ -531,7 +531,7 @@ SynthB.Joker{
 	attributes = {"xmult", "hearts", "suit", "song", "vocaloid song", "Camellia", "Toby Fox", "Miku"},
 	loc_vars = function(self, info_queue, card)
 		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
-		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
+		if not card.fake_card then SynthB.song_info(info_queue, card, "pink") end
 		return {vars = {card.ability.extra.gain, card.ability.extra.xmult}}
 	end,
 	calculate = function(self, card, context)
@@ -643,7 +643,7 @@ SynthB.Joker{
 	end,
 	loc_vars = function(self, info_queue, card)
 		if SynthB.mod.config.spoilers.deltarune then return {vars = {"Deltarune"}, key = "j_synthb_spoiler"} end
-		if not card.fake_card then SynthB.song_info(info_queue, "pink") end
+		if not card.fake_card then SynthB.song_info(info_queue, card, "pink") end
 		info_queue[#info_queue+1] = {set = "Other", key = "synthb_possessed"}
 		if card.area == G.synthb_ghost_area then return {key = "j_synthb_pink_ghost_possessing"} end
 	end,
@@ -700,7 +700,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"scaling", "reset", "xmult", "vocaloid song", "song", "POPY", "VocaloKat", "AkuP", "ryu", "Jamie Paige"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "affection_addiction")
+		SynthB.song_info(info_queue, card, "affection_addiction")
 		return {vars = {card.ability.extra.scale, card.ability.extra.xmult, card.ability.immutable.last_scored}}
 	end,
 	calculate = function(self, card, context)
@@ -727,6 +727,19 @@ SynthB.Joker{
 			}
 		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{text = "X"},
+						{ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp"}
+					}
+				}
+			}
+		}
+	end
 }
 
 -- on the rocks
@@ -752,12 +765,9 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"xmult", "temperature", "modify_card", "song", "vocaloid song", "MEIKO", "KAITO", "OSTER Project"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "on_the_rocks")
-		if not card.ability.immutable.side then
-			info_queue[#info_queue+1] = G.P_CENTERS.e_glass
-		else
-			SynthB.heat_info(info_queue)
-		end
+		SynthB.song_info(info_queue, card, "on_the_rocks")
+		SynthB.heat_info(info_queue)
+		info_queue[#info_queue+1] = G.P_CENTERS.e_glass
 		return {vars = {card.ability.extra.xmult, card.ability.extra.temp, card.ability.extra.cost}, key = "j_synthb_on_the_rocks_" .. (card.ability.immutable.side and "1" or "2")}
 	end,
 	calculate = function(self, card, context)
@@ -858,6 +868,37 @@ SynthB.Joker{
 		}))
 		delay(0.5)
 	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ref_table = "card.joker_display_values", ref_value = "sign"},
+						{ref_table = "card.joker_display_values", ref_value = "number", retrigger_type = "mult"}
+					},
+				}
+			},
+			calc_function = function (card)
+				if card.ability.immutable.side then
+					card.joker_display_values.number = card.ability.extra.xmult
+					card.joker_display_values.sign = "X"
+				else
+					card.joker_display_values.number = card.ability.extra.temp
+					card.joker_display_values.sign = "+"
+				end
+			end,
+			style_function = function (card, text, reminder_text, extra)
+				if text and text.children[1] then
+					if card.ability.immutable.side then
+						text.children[1].config.colour = G.C.MULT
+					else
+						text.children[1].config.colour = G.C.ORANGE
+					end
+				end
+			end
+		}
+	end
 }
 
 -- NPC
@@ -880,7 +921,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"xmult", "song", "vocaloid song", "Teto", "Eipu"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "npc")
+		SynthB.song_info(info_queue, card, "npc")
 		return {vars = {card.ability.extra.xmult}}
 	end,
 	calculate = function(self, card, context)
@@ -890,6 +931,19 @@ SynthB.Joker{
 			}
 		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{text = "X"},
+						{ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp"}
+					}
+				}
+			}
+		}
+	end
 }
 
 -- SOSORRY
@@ -911,7 +965,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"xchips", "scaling", "reset", "song", "vocaloid song", "Miku", "ePiaeon"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "sosorry")
+		SynthB.song_info(info_queue, card, "sosorry")
 		return {vars = {card.ability.extra.gain, card.ability.extra.req, card.ability.extra.xchips}}
 	end,
 	calculate = function(self, card, context)
@@ -935,6 +989,20 @@ SynthB.Joker{
 			}
 		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{text = "X"},
+						{ref_table = "card.ability.extra", ref_value = "xchips", retrigger_type = "exp"}
+					},
+					border_colour = G.C.BLUE
+				}
+			}
+		}
+	end
 }
 
 -- Russian Roulette
@@ -961,7 +1029,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"hearts", "suit", "chips", "scaling", "chance", "song", "vocaloid song", "Miku", "Staircatte"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "russian_roulette")
+		SynthB.song_info(info_queue, card, "russian_roulette")
 		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_russian_roulette")
 		return {vars = {card.ability.extra.gain, num, dem, card.ability.extra.chips}}
 	end,
@@ -986,6 +1054,16 @@ SynthB.Joker{
 			end
 		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{text = "X"},
+				{ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult"}
+			},
+			text_config = {colour = G.C.CHIPS}
+		}
+	end
 }
 
 -- CONTRADICTIONS
@@ -1009,7 +1087,7 @@ SynthB.Joker{
 	demicolon_compat = false,
 	attributes = {"hand_type", "hands", "song", "vocaloid song", "Teto", "darkbluecat", "AnbaLen", "vphantom97", "MINTi"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "contradictions")
+		SynthB.song_info(info_queue, card, "contradictions")
 		local nominal = card.ability.extra.hands
 		local v = math.floor(nominal) % 100
 		if (v < 20 and v > 10) or v % 10 == 0 or v % 10 > 3 then

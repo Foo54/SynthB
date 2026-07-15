@@ -30,7 +30,7 @@ local localize_out = { -- storing as a local variable isn't needed I just need t
 SynthB.Joker{
 	key = "parry",
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "parry")
+		SynthB.song_info(info_queue, card, "parry")
 	end,
 	attributes = {"song", "vocaloid song", "Len", "Miku", "Miyamori Bungaku"}
 }

@@ -1449,6 +1449,43 @@ local descriptions = {
 					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
+			empurple = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}エンパープル",
+					"{C:inactive}Empurple",
+					"{C:attention}Producer:",
+					"{f:5}はるまきごはん",
+					"{C:inactive}Harumaki Gohan",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+		},
+		Enhanced = {
+			m_synthb_purple = {
+				name = "Purple Card",
+				text = {
+					{
+						"{C:inactive,s:0.8,f:5}まだ真ん中の私Empurple"
+					},
+					{
+					"{X:purple,C:white}X#2#{} score",
+					"if this card is",
+					"on the {C:attention}left{}",
+					"side of played hand",
+					"{C:inactive,f:5,s:0.8}私の左手を開けてみて？"
+					},
+					{
+					"{C:purple}+#1#{} score",
+					"if this card is",
+					"on the {C:attention}right{}",
+					"side of played hand",
+					"{C:inactive,f:5,s:0.8}私の右手を開けてみて？"
+					}
+				}
+			}
 		},
 		MiscInfoQueue = {
 			idea_credits = {
@@ -1932,6 +1969,14 @@ local descriptions = {
 					"{C:attention}Consumable{} used",
 					" {element:1} ",
 					"{C:inactive,s:0.8,f:5}OK! OK! あっちもこっちも大探検"
+				}
+			},
+			c_synthb_tarot_empurple = {
+				name = "The Purple",
+				text = {
+					"Enhanced {C:attention}#1#",
+					"selected cards to",
+					"{C:attention}#2#s"
 				}
 			}
 		},

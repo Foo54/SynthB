@@ -55,7 +55,7 @@ When implementing crossmod songs, make sure the following standards are met:
 		}
 	}
 	```
-	This information can be displayed by running `SynthB.song_info(info_queue, "song_key")` in the cards `loc_vars`
+	This information can be displayed by running `SynthB.song_info(info_queue, card, "song_key")` in the cards `loc_vars`
 - `descriptions.Joker.key.name` entry in the following format
 	```lua
 	name = {

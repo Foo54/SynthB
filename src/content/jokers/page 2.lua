@@ -25,7 +25,7 @@ SynthB.Joker{
 	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.heat_info(info_queue)
-		SynthB.song_info(info_queue, "fire_dance")
+		SynthB.song_info(info_queue, card, "fire_dance")
 		return {vars = {
 			card.ability.extra.initial_loss,
 			card.ability.extra.gain,
@@ -128,7 +128,7 @@ SynthB.Joker{
 	rarity = 2,
 	cost = 5,
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "king")
+		SynthB.song_info(info_queue, card, "king")
 	end,
 	blueprint_compat = true,
 	eternal_compat = true,
@@ -171,7 +171,7 @@ SynthB.Joker{
 	rarity = 2,
 	cost = 6,
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "birdbrain")
+		SynthB.song_info(info_queue, card, "birdbrain")
 	end,
 	blueprint_compat = false,
 	perishable_compat = true,
@@ -192,7 +192,7 @@ SynthB.Joker{
 	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS.m_stone
-		SynthB.song_info(info_queue, "brainrot")
+		SynthB.song_info(info_queue, card, "brainrot")
 	end,
 	calculate = function(self, card, context)
 		if context.remove_playing_cards then
@@ -247,7 +247,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"food", "scaling", "chips", "song", "vocaloid song", "Jamie Paige", "Miku"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "shrimp_fried_rice")
+		SynthB.song_info(info_queue, card, "shrimp_fried_rice")
 		return {vars = {card.ability.extra.chips, -card.ability.extra.loss}}
 	end,
 	calculate = function(self, card, context)
@@ -324,7 +324,7 @@ SynthB.Joker{
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot1]
 		info_queue[#info_queue+1] = G.P_CENTERS[card.ability.immutable.tarot2]
-		SynthB.song_info(info_queue, "disclose_flick")
+		SynthB.song_info(info_queue, card, "disclose_flick")
 		return {vars = {
 			card.ability.extra.chips_scale,
 			localize{type = "name_text", set = "Tarot", key = card.ability.immutable.tarot1},
@@ -414,7 +414,7 @@ SynthB.Joker{
 	eternal_compat = true,
 	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "copycat")
+		SynthB.song_info(info_queue, card, "copycat")
 		return {vars = {localize(card.ability.immutable.suit, "suits_singular")}}
 	end,
 	calculate = function(self, card, context)
@@ -559,7 +559,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"mult", "scaling", "song", "vocaloid song", "KAFU", "Iyowa"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "kyu_kurarin")
+		SynthB.song_info(info_queue, card, "kyu_kurarin")
 		return {vars = {card.ability.extra.scaling, card.ability.extra.chips}}
 	end,
 	calculate = function(self, card, context)
@@ -623,7 +623,7 @@ SynthB.Joker{
 		}
 	},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "medicine")
+		SynthB.song_info(info_queue, card, "medicine")
 		return {vars = {card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)
@@ -695,7 +695,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"xmult", "queen", "rank", "song", "vocaloid song", "Miku", "Treb", "aleon", "Nocticola"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "internet_is_mine")
+		SynthB.song_info(info_queue, card, "internet_is_mine")
 		return {vars = {card.ability.extra.xmult}}
 	end,
 	calculate = function(self, card, context)
@@ -763,7 +763,7 @@ SynthB.Joker{
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS.m_steel
 		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
-		SynthB.song_info(info_queue, "glass_girl")
+		SynthB.song_info(info_queue, card, "glass_girl")
 	end,
 	calculate = function(self, card, context)
 		if context.forcetrigger then
@@ -823,7 +823,7 @@ SynthB.Joker{
 	demicolon_compat = false,
 	attributes = {"hands", "song", "vocaloid song", "Deco*27", "Miku"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "monitoring")
+		SynthB.song_info(info_queue, card, "monitoring")
 	end,
 	calculate = function(self, card, context)
 		if context.before and not context.blueprint then
@@ -882,7 +882,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"destroy_card", "hands", "scaling", "chips", "mult", "song", "vocaloid song", "IA", "kemu"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "six_trillion")
+		SynthB.song_info(info_queue, card, "six_trillion")
 		return {vars = {card.ability.extra.chips, card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)
@@ -935,7 +935,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"chips", "song", "vocaloid song", "Miku", "Anamanaguchi"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "miku")
+		SynthB.song_info(info_queue, card, "miku")
 		return {vars = {card.ability.extra.chips}}
 	end,
 	calculate = function(self, card, context)
@@ -979,7 +979,7 @@ SynthB.Joker{
 	demicolon_compat = true,
 	attributes = {"chance", "hands", "song", "vocaloid song", "Miku", "GUMI", "Hachi"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "matryoshka")
+		SynthB.song_info(info_queue, card, "matryoshka")
 		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_matryoshka")
 		num = math.min(num, dem - 1)
 		return {vars = {num, dem, card.ability.extra.gain}}

@@ -24,7 +24,7 @@ SynthB.Joker{
 	demicolon_compat = false,
 	attributes = {"suit", "hearts", "destroy_card", "song", "vocaloid song", "MEIKO", "Tonbi"},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "smokey_love")
+		SynthB.song_info(info_queue, card, "smokey_love")
 	end,
 	calculate = function(self, card, context)
 		if context.destroying_card and not context.blueprint then

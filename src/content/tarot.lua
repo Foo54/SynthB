@@ -8,7 +8,7 @@ SMODS.Consumable{
 	synthb_count = 0,
 	synthb_timer = 0,
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "approve_please_genie")
+		SynthB.song_info(info_queue, card, "approve_please_genie")
 		return {vars = {elements = {
 			{n = G.UIT.C, config = {align = "m", colour = G.GAME.synthb_last_used_consumable_type and SMODS.ConsumableTypes[G.GAME.synthb_last_used_consumable_type].secondary_colour or G.C.UI.TEXT_INACTIVE, r = 0.05, padding = 0.1 }, nodes = {
 				{ n = G.UIT.T, config = { text = G.GAME.synthb_last_used_consumable_type and localize("k_" .. G.GAME.synthb_last_used_consumable_type:lower()) or "None", colour = G.C.UI.TEXT_LIGHT, scale = 0.3, shadow = true } },
@@ -34,4 +34,20 @@ SMODS.Consumable{
 		}))
 		delay(0.6)
 	end
+}
+
+-- empurple tarot I don't know what to call this
+SMODS.Tarot{
+	key = "tarot_empurple",
+	atlas = "placeholder",
+	pos = {x = 0, y = 1},
+	synthb_song = "song_synthb_approve_please_genie",
+	synthb_count = 0,
+	synthb_timer = 0,
+	config = {max_highlighted = 2, mod_conv = 'm_synthb_purple'},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, card, "empurple")
+		info_queue[#info_queue+1] = G.P_CENTERS.m_synthb_purple
+		return {vars = {card.ability.max_highlighted, localize{type = "name_text", set = "Enhanced", key = card.ability.mod_conv}}}
+	end,
 }

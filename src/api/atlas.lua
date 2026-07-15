@@ -140,3 +140,10 @@ SMODS.Atlas{
 	px = 518,
 	py = 88
 }
+
+SMODS.Atlas{
+	key = "enhancements",
+	path = "enhancements.png",
+	px = 71,
+	py = 95
+}

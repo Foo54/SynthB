@@ -48,7 +48,7 @@ SMODS.Consumable{
 	synthb_count = 0,
 	synthb_timer = 0,
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, "approve_please_genie")
+		SynthB.song_info(info_queue, card, "approve_please_genie")
 	end,
 	can_use = function (self, card)
 		return #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit

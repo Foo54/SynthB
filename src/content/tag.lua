@@ -19,7 +19,7 @@ SMODS.Tag{
 		}
 	},
 	loc_vars = function(self, info_queue, tag)
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 		return {vars = {tag.config.extra.cards}}
 	end,
 	on_obtain = function(self, tag)
@@ -44,7 +44,7 @@ SMODS.Tag{
 	pos = {x = 1, y = 0},
 	loc_vars = function(self, info_queue, tag)
 		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 	end,
 	apply = function (self, tag, context)
 		if context.type == "synthb_before_hand" then
@@ -74,7 +74,7 @@ SMODS.Tag{
 	},
 	loc_vars = function(self, info_queue, tag)
 		info_queue[#info_queue+1] = G.P_CENTERS.j_gros_michel
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 		local num, dem = SMODS.get_probability_vars(tag, tag.config.extra.num, tag.config.extra.dem, "synthb_burnout_banana")
 		return {vars = {num, dem}}
 	end,
@@ -107,7 +107,7 @@ SMODS.Tag{
 		}
 	},
 	loc_vars = function (self, info_queue, tag)
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 		return {vars = {tag.ability.score or tag.config.extra.score, tag.ability.active and "Active!" or "Inactive"}}
 	end,
 	set_ability = function (self, tag)
@@ -153,7 +153,7 @@ SMODS.Tag{
 		discards = 0
 	},
 	loc_vars = function(self, info_queue, tag)
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 		return {vars = {tag.ability.rounds or tag.config.rounds, (tag.ability.rounds or tag.config.rounds) > 1 and "s" or "", tag.ability.discards or tag.config.discards}}
 	end,
 	set_ability = function (self, tag)
@@ -195,7 +195,7 @@ SMODS.Tag{
 		debt = 10
 	},
 	loc_vars = function (self, info_queue, tag)
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 		return {vars = {tag.ability.debt or tag.config.debt}}
 	end,
 	set_ability = function (self, tag)
@@ -228,7 +228,7 @@ SMODS.Tag{
 		cards = 3
 	},
 	loc_vars = function (self, info_queue, tag)
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 		return {vars = {tag.config.cards}}
 	end,
 	apply = function (self, tag, context)
@@ -259,7 +259,7 @@ SMODS.Tag{
 	atlas = "tags",
 	pos = {x = 3, y = 1},
 	loc_vars = function (self, info_queue, tag)
-		SynthB.song_info(info_queue, "brain_implosion_energy")
+		SynthB.song_info(info_queue, tag, "brain_implosion_energy")
 	end,
 	apply = function (self, tag, context)
 		if context.type == "synthb_setting_blind" and context.blind.boss then
