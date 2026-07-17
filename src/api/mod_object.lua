@@ -1,3 +1,64 @@
+
+local function create_toggle_backwards(args)
+  args = args or {}
+  args.active_colour = args.active_colour or G.C.RED
+  args.inactive_colour = args.inactive_colour or G.C.BLACK
+  args.w = args.w or 3
+  args.h = args.h or 0.5
+  args.scale = args.scale or 1
+  args.label = args.label or 'TEST?'
+  args.label_scale = args.label_scale or 0.4
+  args.ref_table = args.ref_table or {}
+  args.ref_value = args.ref_value or 'test'
+
+  local check = Sprite(0,0,0.5*args.scale,0.5*args.scale,G.ASSET_ATLAS["icons"], {x=1, y=0})
+  check.states.drag.can = false
+  check.states.visible = false
+
+  local info = nil
+  if args.info then 
+    info = {}
+    for k, v in ipairs(args.info) do 
+      table.insert(info, {n=G.UIT.R, config={align = "cm", minh = 0.05}, nodes={
+        {n=G.UIT.T, config={text = v, scale = 0.25, colour = G.C.UI.TEXT_LIGHT}}
+      }})
+    end
+    info =  {n=G.UIT.R, config={align = "cm", minh = 0.05}, nodes=info}
+  end
+
+  local t = 
+        {n=args.col and G.UIT.C or G.UIT.R, config={align = "cm", padding = 0.1, r = 0.1, colour = G.C.CLEAR, focus_args = {funnel_from = true}}, nodes={
+          {n=G.UIT.C, config={align = "cl", minw = 0.4*args.scale + 0.1}, nodes={
+            {n=G.UIT.C, config={align = "cm", r = 0.1, colour = G.C.BLACK}, nodes={
+              {n=G.UIT.C, config={align = "cm", r = 0.1, padding = 0.03, minw = 0.4*args.scale, minh = 0.4*args.scale, outline_colour = G.C.WHITE, outline = 1.2*args.scale, line_emboss = 0.5*args.scale, ref_table = args,
+                  colour = args.inactive_colour,
+                  button = 'toggle_button', button_dist = 0.2, hover = true, toggle_callback = args.callback, func = 'toggle', focus_args = {funnel_to = true}}, nodes={
+                  {n=G.UIT.O, config={object = check}
+								},
+              }},
+            }}
+          }},
+          {n=G.UIT.C, config={align = "cl", minw = args.w}, nodes={
+						{n = G.UIT.B, config = {w = 0.1, h = 0.1}},
+            {n=G.UIT.T, config={text = args.label, scale = args.label_scale, colour = G.C.UI.TEXT_LIGHT}},
+          }},
+        }}
+   if args.hide_label then 
+       local t2 = {}
+       for i = 1, #t.nodes do
+           if i ~= 1 then table.insert(t2, t.nodes[i]) end
+       end
+       t.nodes = t2
+   end
+   if args.info then 
+     t = {n=args.col and G.UIT.C or G.UIT.R, config={align = "cm"}, nodes={
+       t,
+       info,
+     }}
+   end
+  return t
+end
+
 ---@diagnostic disable: duplicate-set-field
 function SynthB.mod.config_tab()
 	return {n = G.UIT.ROOT, config = { r = 0.1, minw = 8, align = "tm", padding = 0.2, colour = G.C.BLACK }, nodes = {
@@ -5,89 +66,93 @@ function SynthB.mod.config_tab()
 			{n = G.UIT.C, config = { align = "cr" }, nodes = {
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
-						label = "Enable Misc Info",
+						label = "Enable All Info Toggles",
 						ref_table = SynthB.mod.config,
+						scale = 1.25,
+						label_scale = 0.6,
 						ref_value = 'display_misc_info'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cm", padding = 0.01 }, nodes = {
-					{n = G.UIT.T, config = {text = "- OR -", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
-				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
-						label = "Enable Song Info",
+						label = "Display Song Info",
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_song_info'
 					})
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
-						label = "Display Temperature Information",
+						label = "Display Temperature Info",
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_heat_info'
 					})
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
-						label = "Display Energy Drink Information",
+						label = "Display Energy Drink Info",
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_energy_drink_info'
 					})
 				}},
 				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
 					create_toggle({
-						label = "Display Blackjack Rules",
+						label = "Display Blackjack Info",
 						ref_table = SynthB.mod.config,
 						ref_value = 'display_blackjack_info'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cm", padding = 0.01 }, nodes = {
-					{n = G.UIT.T, config = {text = "- - - - - - - - - -", scale = 0.4, colour = G.C.UI.TEXT_LIGHT}}
-				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
-					create_toggle({
+			}},
+			{n = G.UIT.C, config = { align = "cl", r = 0.1, colour = G.C.UI.TRANSPARENT_LIGHT}, nodes = {
+				{n = G.UIT.B, config = {w = 0.1, h = 0.1}}
+			}},
+			{n = G.UIT.C, config = { align = "cl",}, nodes = {
+				{n=G.UIT.B, config={w = 0.1, h = 0.1}},
+			}},
+			{n = G.UIT.C, config = { align = "cl" }, nodes = {
+				{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+					create_toggle_backwards({
 						label = "Triple Click to View Song",
 						ref_table = SynthB.mod.config,
 						ref_value = 'triple_click_for_song'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
-					create_toggle({
+				{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+					create_toggle_backwards({
 						label = "Disable Non-Scoring Character Animations",
 						ref_table = SynthB.mod.config,
 						ref_value = 'disable_non_scoring_character_animations'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
-					create_toggle({
+				{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+					create_toggle_backwards({
 						label = "Allow Covers on Any Card",
 						ref_table = SynthB.mod.config,
 						ref_value = 'allow_covers_on_any_card'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
-					create_toggle({
+				{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+					create_toggle_backwards({
 						label = "Debug Mode",
 						ref_table = SynthB.mod.config,
 						ref_value = 'DEBUG'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
-					create_toggle({
+				{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+					create_toggle_backwards({
 						label = "Give Mizuki Zoomies",
 						ref_table = SynthB.mod.config,
 						ref_value = 'mizuki_zoomies'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
-					create_toggle({
-						label = "Enabled Experimental Features (requires restart)",
+				{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+					create_toggle_backwards({
+						label = "Enable Experimental Features*",
 						ref_table = SynthB.mod.config,
 						ref_value = 'experimental_features'
 					})
 				}},
-				{n = G.UIT.R, config = { align = "cr", padding = 0.01 }, nodes = {
-					create_toggle({
+				{n = G.UIT.R, config = { align = "cl", padding = 0.01 }, nodes = {
+					create_toggle_backwards({
 						label = "Disable Deltarune Spoilers",
 						ref_table = SynthB.mod.config.spoilers,
 						ref_value = 'deltarune'
@@ -95,6 +160,12 @@ function SynthB.mod.config_tab()
 				}}
 				
 			}}
+		}},
+		{n = G.UIT.R, config = {colour = G.C.UI.TRANSPARENT_LIGHT, r = 0.1}, nodes = {
+			{n = G.UIT.B, config = {w = 0.1, h = 0.1}}
+		}},
+		{n = G.UIT.R, config = {align = "cm"}, nodes = {
+			{n = G.UIT.T, config = {scale = 0.4, colour = G.C.UI.TEXT_LIGHT, text = "* Requires Restart"}}
 		}}
 	}}
 end
