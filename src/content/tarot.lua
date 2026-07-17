@@ -2,6 +2,9 @@
 SMODS.Consumable{
 	key = "tarot_treasure_hunter",
 	atlas = "tarot",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 0, y = 0},
 	set = "Tarot",
 	synthb_song = "song_synthb_approve_please_genie",

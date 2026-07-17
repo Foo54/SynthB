@@ -43,6 +43,9 @@ SMODS.Consumable{
 	key = "spectral_wish",
 	atlas = "spectral",
 	pos = {x = 0, y = 0},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	set = "Spectral",
 	synthb_song = "song_synthb_approve_please_genie",
 	synthb_count = 0,

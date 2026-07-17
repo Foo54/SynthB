@@ -5,6 +5,9 @@ SMODS.Enhancement{
 		score = 100,
 		xscore = 1.5
 	},
+	synthb_credits = {
+		["Enhancement Artist"] = "Foo54"
+	},
 	synthb_song = "song_synthb_empurple",
 	synthb_count = 0,
 	synthb_timer = 0,
