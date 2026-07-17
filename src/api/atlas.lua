@@ -116,8 +116,8 @@ SMODS.Atlas{
 SMODS.Atlas{
 	key = "credits_foo54",
 	path = "credits/foo/teto.png",
-	px = 71,
-	py = 95
+	px = 60,
+	py = 80
 }
 
 SMODS.Atlas{
