@@ -147,3 +147,17 @@ SMODS.Atlas{
 	px = 71,
 	py = 95
 }
+
+SMODS.Atlas{
+	key = "tarot",
+	path = "tarot.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas{
+	key = "spectral",
+	path = "spectral.png",
+	px = 71,
+	py = 95
+}

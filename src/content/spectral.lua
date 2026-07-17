@@ -41,8 +41,8 @@ SMODS.Consumable{
 -- Wish
 SMODS.Consumable{
 	key = "spectral_wish",
-	atlas = "placeholder",
-	pos = {x = 1, y = 1},
+	atlas = "spectral",
+	pos = {x = 0, y = 0},
 	set = "Spectral",
 	synthb_song = "song_synthb_approve_please_genie",
 	synthb_count = 0,

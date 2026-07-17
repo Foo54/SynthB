@@ -1,8 +1,8 @@
 -- the treasure hunter
 SMODS.Consumable{
 	key = "tarot_treasure_hunter",
-	atlas = "placeholder",
-	pos = {x = 0, y = 1},
+	atlas = "tarot",
+	pos = {x = 0, y = 0},
 	set = "Tarot",
 	synthb_song = "song_synthb_approve_please_genie",
 	synthb_count = 0,
