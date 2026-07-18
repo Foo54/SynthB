@@ -63,3 +63,14 @@ SMODS.Shader({
 		}
 	end
 })
+
+SMODS.Shader{
+	key = "streetcat",
+	path = "streetcat.fs",
+	send_vars = function(sprite, card)
+		return {
+---@diagnostic disable-next-line: undefined-field
+			color = card and card.synthb_colour or {0, 0, 0, 1}
+		}
+	end
+}

@@ -1137,3 +1137,33 @@ SynthB.Joker{
 	end,
 }
 
+local streetcat_colours = {
+	HEX("BCA4CC"),
+	HEX("F8B37A"),
+	HEX("724DA3"),
+	HEX("FD5F66"),
+	HEX("FFE669"),
+	HEX("57B46C"),
+	HEX("000000"),
+}
+local streetcat_max = 3
+
+-- Streetcat
+SynthB.Joker{
+	key = "streetcat",
+	atlas = "streetcat",
+	attributes = {"song", "vocaloid song", "Flavor Foley", "Iroha"},
+	update = function (self, card, dt)
+		card.synthb_colour_timer = (card.synthb_colour_timer or 0) + G.TIMERS.REAL - (card.synthb_last_timer or 0)
+		card.synthb_last_timer = G.TIMERS.REAL
+		if card.synthb_colour_timer > 0.66 then
+			card.synthb_colour_timer = 0
+			card.synthb_colour = pseudorandom_element(streetcat_colours, "synthb_streetcat_colour")
+			local x = card.children.center.sprite_pos.x
+			while x == card.children.center.sprite_pos.x do
+				x = pseudorandom("synthb_streetcat_image", 0, streetcat_max)
+			end
+			card.children.center:set_sprite_pos({x = x, y = self.pos.y})
+		end
+	end
+}

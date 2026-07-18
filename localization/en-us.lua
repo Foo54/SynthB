@@ -687,6 +687,13 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}引っくり返す"
 				}
 			},
+			j_synthb_streetcat = {
+				name = "Streetcat",
+				text = {
+					"\"I HAVE NO IDEA\"",
+					"- Medic, TF2"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1460,6 +1467,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			streetcat = {
+				text = {
+					"{C:attention}Title:",
+					"Streetcat",
+					"{C:attention}Producer:",
+					"Flavor Foley",
+					"{C:attention}Voice:",
+					"{f:5}猫村いろは",
+					"{C:inactive,s:0.8}Nekomura Iroha"
 				}
 			},
 		},

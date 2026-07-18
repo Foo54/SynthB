@@ -161,3 +161,10 @@ SMODS.Atlas{
 	px = 71,
 	py = 95
 }
+
+SMODS.Atlas{
+	key = "streetcat",
+	path = "streetcat.png",
+	px = 71,
+	py = 95,
+}
