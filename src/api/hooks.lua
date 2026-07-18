@@ -315,6 +315,52 @@ function Game:main_menu(...)
 			break
 		end
 	end
+	local version_box = UIBox({
+		definition = {
+			n = G.UIT.ROOT,
+			config = {
+				align = "cm",
+				colour = G.C.UI.TRANSPARENT_DARK
+			},
+			nodes = {
+				{
+					n = G.UIT.T,
+					config = {
+						scale = 0.3,
+						text = "SynthB v" .. SynthB.mod.version,
+						colour = G.C.UI.TEXT_LIGHT
+					}
+				}
+			}
+		},
+		config = {
+			align = "tri",
+			bond = "Weak",
+			offset = {
+				x = 0,
+				y = 0.6
+			},
+			major = G.ROOM_ATTACH
+		}
+	})
+	G.E_MANAGER:add_event(Event{
+		func = function()
+			local i = 1
+			while i <= #G.I.UIBOX do
+				local box = G.I.UIBOX[i]
+				if box ~= version_box then
+					print(i)
+					local config = box.config
+					if config.align == "tri" and config.bond == "Weak" and box.alignment.offset.x == 0 and math.abs(box.alignment.offset.y - version_box.alignment.offset.y) < 0.0001 and config.major == G.ROOM_ATTACH then
+						version_box.alignment.offset.y = version_box.alignment.offset.y + 0.3
+						i = 0
+					end
+				end
+				i = i + 1
+			end
+			return true
+		end
+	})
 	return ret
 end
 

@@ -37,7 +37,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 		number maskColor = texture2D(mask, uv).a;
 		
 		vec4 outcolor = vec4(0.851, 0.255, 0.412, 1);
-		outcolor += vec4(0.951, 0.355, 0.512, 1) * step(1, maskColor);
+		outcolor += vec4(0.901, 0.305, 0.462, 1) * step(1, maskColor);
 
     return outcolor;
 }
