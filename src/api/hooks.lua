@@ -349,7 +349,6 @@ function Game:main_menu(...)
 			while i <= #G.I.UIBOX do
 				local box = G.I.UIBOX[i]
 				if box ~= version_box then
-					print(i)
 					local config = box.config
 					if config.align == "tri" and config.bond == "Weak" and box.alignment.offset.x == 0 and math.abs(box.alignment.offset.y - version_box.alignment.offset.y) < 0.0001 and config.major == G.ROOM_ATTACH then
 						version_box.alignment.offset.y = version_box.alignment.offset.y + 0.3

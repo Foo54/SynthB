@@ -73,8 +73,11 @@ if SynthB.mod.config.experimental_features then
 	-- Training
 	SMODS.Consumable{
 		key = "spectral_training",
-		atlas = "placeholder",
-		pos = {x = 1, y = 1},
+		atlas = "spectral",
+		pos = {x = 2, y = 0},
+		synthb_credits = {
+			Artist = "Foo54"
+		},
 		set = "Spectral",
 		can_use = function (self, card)
 			return #G.synthb_character_area.highlighted == 1 and not G.synthb_character_area.highlighted[1].ability.immutable.level
