@@ -1,8 +1,11 @@
 -- Voicebank
 SMODS.Consumable{
 	key = "spectral_voicebank",
-	atlas = "placeholder",
-	pos = {x = 1, y = 1},
+	atlas = "spectral",
+	pos = {x = 1, y = 0},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	set = "Spectral",
 	config = { extra = { seal = 'synthb_utau' }, max_highlighted = 1 },
 	loc_vars = function(self, info_queue, card)
