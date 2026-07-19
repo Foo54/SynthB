@@ -840,7 +840,7 @@ SynthB.Joker{
 				trigger = 'after',
 				delay = 0.1,
 				func = function()
-					G.hand.highlighted[i]:set_ability("e_glass")
+					G.hand.highlighted[i]:set_ability("m_glass")
 					return true
 				end
 			}))
