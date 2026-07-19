@@ -1694,6 +1694,33 @@ local descriptions = {
 					"This card cannot score"
 				}
 			},
+			synthb_safe = {
+				name = "Undebuffable",
+				text = {
+					"This card cannot",
+					"be debuffed"
+				}
+			},
+			synthb_not_safe = {
+				name = "Locked Out",
+				text = {
+					"This card is",
+					"always debuffed"
+				}
+			},
+			synthb_unsellable = {
+				name = "Unsellable",
+				text = {
+					"This card cannot be sold"
+				}
+			},
+			synthb_pinned_right = {
+				name = "Pinned Right",
+				text = {
+					"This card is always",
+					"in the rightmost slot"
+				}
+			},
 			synthb_linked = {
 				name = "Linked",
 				text = {
@@ -1877,55 +1904,68 @@ local descriptions = {
 			c_synthb_sign_keep_out = {
 				name = "Keep Out",
 				text = {
-					"meow"
+					"{C:attention}#1#{} selected card cannot",
+					"be debuffed.",
+					"{C:attention}#2#{} other random cards",
+					"are {C:red}permanently debuffed"
 				}
 			},
 			c_synthb_sign_no_parking = {
 				name = "No Parking",
 				text = {
-					"mew"
+					"{C:red}+#1#{} discards",
+					"Blinds give {C:money}$#2#{} less"
 				}
 			},
 			c_synthb_sign_no_loitering = {
 				name = "No Loitering",
 				text = {
-					"mrrrp"
+					"{C:attention}+#1#{} shop slot",
+					"{C:red}-#1#{} consumable slot"
 				}
 			},
 			c_synthb_sign_fragile = {
 				name = "Fragile",
 				text = {
-					"mroww"
+					"Enhance {C:attention}#1#{} selected cards",
+					"into {C:attention}#2#s{} with",
+					"{X:mult,C:white}X3{} Mult but a",
+					"garuenteed {C:green}chance{} to break"
 				}
 			},
 			c_synthb_sign_caution = {
 				name = "Caution",
 				text = {
-					"nya"
+					"Create {C:attention}#1# eternal{} consumables",
+					"{C:inactive}[Can overflow]"
 				}
 			},
 			c_synthb_sign_slow = {
 				name = "Slow",
 				text = {
-					":3"
+					"{X:blue,C:white}X#1#{} hands",
+					"{X:attention,C:white}X#2#{} blindsize"
 				}
 			},
 			c_synthb_sign_keep_right = {
 				name = "Keep Right",
 				text = {
-					"purr"
+					"A random Joker becomes",
+					"{C:dark_edition}polychrome{}, {C:attention}eternal{},",
+					"and is {C:attention}pinned{} to the right"
 				}
 			},
 			c_synthb_sign_exit = {
 				name = "Exit",
 				text = {
-					"neko"
+					"{C:attention}Win{} non-finisher blind"
 				}
 			},
 			c_synthb_sign_no_entry = {
 				name = "No Entry",
 				text = {
-					"mreow"
+					"{C:red}-#1#{} Joker slots",
+					"{C:blue}+#2#{} card selection limit"
 				}
 			}
 		},
@@ -2357,6 +2397,10 @@ local descriptions = {
 			synthb_cover_kaito = "KAITO Cover",
 			synthb_cover_meiko = "MEIKO Cover",
 			synthb_fake = "Fake Card",
+			synthb_pinned_right = "Pinned Right",
+			synthb_safe = "Undebuffable",
+			synthb_not_safe = "Locked Out",
+			synthb_unsellable = "Unsellable",
 			synthb_linked = "Linked",
 			tuning = "Tuning",
 			synthb_utau_seal = "UTAU Seal",

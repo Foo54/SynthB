@@ -322,6 +322,7 @@ function SynthB.mod.reset_game_globals(run_start)
 		G.GAME.synthb_temp = 0
 		G.GAME.synthb_linked_id = 0
 		G.GAME.synthb_character_rate = 0
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit + 1
 	end
 	if SynthB.mod.config.experimental_features then
 		_, G.GAME.synthb_current_banner_key = pseudorandom_element(SynthB.banners, "synthb_round_banner")

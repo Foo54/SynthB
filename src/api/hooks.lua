@@ -391,6 +391,9 @@ end
 
 local card_can_sell_card_ref = Card.can_sell_card
 function Card:can_sell_card()
+	if self.ability.synthb_unsellable then
+		return false
+	end
 	if (G.SETTINGS.tutorial_complete or G.GAME.pseudorandom.seed ~= 'TUTORIAL' or G.GAME.round_resets.ante > 1) and self.area and self.area.config.type == "characters" then
 		return true
 	end

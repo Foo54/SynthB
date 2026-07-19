@@ -7,6 +7,7 @@ SMODS.Sticker{
 	never_scores = true
 }
 
+
 SMODS.Sticker{
 	key = "linked",
 	--atlas = "stickers",
@@ -39,4 +40,45 @@ SMODS.Sticker{
 			end
 		end
 	end
+}
+
+SMODS.Sticker{
+	key = "pinned_right",
+	--atlas = "stickers",
+	pos = {x = 0, y = 1},
+	badge_colour = HEX("E13FAB"),
+	rate = 0,
+}
+
+SMODS.Sticker{
+	key = "safe",
+	--atlas = "stickers",
+	pos = {x = 0, y = 3},
+	badge_colour = HEX("DAE48B"),
+	rate = 0,
+	calculate = function(self, card, context)
+		if context.debuff_card and context.debuff_card == card then
+			if card.ability.synthb_not_safe then
+				card:remove_sticker("synthb_not_safe")
+			end
+			return {
+				prevent_debuff = true
+			}
+		end
+	end,
+}
+
+SMODS.Sticker{
+	key = "not_safe",
+	--atlas = "stickers",
+	pos = {x = 0, y = 3},
+	badge_colour = HEX("DAE48B"),
+	rate = 0,
+	calculate = function(self, card, context)
+		if context.debuff_card and context.debuff_card == card then
+			return {
+				debuff = true
+			}
+		end
+	end,
 }
