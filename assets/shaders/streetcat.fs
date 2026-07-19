@@ -61,6 +61,7 @@ vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv)
 }
 
 #define PI 3.14
+#define SPEED_FACTOR 80
 
 // This is what actually changes the look of card
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
@@ -68,7 +69,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 	vec4 tex = Texel( texture, texture_coords);
 	vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba)/texture_details.ba;
 	if (tex.a > 0 && tex.r < 0.01 && tex.b < 0.01 && tex.g < 0.01) {
-        if ((_time - changed_at) * 8 > uv.x + uv.y - 0.1 * sin((uv.x) * 4 * PI + _time * 80) + 0.01 * sin(uv.y * 16 * PI + _time * 160)) {
+        if ((_time - changed_at) / 10 * SPEED_FACTOR > uv.x + uv.y - 0.1 * sin((uv.x) * 4 * PI + _time * SPEED_FACTOR ) + 0.01 * sin(uv.y * 16 * PI + _time * 20 * SPEED_FACTOR)) {
 		    tex.rgb = color.rgb;
         } else {
             tex.rgb = old_color.rgb;
