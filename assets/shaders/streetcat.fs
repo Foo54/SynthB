@@ -7,6 +7,9 @@
 // Look ionized.fs for explanation
 extern PRECISION vec2 streetcat;
 extern PRECISION vec4 color;
+extern PRECISION vec4 old_color;
+extern PRECISION number changed_at;
+extern PRECISION number _time;
 
 extern PRECISION number dissolve;
 extern PRECISION number time;
@@ -16,6 +19,7 @@ extern PRECISION vec4 texture_details;
 extern PRECISION vec2 image_details;
 extern bool shadow;
 extern PRECISION vec4 burn_colour_1;
+
 extern PRECISION vec4 burn_colour_2;
 
 vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv)
@@ -56,13 +60,19 @@ vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv)
     return vec4(shadow ? vec3(0.,0.,0.) : tex.xyz, res > adjusted_dissolve ? (shadow ? tex.a*0.3: tex.a) : .0);
 }
 
+#define PI 3.14
+
 // This is what actually changes the look of card
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
 {
 	vec4 tex = Texel( texture, texture_coords);
 	vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba)/texture_details.ba;
 	if (tex.a > 0 && tex.r < 0.01 && tex.b < 0.01 && tex.g < 0.01) {
-		tex.rgb = color.rgb;
+        if ((_time - changed_at) * 8 > uv.x + uv.y - 0.1 * sin((uv.x) * 4 * PI + _time * 80) + 0.01 * sin(uv.y * 16 * PI + _time * 160)) {
+		    tex.rgb = color.rgb;
+        } else {
+            tex.rgb = old_color.rgb;
+        }
 		if (streetcat.x == streetcat.x * 2) {
 			tex.a = 0;
 		}

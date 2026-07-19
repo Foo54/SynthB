@@ -70,7 +70,12 @@ SMODS.Shader{
 	send_vars = function(sprite, card)
 		return {
 ---@diagnostic disable-next-line: undefined-field
-			color = card and card.synthb_colour or {0, 0, 0, 1}
+			color = card and card.synthb_colour or {0, 0, 0, 1},
+---@diagnostic disable-next-line: undefined-field
+			old_color = card and card.synthb_old_colour,
+---@diagnostic disable-next-line: undefined-field
+			changed_at = card and card.synthb_changed_at,
+			_time = G.TIMERS.REAL
 		}
 	end
 }

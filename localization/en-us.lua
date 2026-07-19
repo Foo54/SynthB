@@ -687,13 +687,6 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}引っくり返す"
 				}
 			},
-			j_synthb_streetcat = {
-				name = "Streetcat",
-				text = {
-					"\"I HAVE NO IDEA\"",
-					"- Medic, TF2"
-				}
-			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1685,6 +1678,13 @@ local descriptions = {
 				name = {"{f:5}エンパープル", "{s:0.7}Empurple"},
 				text = {}
 			},
+			song_synthb_streetcat = {
+				name = "streetcat",
+				text = {
+					"\"I HAVE NO IDEA\"",
+					"- Medic, TF2"
+				}
+			},
 			song_synthb_pink = {
 				name = "Cutie Mew Mew Magic"
 			},
@@ -1775,6 +1775,15 @@ local descriptions = {
 					"learn what it does"
 				}
 			},
+			undiscovered_synthb_sign = {
+				name = "Not Discovered",
+				text={
+					"Purchase or use",
+					"this sign in an",
+					"unseeded run to",
+					"learn what it does"
+				}
+			},
 			synthb_utau_seal = {
 				name = "UTAU Seal",
 				text = {
@@ -1861,6 +1870,62 @@ local descriptions = {
 					"Pulls a random",
 					"{C:attention}Wonderlands x Showtime{}",
 					"character for {C:money}$10"
+				}
+			}
+		},
+		synthb_Sign = {
+			c_synthb_sign_keep_out = {
+				name = "Keep Out",
+				text = {
+					"meow"
+				}
+			},
+			c_synthb_sign_no_parking = {
+				name = "No Parking",
+				text = {
+					"mew"
+				}
+			},
+			c_synthb_sign_no_loitering = {
+				name = "No Loitering",
+				text = {
+					"mrrrp"
+				}
+			},
+			c_synthb_sign_fragile = {
+				name = "Fragile",
+				text = {
+					"mroww"
+				}
+			},
+			c_synthb_sign_caution = {
+				name = "Caution",
+				text = {
+					"nya"
+				}
+			},
+			c_synthb_sign_slow = {
+				name = "Slow",
+				text = {
+					":3"
+				}
+			},
+			c_synthb_sign_keep_right = {
+				name = "Keep Right",
+				text = {
+					"purr"
+				}
+			},
+			c_synthb_sign_exit = {
+				name = "Exit",
+				text = {
+					"neko"
+				}
+			},
+			c_synthb_sign_no_entry = {
+				name = "No Entry",
+				text = {
+					"mreow"
 				}
 			}
 		},
@@ -2258,6 +2323,9 @@ local descriptions = {
 			k_tuning = "Tuning",
 			b_tuning_cards = "Tuning Cards",
 			k_synthb_plus_tuning = "+1 Tuning Card",
+			k_synthb_sign = "Sign",
+			b_synthb_sign_cards = "Signs",
+			k_synthb_sign_plus_tuning = "+1 Sign",
 			k_mistuning = "ingTun",
 			b_mistuning_cards = "ing CardsTun",
 			k_synthb_plus_mistuning = "ing Card+1 Tun",

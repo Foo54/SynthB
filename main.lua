@@ -37,6 +37,16 @@ SynthB.custom_colors = {
 		TRITIP = HEX("E95C5C"),
 		DURIAN = HEX("0F7917")
 	},
+	SIGN = HEX("BCA4CC"),
+	streetcat_colours = {
+		HEX("BCA4CC"),
+		HEX("F8B37A"),
+		HEX("724DA3"),
+		HEX("FD5F66"),
+		HEX("FFE669"),
+		HEX("57B46C"),
+		HEX("000000"),
+	},
 	CHARACTER = HEX("EE5F93"),
 	credits = {
 		foo = {
@@ -157,6 +167,7 @@ SynthB.load_file("content/tuning/page 1")
 SynthB.load_file("content/enhancement")
 SynthB.load_file("content/spectral")
 SynthB.load_file("content/tarot")
+SynthB.load_file("content/sign")
 SynthB.load_file("content/edition")
 --SynthB.load_file("content/back")
 SynthB.load_file("content/seal")

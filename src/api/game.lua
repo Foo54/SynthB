@@ -1,6 +1,7 @@
 loc_colour("red")
 G.ARGS.LOC_COLOURS.temperature = G.C.ORANGE
 G.ARGS.LOC_COLOURS.synthb_tuning = SynthB.custom_colors.TUNING
+G.ARGS.LOC_COLOURS.synthb_sign = SynthB.custom_colors.SIGN
 G.ARGS.LOC_COLOURS.synthb_tuning_dark = SynthB.custom_colors.TUNING_DARK
 G.ARGS.LOC_COLOURS.garfields_thanksgiving = SynthB.custom_colors.TETO
 G.ARGS.LOC_COLOURS.synthb_drink = SynthB.custom_colors.ENERGY_DRINK
@@ -55,6 +56,7 @@ function G:update_synthb_gacha_banner(dt)
 					func = function()
 						G.E_MANAGER:add_event(Event({
 							trigger = 'after',
+---@diagnostic disable-next-line: param-type-mismatch
 							delay = 1.3*math.sqrt(G.SETTINGS.GAMESPEED),
 							blockable = false,
 							blocking = false,
