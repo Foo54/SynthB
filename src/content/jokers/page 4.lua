@@ -1022,7 +1022,7 @@ SynthB.Joker{
 	pos = {x = 7, y = 5},
 	atlas = "joker_placeholders",
 	synthb_credits = {
-		Artist = "Foo54"
+		Artist = "Aikoyori"
 	},
 	rarity = 2,
 	cost = 7,
