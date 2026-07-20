@@ -67,6 +67,10 @@ SynthB.custom_colors = {
 			OPEN_BOOK_TAB_TEXT = HEX("70708a")
 		}
 	},
+	booster = {
+		DIVA_BACKGROUND = HEX("6bdbcf"),
+		DIVA_PARTICLES = HEX("f64c9d")
+	},
 	banners = {
 		n25 = {
 			BACKGROUND = HEX("DB8CE9"),
@@ -169,6 +173,7 @@ SynthB.load_file("content/spectral")
 SynthB.load_file("content/tarot")
 SynthB.load_file("content/sign")
 SynthB.load_file("content/edition")
+SynthB.load_file("content/booster")
 --SynthB.load_file("content/back")
 SynthB.load_file("content/seal")
 SynthB.load_file("content/sticker")

@@ -1898,7 +1898,16 @@ local descriptions = {
 					"{C:attention}Wonderlands x Showtime{}",
 					"character for {C:money}$10"
 				}
-			}
+			},
+
+			--- Packs
+			p_synthb_diva = {
+				name = "#3#Diva Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2#{C:garfields_thanksgiving} SynthB{} cards to take",
+				}
+			},
 		},
 		synthb_Sign = {
 			c_synthb_sign_keep_out = {
@@ -2387,6 +2396,7 @@ local descriptions = {
 			k_synthb_affection = "QWZmZWN0aW9u",
 			k_gacha_banner_synthb_gacha_n25 = "Nightcord at 25",
 			k_gacha_banner_synthb_gacha_vs = "Virtual Singers",
+			k_worm_diva_pack = "Diva Pack"
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

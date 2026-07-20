@@ -327,7 +327,7 @@ SynthB.Credits.Contributor{
 										{n = G.UIT.T, config = {text = "Lemonade - Inky", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
 									}},
 									{n = G.UIT.R, config = {maxw = 6}, nodes = {
-										{n = G.UIT.T, config = {text = "Katakana Joker Text - Aikoyori", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
+										{n = G.UIT.T, config = {text = "Katakana Joker Text, Russian Roulette - Aikoyori", scale = 0.4, colour = SynthB.custom_colors.credits.foo.OPEN_BOOK_TAB_TEXT}}
 									}},
 									{n = G.UIT.R, nodes = {
 										{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 5, 5 * 88 / 518, "synthb_revo", {x = 0, y = 0})}}

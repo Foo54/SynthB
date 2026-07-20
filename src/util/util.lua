@@ -523,3 +523,24 @@ function SynthB.link_UIBox(parent, ...)
 		end
 	end
 end
+
+function SynthB.ease_background_colour_diva_pack (self)
+	ease_colour(G.C.DYN_UI.MAIN, SynthB.custom_colors.booster.DIVA_BACKGROUND)
+	ease_background_colour{new_colour = SynthB.custom_colors.booster.DIVA_BACKGROUND, contrast = 3}
+end
+
+function SynthB.diva_pack_particles (self)
+	G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+		timer = 0.015,
+		scale = 0.1,
+		initialize = true,
+		lifespan = 3,
+		speed = 0.2,
+		padding = -1,
+		attach = G.ROOM_ATTACH,
+		colours = { G.C.WHITE, SynthB.custom_colors.booster.DIVA_PARTICLES },
+		fill = true
+	})
+	G.booster_pack_sparkles.fade_alpha = 1
+	G.booster_pack_sparkles:fade(1, 0)
+end
