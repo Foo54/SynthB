@@ -1,6 +1,6 @@
 SMODS.Sticker{
 	key = "fake",
-	--atlas = "stickers",
+	atlas = "stickers",
 	pos = {x = 0, y = 0},
 	badge_colour = HEX("6E6E6E"),
 	rate = 0,
@@ -10,8 +10,8 @@ SMODS.Sticker{
 
 SMODS.Sticker{
 	key = "linked",
-	--atlas = "stickers",
-	pos = {x = 1, y = 0},
+	atlas = "stickers",
+	pos = {x = 0, y = 1},
 	badge_colour = HEX("51EE61"),
 	config = {
 		id = 0
@@ -44,16 +44,16 @@ SMODS.Sticker{
 
 SMODS.Sticker{
 	key = "pinned_right",
-	--atlas = "stickers",
-	pos = {x = 0, y = 1},
+	atlas = "stickers",
+	pos = {x = 0, y = 2},
 	badge_colour = HEX("E13FAB"),
 	rate = 0,
 }
 
 SMODS.Sticker{
 	key = "safe",
-	--atlas = "stickers",
-	pos = {x = 0, y = 3},
+	atlas = "stickers",
+	pos = {x = 1, y = 2},
 	badge_colour = HEX("DAE48B"),
 	rate = 0,
 	calculate = function(self, card, context)
@@ -70,8 +70,8 @@ SMODS.Sticker{
 
 SMODS.Sticker{
 	key = "not_safe",
-	--atlas = "stickers",
-	pos = {x = 0, y = 3},
+	atlas = "stickers",
+	pos = {x = 1, y = 1},
 	badge_colour = HEX("DAE48B"),
 	rate = 0,
 	calculate = function(self, card, context)

@@ -12,6 +12,22 @@ SynthB.Credits.Contributor{
 			}},
 			config = {}
 		}
+
+		G.synthb_credits_foo54_text = UIBox{
+			definition = {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
+				{n = G.UIT.C, nodes = {
+					{n = G.UIT.T, config = {text = "FOO54", scale = 2.3, colour = adjust_alpha(G.C.UI.TEXT_LIGHT, 0.5), vert = true}}
+				}}
+			}},
+			config = {
+				align = "tli",
+				major = G.synthb_credits_background_box,
+				bond = "Strong",
+				offset = {x = 0.1, y = 0.15},
+				instance_type = "POPUP"
+			}
+		}
+
 		local H_TO_W = G.CARD_W / G.CARD_H
 		local cardarea = self:create_area(6 * H_TO_W, 6)
 		
@@ -377,7 +393,8 @@ SynthB.Credits.Contributor{
 			G.synthb_credits_book_box,
 			G.synthb_credits_contributions_box,
 			G.synthb_credits_backarrow_box,
-			G.synthb_credits_special_thanks_box
+			G.synthb_credits_special_thanks_box,
+			G.synthb_credits_foo54_text
 		)
 		return {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
 			{n = G.UIT.O, config = {object = G.synthb_credits_background_box}}
