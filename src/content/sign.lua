@@ -143,8 +143,9 @@ SynthB.Sign{
 				delay = 0.1,
 				func = function()
 					G.hand.highlighted[i]:set_ability("m_glass")
-					G.hand.highlighted[1].ability.extra = 1
-					G.hand.highlighted[1].ability.Xmult = card.ability.xmult
+					G.hand.highlighted[i].ability.extra = 1
+					G.hand.highlighted[i].ability.Xmult = card.ability.xmult -- description
+					G.hand.highlighted[i].ability.x_mult = card.ability.xmult -- actual x_mult
 					return true
 				end
 			}))
