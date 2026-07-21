@@ -197,11 +197,16 @@ SynthB.Joker{
 		end
 		if context.individual and context.cardarea == G.play and not context.blueprint then
 			if context.other_card:is_suit(card.ability.extra.suit) then
-				SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "chips",
-					scalar_value = "chip_gain"
-				})
+				return {
+					func = function()
+						SMODS.scale_card(card, {
+							ref_table = card.ability.extra,
+							ref_value = "chips",
+							scalar_value = "chip_gain"
+						})
+						return true
+					end
+				}
 			end
 		end
 		if context.joker_main then
@@ -768,13 +773,17 @@ SynthB.Joker{
 		end
 		if context.individual and context.cardarea == G.play and not context.blueprint then
 			if context.other_card:get_id() == card.ability.immutable.rank then
-				SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "earnings",
-					scalar_value = "scaling"
-				})
-				SynthB.debug(card.ability.extra.earnings)
 				card.ability.immutable.mem_earnings = card.ability.extra.earnings
+				return {
+					func = function ()
+						SMODS.scale_card(card, {
+							ref_table = card.ability.extra,
+							ref_value = "earnings",
+							scalar_value = "scaling"
+						})
+						return true
+					end
+				}
 			end
 		end
 		if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss and not context.blueprint then

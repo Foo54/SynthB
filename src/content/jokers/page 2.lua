@@ -258,15 +258,20 @@ SynthB.Joker{
 		end
 		if context.individual then
 			if context.cardarea == G.play then
-				SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "chips",
-					scalar_value = "loss",
-					no_message = true
-				})
 				if card.ability.extra.chips <= 0 then
 					SMODS.destroy_cards(card, nil, nil, true)
 				end
+				return {
+					func = function()
+						SMODS.scale_card(card, {
+							ref_table = card.ability.extra,
+							ref_value = "chips",
+							scalar_value = "loss",
+							no_message = true
+						})
+						return true
+					end
+				}
 			end
 			if context.cardarea == "unscored" then
 				return {

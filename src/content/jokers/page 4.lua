@@ -714,11 +714,16 @@ SynthB.Joker{
 				}
 			else
 				card.ability.immutable.last_scored = scoring
-				SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "xmult",
-					scalar_value = "scale"
-				})
+				return {
+					func = function()
+						SMODS.scale_card(card, {
+							ref_table = card.ability.extra,
+							ref_value = "xmult",
+							scalar_value = "scale"
+						})
+						return true
+					end
+				}
 			end
 		end
 		if context.joker_main or context.forcetrigger then
@@ -979,11 +984,16 @@ SynthB.Joker{
 					message = localize("k_reset")
 				}
 			else
-				SMODS.scale_card(card, {
-					scalar_value = "gain",
-					ref_table = card.ability.extra,
-					ref_value = "xchips"
-				})
+				return {
+					func = function ()
+						SMODS.scale_card(card, {
+							scalar_value = "gain",
+							ref_table = card.ability.extra,
+							ref_value = "xchips"
+						})
+						return true
+					end
+				}
 			end
 		end
 		if context.joker_main or context.forcetrigger then
@@ -1047,11 +1057,16 @@ SynthB.Joker{
 			}
 		end
 		if context.individual and not context.blueprint and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
-			SMODS.scale_card(card, {
-				ref_table = card.ability.extra,
-				ref_value = "chips",
-				scalar_value = "gain"
-			})
+			return {
+				func = function()
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "chips",
+						scalar_value = "gain"
+					})
+					return true
+				end
+			}
 		end
 		if context.destroy_card and not context.blueprint and context.destroy_card:is_suit("Hearts") and context.cardarea == G.play then
 			if SMODS.pseudorandom_probability(card, "synthb_russian_roulette", card.ability.extra.num, card.ability.extra.dem) then
