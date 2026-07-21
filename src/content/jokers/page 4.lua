@@ -1148,7 +1148,7 @@ SynthB.Joker{
 	calculate = function(self, card, context)
 		if context.after and not context.blueprint then
 			card.ability.immutable.remaining = card.ability.immutable.remaining - 1
-			if card.ability.immutable.remaining == 0 then
+			if card.ability.immutable.remaining == 1 then
 				juice_card_until(card, function() return card.ability.immutable.remaining == 0 and not G.RESET_JIGGLES end)
 			end
 		end
