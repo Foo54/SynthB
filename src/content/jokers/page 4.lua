@@ -1017,6 +1017,9 @@ SynthB.Joker{
 			gain = 4,
 			num = 1,
 			dem = 6,
+		},
+		immutable = {
+			triggered = false
 		}
 	},
 	pos = {x = 7, y = 5},
@@ -1038,6 +1041,7 @@ SynthB.Joker{
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main or context.forcetrigger then
+			card.ability.immutable.triggered = false
 			return {
 				chips = card.ability.extra.chips
 			}
@@ -1052,7 +1056,19 @@ SynthB.Joker{
 		if context.destroy_card and not context.blueprint and context.destroy_card:is_suit("Hearts") then
 			if SMODS.pseudorandom_probability(card, "synthb_russian_roulette", card.ability.extra.num, card.ability.extra.dem) then
 				return {
-					remove = true
+					remove = true,
+					func = function()
+						G.E_MANAGER:add_event(Event{
+							func = function()
+								if not card.ability.immutable.triggered then
+									card.ability.immutable.triggered = true
+									play_sound("synthb_gunshot", nil, 0.25)
+								end
+								return true
+							end
+						})
+						return true
+					end
 				}
 			end
 		end
@@ -1061,7 +1077,7 @@ SynthB.Joker{
 		---@type JDJokerDefinition
 		return {
 			text = {
-				{text = "X"},
+				{text = "+"},
 				{ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult"}
 			},
 			text_config = {colour = G.C.CHIPS}
