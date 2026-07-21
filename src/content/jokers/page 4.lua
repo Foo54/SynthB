@@ -1150,17 +1150,14 @@ SynthB.Joker{
 		if context.after and not context.blueprint then
 			card.ability.immutable.remaining = card.ability.immutable.remaining - 1
 			if card.ability.immutable.remaining == 1 then
-				juice_card_until(card, function() return card.ability.immutable.remaining == 0 and not G.RESET_JIGGLES end)
+				juice_card_until(card, function() return card.ability.immutable.remaining == 1 and not G.RESET_JIGGLES end)
 			end
 		end
 		if context.end_of_round and context.main_eval and not context.blueprint then
 			card.ability.immutable.remaning = card.ability.extra.hands
-			return {
-				message = localize("k_reset")
-			}
 		end
 		if context.evaluate_poker_hand and not context.blueprint then
-			if card.ability.immutable.remaining == 0 then
+			if card.ability.immutable.remaining == 1 then
 				return {
 					replace_scoring_name = card.ability.immutable.hand
 				}
