@@ -1014,7 +1014,7 @@ SynthB.Joker{
 	config = {
 		extra = {
 			chips = 0,
-			gain = 5,
+			gain = 4,
 			num = 1,
 			dem = 6,
 		}
