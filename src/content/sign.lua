@@ -246,7 +246,7 @@ SynthB.Sign{
 	key = "sign_exit",
 	pos = {x = 7, y = 0},
 	can_use = function (self, card)
-		return G.GAME.blind and G.GAME.blind.in_blind and not (G.GAME.blind.config.boss and G.GAME.blind.config.boss.showdown)
+		return G.GAME.blind and G.GAME.blind.in_blind and not (G.GAME.blind.config.blind.boss and G.GAME.blind.config.blind.boss.showdown)
 	end,
 	use = function(self, card, area, copier)
 		G.E_MANAGER:add_event(Event({
