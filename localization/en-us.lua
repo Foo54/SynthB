@@ -311,8 +311,7 @@ local descriptions = {
 			j_synthb_six_trillion = {
 				name = {"{f:5}六兆年と一夜物語", "Six Trillion Years and Overnight Story"},
 				text = {
-					"In {C:attention}final",
-					"{C:attention}hand{} of round",
+					"In {C:attention}final{} hand of round",
 					"This Joker gains {C:attention}1/2{}",
 					"of the {C:attention}Chips{} and {C:attention}Mult",
 					"of all cards scored, and",
