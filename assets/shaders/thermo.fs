@@ -1,6 +1,6 @@
 // also copied from more fluff
 
-#if defined(VERTEX) || __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
+#if defined(VERTEX) || __VERSION__ > 100.0 || defined(GL_FRAGMENT_PRECISION_HIGH)
     #define MY_HIGHP_OR_MEDIUMP highp
 #else
     #define MY_HIGHP_OR_MEDIUMP mediump
@@ -25,7 +25,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 
 
     vec4 tex = texture2D(texture, texture_coords);
-		if (uie_scale == uie_scale * 2 && uie_rot == uie_rot * 2 && uie_details.g == uie_details.g * 2 && thermo.x == thermo.x * 2) {
+		if (uie_scale == uie_scale * 2.0 && uie_rot == uie_rot * 2.0 && uie_details.g == uie_details.g * 2.0 && thermo.x == thermo.x * 2.0) {
         tex.a = 0;
     }
 

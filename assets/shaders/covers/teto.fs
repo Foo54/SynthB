@@ -1,4 +1,4 @@
-#if defined(VERTEX) || __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
+#if defined(VERTEX) || __VERSION__ > 100.0 || defined(GL_FRAGMENT_PRECISION_HIGH)
 	#define PRECISION highp
 #else
 	#define PRECISION mediump
@@ -92,29 +92,29 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     number x = teto.x + random_offset;
 
     vec2 uv2 = uv;
-    uv2.x += y / 20 + x / 40;
-    uv2.y += y / 20 + x / 40;
+    uv2.x += y / 20.0 + x / 40.0;
+    uv2.y += y / 20.0 + x / 40.0;
 
-    number theta = sin(x * 2 + y) * 3.14 / 4 - (3.14 * 2);
+    number theta = sin(x * 2.0 + y) * 3.14 / 4.0 - (3.14 * 2.0);
     number mod_ = 0.3;
     
-    uv2 = mod(uv2, mod_) * 10 / 3;
+    uv2 = mod(uv2, mod_) * 10.0 / 3.0;
     number x_ = uv2.x;
 
     uv2.x = (uv2.x - 0.5) * cos(theta) - (uv2.y - 0.5) * sin(theta) + 0.5;
     uv2.y = (x_ - 0.5) * sin(theta) + (uv2.y - 0.5) * cos(theta) + 0.5;
 
-    uv2 = mod(uv2, 1);
+    uv2 = mod(uv2, 1.0);
     number mask_color = Texel(mask, uv2).a;
-    if (step(mask_color, 0.1) != 1) {
-        if (x == x * 2) {
+    if (step(mask_color, 0.1) != 1.0) {
+        if (x == x * 2.0) {
             tex.a = 0;
         }
 
         vec4 color = color_;
         color.a = tex.a;
-        vec2 coords = vec2(uv.x + y / 40, uv.y+ y / 40 + x / 5) * 10;
-        tex = mix(tex, color, (0.6 + noise(coords)) * 4 / 3 * distance(uv, vec2(0, 0)));
+        vec2 coords = vec2(uv.x + y / 40.0, uv.y+ y / 40.0 + x / 5.0) * 10.0;
+        tex = mix(tex, color, (0.6 + noise(coords)) * 4.0 / 3.0 * distance(uv, vec2(0, 0)));
     }
 
     return dissolve_mask(tex, texture_coords, uv);

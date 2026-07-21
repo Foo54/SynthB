@@ -1,6 +1,6 @@
 // also copied from more fluff
 
-#if defined(VERTEX) || __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
+#if defined(VERTEX) || __VERSION__ > 100.0 || defined(GL_FRAGMENT_PRECISION_HIGH)
     #define MY_HIGHP_OR_MEDIUMP highp
 #else
     #define MY_HIGHP_OR_MEDIUMP mediump
@@ -18,7 +18,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     vec4 tex = colour;
 
 		//transform the coords or something I don't really know
-    vec2 uv = (screen_coords - uie_details.xy) / max(uie_details.g - 2, uie_details.a - 2);
+    vec2 uv = (screen_coords - uie_details.xy) / max(uie_details.g - 2.0, uie_details.a - 2.0);
 		uv.y *= 0.9; // slightly squish the y
 
 		// I don't know what these do
@@ -30,14 +30,14 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     }
     
 		// movement
-    uv.x = mod(uv.x * 5 - mod_badge.x * 3, 1);
-    uv.y = mod(uv.y * 10 + 0.25 + 0.1 * sin(mod_badge.x * 22.5 * 1.5), 1);
+    uv.x = mod(uv.x * 5.0 - mod_badge.x * 3.0, 1.0);
+    uv.y = mod(uv.y * 10.0 + 0.25 + 0.1 * sin(mod_badge.x * 22.5 * 1.5), 1.0);
 
 		//masking
 		number maskColor = texture2D(mask, uv).a;
 		
-		vec4 outcolor = vec4(0.851, 0.255, 0.412, 1);
-		outcolor += vec4(0.901, 0.305, 0.462, 1) * step(1, maskColor);
+		vec4 outcolor = vec4(0.851, 0.255, 0.412, 1.0);
+		outcolor += vec4(0.901, 0.305, 0.462, 1.0) * step(1.0, maskColor);
 
     return outcolor;
 }

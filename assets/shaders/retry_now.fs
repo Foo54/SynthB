@@ -1,4 +1,4 @@
-#if defined(VERTEX) || __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
+#if defined(VERTEX) || __VERSION__ > 100.0 || defined(GL_FRAGMENT_PRECISION_HIGH)
 	#define PRECISION highp
 #else
 	#define PRECISION mediump
@@ -69,7 +69,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 {
 	vec4 tex = Texel( texture, texture_coords);
 	vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba)/texture_details.ba;
-  return dissolve_mask(lerp(tex, vec4(1, 1, 1, tex.a), retry_now.y * 0.00000001 + brightness), texture_coords, uv);
+  return dissolve_mask(lerp(tex, vec4(1.0, 1.0, 1.0, tex.a), retry_now.y * 0.00000001 + brightness), texture_coords, uv);
 }
 
 // for transforming the card while your mouse is on it

@@ -1,4 +1,4 @@
-#if defined(VERTEX) || __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
+#if defined(VERTEX) || __VERSION__ > 100.0 || defined(GL_FRAGMENT_PRECISION_HIGH)
 	#define PRECISION highp
 #else
 	#define PRECISION mediump
@@ -12,7 +12,7 @@ extern PRECISION number temp;
 #define PI 3.14159
 
 vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
-		number y_change = 0.01 * sin(100 / temp * (texture_coords.y) + heatwaves.y * 0.000001 + time) * temp * 2 * sin(100 * texture_coords.x + 100 * texture_coords.y);
+		number y_change = 0.01 * sin(100.0 / temp * (texture_coords.y) + heatwaves.y * 0.000001 + time) * temp * 2.0 * sin(100.0 * texture_coords.x + 100.0 * texture_coords.y);
 
     vec4 pixel_color = Texel(texture, vec2(texture_coords.x, texture_coords.y + y_change));
 
