@@ -873,7 +873,12 @@ SynthB.Joker{
 	config = {
 		extra = {
 			chips = 0,
-			mult = 0
+			mult = 0,
+			num = 1,
+			dem = 3,
+		},
+		immutable = {
+			destroy = false
 		}
 	},
 	blueprint_compat = true,
@@ -883,7 +888,8 @@ SynthB.Joker{
 	attributes = {"destroy_card", "hands", "scaling", "chips", "mult", "song", "vocaloid song", "IA", "kemu"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "six_trillion")
-		return {vars = {card.ability.extra.chips, card.ability.extra.mult}}
+		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_six_trillion")
+		return {vars = {card.ability.extra.chips, card.ability.extra.mult, num, dem}}
 	end,
 	calculate = function(self, card, context)
 		if context.forcetrigger or context.joker_main then
@@ -892,9 +898,12 @@ SynthB.Joker{
 				mult = card.ability.extra.mult
 			}
 		end
-		if context.destroy_card and G.GAME.current_round.hands_left == 0 and (context.cardarea == G.play or context.cardarea == "unscored") and not context.blueprint then
-			card.ability.extra.chips = card.ability.extra.chips + (context.destroy_card:get_chip_bonus() + ((context.destroy_card.edition or {}).chips or 0)) / 3
-			card.ability.extra.mult = card.ability.extra.mult + (context.destroy_card:get_chip_mult() + ((context.destroy_card.edition or {}).mult or 0)) / 3
+		if context.before and not context.blueprint then
+			card.ability.immutable.destroy = SMODS.pseudorandom_probability(card, "synthb_six_trillion", card.ability.extra.num, card.ability.extra.dem)
+		end
+		if context.destroy_card and card.ability.immutable.destroy and G.GAME.current_round.hands_left == 0 and (context.cardarea == G.play or context.cardarea == "unscored") and not context.blueprint then
+			card.ability.extra.chips = card.ability.extra.chips + (context.destroy_card:get_chip_bonus() + ((context.destroy_card.edition or {}).chips or 0)) / 2
+			card.ability.extra.mult = card.ability.extra.mult + (context.destroy_card:get_chip_mult() + ((context.destroy_card.edition or {}).mult or 0)) / 2
 			return {
 				remove = true
 			}
