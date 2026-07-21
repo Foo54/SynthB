@@ -30,14 +30,18 @@ SMODS.Sticker{
 							for _, ___card in ipairs(G.hand.highlighted) do
 								if ___card == __card then found = true; break end
 							end
-							if not found then
+							if not found and not __card.synthb_already_found then
 								draw_card(__card.area, G.play, 1, "front", nil, __card)
+								__card.synthb_already_found = true
 							end
 						end
 					end
 					break
 				end
 			end
+		end
+		if context.before then
+			card.synthb_already_found = nil
 		end
 	end
 }
