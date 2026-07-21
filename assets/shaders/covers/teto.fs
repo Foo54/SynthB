@@ -7,6 +7,9 @@
 // Look ionized.fs for explanation
 extern PRECISION vec2 teto;
 
+extern PRECISION vec4 color_;
+extern PRECISION Image mask;
+
 extern PRECISION number dissolve;
 extern PRECISION number time;
 // (sprite_pos_x, sprite_pos_y, sprite_width, sprite_height) [not normalized]
@@ -55,20 +58,66 @@ vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv)
     return vec4(shadow ? vec3(0.,0.,0.) : tex.xyz, res > adjusted_dissolve ? (shadow ? tex.a*0.3: tex.a) : .0);
 }
 
-vec4 lerp(vec4 colour1, vec4 colour2, number val) {
-	return vec4(
-		colour1.r + (colour2.r - colour1.r) * val,
-		colour1.g + (colour2.g - colour1.g) * val,
-		colour1.b + (colour2.b - colour1.b) * val,
-		colour1.a + (colour2.a - colour1.a) * val);
+
+// from AlexZGreat
+vec2 random2(vec2 st){
+    st = vec2( dot(st,vec2(127.1,311.7)),
+              dot(st,vec2(269.5,183.3)) );
+    return -1.0 + 2.0*fract(sin(st)*43758.5453123);
+}
+
+// Gradient Noise by Inigo Quilez - iq/2013
+// https://www.shadertoy.com/view/XdXGW8
+float noise(vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+
+    vec2 u = f*f*(3.0-2.0*f);
+
+    return mix( mix( dot( random2(i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
+                     dot( random2(i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
+                mix( dot( random2(i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ),
+                     dot( random2(i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
 }
 
 // This is what actually changes the look of card
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
 {
-	vec4 tex = Texel( texture, texture_coords);
-	vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba)/texture_details.ba;
-  return dissolve_mask(lerp(tex, vec4(0.8313725490196079, 0.41568627450980394, 0.5137254901960784, tex.a), sin(teto.y * 2 - uv.x * 10 + uv.y * 10) * 0.2 + 0.2), texture_coords, uv);
+    vec4 tex = Texel( texture, texture_coords);
+    vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.ba - texture_details.ba / 2)/min(texture_details.b, texture_details.a);
+
+    number random_offset = random2(vec2(color_.r * color_.g, color_.b * color_.a)).x;
+
+    number y = teto.y + random_offset;
+    number x = teto.x + random_offset;
+
+    vec2 uv2 = uv;
+    uv2.x += y / 20 + x / 40;
+    uv2.y += y / 20 + x / 40;
+
+    number theta = sin(x * 2 + y) * 3.14 / 4 - (3.14 * 2);
+    number mod_ = 0.3;
+    
+    uv2 = mod(uv2, mod_) * 10 / 3;
+    number x_ = uv2.x;
+
+    uv2.x = (uv2.x - 0.5) * cos(theta) - (uv2.y - 0.5) * sin(theta) + 0.5;
+    uv2.y = (x_ - 0.5) * sin(theta) + (uv2.y - 0.5) * cos(theta) + 0.5;
+
+    uv2 = mod(uv2, 1);
+    number mask_color = Texel(mask, uv2).a;
+    if (step(mask_color, 0.1) != 1) {
+        if (x == x * 2) {
+            tex.a = 0;
+        }
+
+        vec4 color = color_;
+        color.a = tex.a;
+        vec2 coords = vec2(uv.x + y / 40, uv.y+ y / 40 + x / 5) * 10;
+        tex = mix(tex, color, (0.6 + noise(coords)) * 4 / 3 * distance(uv, vec2(0, 0)));
+    }
+
+    return dissolve_mask(tex, texture_coords, uv);
 }
 
 // for transforming the card while your mouse is on it

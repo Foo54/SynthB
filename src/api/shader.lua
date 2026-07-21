@@ -35,12 +35,24 @@ SMODS.ScreenShader{
 
 SMODS.Shader({
 	key = "miku",
-	path = "covers/miku.fs"
+	path = "covers/miku.fs",
+	send_vars = function (sprite, card)
+		return {
+			color_ = {0.4254901960784314, 0.707843137254902, 0.696078431372549, 1},
+			mask = SMODS.Atlases.synthb_miku_mask.image
+		}
+	end
 })
 
 SMODS.Shader({
 	key = "teto",
-	path = "covers/teto.fs"
+	path = "covers/teto.fs",
+	send_vars = function (sprite, card)
+		return {
+			color_ = {0.8313725490196079, 0.41568627450980394, 0.5137254901960784, 1},
+			mask = SMODS.Atlases.synthb_teto_mask.image
+		}
+	end
 })
 
 SMODS.Shader({

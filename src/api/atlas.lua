@@ -182,3 +182,16 @@ SMODS.Atlas{
 	px = 71,
 	py = 95
 }
+
+SMODS.Atlas{
+	key = "miku_mask",
+	path = "cover_masks/miku.png",
+	px = 41,
+	py = 41
+}
+SMODS.Atlas{
+	key = "teto_mask",
+	path = "cover_masks/teto.png",
+	px = 41,
+	py = 41
+}
