@@ -1053,7 +1053,7 @@ SynthB.Joker{
 				scalar_value = "gain"
 			})
 		end
-		if context.destroy_card and not context.blueprint and context.destroy_card:is_suit("Hearts") then
+		if context.destroy_card and not context.blueprint and context.destroy_card:is_suit("Hearts") and context.cardarea == G.play then
 			if SMODS.pseudorandom_probability(card, "synthb_russian_roulette", card.ability.extra.num, card.ability.extra.dem) then
 				return {
 					remove = true,
