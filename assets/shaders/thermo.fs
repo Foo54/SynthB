@@ -1,6 +1,6 @@
 // also copied from more fluff
 
-#if defined(VERTEX) || __VERSION__ > 100.0 || defined(GL_FRAGMENT_PRECISION_HIGH)
+#if defined(VERTEX) || __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
     #define MY_HIGHP_OR_MEDIUMP highp
 #else
     #define MY_HIGHP_OR_MEDIUMP mediump
