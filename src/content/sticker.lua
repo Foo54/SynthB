@@ -85,4 +85,9 @@ SMODS.Sticker{
 			}
 		end
 	end,
+	apply = function (self, card, val)
+		card[self.key] = val
+		SMODS.debuff_card(card, val and true or "reset", "synthb_not_safe")
+	end,
+	
 }
