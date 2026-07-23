@@ -31,14 +31,6 @@ function SynthB.heat_info(info_queue)
 	end
 end
 
-function SynthB.is_face(card)
-	if card.debuff then return false end
-	local id = card.base.id
-	local rank = SMODS.Ranks[card.base.value]
-	if not id then return false end
-	return (id > 0 and rank and rank.face) or next(SMODS.find_card("j_pareidolia")) or (next(SMODS.find_card("j_synthb_human")) and card:is_suit("Diamonds"))
-end
-
 function SynthB.draw_thermometer()
 	local x = -1.425
 	local y = 0.5

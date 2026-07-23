@@ -271,8 +271,8 @@ local descriptions = {
 			j_synthb_medicine = {
 				name = {"{f:5}イガク", "{s:0.7}Medicine"},
 				text = {
-					"{C:attention}Face{} cards have no rank,",
-					"always score, and give {C:mult}+#1#{} Mult",
+					"{C:attention}Face{} cards always score",
+					"and give {C:mult}+#1#{} Mult",
 					"{C:inactive,s:0.8,f:5}カオが→鈍器になっちゃうヨ"
 				}
 			},

@@ -624,7 +624,7 @@ SynthB.Joker{
 	attributes = {"face", "mult", "song", "vocaloid song", "Sasuke Haraguchi", "Teto"},
 	config = {
 		extra = {
-			mult = 4
+			mult = 1
 		}
 	},
 	loc_vars = function(self, info_queue, card)
