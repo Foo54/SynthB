@@ -100,3 +100,4 @@ SMODS.Attribute{key = "darkbluecat"}
 SMODS.Attribute{key = "AnbaLen"}
 SMODS.Attribute{key = "phantom97"}
 SMODS.Attribute{key = "MINTi"}
+SMODS.Attribute{key = "rusino"}

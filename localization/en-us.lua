@@ -687,6 +687,16 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}引っくり返す"
 				}
 			},
+			j_synthb_looping_the_rooms = {
+				name = "Looping The Rooms",
+				text = {
+					"{C:attention}Retrigger{} played cards",
+					"if played poker hand",
+					"is the same as {C:attention}last",
+					"played poker hand",
+					"{C:inactive,s:0.8,f:5}くるくるくるくる"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1471,6 +1481,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}猫村いろは",
 					"{C:inactive,s:0.8}Nekomura Iroha"
+				}
+			},
+			looping_the_rooms = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}ループザルーム",
+					"{C:inactive,s:0.8}Looping the Rooms",
+					"{C:attention}Producer:",
+					"{f:5}ルシノ",
+					"{C:inactive,s:0.8}rusino",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
 		},

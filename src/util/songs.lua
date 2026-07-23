@@ -59,6 +59,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=A0ih5EaG4yw", key = "contradictions", pos = {x = 7, y = 0}},
 	{link = "https://www.youtube.com/watch?v=InZ7GOU-CQ8", key = "song_synthb_empurple", prefix = "", pos = {x = 8, y = 0}, set = "Other"},
 	{link = "https://www.youtube.com/watch?v=jbZT-bwZD3c", key = "song_synthb_streetcat", prefix = "", pos = {x = 9, y = 0}, set = "Other"},
+	{link = "https://www.youtube.com/watch?v=icBDYkfxpMs", key = "looping_the_rooms", pos = {x = 5, y = 1}},
 	--[[
 	for cross mod do this
 	

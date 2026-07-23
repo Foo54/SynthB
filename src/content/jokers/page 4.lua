@@ -1165,3 +1165,46 @@ SynthB.Joker{
 		end
 	end,
 }
+
+
+-- Looping the Rooms
+SynthB.Joker{
+	key = "looping_the_rooms",
+	atlas = "joker_placeholders",
+	pos = {x = 8, y = 5},
+	rarity = 2,
+	cost = 6,
+	config = {
+		immutable = {
+			last_hand = nil
+		}
+	},
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+	demicolon_compat = false,
+	attributes = {"hand_type", "retrigger", "song", "vocaloid song", "Miku", "rusino"},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, card, "looping_the_rooms")
+	end,
+	calculate = function(self, card, context)
+		if context.press_play then
+			card.ability.immutable.last_hand = G.GAME.last_hand_played
+		end
+		if context.repetition and context.cardarea == G.play and context.scoring_name == card.ability.immutable.last_hand then
+			return {
+				repetitions = 1
+			}
+		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			retrigger_function = function (card, scoring_hand, held_in_hand, joker_card)
+				if held_in_hand then return 0 end
+				local hand = JokerDisplay.evaluate_hand(scoring_hand)
+				return hand ~= "Unknown" and hand == joker_card.ability.immutable.last_hand and JokerDisplay.calculate_joker_triggers(joker_card) or 0
+			end
+		}
+	end
+}
