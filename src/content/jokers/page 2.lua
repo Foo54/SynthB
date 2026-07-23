@@ -633,14 +633,14 @@ SynthB.Joker{
 	end,
 	calculate = function(self, card, context)
 		if context.modify_scoring_hand and not context.blueprint then
-			if SynthB.is_face(context.other_card) then
+			if context.other_card:is_face() then
 				return {
 					add_to_hand = true
 				}
 			end
 		end
 		if context.individual and context.cardarea == G.play then
-			if SynthB.is_face(context.other_card) then
+			if context.other_card:is_face() then
 				return {
 					mult = card.ability.extra.mult
 				}
@@ -670,7 +670,7 @@ SynthB.Joker{
 				local text, _, scoring_hand = JokerDisplay.evaluate_hand()
 				if text ~= 'Unknown' then
 					for _, scoring_card in pairs(scoring_hand) do
-						if SynthB.is_face(scoring_card) then
+						if scoring_card:is_face() then
 							mult = mult + card.ability.extra.mult * JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
 						end
 					end
