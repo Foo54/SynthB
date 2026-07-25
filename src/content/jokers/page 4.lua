@@ -1342,7 +1342,7 @@ SynthB.Joker{
 			end
 			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.MAIN_END then
 				out.main_end = {{n = G.UIT.R, nodes = {
-					{n = G.UIT.T, config = {text = "???", scale = 0.3, colour = G.C.UI.TEXT_INACTIVE}}
+					{n = G.UIT.T, config = {text = "There's a snake in the garden", scale = 0.3, colour = G.C.UI.TEXT_INACTIVE}}
 				}}}
 			end
 			return out
@@ -1361,7 +1361,7 @@ SynthB.Joker{
 					break
 				end
 			end
-			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.MAIN_END then
+			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.RARITY then
 				rarity = pseudorandom("synthb_whodunit_rarity", 1, 4)
 			end
 		else
@@ -1402,12 +1402,14 @@ SynthB.Joker{
 						return v ~= card
 					end
 				})
-				if card.ability.immutable.warning then
-					SMODS.destroy_cards(target)
-					card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.loss
+				if target then
+					if card.ability.immutable.warning then
+						SMODS.destroy_cards(target)
+						card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.loss
+					end
+					SMODS.calculate_effect({message = localize("k_synthb_whodunit_" .. (card.ability.immutable.warning and "dead" or "miss") .. "_ex")}, target)
+					card.ability.immutable.warning = true
 				end
-				SMODS.calculate_effect({message = localize("k_synthb_whodunit_" .. (card.ability.immutable.warning and "dead" or "miss") .. "_ex")}, target)
-				card.ability.immutable.warning = true
 			end
 
 			if context.selling_self then
