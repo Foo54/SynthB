@@ -43,6 +43,7 @@ SMODS.Attribute{key = "miki"}
 SMODS.Attribute{key = "Hiyama"}
 SMODS.Attribute{key = "Una"}
 SMODS.Attribute{key = "Iroha"}
+SMODS.Attribute{key = "Haku"}
 
 
 --#region ARTISTS

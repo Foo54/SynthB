@@ -4,17 +4,23 @@
 if SMODS.create_mod_badge then
 	local smcmb = SMODS.create_mod_badge
 	function SMODS.create_mod_badge(mod, obj, ...)
-			local badge = smcmb(mod, obj, ...)
-			if mod.id == 'synthb' then
-					if not obj.no_shader_on_modbadge then badge.config.shader = 'synthb_mod_badge' end
-					badge.nodes[2].config.object.content.scale = 0.4
-					badge.nodes[2].config.object.content.config.scale = 0.4
-					badge.nodes[2].config.object.content.config.spacing = 2
-					badge.nodes[2].config.object.content:update_text(true)
-					table.insert(badge.nodes, 1, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
-					table.insert(badge.nodes, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
+		local badge = smcmb(mod, obj, ...)
+		if mod.id == 'synthb' then
+			if SynthB.no_mod_badge then
+				SynthB.no_mod_badge = nil
+				badge.nodes[2].config.object:remove()
+				badge = nil
+			else
+				if not obj.no_shader_on_modbadge then badge.config.shader = 'synthb_mod_badge' end
+				badge.nodes[2].config.object.content.scale = 0.4
+				badge.nodes[2].config.object.content.config.scale = 0.4
+				badge.nodes[2].config.object.content.config.spacing = 2
+				badge.nodes[2].config.object.content:update_text(true)
+				table.insert(badge.nodes, 1, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
+				table.insert(badge.nodes, {n = G.UIT.B, config = {h = 0.3, w = 0.03}})
 			end
-			return badge
+		end
+		return badge
 	end
 else
 	local smcmb = SMODS.create_mod_badges
@@ -37,6 +43,13 @@ else
 				data = data.content
 				if not data then goto continue end
 				if badges[i].nodes[1].nodes[2].config.object.content.string == SynthB.mod.display_name then
+					if SynthB.no_mod_badge then
+						print("hi")
+						SynthB.no_mod_badge = nil
+						badges[i].nodes[1].nodes[2].config.object:remove()
+						table.remove(badges, i)
+						break
+					end
 					if not obj.no_shader_on_modbadge then
 						badges[i].nodes[1].config.shader = "synthb_mod_badge"
 					end

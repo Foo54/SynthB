@@ -583,6 +583,17 @@ function SynthB.mod.custom_card_areas(game)
 		)
 	end
 
+	game.synthb_imposter_area = CardArea(
+		game.ROOM.T.x + game.ROOM.T.w + 10, 0,
+		G.CARD_W, G.CARD_H,
+		{
+			card_limit = 2,
+			type = "joker",
+			highlight_limit = 1,
+			highlighted_limit = 1,
+		}
+	)
+
 	game.synthb_ghost_area = CardArea(
 		game.ROOM.T.x + game.ROOM.T.w, 0,
 		SynthB.GHOST_W, SynthB.GHOST_H,

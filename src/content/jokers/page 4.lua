@@ -1208,3 +1208,221 @@ SynthB.Joker{
 		}
 	end
 }
+
+
+SynthB.WHODUNIT_CHANGES = {
+	LOC_VARS = 0,
+	NAME = 1,
+	MAIN_END = 2,
+	RARITY = 3,
+	EFFECT = 4
+}
+
+-- WHODUNIT
+SynthB.Joker{
+	key = "whodunit",
+	config = {
+		extra = {
+			xmult = 5,
+			loss = 1
+		},
+		immutable = {
+			warning = nil,
+			imposter_key = nil,
+			imposter_id = nil,
+			collection_check = nil,
+			difference = nil
+		}
+	},
+	atlas = "joker_placeholders",
+	pos = {x = 9, y = 5},
+	soul_pos = {x = 9, y = 6},
+	cost = 3,
+	blueprint_compat = true,
+	eternal_compat = false,
+	perishable_compat = true,
+	demicolon_compat = true,
+	attributes = {"copying", "xmult", "scaling", "song", "vocaloid song", "MonochroMenace", "Miku", "Teto", "Rin", "Len", "Haku", "KAITO", "MEIKO", "Luka"},
+	set_ability = function (self, card, initial, delay_sprites)
+		-- get imposter
+		if SynthB.caught_whodunit then
+			card.ability.immutable.discovered = true
+			card.ability.extra.xmult = SynthB.caught_whodunit
+			SynthB.caught_whodunit = nil
+		end
+		if G.synthb_imposter_area and not card.ability.immutable.discovered then
+			local imposter = SMODS.add_card{set = "Joker", no_edition = true, area = G.synthb_imposter_area}
+			card.ability.immutable.imposter_key = imposter.config.center.key
+			local id = random_string(20, pseudoseed("synthb_whodunit_id"))
+			card.ability.immutable.imposter_id = id
+			imposter.ability.synthb_imposter_id = id
+
+			card.ability.immutable.difference = pseudorandom_element(SynthB.WHODUNIT_CHANGES, "synthb_whodunit_difference")
+			
+			local card_remove_ref = card.remove
+			function card:remove ()
+				card_remove_ref(self)
+				imposter:remove()
+			end
+
+			-- set sprites
+			local imposter_center = imposter.config.center
+			card.children.center.atlas = G.ASSET_ATLAS[imposter_center.atlas or "Joker"]
+			card.children.center:set_sprite_pos(imposter_center.pos or {x = 0, y = 0})
+
+			if imposter_center.soul_pos or imposter_center.soul_atlas then
+				card.children.floating_sprite.atlas = G.ASSET_ATLAS[imposter_center.soul_atlas or "Joker"]
+				card.children.floating_sprite:set_sprite_pos(imposter_center.soul_pos or {x = 0, y = 0})
+			end
+		end
+	end,
+	load = function (self, card, card_table, other_card)
+		if card_table.ability.immutable.imposter_id then
+			local imposter_center = G.P_CENTERS[card_table.ability.immutable.imposter_key]
+			G.E_MANAGER:add_event(Event{
+				blockable = false,
+				blocking = false,
+				func = function()
+					card.children.center.atlas = G.ASSET_ATLAS[imposter_center.atlas or "Joker"]
+					card.children.center:set_sprite_pos(imposter_center.pos or {x = 0, y = 0})
+
+					if imposter_center.soul_pos or imposter_center.soul_atlas then
+						card.children.floating_sprite.atlas = G.ASSET_ATLAS[imposter_center.soul_atlas or "Joker"]
+						card.children.floating_sprite:set_sprite_pos(imposter_center.soul_pos or {x = 0, y = 0})
+					end
+					return true
+				end
+			})
+		end
+	end,
+	update = function (self, card, dt)
+		if not card.ability.immutable.collection_check and card.ability.immutable.imposter_id then
+			if card.area and card.area.config.collection then
+				card.collection_check = true
+				card.children.center.atlas = G.ASSET_ATLAS[card.config.center.atlas]
+				card.children.center:set_sprite_pos(card.config.center.pos)
+				card.children.floating_sprite.atlas = G.ASSET_ATLAS[card.config.center.atlas]
+				card.children.floating_sprite:set_sprite_pos(card.config.center.soul_pos)
+				for _, _card in ipairs(G.synthb_imposter_area.cards) do
+					if _card.ability.synthb_imposter_id == card.ability.immutable.imposter_id then
+						_card:remove()
+						card.ability.immutable.imposter_id = nil
+					end
+				end
+			end
+		end
+	end,
+	loc_vars = function(self, info_queue, card)
+		if card.ability.immutable.imposter_id then
+			local imposter
+			for _, _card in ipairs(G.synthb_imposter_area.cards) do
+				if _card.ability.synthb_imposter_id == card.ability.immutable.imposter_id then
+					imposter = _card
+					break
+				end
+			end
+			local out = {}
+			if not imposter.config.center.mod then
+				local vars, main_start, main_end = imposter:generate_UIBox_ability_table(true)
+				out = {vars = vars, main_start = main_start, main_end = main_end}
+			else
+				out = imposter.config.center:loc_vars(info_queue, imposter) or {}
+			end
+			out.key = out.key or imposter.config.center.key
+			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.LOC_VARS then
+				if not out.vars then
+					card.ability.immutable.difference = pseudorandom_element(SynthB.WHODUNIT_CHANGES, "synthb_whodunit_difference")
+				end
+				for i in ipairs(out.vars or {}) do
+					out.vars[i] = pseudorandom("synthb_whodunit_locvars", 0, 100)
+				end
+			end
+			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.NAME then
+				out.name_key = pseudorandom_element(G.P_CENTER_POOLS.Joker).key
+			end
+			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.MAIN_END then
+				out.main_end = {{n = G.UIT.R, nodes = {
+					{n = G.UIT.T, config = {text = "???", scale = 0.3, colour = G.C.UI.TEXT_INACTIVE}}
+				}}}
+			end
+			return out
+		else
+			SynthB.song_info(info_queue, card, "whodunit")
+			return {vars = {card.ability.extra.xmult, card.ability.extra.loss}}
+		end
+	end,
+	set_card_type_badge = function (self, card, badges)
+		local imposter
+		local rarity = card.config.center.rarity
+		if card.ability.immutable.imposter_id then
+			for _, _card in ipairs(G.synthb_imposter_area.cards) do
+				if _card.ability.synthb_imposter_id == card.ability.immutable.imposter_id then
+					imposter = _card
+					break
+				end
+			end
+			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.MAIN_END then
+				rarity = pseudorandom("synthb_whodunit_rarity", 1, 4)
+			end
+		else
+			imposter = card
+			rarity = imposter.config.center.rarity
+		end
+---@diagnostic disable-next-line: param-type-mismatch
+		local text = SMODS.Rarity:get_rarity_badge(rarity)
+		local card_type_colour = get_type_colour(imposter.config.center or imposter.config, imposter)
+		local card_type_text_colour = SMODS.get_card_type_text_colour("Joker", imposter.config.center or imposter.config, imposter)
+		badges[#badges + 1] = create_badge(text, card_type_colour, card_type_text_colour, 1.2)
+	end,
+	set_badges = function (self, card, badges)
+		if card.ability.immutable.imposter_id and G.P_CENTERS[card.ability.immutable.imposter_key].mod ~= SynthB.mod then
+			SynthB.no_mod_badge = card.ability.immutable.imposter_id
+		end
+	end,
+	calculate = function (self, card, context)
+		local imposter
+		for _, _card in ipairs(G.synthb_imposter_area.cards) do
+			if _card.ability.synthb_imposter_id == card.ability.immutable.imposter_id then
+				imposter = _card
+				break
+			end
+		end
+		if imposter then
+			local effect, trigger = imposter:calculate_joker(context)
+			if effect then effect.card = card end
+
+			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.EFFECT then
+				effect = {}
+				trigger = nil
+			end
+			
+			if context.end_of_round and context.main_eval and not context.blueprint then
+				local target = pseudorandom_element(G.jokers.cards, "synthb_whodunit_kill", {
+					in_pool = function (v, args)
+						return v ~= card
+					end
+				})
+				if card.ability.immutable.warning then
+					SMODS.destroy_cards(target)
+					card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.loss
+				end
+				SMODS.calculate_effect({message = localize("k_synthb_whodunit_" .. (card.ability.immutable.warning and "dead" or "miss") .. "_ex")}, target)
+				card.ability.immutable.warning = true
+			end
+
+			if context.selling_self then
+				SynthB.caught_whodunit = card.ability.extra.xmult
+				SMODS.add_card{key = self.key, no_edition = true}
+				return SMODS.merge_effects(effect, {message = "Caught!"}), trigger
+			end
+
+			return effect, trigger
+		else
+			if context.joker_main then
+				return {
+					xmult = card.ability.extra.xmult
+				}
+			end
+		end
+	end
+}

@@ -697,6 +697,28 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}くるくるくるくる"
 				}
 			},
+			j_synthb_whodunit = {
+				name = "WHODUNIT",
+				text = {
+					{
+						"This Joker always appears",
+						"and functions as another Joker.",
+						"with a slight visual difference"
+					},
+					{
+						"Destroys a random Joker",
+						"at end of round"
+					},
+					{
+						"When this Joker is sold",
+						"replace it with a new version",
+						"of this card that gives {X:mult,C:white}X#1#{} Mult",
+						"{X:mult,C:white}X#2#{} less mult per joker",
+						"it destroyed",
+						"{C:inactive}Someone here's a liar"
+					}
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1494,6 +1516,18 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			whodunit = {
+				text = {
+					"{C:attention}Title:",
+					"WHODUNIT",
+					"{C:attention}Producer:",
+					"MonochroMenace",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto",
+					"{C:inactive,s:0.8}and 9 other voicebanks"
 				}
 			},
 		},
@@ -2419,7 +2453,9 @@ local descriptions = {
 			k_synthb_affection = "QWZmZWN0aW9u",
 			k_gacha_banner_synthb_gacha_n25 = "Nightcord at 25",
 			k_gacha_banner_synthb_gacha_vs = "Virtual Singers",
-			k_worm_diva_pack = "Diva Pack"
+			k_worm_diva_pack = "Diva Pack",
+			k_synthb_whodunit_dead_ex = "Dead!",
+			k_synthb_whodunit_miss_ex = "Miss!"
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"
