@@ -35,6 +35,7 @@ SynthB.Character{
 		if context.press_play then
 			card.ability.immutable.counted = 0
 		end
+		-- TODO: reimplement via context.post_trigger
 		if context.synthb_mod_scoring then
 			if card.ability.immutable.counted <= card.ability.extra.count then
 				local chips = SynthB.get_character_boosted_value(card, "chips")
@@ -188,6 +189,7 @@ SynthB.Character{
 		return {vars = {SynthB.get_character_loc_vars(card, "mult")}}
 	end,
 	calculate = function(self, card, context)
+		-- TODO: reimplement via context.post_trigger
 		if context.synthb_mod_scoring then
 			local mult = SynthB.get_character_boosted_value(card, "mult")
 			local mod = false
