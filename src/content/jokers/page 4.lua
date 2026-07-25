@@ -1362,12 +1362,12 @@ SynthB.Joker{
 					break
 				end
 			end
+			rarity = imposter.config.center.rarity
 			if card.ability.immutable.difference == SynthB.WHODUNIT_CHANGES.RARITY then
 				rarity = pseudorandom("synthb_whodunit_rarity", 1, 4)
 			end
 		else
 			imposter = card
-			rarity = imposter.config.center.rarity
 		end
 ---@diagnostic disable-next-line: param-type-mismatch
 		local text = SMODS.Rarity:get_rarity_badge(rarity)
