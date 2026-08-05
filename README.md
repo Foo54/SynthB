@@ -5,9 +5,9 @@ Vocaloid Themed Balatro Mod by Foo54
 This mod is currently in desperate need for art. If you are an artist and want to contribute, please join the [SynthB Discord Server](https://discord.gg/UP3YPFwEhH) and ping me.
 
 ## Content
-- 58 New Jokers!
-	- 21 Voicebanks
-	- 54 Artists
+- 60 New Jokers!
+	- 23 Voicebanks
+	- 55 Artists
 	- Links to all the songs
 - 1 New Object Type! (Requires experimental features)
 	- 16 Characters based on Project Sekai Character Cards
@@ -15,10 +15,10 @@ This mod is currently in desperate need for art. If you are an artist and want t
 - 4 New Editions!
 - 1 New Consumable Type!
 	- 12 New cards based around tuning in UTAU
-- 3 New Spectrals!
+- 3 New Spectrals (1 Requires experimental features)!
 - 1 New Tarot!
 - 1 New Seal!
-- 2 New Stickers!
+- 5 New Stickers!
 - New Mechanic!
 	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content
@@ -27,14 +27,12 @@ This mod is currently in desperate need for art. If you are an artist and want t
 	- [Aikoyori's Shenanigains](https://github.com/Aikoyori/Balatro-Aikoyoris-Shenanigans)
 		- +1 Joker
 	- [Bad Director](https://github.com/Clickseee/BadDirector)
-		- +1 Jokers
+		- +1 Joker
 		- +13 Consumables
 		- +1 Seal
 - Crossmod Support
 	- Cryptid Forcetriggers
 	- Paperback Music Attribute
-
-(#) indicates developer version content
 
 ## 3rd Party Crossmod API
 When implementing crossmod songs, make sure the following standards are met:
