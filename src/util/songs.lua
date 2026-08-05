@@ -115,3 +115,16 @@ function SynthB.generate_song_button(key, index, prefix, set, spoiler)
 	}})
 	return out
 end
+
+SynthB.Voicebanks = {}
+SynthB.Producers = {}
+
+function SynthB.Voicebank(args)
+	SMODS.Attribute(args)
+	SynthB.Voicebanks[args.key] = true
+end
+
+function SynthB.Producer(args)
+	SMODS.Attribute(args)
+	SynthB.Producers[args.key] = true
+end

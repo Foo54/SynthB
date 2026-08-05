@@ -1275,7 +1275,6 @@ SynthB.Joker{
 				card.children.floating_sprite:set_sprite_pos(imposter_center.soul_pos or {x = 0, y = 0})
 			end
 		end
-		print(3)
 	end,
 	load = function (self, card, card_table, other_card)
 		if card_table.ability.immutable.imposter_id then

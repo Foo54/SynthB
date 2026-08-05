@@ -1748,7 +1748,8 @@ local descriptions = {
 			synthb_fake = {
 				name = "Fake Card",
 				text = {
-					"This card cannot score"
+					"This card cannot score",
+					"{C:red,E:2}Self Destructs{} after being played"
 				}
 			},
 			synthb_safe = {

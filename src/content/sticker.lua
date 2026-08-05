@@ -3,6 +3,15 @@ SMODS.Sticker{
 	atlas = "stickers",
 	pos = {x = 0, y = 0},
 	badge_colour = HEX("6E6E6E"),
+	calculate = function(self, card, context)
+		if context.destroy_card and context.cardarea == "unscored" then
+			if context.destroy_card == card then
+				return {
+					remove = true
+				}
+			end
+		end
+	end,
 	rate = 0,
 	never_scores = true
 }
