@@ -17,9 +17,10 @@ This mod is currently in desperate need for art. If you are an artist and want t
 	- 12 New cards based around tuning in UTAU
 	- 9 New signs based around the song "Streetcat"
 - 3 New Spectrals (1 Requires experimental features)!
-- 1 New Tarot!
+- 2 New Tarots!
 - 1 New Seal!
 - 5 New Stickers!
+- 1 New Edition!
 - New Mechanic!
 	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content
