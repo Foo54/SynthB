@@ -13,8 +13,9 @@ This mod is currently in desperate need for art. If you are an artist and want t
 	- 16 Characters based on Project Sekai Character Cards
 - 8 New Tags!
 - 4 New Editions!
-- 1 New Consumable Type!
+- 2 New Consumable Types!
 	- 12 New cards based around tuning in UTAU
+	- 9 New signs based around the song "Streetcat"
 - 3 New Spectrals (1 Requires experimental features)!
 - 1 New Tarot!
 - 1 New Seal!
