@@ -59,8 +59,8 @@ SMODS.Tarot{
 -- shogi tarot
 SMODS.Consumable{
 	key = "tarot_master",
-	atlas = "placeholder",
-	pos = {x = 0, y = 1},
+	atlas = "tarot",
+	pos = {x = 1, y = 0},
 	set = "Tarot",
 	synthb_song = "song_synthb_shogi",
 	synthb_count = 0,
