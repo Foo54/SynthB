@@ -106,6 +106,27 @@ function Card:click ()
 			G.GAME.synthb_choosing_wish = false
 			G.FUNCS.exit_overlay_menu()
 		end
+		if G.GAME.synthb_choosing_shogi then
+			self.area:remove_card(self)
+			G.E_MANAGER:add_event(Event{
+				func = function()
+					local to_area = G.hand.cards[1] and G.hand or G.deck
+					to_area:emplace(self)
+					return true
+				end
+			})
+			G.GAME.synthb_choosing_shogi = false
+			G.GAME.synthb_less_hands = (G.GAME.synthb_less_hands or 0) + 1
+---@diagnostic disable-next-line: undefined-field
+			table.remove(G.GAME.synthb_destroyed, self.synthb_index)
+			G.FUNCS.exit_overlay_menu()
+			for _, card in ipairs(G.GAME.synthb_shogi_options) do
+				if card ~= self then
+					card:remove()
+				end
+			end
+			G.GAME.synthb_shogi_options = nil
+		end
 		card_click_ref(self)
 	end
 end

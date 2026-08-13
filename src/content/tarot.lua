@@ -54,3 +54,31 @@ SMODS.Tarot{
 		return {vars = {card.ability.max_highlighted, localize{type = "name_text", set = "Enhanced", key = card.ability.mod_conv}}}
 	end,
 }
+
+
+-- shogi tarot
+SMODS.Consumable{
+	key = "tarot_master",
+	atlas = "placeholder",
+	pos = {x = 0, y = 1},
+	set = "Tarot",
+	synthb_song = "song_synthb_shogi",
+	synthb_count = 0,
+	synthb_timer = 0,
+	config = {hands = 1},
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, card, "shogi")
+		return {vars = {card.ability.hands}}
+	end,
+	can_use = function (self, card)
+		return #G.GAME.synthb_destroyed > 0
+	end,
+	use = function(self, card, area, copier)
+		G.FUNCS.overlay_menu{
+			definition = G.UIDEF.synthb_shogi_full_menu(),
+			config = {
+				no_esc = true
+			}
+		}
+	end,
+}

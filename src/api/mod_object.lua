@@ -171,6 +171,18 @@ function SynthB.mod.config_tab()
 end
 
 function SynthB.mod.calculate(self, context)
+	-- store destroyed cards
+	if context.remove_playing_cards then
+		for _, card in ipairs(context.removed) do
+			table.insert(G.GAME.synthb_destroyed, 1, card:save())
+		end
+	end
+
+	-- hand loss at start of round
+	if context.setting_blind and (G.GAME.synthb_less_hands or 0) > 0 then
+		ease_hands_played(-G.GAME.synthb_less_hands)
+		G.GAME.synthb_less_hands = 0
+	end
 	
 	if context.individual and context.cardarea == G.play then
 		-- upgrade cards that have perma mult gain
@@ -323,6 +335,7 @@ function SynthB.mod.reset_game_globals(run_start)
 		G.GAME.synthb_linked_id = 0
 		G.GAME.synthb_character_rate = 0
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit + 1
+		G.GAME.synthb_destroyed = {}
 	end
 	if SynthB.mod.config.experimental_features then
 		_, G.GAME.synthb_current_banner_key = pseudorandom_element(SynthB.banners, "synthb_round_banner")

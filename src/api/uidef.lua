@@ -154,6 +154,88 @@ function G.UIDEF.synthb_wish_full_menu ()
 	})
 end
 
+-- Shogi
+function G.UIDEF.synthb_shogi_full_menu ()
+	G.GAME.synthb_shogi_options = {}
+	G.GAME.synthb_choosing_shogi = true
+	for i, cardtable in ipairs(G.GAME.synthb_destroyed) do
+		local card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
+		card:load(cardtable)
+		card.states.visible = false
+		card.synthb_index = i
+		G.GAME.synthb_shogi_options[#G.GAME.synthb_shogi_options+1] = card
+	end
+
+	local cards_per_row = 5
+	local rows_per_page = 3
+	local cards_per_page = cards_per_row * rows_per_page
+
+	G.synthb_cardareas = {}
+	local cardareas = {}
+	for i = 1, rows_per_page do
+		G.synthb_cardareas[#G.synthb_cardareas+1] = CardArea(0, 0, G.CARD_W * cards_per_row, G.CARD_H, {
+			card_limit = cards_per_row, type = 'title', highlight_limit = 0, collection = true
+		})
+		cardareas[#cardareas + 1] = {n=G.UIT.R, config={align = "cm", padding = 0.07, no_fill = true}, nodes={
+			{n=G.UIT.O, config={object = G.synthb_cardareas[i]}}
+		}}
+	end
+
+	function G.FUNCS.synthb_shogi_change_card_page (e)
+		if not e or not e.cycle_config then return end
+		for _, area in ipairs(G.synthb_cardareas) do
+			for _, card in ipairs(SMODS.shallow_copy(area.cards)) do
+				area:remove_card(card)
+				card.states.visible = false
+			end
+		end
+		for j, area in ipairs(G.synthb_cardareas) do
+			local cards = {}
+			for i = 1, cards_per_row do
+				local card = G.GAME.synthb_shogi_options[(j - 1) * cards_per_row + i + cards_per_page * (e.cycle_config.current_option - 1)]
+				if not card then break end
+				cards[#cards+1] = card
+				area:emplace(card)
+			end
+			area:align_cards()
+			for _, card in ipairs(cards) do
+				card.states.visible = true
+				card.VT.x = card.T.x
+				card.VT.y = card.T.y
+				card.VT.r = card.T.r
+			end
+		end
+
+	end
+
+	local options = {}
+	for i = 1, math.ceil(#G.GAME.synthb_shogi_options/cards_per_page) do
+		table.insert(options, localize('k_page')..' '..tostring(i)..'/'..tostring(math.ceil(#G.GAME.synthb_shogi_options/cards_per_page)))
+	end
+
+	G.FUNCS.synthb_shogi_change_card_page{ cycle_config = { current_option = 1 }}
+
+	local t = create_UIBox_generic_options({
+		back_func = "synthb_exit_shogi_menu",
+		contents = {
+			{n=G.UIT.R, config={align = "cm", r = 0.1, colour = G.C.BLACK, emboss = 0.05}, nodes=cardareas},
+			cards_per_page < #G.GAME.synthb_shogi_options and {n=G.UIT.R, config={align = "cm"}, nodes={
+				create_option_cycle({options = options, w = 4.5, cycle_shoulders = true, opt_callback = 'synthb_shogi_change_card_page', current_option = 1, colour = G.C.RED, no_pips = true, focus_args = {snap_to = true, nav = 'wide'}})
+			}} or nil,
+	}})
+	return t
+end
+
+function G.FUNCS.synthb_exit_shogi_menu (e)
+	G.GAME.synthb_choosing_shogi = false
+---@diagnostic disable-next-line: undefined-field
+	G.FUNCS.exit_overlay_menu()
+	for _, card in ipairs(G.GAME.synthb_shogi_options) do
+		card:remove()
+	end
+	G.GAME.synthb_shogi_options = nil
+end
+
 -- Spolier Warning
 function G.UIDEF.synthb_spoiler_warning ()
 	return create_UIBox_generic_options{

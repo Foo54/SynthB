@@ -1530,6 +1530,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}and 9 other voicebanks"
 				}
 			},
+			shogi = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}将棋一番！",
+					"{C:inactive,s:0.8}Shogi Ichiban!",
+					"{C:attention}Producer:",
+					"{f:5}ゆこぴ",
+					"{C:inactive,s:0.8}Yukopi",
+					"{C:attention}Voice:",
+					"{f:5}歌愛ユキ",
+					"{C:inactive,s:0.8}Kaai Yuki"
+				}
+			}
 		},
 		Enhanced = {
 			m_synthb_purple = {
@@ -1745,6 +1758,10 @@ local descriptions = {
 			song_synthb_pink = {
 				name = "Cutie Mew Mew Magic"
 			},
+			song_synthb_shogi = {
+				name = {"{f:5}将棋一番！", "{s:0.7}Shogi Ichiban!"}
+			},
+
 			synthb_fake = {
 				name = "Fake Card",
 				text = {
@@ -2172,7 +2189,17 @@ local descriptions = {
 					"selected cards to",
 					"{C:attention}#2#s"
 				}
-			}
+			},
+			c_synthb_tarot_master = {
+				name = {"The Master"},
+				text = {
+					"{C:attention}Restore{} a playing card",
+					"that was {C:red}destroyed{}",
+					"earlier this run",
+					"{C:blue}-#1#{} hand next round",
+					"{f:5,s:0.8,C:inactive}三手先まで分かります"
+				}
+			},
 		},
 		Spectral = {
 			c_synthb_spectral_voicebank = {
@@ -2208,7 +2235,7 @@ local descriptions = {
 				text = {
 					"Levels up Selected Character"
 				}
-			}
+			},
 		},
 		Tuning = {
 			c_synthb_tuning_pitch_bend = {
