@@ -615,7 +615,7 @@ SynthB.Joker{
 		Idea = "Ice"
 	},
 	atlas = "joker_placeholders",
-	pos = {x = 1, y = 1},
+	pos = {x = 2, y = 1},
 	cost = 5,
 	blueprint_compat = true,
 	demicolon_compat = true,
@@ -823,7 +823,7 @@ SynthB.Joker{
 		Artist = "FurretWalk"
 	},
 	atlas = "joker_placeholders",
-	pos = {x = 2, y = 1},
+	pos = {x = 1, y = 1},
 	rarity = 3,
 	cost = 8,
 	blueprint_compat = false,
