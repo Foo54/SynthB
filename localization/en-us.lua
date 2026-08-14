@@ -1759,7 +1759,8 @@ local descriptions = {
 				name = "Cutie Mew Mew Magic"
 			},
 			song_synthb_shogi = {
-				name = {"{f:5}将棋一番！", "{s:0.7}Shogi Ichiban!"}
+				name = {"{f:5}将棋一番！", "{s:0.7}Shogi Ichiban!"},
+				text = {}
 			},
 
 			synthb_fake = {

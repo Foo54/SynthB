@@ -611,11 +611,11 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "medicine",
 	synthb_credits = {
-		Artist = "Pepix",
+		Artist = "FurretWalk",
 		Idea = "Ice"
 	},
-	atlas = "pepix jokers",
-	pos = {x = 3, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 1, y = 1},
 	cost = 5,
 	blueprint_compat = true,
 	demicolon_compat = true,
@@ -819,7 +819,11 @@ SynthB.Joker{
 -- Monitoring
 SynthB.Joker{
 	key = "monitoring",
-	pos = {x = 2, y = 0},
+	synthb_credits = {
+		Artist = "FurretWalk"
+	},
+	atlas = "joker_placeholders",
+	pos = {x = 2, y = 1},
 	rarity = 3,
 	cost = 8,
 	blueprint_compat = false,
