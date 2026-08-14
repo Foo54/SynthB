@@ -720,6 +720,23 @@ local descriptions = {
 				}
 			},
 
+			-- Page 5 ^_^
+			j_synthb_feargarden = {
+				name = {"{f:5}恐怖ガーデン", "{s:0.7}Fear Garden"},
+				text = {
+					{
+						"When {C:attention}Blind{} is selected, destroy {C:attention}Joker{} to the right",
+						"{C:inactive,s:0.8,f:5}ひとつ、ふたつ、みっつ、よっつ、いつつ"
+					},
+					{
+						"For every {C:attention}#2# Jokers{} destroyed, gain {C:blue}+#3#{} Hand",
+						"when {C:attention}Blind{} is selected",
+						"{C:inactive}(#1#/#2#, {C:blue}+#4#{C:inactive} Hands)",
+						"{C:inactive,s:0.8,f:5}お庭には綺麗なオテテが沢山咲いてて"
+					},
+				}
+			},
+
 			--- spoilers
 			j_synthb_spoiler = {
 				name = "SPOILER",
@@ -1542,7 +1559,20 @@ local descriptions = {
 					"{f:5}歌愛ユキ",
 					"{C:inactive,s:0.8}Kaai Yuki"
 				}
-			}
+			},
+			feargarden = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}恐怖ガーデン",
+					"{C:inactive,s:0.8}Fear Garden",
+					"{C:attention}Producer:",
+					"{f:5}ちゃぁ",
+					"{C:inactive,s:0.8}Chaa",
+					"{C:attention}Voice:",
+					"{f:5}鏡音リン",
+					"{C:inactive,s:0.8}Kagamine Rin"
+				}
+			},
 		},
 		Enhanced = {
 			m_synthb_purple = {
@@ -1923,6 +1953,17 @@ local descriptions = {
 			synthb_credits_pepix = {
 				text = {
 					"its me! {C:green}Pepix{} {C:attention}creator and artist{} of {C:blue} Balatro refreshed{}"
+				}
+			},
+			synthb_credits_furretwalk = {
+				text = {
+					"{C:teto}Don't stare so much, spectators;",
+					"{C:teto}What, do I have something on my clothes?",
+					"{C:teto}More importantly, look, onlookers,",
+					"{C:teto}Look at my unedited voice!",
+					"{C:inactive}-TypeWriter by hario",
+					"",
+					"Play Walkies when it releases! ^_^"
 				}
 			},
 
