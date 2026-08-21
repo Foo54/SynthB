@@ -1,0 +1,123 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'globals.lua'
+pattern = '''self.I = {'''
+position = 'after'
+payload = '''PJSK = {},
+PJSK_POPUP = {},
+PJSK_CONFIG = {},'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = 'engine/ui.lua'
+pattern = '''for k, v in ipairs(vertices) do'''
+position = 'before'
+payload = '''if self.config.synthb_no_top_corners then
+	vertices = {
+		subw/2, subh/2-ext_up,
+		0,0,
+		totw,0,
+		totw,subh-ext_up,
+		subw+3*res, subh-ext_up,
+		subw+3*res, subh+2*res-ext_up,
+		subw+2*res, subh+2*res-ext_up,
+		subw+2*res, subh+3*res-ext_up,
+		subw, subh+3*res-ext_up,
+		subw, toth-ext_up,
+		4*res, toth-ext_up,
+		4*res, subh+3*res-ext_up,
+		2*res, subh+3*res-ext_up,
+		2*res, subh+2*res-ext_up,
+		1*res, subh+2*res-ext_up,
+		1*res, subh-ext_up,
+		0, subh-ext_up,
+		0,0,
+	}
+elseif self.config.synthb_no_bottom_corners then
+	vertices = {
+		subw/2, subh/2-ext_up,
+		0,4*res-ext_up,
+		1*res,4*res-ext_up,
+		1*res,2*res-ext_up,
+		2*res,2*res-ext_up,
+		2*res,1*res-ext_up,
+		4*res,1*res-ext_up,
+		4*res,0*res-ext_up,
+		subw,0*res-ext_up,
+		subw,1*res-ext_up,
+		subw+2*res,1*res-ext_up,
+		subw+2*res,2*res-ext_up,
+		subw+3*res,2*res-ext_up,
+		subw+3*res,4*res-ext_up,
+		totw,4*res-ext_up,
+		totw,toth,
+		0, toth,
+		0,4*res-ext_up,
+	}
+elseif self.config.synthb_trapezoid then
+	vertices = {
+		subw/2, subh/2-ext_up,
+		0,toth * (1 - 83/133),
+		totw,0,
+		totw,toth-ext_up,
+		0,toth-ext_up,
+		0,toth * (1 - 83/133),
+	}
+end'''
+match_indent = true
+times = 1
+
+# ty aiko for these patches
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "    G.ARGS.play_sound.sound_code = sound_code"
+position = "before"
+payload = '''    G.ARGS.play_sound.synthb_is_song_clip = (SMODS.Sounds[sound_code] or {}).synthb_is_song_clip'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = 'engine/sound_manager.lua'
+pattern = "  s.created_on_state = args.state"
+position = "before"
+payload = '''s.synthb_is_song_clip = args.synthb_is_song_clip'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = 'engine/sound_manager.lua'
+pattern = "        elseif request.type == 'modulate' then "
+position = "before"
+payload = '''elseif request.type == 'synthb_stop_clip' then 
+    SYNTHB_STOP_CLIP()
+'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = 'engine/sound_manager.lua'
+pattern = "function STOP_AUDIO()"
+position = "before"
+payload = '''function SYNTHB_STOP_CLIP()
+    for _, source in pairs(SOURCES) do
+        for _, s in pairs(source) do
+            if s.sound:isPlaying() and s.synthb_is_song_clip then
+                s.sound:stop()
+            end
+        end
+    end
+end
+'''
+match_indent = true

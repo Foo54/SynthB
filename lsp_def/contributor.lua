@@ -8,6 +8,7 @@
 ---@field stop_hover? fun(self: SynthB.Credits.Contributor) called when the card is not hovered while in the credits
 ---@field click? fun(self: SynthB.Credits.Contributor) called when the card is clicked in the credits
 ---@field name string name to display during the option cycle
+---@field synthb_role {coders: boolean?, artists: boolean?, artists2: boolean?, music: boolean?} your role(s) in the mod
 ---@field custom_ui? fun(self: SynthB.Credits.Contributor): table complete control of the credit UI
 ---@overload fun(self: SynthB.Credits.Contributor): SynthB.Credits.Contributor
 SynthB.Credits.Contributor = setmetatable({}, {

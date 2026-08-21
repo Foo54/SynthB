@@ -160,6 +160,7 @@ SynthB.load_file("api/shader")
 SynthB.load_file("api/smods")
 SynthB.load_file("api/character")
 SynthB.load_file("api/credits")
+SynthB.load_file("api/pjsk")
 
 SynthB.debug("Loading Content Files")
 SynthB.load_file("content/jokers/page 1")
@@ -190,6 +191,8 @@ end
 SynthB.debug("Loading Credits")
 SynthB.load_file("util/credits/foo")
 SynthB.load_file("util/credits/pepix")
+SynthB.load_file("util/credits/inky")
+SynthB.load_file("util/credits/temp")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
 SynthB.load_file("compat/aikoshen")

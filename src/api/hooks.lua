@@ -311,6 +311,9 @@ function G.UIDEF.card_h_popup (card, ...)
 			}})
 		end
 	end
+	if SynthB.PJSK.force_ui then
+		ret.nodes[1].config.synthb_force_ui = true
+	end
 	return ret
 end
 
@@ -494,4 +497,22 @@ G.FUNCS.can_select_card = function(e)
 			e.config.button = nil
 		end
 	end
+end
+
+
+local modBox = create_UIBox_mods
+function create_UIBox_mods(args)
+	if G.ACTIVE_MOD_UI.id == 'synthb' then
+		SynthB.PJSK:init()
+		G.E_MANAGER:add_event(Event{
+			func = function()
+				if G.OVERLAY_MENU then
+					G.OVERLAY_MENU:remove()
+				end
+				return true
+			end
+		})
+		return {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}}
+	end
+	return modBox(args)
 end

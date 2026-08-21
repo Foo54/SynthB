@@ -92,11 +92,25 @@ SMODS.Atlas{
 SMODS.Atlas{
 	atlas_table = "ANIMATION_ATLAS",
 	key = "pepix_credits",
-	path = "credits/pepix.png",
+	path = "credits/pepix/pepix.png",
 	px = 71,
 	py = 95,
 	frames = 2,
 	fps = 1
+}
+
+SMODS.Atlas{
+	key = "credits_pepix_mini",
+	path = "credits/pepix/mini.png",
+	px = 20,
+	py = 80,
+}
+
+SMODS.Atlas{
+	key = "credits_aiko_mini",
+	path = "credits/aiko/aiko_mini.png",
+	px = 35,
+	py = 90,
 }
 
 SMODS.Atlas{
@@ -130,6 +144,42 @@ SMODS.Atlas{
 SMODS.Atlas{
 	key = "inky jokers",
 	path = "inky jokers.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas{
+	key = "inky_mini_credits",
+	path = "credits/inky/mini.png",
+	px = 20,
+	py = 80
+}
+
+SMODS.Atlas{
+	key = "inky_full_credits",
+	path = "credits/inky/full.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas{
+	key = "missingno_mini_credits",
+	path = "credits/missingno/mini.png",
+	px = 20,
+	py = 80
+}
+
+
+SMODS.Atlas{
+	key = "furret_mini_credits",
+	path = "credits/furret/furret_mini.png",
+	px = 20,
+	py = 80
+}
+
+SMODS.Atlas{
+	key = "furret_full_credits",
+	path = "credits/furret/furret_full.png",
 	px = 71,
 	py = 95
 }

@@ -2,8 +2,16 @@ SynthB.Credits.Contributor{
 	key = "credits_foo54",
 	atlas = "credits_foo54",
 	name = "Foo54",
+	synthb_role = {
+		coders = true,
+		artists2 = true
+	},
+	colour = SynthB.custom_colors.TETO,
 	click = function (self)
 		play_sound("synthb_teto")
+	end,
+	credit_vars = function(self)
+		return {elements = {SMODS.create_sprite(0, 0, 5, 5 * 88 / 518, "synthb_revo", {x = 0, y = 0})}, colours = {SMODS.Gradients.synthb_thunderedge}}
 	end,
 	custom_ui = function (self)
 		G.synthb_credits_background_box = UIBox{
@@ -401,6 +409,15 @@ SynthB.Credits.Contributor{
 		}}
 	end,
 }
+
+SMODS.Gradient({
+	key = "thunderedge",
+	colours = {
+		HEX("89C41B"),
+		HEX("C5CC41"),
+	},
+	cycle = 1.5,
+})
 
 function G.FUNCS.synthb_align_book_box (e)
 	G.synthb_credits_book_box.T.r = -0.02

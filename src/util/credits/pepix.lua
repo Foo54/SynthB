@@ -1,7 +1,11 @@
 SynthB.Credits.Contributor{
     key = "credits_pepix",
 		name = "Pepix",
-
+    mini_atlas = "credits_pepix_mini",
+    synthb_role = {
+        artists = true
+    },
+    colour = HEX("5CE207"),
     pos = {
         x = 0,
         y = 0

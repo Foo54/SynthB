@@ -1,7 +1,6 @@
 return {
 	display_misc_info = true,
 	display_song_info = false,
-	display_card_credits = false,
 	display_heat_info = false,
 	display_energy_drink_info = false,
 	display_blackjack_info = false,

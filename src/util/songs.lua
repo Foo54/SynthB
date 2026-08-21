@@ -30,7 +30,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=HOz-9FzIDf0", key = "matryoshka", pos = {x = 3, y = 5}},
 	{link = "https://www.youtube.com/watch?v=STBoCK69vVQ", key = "spot_late", pos = {x = 4, y = 5}},
 	{link = "https://www.youtube.com/watch?v=b2NTglk9tvI", key = "heat_abnormal", pos = {x = 0, y = 6}},
-	{link = "https://www.youtube.com/watch?v=LvYL8u4p-aM", key = "spoken_for", pos = {x = 1, y = 6}},
+	{link = "https://www.youtube.com/watch?v=LvYL8u4p-aM", key = "spoken_for_mult", pos = {x = 1, y = 6}, voicebanks = {"Teto"}},
 	{link = "https://www.youtube.com/watch?v=B1nUc7LfZYA", key = "hello_world", pos = {x = 2, y = 6}},
 	{link = "https://www.youtube.com/watch?v=bmbAm-fKnbQ", key = "clone_clone", pos = {x = 3, y = 6}},
 	{link = "https://www.youtube.com/watch?v=EEk4JGzqoFg", key = "im_the_rain", pos = {x = 4, y = 6}},
@@ -48,20 +48,20 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=u33469XYVWc", key = "dance_delightful", pos = {x = 1, y = 9}},
 	-- smokey love / Bad Director
 	{link = "https://www.youtube.com/watch?v=viNruoTceiw", key = "needle", pos = {x = 3, y = 9}},
-	{link = "https://www.youtube.com/watch?v=XKZIQlqVjjk", key = "song_synthb_approve_please_genie", prefix = "", pos = {x = 4, y = 9}, set = "Other"},
+	{link = "https://www.youtube.com/watch?v=XKZIQlqVjjk", key = "song_synthb_approve_please_genie", prefix = "", pos = {x = 4, y = 9}, set = "Other", voicebanks = {"Una", "Teto"}},
 	{link = "https://www.youtube.com/watch?v=_oTaQXf_iX8", key = "yararara", pos = {x = 0, y = 10}},
-	{link = "https://www.youtube.com/watch?v=tlFnfEWZCtQ", key = "song_synthb_pink", prefix = "", set = "Other", pos = {x = 1, y = 10}, spoiler = "deltarune"},
+	{link = "https://www.youtube.com/watch?v=tlFnfEWZCtQ", key = "song_synthb_pink", prefix = "", set = "Other", pos = {x = 1, y = 10}, spoiler = "deltarune", voicebanks = {"Miku"}},
 	{link = "https://www.youtube.com/watch?v=UTcZHzDY3LU", key = "affection_addiction", pos = {x = 2, y = 10}},
-	{link = "https://www.youtube.com/watch?v=hk1L0ZV2bVc", key = "on_the_rocks_1", pos = {x = 3, y = 10}},
+	{link = "https://www.youtube.com/watch?v=hk1L0ZV2bVc", key = "on_the_rocks_1", pos = {x = 3, y = 10}, voicebanks = {"MEIKO", "KAITO"}},
 	{link = "https://www.youtube.com/watch?v=q_MokwclZF8", key = "npc", pos = {x = 4, y = 10}},
 	{link = "https://www.youtube.com/watch?v=5LbpDCPKen0", key = "sosorry", pos = {x = 5, y = 0}},
 	{link = "https://www.youtube.com/watch?v=ofPBu1stIxc", key = "russian_roulette", pos = {x = 6, y = 0}},
 	{link = "https://www.youtube.com/watch?v=A0ih5EaG4yw", key = "contradictions", pos = {x = 7, y = 0}},
-	{link = "https://www.youtube.com/watch?v=InZ7GOU-CQ8", key = "song_synthb_empurple", prefix = "", pos = {x = 8, y = 0}, set = "Other"},
-	{link = "https://www.youtube.com/watch?v=jbZT-bwZD3c", key = "song_synthb_streetcat", prefix = "", pos = {x = 9, y = 0}, set = "Other"},
+	{link = "https://www.youtube.com/watch?v=InZ7GOU-CQ8", key = "song_synthb_empurple", prefix = "", pos = {x = 8, y = 0}, set = "Other", voicebanks = {"Miku"}},
+	{link = "https://www.youtube.com/watch?v=jbZT-bwZD3c", key = "song_synthb_streetcat", prefix = "", pos = {x = 9, y = 0}, set = "Other", voicebanks = {"Iroha"}},
 	{link = "https://www.youtube.com/watch?v=icBDYkfxpMs", key = "looping_the_rooms", pos = {x = 5, y = 1}},
 	{link = "https://www.youtube.com/watch?v=J0rxCobJs0A", key = "whodunit", pos = {x = 6, y = 1}},
-	{link = "https://www.youtube.com/watch?v=dB8QCac8FSM", key = "song_synthb_shogi", prefix = "", pos = {x = 7, y = 1}, set = "Other"}
+	{link = "https://www.youtube.com/watch?v=dB8QCac8FSM", key = "song_synthb_shogi", prefix = "", pos = {x = 7, y = 1}, set = "Other", voicebanks = {"Yuki"}}
 	--[[
 	for cross mod do this
 	
@@ -93,6 +93,11 @@ end
 
 SynthB.key_songs = {}
 for _, song in ipairs(SynthB.songs) do
+	SMODS.Sound{
+		key = "clip_" .. song.key,
+		path = "clips/" .. song.key .. ".ogg",
+		synthb_is_song_clip = true
+	}
 	SynthB.key_songs[song.key] = song
 end
 
@@ -115,6 +120,9 @@ function SynthB.generate_song_button(key, index, prefix, set, spoiler)
 		{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, 3.5, 3.5, SynthB.songs[index].atlas or "synthb_covers", SynthB.songs[index].pos or {x = 0, y = 0})}}
 	}})
 	return out
+end
+
+function G.UIDEF.synthb_song_view ()
 end
 
 SynthB.Voicebanks = {}

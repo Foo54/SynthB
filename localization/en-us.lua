@@ -1912,19 +1912,6 @@ local descriptions = {
 					"a {C:attention}Light Suit{} is scored"
 				}
 			},
-			
-			--- Credits
-			synthb_credits_foo54 = {
-				text = {
-					"this text won't actually appear",
-					"its just here as an example"
-				}
-			},
-			synthb_credits_pepix = {
-				text = {
-					"its me! {C:green}Pepix{} {C:attention}creator and artist{} of {C:blue} Balatro refreshed{}"
-				}
-			},
 
 			--- Banners
 			synthb_gacha_n25 = {
@@ -2449,7 +2436,61 @@ local descriptions = {
 						"to each {E:bd_glitching}card in{} your hand",
 				}
 			}
-		}
+		},
+		SynthBCredits = {
+			credits_placeholder = {
+				name = "???",
+			},
+			credits_foo54 = {
+				name = "Foo54",
+				text = {
+					"Hi! I'm {C:attention}Foo54{}, the main developer of SynthB.",
+					"I did the majority of the programming",
+					"and a little bit of the art for the mod.",
+					" ",
+					"I'd like to give a {C:attention}special thanks{} to",
+					"{C:chips}SleepyG11{}, {C:ff6868}mf{}, LasagnaFelidae, and {C:1}ThunderEdge{} for their help",
+					"with small things in the mod.",
+					"Also a big thanks to the SMODS Wiki, VanillaRemade,",
+					"the Vocaloid Lyrics Wiki, and the Potato Patch Discord.",
+					"Oh revo also wants to be in here",
+					"{element:1}",
+					" ",
+					"Whatever, go my Mizuki"
+				}
+			},
+			credits_pepix = {
+				name = "Pepix",
+				text = {
+					"its me! {C:green}Pepix{} {C:attention}creator and artist{} of {C:blue} Balatro refreshed{}"
+				}
+			},
+			credits_inky = {
+				name = "Inky",
+				text = {
+					"{s:2}Hi, I'm {C:attention,s:2}Inky{s:2}.",
+					"{s:2}You might recognize me as the",
+					"{s:2}Square joker guy, or as the partners guy",
+					"{s:2}But really, I'm just the guy",
+					"{s:2}that helped sprite one joker here",
+					"{s:2}I think this mod is like really",
+					"{s:2}fun and you would too find it so!!",
+					"{C:inactive,button:synthb_pjsk_credits_inky_kofi}Uhhh okay can i shill my kofi now? no? awh man.{}"
+				},
+			},
+			credits_aiko = {
+				name = "Aikoyori"
+			},
+			credits_furret = {
+				name = "FurretWalk"
+			},
+			credits_guarana = {
+				name = "Guaraná"
+			},
+			credits_missingno = {
+				name = "missingnumber"
+			}
+		},
 	},
 	misc = {
 		dictionary = {
@@ -2484,7 +2525,90 @@ local descriptions = {
 			k_gacha_banner_synthb_gacha_vs = "Virtual Singers",
 			k_worm_diva_pack = "Diva Pack",
 			k_synthb_whodunit_dead_ex = "Dead!",
-			k_synthb_whodunit_miss_ex = "Miss!"
+			k_synthb_whodunit_miss_ex = "Miss!",
+
+			-- mod page
+			ph_synthb_card_game = "CARD GAME",
+			ph_synthb_mod_page = "Menu",
+			ph_synthb_additions = "Additions",
+			ph_synthb_credits = "Credits",
+			ph_synthb_config_1 = "Mod",
+			ph_synthb_config_2 = "Config",
+			ph_synthb_songs_1 = "Song",
+			ph_synthb_songs_2 = "List",
+			b_synthb_config_general = "General",
+			b_synthb_config_info = "Info",
+			b_synthb_config_spoilers = "Spoilers",
+			b_synthb_config_debug = "Debug",
+			b_synthb_back = "Back",
+			ph_synthb_missing_label = "MISSING LABEL",
+			b_synthb_off = "Off",
+			b_synthb_on = "On",
+
+			ph_synthb_triple_click_for_song = "Triple Click to View Song",
+			ph_synthb_mizuki_zoomies = "Give Mizuki Zoomies",
+			ph_synthb_display_misc_info = "Display All Info",
+			ph_synthb_display_song_info = "Display Song Info",
+			ph_synthb_display_heat_info = "Display Temperature Info",
+			ph_synthb_display_energy_drink_info = "Display Energy Drink Info",
+			ph_synthb_display_blackjack_info = "Display Blackjack Info",
+			ph_synthb_spoilers_deltarune = "Deltarune Spoilers",
+			ph_synthb_allow_covers_on_any_card = "Allow Covers on any Card",
+			ph_synthb_DEBUG = "Debug Mode",
+			ph_synthb_disable_non_scoring_character_animations = "Disable Non-scoring Character Animations",
+			ph_synthb_experimental_features = "Experimental Features*",
+			ph_synthb_requires_restart = "* Requires Restart",
+			b_synthb_sidebar_coders = "Coders",
+			b_synthb_sidebar_artists = "Artists",
+			b_synthb_sidebar_artists2 = "More Artists",
+			b_synthb_sidebar_music = "Musicians",
+			ph_synthb_select_a_contributor = "Please Select a Contributor.",
+			b_synthb_sidebar_jokers = "Jokers",
+			b_synthb_sidebar_consumables = "Consumables",
+			b_synthb_sidebar_modifications = "Modifications",
+			b_synthb_sidebar_other = "Other",
+		},
+		synthb_song_quips = {
+			antani_itten_no = {
+				rows = {
+					"I-it's not like I want",
+					"to give you +mult!",
+					">_<"
+				}
+			},
+			credits_foo54 = {
+				rows = {
+					"Hi I'm Foo54 - Creator of this mod!",
+					"I hope your enjoying it so far."
+				},
+				scale = 0.5
+			},
+			credits_furret = {
+				rows = {
+					"hello twin",
+					"thanks for playing the mod twin",
+					"also play walkies when i-Wait,",
+					"can I self promote here?"
+				}
+			},
+			credits_inky = {
+				rows = {
+					"You know, I don't just do",
+					"the boring accounting stuff.",
+					"I also do some sprites, and they",
+					"all get the same amount of hatred from me!"
+				},
+				scale = 0.45
+			}
+		},
+		synthb_credits_desc = {
+			credits_foo54 = "Lead Developer",
+			credits_placeholder = "???",
+			credits_inky = "Squimbo's guy",
+			credits_pepix = "#3 teto fan",
+			credits_furret = "draws once every sometimes",
+			credits_aiko = "my shenanigans",
+			credits_missingno = "My wife left me!",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

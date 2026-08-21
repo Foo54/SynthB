@@ -7,6 +7,7 @@ SynthB.Credits.Contributor = SMODS.Joker:extend{
 	no_collection = true,
 	discovered = true,
 	unlocked = true,
+	synthb_role = {},
 	set_badges = function (self, card, badges)
 		badges[#badges+1] = create_badge("Credit Card", SynthB.custom_colors.LIGHT_GREEN)
 	end,
@@ -46,6 +47,7 @@ SynthB.Credits.Contributor = SMODS.Joker:extend{
 		area:emplace(joker)
 		return joker
 	end,
+	credit_vars = function(self) end,
 	hover = function(self) end,
 	stop_hover = function(self) end,
 	click = function(self) end,
@@ -57,4 +59,11 @@ SynthB.Credits.Contributor = SMODS.Joker:extend{
 		end
 		return SMODS.Joker.inject(self, i)
 	end
+}
+
+---@diagnostic disable-next-line: missing-fields
+SynthB.Credits.Contributor{
+	key = "credits_placeholder",
+	name = "???",
+	mini_atlas = 'pjsk_placeholder_mini_icon'
 }
