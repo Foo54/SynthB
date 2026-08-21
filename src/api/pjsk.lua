@@ -1788,6 +1788,7 @@ end
 
 function SynthB.PJSK:play_song(key)
 	if SynthB.key_songs[key].spoiler and SynthB.mod.config.spoilers[SynthB.key_songs[key].spoiler] then return end
+	if not SMODS.NFS.getInfo(SynthB.mod.path .. "assets/sounds/clips/" .. key .. ".ogg") then return end
 	G.ARGS.push.type = "synthb_stop_clip"
 	self.mem_volume = self.mem_volume or G.ARGS.push.sound_settings.music_volume
 	G.ARGS.push.sound_settings.music_volume = 0
