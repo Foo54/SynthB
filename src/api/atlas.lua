@@ -169,6 +169,20 @@ SMODS.Atlas{
 	py = 80
 }
 
+SMODS.Atlas{
+	key = "missingno_full_credits",
+	path = "credits/missingno/full.png",
+	px = 71,
+	py = 95
+}
+
+SMODS.Atlas{
+	key = "missingno_oma_credits",
+	path = "credits/missingno/oma.png",
+	px = 494,
+	py = 109
+}
+
 
 SMODS.Atlas{
 	key = "furret_mini_credits",
@@ -182,6 +196,13 @@ SMODS.Atlas{
 	path = "credits/furret/furret_full.png",
 	px = 71,
 	py = 95
+}
+
+SMODS.Atlas{
+	key = "furret_tenma_credits",
+	path = "credits/furret/tenma.png",
+	px = 296,
+	py = 256
 }
 
 SMODS.Atlas{

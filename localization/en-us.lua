@@ -2512,13 +2512,32 @@ local descriptions = {
 				name = "Aikoyori"
 			},
 			credits_furret = {
-				name = "FurretWalk"
+				name = "FurretWalk",
+				text = {
+					"Furret here!",
+					"Creator of {button:synthb_walkies_shill}WALKIES{}, another Vocaloid mod you should play (...when it releases, that is.)",
+					"My favorite producer is Frog96.",
+					"Used to play 7 gacha games, now plays 4.",
+					"Doesn't play PJSK, but my favorite character is Saki (see below).",
+					" ",
+					"{C:inactive} My keyboard's still broken...",
+					" ",
+					"{element:1} "
+				}
 			},
 			credits_guarana = {
 				name = "Guaraná"
 			},
 			credits_missingno = {
-				name = "missingnumber"
+				name = "missingnumber",
+				text = {
+					"{C:inactive,s:0.8}Who gives a Go Next?",
+					"Main artist behind {button:synthb_finity_shill,C:800020}Finity{} and {button:synthb_0error_shill,C:synthb_rainbow}0 ERROR{},",
+					"composer of {button:synthb_open_locaf,u:0.1}lump of caramel in the air fryer",
+					"Also the creator of the first ever original song featuring {C:synthb_marvin}Marvin{}.",
+					" ",
+					"{element:1}"
+				}
 			}
 		},
 	},

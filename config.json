@@ -14,6 +14,7 @@
   "icon_path": "modicon.png",
   "no_marquee": true,
   "dependencies": [
-    "Steamodded (>=1.0.0~BETA-1620a)"
+		"Steamodded (>=1.0.0~BETA-2003b)",
+		"Lovely (>=0.9.0)",
   ]
 }

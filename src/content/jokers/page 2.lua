@@ -124,7 +124,11 @@ SynthB.Joker{
 -- KING
 SynthB.Joker{
 	key = "king",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 3, y = 5},
+	synthb_credits = {
+		Artist = "missingnumber"
+	},
 	rarity = 2,
 	cost = 5,
 	loc_vars = function(self, info_queue, card)
@@ -549,7 +553,11 @@ SynthB.Joker{
 -- kyu-kurarin
 SynthB.Joker{
 	key = "kyu_kurarin",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 4, y = 5},
+	synthb_credits = {
+		Artist = "missingnumber"
+	},
 	rarity = 2,
 	cost = 5,
 	config = {

@@ -348,6 +348,9 @@ SynthB.Joker{
 			cost = 30
 		}
 	},
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
