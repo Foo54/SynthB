@@ -275,6 +275,14 @@ function G.FUNCS.synthb_pjsk_phone_align (e)
 	end
 end
 
+function G.FUNCS.synthb_pjsk_button_hover(e)
+	if e.states.hover.is then
+		e.config.colour = adjust_alpha(e.config.colour, 0.1)
+	else
+		e.config.colour = adjust_alpha(e.config.colour, 0)
+	end
+end
+
 function SynthB.PJSK:main_menu()
 	local extra_h = 0.7
 	local full_h = G.ROOM_ATTACH.T.h + extra_h * 2 + 0.5
@@ -326,7 +334,7 @@ function SynthB.PJSK:main_menu()
 								}},
 								{n = G.UIT.R, config = {minh = button_padding_h}},
 								{n = G.UIT.R, config = {minw = button_w, minh = bottom_button_h, r = true, align = "cm", colour = self.C.PHONE.BUTTONS.CONFIG}, nodes = {
-									{n = G.UIT.R, config = {minw = button_w, minh = bottom_button_h, align = "cm", button_dist = 0, button = "synthb_pjsk_transition", ref_table = "config"}, nodes = {
+									{n = G.UIT.R, config = {minw = button_w, minh = bottom_button_h, r = true, align = "cm", button_dist = 0, func = "synthb_pjsk_button_hover", button = "synthb_pjsk_transition", ref_table = "config"}, nodes = {
 										{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, button_icon_s, button_icon_s, "synthb_pjsk_button_icons", {x = 0, y = 1})}},
 										{n = G.UIT.C, config = {align = "cm"}, nodes = {
 											{n = G.UIT.R, config = {align = "cm"}, nodes = {
@@ -346,7 +354,7 @@ function SynthB.PJSK:main_menu()
 								}},
 								{n = G.UIT.R, config = {minh = button_padding_h}},
 								{n = G.UIT.R, config = {minw = button_w, minh = bottom_button_h, r = true, align = "cm", colour = self.C.PHONE.BUTTONS.SONGS}, nodes = {
-									{n = G.UIT.R, config = {minw = button_w, minh = bottom_button_h, align = "cm", button_dist = 0, button = "synthb_pjsk_transition", ref_table = "songs"}, nodes = {
+									{n = G.UIT.R, config = {minw = button_w, minh = bottom_button_h, r = true, align = "cm", button_dist = 0, func = "synthb_pjsk_button_hover", button = "synthb_pjsk_transition", ref_table = "songs"}, nodes = {
 										{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, button_icon_s, button_icon_s, "synthb_pjsk_button_icons", {x = 1, y = 1})}},
 										{n = G.UIT.C, config = {align = "cm"}, nodes = {
 											{n = G.UIT.R, config = {align = "cm"}, nodes = {
@@ -404,7 +412,7 @@ function SynthB.PJSK:main_menu()
 	}
 
 	self.UI.content_button_text = UIBox{
-		definition = {n = G.UIT.ROOT, config = {minw = button_w, minh = top_button_h, colour = G.C.CLEAR, align = "cm", button_dist = 0, button = "synthb_pjsk_transition", ref_table = "content"}, nodes = {
+		definition = {n = G.UIT.ROOT, config = {minw = button_w, minh = top_button_h, colour = G.C.CLEAR, r = true, align = "cm", button_dist = 0, func = "synthb_pjsk_button_hover", button = "synthb_pjsk_transition", ref_table = "content"}, nodes = {
 			{n = G.UIT.R, config = {align = "cm"}, nodes = {
 				{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, button_icon_s, button_icon_s, "synthb_pjsk_button_icons")}}
 			}},
@@ -436,7 +444,7 @@ function SynthB.PJSK:main_menu()
 	}
 
 	self.UI.credits_button_text = UIBox{
-		definition = {n = G.UIT.ROOT, config = {minw = button_w, minh = top_button_h, colour = G.C.CLEAR, align = "cm", button_dist = 0, button = "synthb_pjsk_transition", ref_table = "credits"}, nodes = {
+		definition = {n = G.UIT.ROOT, config = {minw = button_w, minh = top_button_h, colour = G.C.CLEAR, align = "cm", r = true, button_dist = 0, func = "synthb_pjsk_button_hover", button = "synthb_pjsk_transition", ref_table = "credits"}, nodes = {
 			{n = G.UIT.R, config = {align = "cm"}, nodes = {
 				{n = G.UIT.O, config = {object = SMODS.create_sprite(0, 0, button_icon_s, button_icon_s, "synthb_pjsk_button_icons", {x = 1, y = 0})}}
 			}},
