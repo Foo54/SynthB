@@ -17,16 +17,19 @@ SMODS.ConsumableType{
 	shop_rate = 2,
 	default = "c_synthb_sign_keep_out",
 	inject_card = function (self, center)
-		local center_set_ability_ref = center.set_ability or function() end
-		center.set_ability = function(_self, card, intial, delay_sprites)
-			new_colour(card)
-			center_set_ability_ref(_self, card, intial, delay_sprites)
-		end
-		local center_loc_vars_ref = center.loc_vars or function() end
-		center.loc_vars = function(_self, info_queue, card)
-			SynthB.song_info(info_queue, card, "streetcat")
-			new_colour(card)
-			return center_loc_vars_ref(_self, info_queue, card)
+		if not center.synthb_injected then
+			local center_set_ability_ref = center.set_ability or function() end
+			center.synthb_injected = true
+			center.set_ability = function(_self, card, intial, delay_sprites)
+				new_colour(card)
+				center_set_ability_ref(_self, card, intial, delay_sprites)
+			end
+			local center_loc_vars_ref = center.loc_vars or function() end
+			center.loc_vars = function(_self, info_queue, card)
+				SynthB.song_info(info_queue, card, "streetcat")
+				new_colour(card)
+				return center_loc_vars_ref(_self, info_queue, card)
+			end
 		end
 	end
 }
