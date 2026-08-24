@@ -412,6 +412,11 @@ SynthB.Joker{
 -- Parry
 SynthB.Joker{
 	key = "parry",
+	atlas = "joker_placeholders",
+	pos = {x = 6, y = 1},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	cost = 5,
 	blueprint_compat = false,
 	eternal_compat = true,

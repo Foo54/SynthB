@@ -2483,9 +2483,9 @@ local descriptions = {
 					"with small things in the mod.",
 					"Also a big thanks to the SMODS Wiki, VanillaRemade,",
 					"the Vocaloid Lyrics Wiki, and the Potato Patch Discord.",
+					"this mod would not be possible without them.",
 					"Oh revo also wants to be in here",
 					"{element:1}",
-					" ",
 					"Whatever, go my Mizuki"
 				}
 			},
@@ -2628,7 +2628,7 @@ local descriptions = {
 			credits_foo54 = {
 				rows = {
 					"Hi I'm Foo54 - Creator of this mod!",
-					"I hope your enjoying it so far."
+					"I hope your enjoying it so far." --[sic]
 				},
 				scale = 0.5
 			},
