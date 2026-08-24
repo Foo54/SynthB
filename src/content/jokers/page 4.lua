@@ -1215,7 +1215,7 @@ SynthB.WHODUNIT_CHANGES = {
 	NAME = 1,
 	MAIN_END = 2,
 	RARITY = 3,
-	EFFECT = 4
+	--EFFECT = 4
 }
 
 -- WHODUNIT
