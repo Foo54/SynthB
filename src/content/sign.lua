@@ -31,6 +31,12 @@ SMODS.ConsumableType{
 	end
 }
 
+SMODS.UndiscoveredSprite{
+	key = "synthb_Sign",
+	atlas = "streetcat",
+	pos = {x = 9, y = 0}
+}
+
 -- Keep Out
 SynthB.Sign{
 	key = "sign_keep_out",

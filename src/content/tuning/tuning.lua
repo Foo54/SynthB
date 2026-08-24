@@ -6,3 +6,9 @@ SMODS.ConsumableType{
 	shop_rate = 4,
 	default = "c_synthb_tuning_pitch_bend"
 }
+
+SMODS.UndiscoveredSprite{
+	key = "Tuning",
+	atlas = "tuning",
+	pos = {x = 6, y = 0}
+}
