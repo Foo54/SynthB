@@ -1737,8 +1737,8 @@ local descriptions = {
 				text = {
 					"Any {C:mult}Mult{} this card",
 					"scores is replaced",
-					"with {C:attention}#1#x{} its",
-					"value in {C:chips}Chips"
+					"with {C:attention}1/#1#{} its",
+					"value in {X:chips,C:white}XChips"
 				}
 			},
 			e_synthb_cover_teto = {
@@ -1747,7 +1747,7 @@ local descriptions = {
 					"Any {C:chips}Chips{} this card",
 					"scores is replaced",
 					"with {C:attention}1/#1#{} its",
-					"value in {C:mult}Mult"
+					"value in {X:mult,C:white}XMult"
 				}
 			},
 			e_synthb_cover_kaito = {
@@ -1755,8 +1755,8 @@ local descriptions = {
 				text = {
 					"Any {C:mult}Mult{} this card",
 					"scores is replaced",
-					"with {C:attention}1/#1#{} its",
-					"value in {X:chips,C:white}XChips"
+					"with {C:attention}#1#x{} its",
+					"value in {C:chips}Chips"
 				}
 			},
 			e_synthb_cover_meiko = {
@@ -1765,7 +1765,7 @@ local descriptions = {
 					"Any {C:chips}Chips{} this card",
 					"scores is replaced",
 					"with {C:attention}1/#1#{} its",
-					"value in {X:mult,C:white}XMult"
+					"value in {C:mult}Mult"
 				}
 			}
 		},

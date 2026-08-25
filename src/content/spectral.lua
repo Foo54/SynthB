@@ -96,10 +96,10 @@ SMODS.Consumable{
 		local safe = #G.hand.highlighted < 2 and #G.jokers.highlighted < 2
 		if safe then
 			if (joker_select or card_select) and not (joker_select and card_select) then
-				local target = G.jokers.highlighted[1] or G.cards.highlighted[1]
+				local target = G.jokers.highlighted[1] or G.hand.highlighted[1]
 				if not target.edition then
 					for _, edition in ipairs(SynthB.cover_editions) do
-						if G.P_CENTERS[edition]:valid_vard(target) then
+						if G.P_CENTERS[edition]:valid_card(target) then
 							return true
 						end
 					end
@@ -109,7 +109,7 @@ SMODS.Consumable{
 	end,
 	use = function (self, card, area, copier)
 		---@type Card
-		local target = G.jokers.highlighted[1] or G.cards.highlighted[1]
+		local target = G.jokers.highlighted[1] or G.hand.highlighted[1]
 		local pool = {}
 		for _, edition in ipairs(SynthB.cover_editions) do
 			if G.P_CENTERS[edition]:valid_card(target) then

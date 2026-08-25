@@ -1,6 +1,6 @@
 SMODS.Edition{
-	key = "cover_miku",
-	shader = "miku",
+	key = "cover_kaito",
+	shader = "kaito",
 	in_shop = true,
 	weight = 20,
 	config = {
@@ -18,21 +18,21 @@ SMODS.Edition{
 		if effect.mult then
 			effect.chips = (effect.chips or 0) + card.edition.extra.mult_scale * effect.mult
 			effect.mult = nil
-			effect.message = "Miku!"
+			effect.message = "KAITO!"
 			effect.colour = G.C.BLUE
 		end
 		if effect.mult_mod then
 			effect.chips = (effect.chips or 0) + card.edition.extra.mult_scale * effect.mult_mod
 			effect.mult_mod = nil
-			effect.message = "Miku!"
+			effect.message = "KAITO!"
 			effect.colour = G.C.BLUE
 		end
 	end
 }
 
 SMODS.Edition{
-	key = "cover_teto",
-	shader = "teto",
+	key = "cover_meiko",
+	shader = "meiko",
 	in_shop = true,
 	weight = 20,
 	config = {
@@ -50,21 +50,21 @@ SMODS.Edition{
 		if effect.chips then
 			effect.mult = (effect.mult or 0) + effect.chips / card.edition.extra.chips_scale
 			effect.chips = nil
-			effect.message = "Teto!"
+			effect.message = "MEIKO!"
 			effect.colour = G.C.RED
 		end
 		if effect.chip_mod then
 			effect.mult = (effect.mult or 0) + effect.chip_mod / card.edition.extra.chips_scale
 			effect.chip_mod = nil
-			effect.message = "Teto!"
+			effect.message = "MEIKO!"
 			effect.colour = G.C.RED
 		end
 	end
 }
 
 SMODS.Edition{
-	key = "cover_kaito",
-	shader = "kaito",
+	key = "cover_miku",
+	shader = "miku",
 	in_shop = true,
 	weight = 10,
 	config = {
@@ -82,21 +82,21 @@ SMODS.Edition{
 		if effect.mult then
 			effect.xchips = (effect.xchips or 1) + effect.mult / card.edition.extra.mult_scale
 			effect.mult = nil
-			effect.message = "KAITO!"
+			effect.message = "Miku!"
 			effect.colour = G.C.BLUE
 		end
 		if effect.mult_mod then
 			effect.xchips = (effect.xchips or 1) + effect.mult_mod / card.edition.extra.mult_scale
 			effect.mult_mod = nil
-			effect.message = "KAITO!"
+			effect.message = "Miku!"
 			effect.colour = G.C.BLUE
 		end
 	end
 }
 
 SMODS.Edition{
-	key = "cover_meiko",
-	shader = "meiko",
+	key = "cover_teto",
+	shader = "teto",
 	in_shop = true,
 	weight = 10,
 	config = {
@@ -114,13 +114,13 @@ SMODS.Edition{
 		if effect.chips then
 			effect.xmult = (effect.xmult or 1) + effect.chips / card.edition.extra.chips_scale
 			effect.chips = nil
-			effect.message = "MEIKO!"
+			effect.message = "Teto!"
 			effect.colour = G.C.RED
 		end
 		if effect.chip_mod then
 			effect.xmult = (effect.xmult or 1) + effect.chip_mod / card.edition.extra.chips_scale
 			effect.chip_mod = nil
-			effect.message = "MEIKO!"
+			effect.message = "Teto!"
 			effect.colour = G.C.RED
 		end
 	end
