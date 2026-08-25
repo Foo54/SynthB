@@ -19,7 +19,7 @@ SMODS.Consumable{
 		}}}
 	end,
 	can_use = function (self, card)
-		return G.GAME.synthb_last_used_consumable_type and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+		return G.GAME.synthb_last_used_consumable_type and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit + (card.area == G.consumeables and 1 or 0)
 	end,
 	use = function (self, card, area, copier)
 		local mem_set = G.GAME.synthb_last_used_consumable_type
