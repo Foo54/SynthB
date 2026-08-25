@@ -69,7 +69,7 @@ SMODS.Edition{
 	weight = 10,
 	config = {
 		extra = {
-			mult_scale = 3
+			mult_scale = 10
 		}
 	},
 	loc_vars = function(self, info_queue, card)

@@ -558,8 +558,8 @@ SynthB.Joker{
 	synthb_credits = {
 		Artist = "missingnumber"
 	},
-	rarity = 2,
-	cost = 5,
+	rarity = 3,
+	cost = 7,
 	config = {
 		extra = {
 			scaling = 7,

@@ -2,6 +2,9 @@
 SynthB.Tuning{
 	key = "tuning_pitch_bend",
 	config = {max_highlighted = 3, min_highlighted = 3},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}
 	end,
@@ -17,6 +20,9 @@ SynthB.Tuning{
 	key = "tuning_velocity",
 	pos = {x = 1, y = 0},
 	config = {markiplier = 1.2},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.markiplier}}
 	end,
@@ -63,6 +69,9 @@ SynthB.Tuning{
 SynthB.Tuning{
 	key = "tuning_attack",
 	pos = {x = 2, y = 0},
+	synthb_credits = {
+		Artist = "Guaraná"
+	},
 	config = {max_highlighted = 3, mult_gain = 1, mult_duration = 5},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted, card.ability.mult_gain, card.ability.mult_duration}}
@@ -262,6 +271,9 @@ SynthB.Tuning{
 -- Lowpass
 SynthB.Tuning{
 	key = "tuning_lowpass",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 0, y = 1},
 	config = {max_rank = 10},
 	loc_vars = function(self, info_queue, card)
@@ -344,6 +356,9 @@ SynthB.Tuning{
 
 -- Normalize
 SynthB.Tuning{
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	key = "tuning_normalize",
 	pos = {x = 1, y = 1},
 	config = {max_highlighted = 3, rank = "10", suit = "Spades"},
@@ -416,6 +431,9 @@ SynthB.Tuning{
 -- Vibrato
 SynthB.Tuning{
 	key = "tuning_vibrato",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 2, y = 1},
 	config = {max_highlighted = 5, gain = 30},
 	loc_vars = function(self, info_queue, card)
