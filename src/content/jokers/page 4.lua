@@ -1223,8 +1223,8 @@ SynthB.Joker{
 	key = "whodunit",
 	config = {
 		extra = {
-			xmult = 5,
-			loss = 1
+			xmult = 3,
+			loss = 0.5
 		},
 		immutable = {
 			warning = nil,
