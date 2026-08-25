@@ -178,7 +178,7 @@ SynthB.Joker{
 	attributes = {"chips", "suit", "spades", "scaling", "song", "ryo", "Miku", "vocaloid song"},
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "the_world_is_mine")
@@ -626,7 +626,7 @@ SynthB.Joker{
 			mem_earnings = 6
 		}
 	},
-	perishable_compat = true,
+	perishable_compat = false,
 	eternal_compat = false,
 	blueprint_compat = true,
 	demicolon_compat = true,
@@ -688,7 +688,7 @@ SynthB.Joker{
 	cost = 5,
 	attributes = {"chips", "hand_type", "scaling", "song", "Teto", "vocaloid song"},
 	blueprint_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	eternal_compat = true,
 	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
@@ -756,7 +756,7 @@ SynthB.Joker{
 	},
 	blueprint_compat = false,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"economy", "scaling", "reset", "rank", "9", "song", "vocaloid song", "Yuki", "inabakumori"},
 	loc_vars = function(self, info_queue, card)

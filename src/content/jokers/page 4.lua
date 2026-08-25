@@ -360,7 +360,7 @@ SynthB.Joker{
 	},
 	blueprint_compat = false,
 	eternal_compat = false,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"generation", "discards", "joker", "song", "vocaloid song", "Teto", "Miku", "AnythingBecomeMoe"},
 	loc_vars = function(self, info_queue, card)
@@ -970,7 +970,7 @@ SynthB.Joker{
 	rarity = 2,
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"xchips", "scaling", "reset", "song", "vocaloid song", "Miku", "ePiaeon"},
 	loc_vars = function(self, info_queue, card)
@@ -1042,7 +1042,7 @@ SynthB.Joker{
 	cost = 7,
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"hearts", "suit", "chips", "scaling", "chance", "song", "vocaloid song", "Miku", "Staircatte"},
 	loc_vars = function(self, info_queue, card)

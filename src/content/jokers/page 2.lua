@@ -327,7 +327,7 @@ SynthB.Joker{
 	},
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"xchips", "xmult", "scaling", "tarot", "song", "vocaloid song", "Teto", "Hiiragi Magnetite"},
 	loc_vars = function(self, info_queue, card)
@@ -568,7 +568,7 @@ SynthB.Joker{
 	},
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"mult", "scaling", "song", "vocaloid song", "KAFU", "Iyowa"},
 	loc_vars = function(self, info_queue, card)
@@ -900,7 +900,7 @@ SynthB.Joker{
 	},
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"destroy_card", "hands", "scaling", "chips", "mult", "song", "vocaloid song", "IA", "kemu"},
 	loc_vars = function(self, info_queue, card)

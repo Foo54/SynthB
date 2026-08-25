@@ -13,7 +13,7 @@ SynthB.Joker{
 	},
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"mult", "scaling", "song", "vocaloid song", "inabakumori", "Yuki"},
 	loc_vars = function(self, info_queue, card)
@@ -617,7 +617,7 @@ SynthB.Joker{
 	attributes = {"scaling", "mult", "rank", "suit", "ace", "spades", "enhancenment", "song", "vocaloid song", "Luka", "MonochroMenace", "isidore"},
 	blueprint_compat = true,
 	eternal_compat = true,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "feedback")
