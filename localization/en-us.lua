@@ -2248,6 +2248,13 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}OK! OK! 他人を助けるなら、大歓迎"
 				}
 			},
+			c_synthb_spectral_utaite = {
+				name = "Utaite",
+				text = {
+					"Add a random {C:dark_edition}Cover Edition",
+					"to selected {C:attention}Joker{} or {C:attention}Playing Card"
+				}
+			},
 			c_synthb_spectral_training = {
 				name = "Training",
 				text = {

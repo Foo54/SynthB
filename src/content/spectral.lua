@@ -69,6 +69,68 @@ SMODS.Consumable{
 	end
 }
 
+SynthB.cover_editions = {
+	"e_synthb_cover_miku",
+	"e_synthb_cover_teto",
+	"e_synthb_cover_kaito",
+	"e_synthb_cover_meiko"
+}
+
+-- Utaite
+SMODS.Consumable{
+	key = "spectral_utaite",
+	atlas = "placeholder",
+	pos = {x = 1, y = 1},
+	-- synthb_credits = {
+	-- 	Artist = "Foo54"
+	-- },
+	set = "Spectral",
+	loc_vars = function(self, info_queue, card)
+		for _, edition in ipairs(SynthB.cover_editions) do
+			info_queue[#info_queue+1] = G.P_CENTERS[edition]
+		end
+	end,
+	can_use = function (self, card)
+		local joker_select = #G.jokers.highlighted == 1
+		local card_select = #G.hand.highlighted == 1
+		local safe = #G.hand.highlighted < 2 and #G.jokers.highlighted < 2
+		if safe then
+			if (joker_select or card_select) and not (joker_select and card_select) then
+				local target = G.jokers.highlighted[1] or G.cards.highlighted[1]
+				if not target.edition then
+					for _, edition in ipairs(SynthB.cover_editions) do
+						if G.P_CENTERS[edition]:valid_vard(target) then
+							return true
+						end
+					end
+				end
+			end
+		end
+	end,
+	use = function (self, card, area, copier)
+		---@type Card
+		local target = G.jokers.highlighted[1] or G.cards.highlighted[1]
+		local pool = {}
+		for _, edition in ipairs(SynthB.cover_editions) do
+			if G.P_CENTERS[edition]:valid_card(target) then
+				pool[#pool+1] = edition
+			end
+		end
+		local edition = pseudorandom_element(pool, "synthb_utaite")
+		target:set_edition(edition)
+		target:juice_up()
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end
+}
+
 if SynthB.mod.config.experimental_features then
 	-- Training
 	SMODS.Consumable{
