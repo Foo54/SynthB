@@ -918,12 +918,14 @@ SynthB.Joker{
 		if context.before and not context.blueprint then
 			card.ability.immutable.destroy = SMODS.pseudorandom_probability(card, "synthb_six_trillion", card.ability.extra.num, card.ability.extra.dem)
 		end
-		if context.destroy_card and card.ability.immutable.destroy and G.GAME.current_round.hands_left == 0 and (context.cardarea == G.play or context.cardarea == "unscored") and not context.blueprint then
+		if context.destroy_card and G.GAME.current_round.hands_left == 0 and (context.cardarea == G.play or context.cardarea == "unscored") and not context.blueprint then
 			card.ability.extra.chips = card.ability.extra.chips + (context.destroy_card:get_chip_bonus() + ((context.destroy_card.edition or {}).chips or 0)) / 2
 			card.ability.extra.mult = card.ability.extra.mult + (context.destroy_card:get_chip_mult() + ((context.destroy_card.edition or {}).mult or 0)) / 2
-			return {
-				remove = true
-			}
+			if card.ability.immutable.destroy then
+				return {
+					remove = true
+				}
+			end
 		end
 	end,
 	joker_display_def = function(JokerDisplay)
