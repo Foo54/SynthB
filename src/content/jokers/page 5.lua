@@ -99,3 +99,40 @@ SynthB.Joker{
             end
 end
 }
+
+-- furret why
+-- this entire file uses 4 space tabs :sob:
+
+-- Planet Webstar
+SynthB.Joker{
+    key = "planet_webstar",
+    pos = {x = 7, y = 1},
+    atlas = "joker_placeholders",
+    synthb_credits = {
+        Artist = "Foo54",
+    },
+    rarity = 3,
+    cost = 10,
+    perishable_compat = true,
+    eternal_compat = true,
+    blueprint_compat = true,
+    demicolon_compat = true,
+    attributes = {"song", "vocaloid song", "atena", "Merli", "Lapis"},
+    loc_vars = function(self, info_queue, card)
+        SynthB.song_info(info_queue, card, "planet_webstar")
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and not context.blueprint and not card.synthb_target then
+            card.synthb_target = context.other_card
+        end
+        if (context.final_scoring_step or context.forcetrigger) and card.synthb_target then
+            SMODS.score_card(card.synthb_target, {cardarea = G.play})
+        end
+        if context.after then
+            card.synthb_target = nil
+        end
+    end,
+}
+
+
+

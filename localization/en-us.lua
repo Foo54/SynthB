@@ -736,6 +736,14 @@ local descriptions = {
 					},
 				}
 			},
+			j_synthb_planet_webstar = {
+				name = {"{f:5}惑星ウェブスター", "{s:0.7}Planet Webstar"},
+				text = {
+					"{C:attention}First{} scored card",
+					"is scored again",
+					"after everything else"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1573,6 +1581,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}Kagamine Rin"
 				}
 			},
+			planet_webstar = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}惑星ウェブスター",
+					"{C:inactive,s:0.8}Planet Webstar",
+					"{C:attention}Producer:",
+					"{f:5}アテナ",
+					"{C:inactive,s:0.8}Atena",
+					"{C:attention}Voice:",
+					"{f:5}蒼姫ラピス{C:inactive} & {f:5}メルリ",
+					"{C:inactive,s:0.8}Aoki Lapis & Merli"
+				}
+			}
 		},
 		Enhanced = {
 			m_synthb_purple = {

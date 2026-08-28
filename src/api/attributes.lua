@@ -44,6 +44,8 @@ SynthB.Voicebank{key = "Hiyama"}
 SynthB.Voicebank{key = "Una"}
 SynthB.Voicebank{key = "Iroha"}
 SynthB.Voicebank{key = "Haku"}
+SynthB.Voicebank{key = "Lapis"}
+SynthB.Voicebank{key = "Merli"}
 
 
 --#region ARTISTS
@@ -102,3 +104,4 @@ SynthB.Producer{key = "AnbaLen"}
 SynthB.Producer{key = "phantom97"}
 SynthB.Producer{key = "MINTi"}
 SynthB.Producer{key = "rusino"}
+SynthB.Producer{key = "Chaa"}
