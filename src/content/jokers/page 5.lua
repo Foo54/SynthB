@@ -111,8 +111,8 @@ SynthB.Joker{
     synthb_credits = {
         Artist = "Foo54",
     },
-    rarity = 3,
-    cost = 10,
+    rarity = 2,
+    cost = 7,
     perishable_compat = true,
     eternal_compat = true,
     blueprint_compat = true,
