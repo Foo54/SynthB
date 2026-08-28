@@ -740,8 +740,9 @@ local descriptions = {
 				name = {"{f:5}惑星ウェブスター", "{s:0.7}Planet Webstar"},
 				text = {
 					"{C:attention}First{} scored card",
-					"is scored again",
-					"after everything else"
+					"is scored {C:attention}again",
+					"after everything else",
+					"{C:inactive,f:5,s:0.8}10年経ったって忘れない"
 				}
 			},
 
