@@ -1153,8 +1153,8 @@ SynthB.Joker{
 				juice_card_until(card, function() return card.ability.immutable.remaining == 1 and not G.RESET_JIGGLES end)
 			end
 		end
-		if context.end_of_round and context.main_eval and not context.blueprint then
-			card.ability.immutable.remaning = card.ability.extra.hands
+		if context.setting_blind and not context.blueprint then
+			card.ability.immutable.remaining = card.ability.extra.hands
 		end
 		if context.evaluate_poker_hand and not context.blueprint then
 			if card.ability.immutable.remaining == 1 then
