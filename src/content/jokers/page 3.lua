@@ -4,6 +4,11 @@
 -- Spot Late
 SynthB.Joker{
 	key = "spot_late",
+	atlas = "joker_placeholders",
+	pos = {x = 9, y = 1},
+	synthb_credits = {
+		Artist = "FurretWalk"
+	},
 	cost = 4,
 	config = {
 		extra = {

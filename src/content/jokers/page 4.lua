@@ -681,7 +681,11 @@ SynthB.Joker{
 -- Affection Addiction
 SynthB.Joker{
 	key = "affection_addiction",
-	pos = {x = 1, y = 0},
+	pos = {x = 8, y = 1},
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "GhostSalt"
+	},
 	rarity = 2,
 	cost = 7,
 	config = {

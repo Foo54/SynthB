@@ -76,3 +76,16 @@ SMODS.Gradient{
 	},
 	cycle = 3
 }
+
+
+---@diagnostic disable-next-line: missing-fields
+SynthB.Credits.Contributor{
+	key = "credits_ghostsalt",
+	colour = HEX("acbddf"),
+	synthb_role = {artists2 = true},
+	atlas = 'ghostsalt_full_credits',
+	mini_atlas = 'ghostsalt_mini_credits',
+	credit_vars = function (self)
+		--return {elements = {SMODS.create_sprite(0, 0, 3, 3 / 296 * 256, "synthb_furret_tenma_credits")}}
+	end
+}

@@ -2540,6 +2540,9 @@ local descriptions = {
 			credits_aiko = {
 				name = "Aikoyori"
 			},
+			credits_ghostsalt = {
+				name = "GhostSalt"
+			},
 			credits_furret = {
 				name = "FurretWalk",
 				text = {
@@ -2687,6 +2690,7 @@ local descriptions = {
 			credits_furret = "draws once every sometimes",
 			credits_aiko = "my shenanigans",
 			credits_missingno = "My wife left me!",
+			credits_ghostsalt = "too good to be true",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

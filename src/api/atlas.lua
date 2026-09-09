@@ -205,6 +205,22 @@ SMODS.Atlas{
 	py = 256
 }
 
+
+SMODS.Atlas{
+	key = "ghostsalt_mini_credits",
+	path = "credits/ghostsalt/mini.png",
+	px = 20,
+	py = 80
+}
+
+SMODS.Atlas{
+	key = "ghostsalt_full_credits",
+	path = "credits/ghostsalt/full.png",
+	px = 71,
+	py = 95
+}
+
+
 SMODS.Atlas{
 	key = "revo",
 	path = "credits/foo/revo.png",
