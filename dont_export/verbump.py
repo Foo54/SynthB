@@ -6,6 +6,7 @@ file_paths.py
 VERSION_DATA = path to version_data.json
 VERSION = path to VERSION.lua
 CONFIG = path to config.json
+THUNDERSTORE = path to thunderstore/prezip/manifest.json
 '''
 
 if __name__ == "__main__":
@@ -44,5 +45,11 @@ if __name__ == "__main__":
 	config_json = open(file_paths.CONFIG, "w")
 	json.dump(config_json_data, config_json, indent=2)
 	config_json.close()
+
+	version_thunderstore = json.load(open(file_paths.THUNDERSTORE, "r"))
+	version_thunderstore["version_number"] = f"{data['major']}.{data['minor']}.{data['patch']}"
+	json_thunderstore = open(file_paths.THUNDERSTORE, "w")
+	json.dump(version_thunderstore, json_thunderstore, indent=2)
+	json_thunderstore.close()
 
 
