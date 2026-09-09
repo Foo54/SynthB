@@ -133,6 +133,3 @@ SynthB.Joker{
         end
     end,
 }
-
-
-

@@ -33,7 +33,7 @@ SynthB.Joker{
 	},
 	blueprint_compat = true,
 	eternal_compat = false,
-	perishable_compat = true,
+	perishable_compat = false,
 	demicolon_compat = true,
 	attributes = {"scaling", "xmult", "song", "vocaloid song", "Luka", "YuchaP", "DarvishP", "kaichi"},
 	loc_vars = function(self, info_queue, card)
