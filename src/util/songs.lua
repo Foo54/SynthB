@@ -49,7 +49,7 @@ SynthB.songs = {
 	-- smokey love / Bad Director
 	{link = "https://www.youtube.com/watch?v=viNruoTceiw", key = "needle", pos = {x = 3, y = 9}},
 	{link = "https://www.youtube.com/watch?v=XKZIQlqVjjk", key = "song_synthb_approve_please_genie", prefix = "", pos = {x = 4, y = 9}, set = "Other", voicebanks = {"Una", "Teto"}},
-	{link = "https://www.youtube.com/watch?v=_oTaQXf_iX8", key = "yararara", pos = {x = 0, y = 10}},
+	{link = "https://www.youtube.com/watch?v=T24rF_x0TmQ", key = "yararara", pos = {x = 0, y = 10}},
 	{link = "https://www.youtube.com/watch?v=tlFnfEWZCtQ", key = "song_synthb_pink", prefix = "", set = "Other", pos = {x = 1, y = 10}, spoiler = "deltarune", voicebanks = {"Miku"}},
 	{link = "https://www.youtube.com/watch?v=UTcZHzDY3LU", key = "affection_addiction", pos = {x = 2, y = 10}},
 	{link = "https://www.youtube.com/watch?v=hk1L0ZV2bVc", key = "on_the_rocks_1", pos = {x = 3, y = 10}, voicebanks = {"MEIKO", "KAITO"}},
