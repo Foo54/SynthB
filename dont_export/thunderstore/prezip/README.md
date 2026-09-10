@@ -1,6 +1,8 @@
 # SynthB
 The Vocaloid Themed Balatro Mod, feature art from FurretWalk, aikoyori, Pepix, GhostSalt, missingnumber, Inky, and Guarana
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/e55d13b8-b7c1-4a84-92ec-273ddc6e28fa" />
+
 ## Content
 - 62 New Jokers!
 	- 25 Voicebanks
