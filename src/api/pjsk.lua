@@ -2167,13 +2167,15 @@ function SynthB.PJSK:draw()
 		v:draw()
 		love.graphics.pop()
 	end
-	for _, v in pairs(G.I.MOVEABLE) do
-		if v.synthb_PJSK then
-			love.graphics.push("all")
-			love.graphics.setShader()
-			v:translate_container()
-			v:draw()
-			love.graphics.pop()
+	if self.STATE == self.STATES.CONTENT then
+		for _, v in pairs(G.I.MOVEABLE) do
+			if v.synthb_PJSK then
+				love.graphics.push("all")
+				love.graphics.setShader()
+				v:translate_container()
+				v:draw()
+				love.graphics.pop()
+			end
 		end
 	end
 end
