@@ -138,6 +138,15 @@ if not SynthB.dp_watching then
 		return uibox_init_ref(self, args)
 	end
 
+	local dynatext_init_ref = DynaText.init
+	function DynaText:init(args)
+		dynatext_init_ref(self, args)
+		if SynthB.PJSK.active then
+			self.synthb_PJSK = true
+		end
+		return ret
+	end
+
 	local g_funcs_exit_overlay_menu_ref = G.FUNCS.exit_overlay_menu
 	---@diagnostic disable-next-line: duplicate-set-field
 	function G.FUNCS.exit_overlay_menu(...)
@@ -2157,6 +2166,15 @@ function SynthB.PJSK:draw()
 		v:translate_container()
 		v:draw()
 		love.graphics.pop()
+	end
+	for _, v in pairs(G.I.MOVEABLE) do
+		if v.synthb_PJSK then
+			love.graphics.push("all")
+			love.graphics.setShader()
+			v:translate_container()
+			v:draw()
+			love.graphics.pop()
+		end
 	end
 end
 
