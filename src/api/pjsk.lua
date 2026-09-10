@@ -2016,7 +2016,12 @@ function SynthB.PJSK:song_sidebar()
 	local h = G.ROOM.T.h - 4
 	
 	local nodes = {}
+	local voicebanks = {}
 	for voicebank in pairs(SynthB.Voicebanks) do
+		voicebanks[#voicebanks + 1] = voicebank
+	end
+	table.sort(voicebanks, function(a, b) return a:lower() < b:lower() end)
+	for _, voicebank in ipairs(voicebanks) do
 		nodes[#nodes + 1] = self:song_sidebar_tab(voicebank)
 		nodes[#nodes + 1] = self:credits_sidebar_divider()
 	end
