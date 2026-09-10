@@ -25,15 +25,14 @@ SMODS.Enhancement{
 				end
 			end
 			local center = #context.full_hand / 2 + 0.5
-			if i < center then
-				return {
-					xscore = card.ability.xscore
-				}
-			elseif i > center then
-				return {
-					score = card.ability.score
-				}
+			local ret = {}
+			if i <= center then
+				ret.xscore = card.ability.xscore
 			end
+			if i >= center then
+				ret.score = card.ability.score
+			end
+			return ret
 		end
 	end,
 }
