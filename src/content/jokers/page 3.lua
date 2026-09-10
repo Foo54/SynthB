@@ -570,7 +570,8 @@ SynthB.Joker{
 -- Character T
 SynthB.Joker{
 	key = "character_t",
-	pos = {x = 1, y = 0},
+	pos = {x = 6, y = 2},
+	atlas = "joker_placeholders",
 	rarity = 2,
 	cost = 8,
 	blueprint_compat = true,
