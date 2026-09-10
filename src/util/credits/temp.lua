@@ -81,7 +81,7 @@ SMODS.Gradient{
 ---@diagnostic disable-next-line: missing-fields
 SynthB.Credits.Contributor{
 	key = "credits_ghostsalt",
-	colour = HEX("acbddf"),
+	colour = HEX("fc6ab0"),
 	synthb_role = {artists2 = true},
 	atlas = 'ghostsalt_full_credits',
 	mini_atlas = 'ghostsalt_mini_credits',
