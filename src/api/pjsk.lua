@@ -1390,6 +1390,9 @@ function SynthB.PJSK:single_credit_left(person)
 	}
 	ease_value(self.UI.credit_card.alignment.offset, "y", -offset, nil, nil, true, 0.1)
 
+	local desc = localize(person, "synthb_credits_desc")
+	desc = desc == "ERROR" and "???" or desc
+
 	self.UI.credit_card_box = UIBox{
 		definition = {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
 			{n = G.UIT.R, config = {align = "cl", colour = adjust_alpha(G.C.UI.TRANSPARENT_DARK, 0.8), minw = 6, minh = 2, r = 0.2}, nodes = {
@@ -1417,7 +1420,7 @@ function SynthB.PJSK:single_credit_left(person)
 							{n = G.UIT.B, config = {w = 0.25, h = 0.5}}
 						}},
 						{n = G.UIT.C, config = {align = "cl", maxw = 4.5}, nodes = {
-							{n = G.UIT.T, config = {text = localize(person, "synthb_credits_desc"), scale = 0.5, colour = G.C.UI.TEXT_LIGHT}}
+							{n = G.UIT.T, config = {text = desc, scale = 0.5, colour = G.C.UI.TEXT_LIGHT}}
 						}}
 					}},
 					{n = G.UIT.R, nodes = {
