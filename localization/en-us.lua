@@ -2558,7 +2558,10 @@ local descriptions = {
 				}
 			},
 			credits_guarana = {
-				name = "Guaraná"
+				name = "Guaraná",
+				text = {
+					"They did not provide anything for their credits"
+				}
 			},
 			credits_missingno = {
 				name = "missingnumber",
