@@ -1118,7 +1118,11 @@ SynthB.Joker{
 		}
 	},
 	rarity = 2,
-	pos = {x = 1, y = 0},
+	pos = {x = 5, y = 2},
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "FurretWalk"
+	},
 	cost = 7,
 	blueprint_compat = false,
 	eternal_compat = true,
