@@ -74,7 +74,7 @@ SMODS.Atlas{
 	path = "joker_placeholders.png",
 	px = 71,
 	py = 95,
-	frames = 2,
+	frames = 4,
 	fps = 5
 }
 
