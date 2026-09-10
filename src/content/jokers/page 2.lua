@@ -187,7 +187,11 @@ SynthB.Joker{
 -- Brain Rot
 SynthB.Joker{
 	key = "brainrot",
-	pos = {x = 1, y = 0},
+	pos = {x = 0, y = 2},
+	atlas = "brainrot",
+	synthb_credits = {
+		Artist = 'Foo54'
+	},
 	rarity = 2,
 	cost = 6,
 	attributes = {"generation", "enhancements", "song", "vocaloid song", "Teto", "Tokyo Manaka"},

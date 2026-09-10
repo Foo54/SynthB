@@ -69,6 +69,16 @@ SMODS.Atlas{
 }
 
 SMODS.Atlas{
+	atlas_table = "ANIMATION_ATLAS",
+	key = "brainrot",
+	path = "joker_placeholders.png",
+	px = 71,
+	py = 95,
+	frames = 2,
+	fps = 5
+}
+
+SMODS.Atlas{
 	key = "bd_jokers",
 	path = "bad_director_jokers.png",
 	px = 71,
