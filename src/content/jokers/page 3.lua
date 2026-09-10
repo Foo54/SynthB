@@ -578,7 +578,7 @@ SynthB.Joker{
 	eternal_compat = true,
 	perishable_compat = true,
 	demicolon_compat = true,
-	attributes = {"generation", "Teto", "Atena", "song", "vocaloid song"},
+	attributes = {"generation", "joker", "Teto", "Atena", "song", "vocaloid song"},
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "character_t")
 	end,

@@ -544,12 +544,10 @@ local descriptions = {
 			j_synthb_yararara = {
 				name = {"{f:5}ヤラララ", "{s:0.7}YARARARA"},
 				text = {
-					"After scoring {C:attention}#1#{} and",
-					"discarding {C:attention}#2#{} cards,",
-					"create a {C:dark_edition}negative{} copy",
-					"of a random Joker",
+					"Creates a {C:red}weaker",
+					"version of a random Joker",
+					"when a card is {C:attention}destroyed",
 					"{C:red,E:2}Self Destructs",
-					"{C:inactive}[#3# of #1#, #4# of #2#]",
 					"{C:inactive,s:0.8,f:5}ヤラララ、程遠くても"
 				}
 			},
@@ -2628,6 +2626,7 @@ local descriptions = {
 			ph_synthb_missing_label = "MISSING LABEL",
 			b_synthb_off = "Off",
 			b_synthb_on = "On",
+			k_synthb_cloned_ex = "Cloned!",
 
 			ph_synthb_triple_click_for_song = "Triple Click to View Song",
 			ph_synthb_mizuki_zoomies = "Give Mizuki Zoomies",
