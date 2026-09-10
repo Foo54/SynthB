@@ -619,6 +619,11 @@ SynthB.Joker{
 			scaling = 3
 		}
 	},
+	atlas = "joker_placeholders",
+	pos = {x = 4, y = 2},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	attributes = {"scaling", "mult", "rank", "suit", "ace", "spades", "enhancenment", "song", "vocaloid song", "Luka", "MonochroMenace", "isidore"},
 	blueprint_compat = true,
 	eternal_compat = true,
