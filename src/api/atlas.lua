@@ -69,6 +69,13 @@ SMODS.Atlas{
 }
 
 SMODS.Atlas{
+	key = "blinds",
+	path = "blinds.png",
+	px = 34,
+	py = 34
+}
+
+SMODS.Atlas{
 	atlas_table = "ANIMATION_ATLAS",
 	key = "brainrot",
 	path = "joker_placeholders.png",

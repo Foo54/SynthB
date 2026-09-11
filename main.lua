@@ -180,6 +180,7 @@ SynthB.load_file("content/booster")
 SynthB.load_file("content/seal")
 SynthB.load_file("content/sticker")
 SynthB.load_file("content/tag")
+SynthB.load_file("content/blind")
 
 if SynthB.mod.config.experimental_features then
 	SynthB.debug("Loading Character Files")

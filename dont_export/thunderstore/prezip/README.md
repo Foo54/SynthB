@@ -1,5 +1,5 @@
 # SynthB
-The Vocaloid Themed Balatro Mod, feature art from FurretWalk, aikoyori, Pepix, GhostSalt, missingnumber, Inky, and Guarana
+The Vocaloid Themed Balatro Mod, feature art from FurretWalk, aikoyori, Pepix, GhostSalt, missingnumber, Inky, Stwuart, and Guarana
 
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/e55d13b8-b7c1-4a84-92ec-273ddc6e28fa" />
 
@@ -19,3 +19,4 @@ The Vocaloid Themed Balatro Mod, feature art from FurretWalk, aikoyori, Pepix, G
 - 2 New Tarots!
 - 1 New Seal!
 - 5 New Stickers!
+- 1 New Blind!

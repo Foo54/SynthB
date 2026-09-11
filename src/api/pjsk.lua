@@ -1629,6 +1629,11 @@ function G.FUNCS.synthb_pjsk_content_section(e)
 				end
 			end
 		else
+			for _, blind in pairs(G.P_BLINDS) do
+				if blind.mod == SynthB.mod then
+					prototypes[#prototypes+1] = blind
+				end
+			end
 			for _, tag in pairs(G.P_TAGS) do
 				if tag.mod == SynthB.mod then
 					prototypes[#prototypes+1] = tag
@@ -1684,8 +1689,57 @@ function SynthB.PJSK:collection_card(index, prototype)
 		card:set_seal(prototype.key, true, true)
 	elseif prototype:is(SMODS.Center) then
 		card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.empty, prototype)
+	elseif prototype:is(SMODS.Blind) then
+		local atlas_key = prototype.discovered and prototype.atlas or 'blind_chips'
+		local temp_blind = SMODS.create_sprite(0, 0, 1.3, 1.3, atlas_key, prototype.discovered and prototype.pos or G.b_undiscovered.pos, prototype.sprite_args)
+		temp_blind.states.click.can = false
+		temp_blind.states.drag.can = false
+		temp_blind.states.hover.can = true
+		card = Card(0, 0, 1.3, 1.3, G.P_CARDS.empty, G.P_CENTERS.c_base)
+		temp_blind.states.click.can = false
+		card.states.drag.can = false
+		card.states.hover.can = true
+		card.children.center = temp_blind
+		temp_blind:set_role({major = card, role_type = 'Glued', draw_major = card})
+		card.set_sprites = function(...)
+			local args = {...}
+			if not args[1].animation then return end -- fix for debug unlock
+			local c = card.children.center
+			Card.set_sprites(...)
+			card.children.center = c
+		end
+		temp_blind:define_draw_steps({
+			{ shader = 'dissolve', shadow_height = 0.05 },
+			{ shader = 'dissolve' }
+		})
+		temp_blind.float = true
+		card.states.collide.can = true
+		card.config.blind = prototype
+		card.config.force_focus = true
+		card.hover = function()
+			if not G.CONTROLLER.dragging.target or G.CONTROLLER.using_touch then
+				if not card.hovering and card.states.visible then
+					card.hovering = true
+					card.hover_tilt = 3
+					card:juice_up(0.05, 0.02)
+					play_sound('chips1', math.random() * 0.1 + 0.55, 0.12)
+					card.config.h_popup = create_UIBox_blind_popup(prototype, card.config.blind.discovered)
+					card.config.h_popup_config = card:align_h_popup()
+					Node.hover(card)
+					if card.children.alert then
+						card.children.alert:remove()
+						card.children.alert = nil
+						card.config.blind.alerted = true
+						G:save_progress()
+					end
+				end
+			end
+			card.stop_hover = function()
+				card.hovering = false; Node.stop_hover(card); card.hover_tilt = 0
+			end
+		end
 	else
-		card = Card(0, 0, G.CARD_W, G.CARD_W, G.P_CARDS.empty, G.P_CENTERS.c_base)
+		card = Card(0, 0, 1.3, 1.3, G.P_CARDS.empty, G.P_CENTERS.c_base)
 		if card.children.front then
 			card.children.front:remove()
 			card.children.front = nil

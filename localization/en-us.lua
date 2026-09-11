@@ -2573,6 +2573,15 @@ local descriptions = {
 				}
 			}
 		},
+		Blind = {
+			bl_synthb_hold = {
+				name = "The Hold",
+				text = {
+					"Played cards do not score",
+					"until last hand of round"
+				}
+			}
+		}
 	},
 	misc = {
 		dictionary = {

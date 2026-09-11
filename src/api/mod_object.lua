@@ -270,6 +270,11 @@ function SynthB.mod.calculate(self, context)
 				G.consumeables:change_size(-G.GAME.synthb_temp_consumable_size)
 			end
 		end
+
+		-- hold reset state
+		for _, card in ipairs(G.playing_cards) do
+			card.ability.bl_synthb_hold = nil
+		end
 	end
 
 	-- heat debuff hand

@@ -20,6 +20,7 @@ Vocaloid Themed Balatro Mod by Foo54
 - 1 New Seal!
 - 5 New Stickers!
 - 1 New Edition!
+- 1 New Blind!
 - New Mechanic!
 	- Temperature: High temp increases stats of some cards, but go too high and face the consequences
 - Crossmod Content
