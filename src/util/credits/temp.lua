@@ -82,7 +82,7 @@ SMODS.Gradient{
 SynthB.Credits.Contributor{
 	key = "credits_ghostsalt",
 	colour = HEX("fc6ab0"),
-	synthb_role = {artists2 = true},
+	synthb_role = {artists = true},
 	atlas = 'ghostsalt_full_credits',
 	mini_atlas = 'ghostsalt_mini_credits',
 	credit_vars = function (self)

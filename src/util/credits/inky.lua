@@ -2,7 +2,7 @@
 ---@diagnostic disable-next-line: missing-fields
 SynthB.Credits.Contributor{
 	key = "credits_inky",
-	synthb_role = {artists = true},
+	synthb_role = {artists2 = true},
 	colour = HEX("189bcc"),
 	mini_atlas = 'inky_mini_credits',
 	atlas = "inky_full_credits",
