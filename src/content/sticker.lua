@@ -69,6 +69,10 @@ SMODS.Sticker{
 	pos = {x = 1, y = 2},
 	badge_colour = HEX("DAE48B"),
 	rate = 0,
+	apply = function (self, card, val)
+		card.ability[self.key] = val
+		if card.area and not card.area.config.collection then SMODS.debuff_card(card, "prevent_debuff", "synthb_safe") end
+	end,
 	calculate = function(self, card, context)
 		if context.debuff_card and context.debuff_card == card then
 			if card.ability.synthb_not_safe then

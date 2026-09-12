@@ -374,7 +374,7 @@ SynthB.Joker{
 		SynthB.song_info(info_queue, card, "yararara")
 	end,
 	calculate = function(self, card, context)
-		if not card.synthb_ignore_self and (context.forcetrigger or (context.remove_playing_cards or context.joker_type_destroyed)_ then
+		if not card.synthb_ignore_self and (context.forcetrigger or (context.remove_playing_cards or context.joker_type_destroyed) then
 			local jokers = {}
 			for _, _card in ipairs(G.jokers.cards) do
 				if _card.config.center.key ~= self.key then
