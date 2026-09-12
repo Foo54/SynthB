@@ -437,11 +437,11 @@ SynthB.Tuning{
 	pos = {x = 2, y = 1},
 	config = {max_highlighted = 5, gain = 30},
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain/2}}
+		return {vars = {card.ability.max_highlighted, card.ability.gain, 0}}
 	end,
 	use = function(self, card, area, copier)
 		for _, _card in ipairs(G.hand.highlighted) do
-			_card.ability.perma_bonus = _card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", -card.ability.gain/2, card.ability.gain))
+			_card.ability.perma_bonus = _card.ability.perma_bonus + math.ceil(pseudorandom("synthb_vibrato", 0, card.ability.gain))
 			_card:juice_up()
 		end
 		G.hand:unhighlight_all()
@@ -454,11 +454,11 @@ SynthB.Tuning{
 	pos = {x = 3, y = 1},
 	config = {max_highlighted = 5, gain = 5},
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.max_highlighted, card.ability.gain, card.ability.gain / 2}}
+		return {vars = {card.ability.max_highlighted, card.ability.gain, 0}}
 	end,
 	use = function(self, card, area, copier)
 		for _, _card in ipairs(G.hand.highlighted) do
-			_card.ability.perma_mult = _card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", -card.ability.gain/2, card.ability.gain))
+			_card.ability.perma_mult = _card.ability.perma_mult + math.ceil(pseudorandom("synthb_modulation", 0, card.ability.gain))
 			_card:juice_up()
 		end
 		G.hand:unhighlight_all()
