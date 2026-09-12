@@ -100,7 +100,7 @@ SMODS.Sticker{
 	end,
 	apply = function (self, card, val)
 		card.ability[self.key] = val
-		if card.area and not card.area.config.collection then SMODS.debuff_card(card, val and true or "reset", "synthb_not_safe") end
+		if card.area and not card.area.config.collection then SMODS.debuff_card(card, val, "synthb_not_safe") end
 	end,
 	
 }
