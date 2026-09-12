@@ -158,7 +158,7 @@ local descriptions = {
 				text = {
 					"Prevents death",
 					"if chips scored",
-					"are at least {C:attention}90%",
+					"are at least {C:attention}80%",
 					"of required chips",
 					"{E:2,C:red}self destructs?",
 					"{C:inactive,s:0.8,f:5}いますぐ輪廻 今回も結ばれないね"
