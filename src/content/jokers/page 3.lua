@@ -806,7 +806,7 @@ SynthB.Joker{
 -- Human
 SynthB.Joker{
 	key = "human",
-	cost = 5,
+	cost = 3,
 	atlas = "joker_placeholders",
 	pos = {
 		x = 9,
