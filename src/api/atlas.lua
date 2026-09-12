@@ -237,6 +237,13 @@ SMODS.Atlas{
 	py = 95
 }
 
+SMODS.Atlas{
+	key = "ghostsalt_goo",
+	path = "credits/ghostsalt/the_goo.png",
+	px = 750,
+	py = 459
+}
+
 
 SMODS.Atlas{
 	key = "revo",

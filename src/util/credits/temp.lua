@@ -86,6 +86,6 @@ SynthB.Credits.Contributor{
 	atlas = 'ghostsalt_full_credits',
 	mini_atlas = 'ghostsalt_mini_credits',
 	credit_vars = function (self)
-		--return {elements = {SMODS.create_sprite(0, 0, 3, 3 / 296 * 256, "synthb_furret_tenma_credits")}}
+		return {elements = {SMODS.create_sprite(0, 0, 5, 5 / 750 * 359, "synthb_ghostsalt_goo")}}
 	end
 }

@@ -2539,7 +2539,14 @@ local descriptions = {
 				name = "Aikoyori"
 			},
 			credits_ghostsalt = {
-				name = "GhostSalt"
+				name = "GhostSalt",
+				text = {
+					"hai! :3",
+					"check out my mods! i made {C:tarot}Phanta{}, {C:green}BFDI{}, {C:attention}Catan{},",
+					"{C:red}Ghost Cards{} and {C:blue}Ghostposting{} :3",
+					" ",
+					"{element:1} "
+				}
 			},
 			credits_furret = {
 				name = "FurretWalk",
@@ -2671,7 +2678,7 @@ local descriptions = {
 			credits_foo54 = {
 				rows = {
 					"Hi I'm Foo54 - Creator of this mod!",
-					"I hope your enjoying it so far." --[sic]
+					"I hope you're enjoying it so far."
 				},
 				scale = 0.5
 			},
@@ -2691,6 +2698,11 @@ local descriptions = {
 					"all get the same amount of hatred from me!"
 				},
 				scale = 0.45
+			},
+			credits_ghostsalt = {
+				rows = {
+					"sqrk! :3"
+				}
 			}
 		},
 		synthb_credits_desc = {
