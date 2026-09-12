@@ -17,7 +17,9 @@ SMODS.Blind{
 
 		if context.press_play and G.GAME.current_round.hands_left == 1 then
 			for _, card in ipairs(G.discard.cards) do
-				draw_card(G.discard, G.play, 1, "front", nil, card)
+				if card.ability[self.key] then
+					draw_card(G.discard, G.play, 1, "front", nil, card)
+				end
 			end
 		end
 	end

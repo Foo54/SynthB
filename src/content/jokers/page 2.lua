@@ -623,8 +623,7 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "medicine",
 	synthb_credits = {
-		Artist = "FurretWalk",
-		Idea = "Ice"
+		Artist = "FurretWalk"
 	},
 	atlas = "joker_placeholders",
 	pos = {x = 2, y = 1},
