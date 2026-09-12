@@ -1338,7 +1338,7 @@ local descriptions = {
 					"{C:attention}Producer:",
 					"Flavor Foley",
 					"{C:attention}Voice:",
-					"{f:5}temp{C:inactive} & {f:5}temp",
+					"{f:5}開発コード{C:inactive} & {f:5}氷山キヨテル",
 					"{C:inactive,s:0.8}SF-A2 miki & Hiyama Kiyoteru"
 				}
 			},

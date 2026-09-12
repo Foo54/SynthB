@@ -807,6 +807,14 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "human",
 	cost = 5,
+	atlas = "joker_placeholders",
+	pos = {
+		x = 9,
+		y = 2
+	},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
