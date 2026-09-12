@@ -2065,7 +2065,7 @@ local descriptions = {
 			c_synthb_sign_slow = {
 				name = "Slow",
 				text = {
-					"{X:blue,C:white}X#1#{} hands",
+					"{X:blue,C:white}X#1#{} hands {C:inactive}(Max of 5)",
 					"{X:attention,C:white}X#2#{} blindsize"
 				}
 			},

@@ -14,7 +14,7 @@ SMODS.ConsumableType{
 	primary_colour = HEX("FF0000"),
 	secondary_colour = SynthB.custom_colors.SIGN,
 	collection_rows = {3, 3, 3},
-	shop_rate = 2,
+	shop_rate = 1,
 	default = "c_synthb_sign_keep_out",
 	inject_card = function (self, center)
 		if not center.synthb_injected then
@@ -217,7 +217,7 @@ SynthB.Sign{
 	can_use = function() return true end,
 	use = function(self, card, area, copier)
 		ease_hands_played(G.GAME.current_round.hands_left)
-		G.GAME.round_resets.hands = G.GAME.round_resets.hands * 2
+		G.GAME.round_resets.hands = math.max(G.GAME.round_resets.hands + 5, G.GAME.round_resets.hands * 2)
 		G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * 2
 	end,
 }
