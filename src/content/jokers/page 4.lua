@@ -386,7 +386,7 @@ SynthB.Joker{
 			local mod = false
 			SynthB.manip_card(copied_joker, function(_, val)
 				mod = true
-				return val * (psuedorandom(psuedoseed("synthb_yarara_scale")) / 4 + 0.5)
+				return val * (pseudorandom(pseudoseed("synthb_yarara_scale")) / 4 + 0.5)
 			end)
 			if not mod then
 				copied_joker:add_sticker("perishable", true)
