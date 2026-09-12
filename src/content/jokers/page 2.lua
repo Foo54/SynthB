@@ -705,6 +705,14 @@ SynthB.Joker{
 			rank = 12
 		}
 	},
+	atlas = "joker_placeholders",
+	pos = {
+		x = 8,
+		y = 2
+	},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	blueprint_compat = true,
 	perishable_compat = true,
 	eternal_compat = true,
