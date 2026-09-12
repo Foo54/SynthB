@@ -825,6 +825,7 @@ SynthB.Joker{
 		return G.GAME.synthb_temp >= card.ability.extra.cost and #G.hand.highlighted == 1
 	end,
 	use = function(self, card)
+		SynthB.ease_temp(-card.ability.extra.cost)()
 		G.E_MANAGER:add_event(Event({
 			trigger = 'after',
 			delay = 0.4,
