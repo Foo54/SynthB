@@ -2578,6 +2578,9 @@ local descriptions = {
 					" ",
 					"{element:1}"
 				}
+			},
+			credits_incognito = {
+				name = "Incognito"
 			}
 		},
 		Blind = {

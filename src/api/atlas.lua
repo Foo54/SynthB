@@ -25,8 +25,8 @@ SMODS.Atlas{
 		key = false
 	},
 	path = "menu_logo.png",
-	px = 3344,
-	py = 1728
+	px = 418,
+	py = 216
 }
 
 SMODS.Atlas{

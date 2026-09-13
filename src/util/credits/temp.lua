@@ -89,3 +89,18 @@ SynthB.Credits.Contributor{
 		return {elements = {SMODS.create_sprite(0, 0, 5, 5 / 750 * 359, "synthb_ghostsalt_goo")}}
 	end
 }
+
+
+---@diagnostic disable-next-line: missing-fields
+SynthB.Credits.Contributor{
+	key = "credits_incognito",
+	--colour = HEX("fc6ab0"),
+	synthb_role = {artists2 = true},
+	--atlas = 'ghostsalt_full_credits',
+	--mini_atlas = 'ghostsalt_mini_credits',
+	credit_vars = function (self)
+		--return {elements = {SMODS.create_sprite(0, 0, 5, 5 / 750 * 359, "synthb_ghostsalt_goo")}}
+	end
+}
+
+

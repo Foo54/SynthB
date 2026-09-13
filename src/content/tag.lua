@@ -23,7 +23,13 @@ SMODS.Tag{
 		return {vars = {tag.config.extra.cards}}
 	end,
 	on_obtain = function(self, tag)
+		if not AKRYS then G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + tag.config.extra.cards end
+	end,
+	akyrs_enable_tag = function(self, tag)
 		G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + tag.config.extra.cards
+	end,
+	akyrs_disable_tag = function(self, tag)
+		G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) - tag.config.extra.cards
 	end,
 	apply = function (self, tag, context)
 		if context.type == "synthb_pack_opened" then
@@ -79,7 +85,7 @@ SMODS.Tag{
 		return {vars = {num, dem}}
 	end,
 	on_obtain = function(self, tag)
-		SMODS.add_card{key = "j_gros_michel"}
+		if not AKRYS then SMODS.add_card{key = "j_gros_michel"} end
 	end,
 	apply = function (self, tag, context)
 		if context.type == "shop_start" then
@@ -114,6 +120,7 @@ SMODS.Tag{
 		tag.ability.score = 0
 		tag.ability.active = false
 	end,
+	akyrs_no_disable = true,
 	apply = function (self, tag, context)
 		if context.type == "synthb_tag_clicked" then
 			tag.ability.active = not tag.ability.active
@@ -202,7 +209,13 @@ SMODS.Tag{
 		tag.ability.debt = 10
 	end,
 	on_obtain = function(self, tag)
+		if not AKYRS then G.GAME.bankrupt_at = G.GAME.bankrupt_at - tag.ability.debt end
+	end,
+	akyrs_enable_tag = function(self, tag)
 		G.GAME.bankrupt_at = G.GAME.bankrupt_at - tag.ability.debt
+	end,
+	akyrs_disable_tag = function(self, tag)
+		G.GAME.bankrupt_at = G.GAME.bankrupt_at + tag.ability.debt
 	end,
 	apply = function (self, tag, context)
 		if context.type == "synthb_money_changed" then

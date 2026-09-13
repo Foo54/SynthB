@@ -206,7 +206,7 @@ local tag_ui_ref = Tag.generate_UI
 function Tag:generate_UI(_size)
 	local tag_sprite_tab, tag_sprite = tag_ui_ref(self, _size)
 	if tag_sprite then
-		local tag_click_ref = tag_sprite.click or function() end
+		local tag_click_ref = tag_sprite.click or Tag.click or Sprite.click
 		function tag_sprite:click (...)
 ---@diagnostic disable-next-line: redundant-parameter
 			local ret = tag_click_ref(self, ...)
@@ -313,6 +313,10 @@ function Game:main_menu(...)
 	for _, card in ipairs(G.title_top.cards) do
 		card.T.w = card.T.w * s
 		card.T.h = card.T.h * s
+		if card.children.floating_sprite then
+			card.children.floating_sprite.T.w = card.children.floating_sprite.T.w * s
+			card.children.floating_sprite.T.h = card.children.floating_sprite.T.h * s
+		end
 	end
 	for _, spoiler in pairs(SynthB.mod.config.seen_spoilers) do
 		if not spoiler then
