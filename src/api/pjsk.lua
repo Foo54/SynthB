@@ -310,7 +310,7 @@ function SynthB.PJSK:main_menu()
 	local bottom_button_h = top_button_h / 1.8
 	local button_area_h = top_button_h + button_padding_h + bottom_button_h
 	local logo_w = button_area_w
-	local logo_h = logo_w / 10 * 4
+	local logo_h = logo_w / 3344 * 1728
 	local offset = G.ROOM_ATTACH.T.h + extra_h + 2
 	local button_corner_s = 0.75
 	local button_icon_s = 1

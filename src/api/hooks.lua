@@ -308,6 +308,12 @@ end
 local game_main_menu_ref = Game.main_menu
 function Game:main_menu(...)
 	local ret = game_main_menu_ref(self, ...)
+	G.title_top.T.x = G.title_top.T.x - 3
+	local s = 1.3
+	for _, card in ipairs(G.title_top.cards) do
+		card.T.w = card.T.w * s
+		card.T.h = card.T.h * s
+	end
 	for _, spoiler in pairs(SynthB.mod.config.seen_spoilers) do
 		if not spoiler then
 			G.E_MANAGER:add_event(Event{

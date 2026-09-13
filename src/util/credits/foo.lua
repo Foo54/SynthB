@@ -3,8 +3,7 @@ SynthB.Credits.Contributor{
 	atlas = "credits_foo54",
 	name = "Foo54",
 	synthb_role = {
-		coders = true,
-		artists2 = true
+		coders = true
 	},
 	colour = SynthB.custom_colors.TETO,
 	click = function (self)

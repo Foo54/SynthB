@@ -14,9 +14,19 @@ SMODS.Atlas{
 
 SMODS.Atlas{
 	key = "logo",
-	path = "Logo.png",
-	px = 1000,
-	py = 400
+	path = "phone_logo.png",
+	px = 3344,
+	py = 1728
+}
+
+SMODS.Atlas{
+	key = "balatro",
+	prefix_config = {
+		key = false
+	},
+	path = "menu_logo.png",
+	px = 3344,
+	py = 1728
 }
 
 SMODS.Atlas{

@@ -1,0 +1,60 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 50
+
+# render cards before title
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''    G.SPLASH_LOGO.dissolve = 1   '''
+position = 'after'
+payload = '''
+local splash_draw_ref = G.SPLASH_LOGO.draw
+function G.SPLASH_LOGO:draw(...)
+	if G.title_top then
+		love.graphics.push()
+		love.graphics.origin()
+		G.title_top:translate_container()
+		G.synthb_draw_title = true
+		G.title_top:draw()
+		G.synthb_draw_title = nil
+		love.graphics.pop()
+	end
+	return splash_draw_ref(self, ...)
+end
+
+local title_top_draw_ref = G.title_top.draw
+function G.title_top:draw(...)
+	if G.synthb_draw_title then
+		return title_top_draw_ref(self, ...)
+	end
+end
+
+'''
+match_indent = true
+
+
+
+# move menu right
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''G.SPLASH_LOGO:set_alignment({
+        major = G.title_top,
+        type = 'cm',
+        bond = 'Strong',
+        offset = {x=0,y=0}
+    })'''
+position = 'at'
+payload = '''G.SPLASH_LOGO:set_alignment({
+        major = G.title_top,
+        type = 'cm',
+        bond = 'Strong',
+        offset = {x=3,y=0}
+    })'''
+match_indent = true
+
+
+
+
