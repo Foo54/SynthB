@@ -895,7 +895,14 @@ SynthB.Joker{
 -- Six Trillion Years and Overnight Story
 SynthB.Joker{
 	key = "six_trillion",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {
+		x = 0,
+		y = 3
+	},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	rarity = 2,
 	cost = 6,
 	config = {
