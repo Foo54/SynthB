@@ -1436,7 +1436,7 @@ function SynthB.PJSK:single_credit_left(person)
 					{n = G.UIT.R, nodes = {
 						{n = G.UIT.B, config = {w = 6, h = 0.1}}
 					}},
-					{n = G.UIT.R, config = {align = "cl"}, nodes = {
+					{n = G.UIT.R, config = {align = "cl", maxw = 5.75}, nodes = {
 						{n = G.UIT.T, config = {text = localize{type = "name_text", set = "SynthBCredits", key = person}, scale = 1.2, colour = G.C.UI.TEXT_LIGHT}}
 					}},
 					{n = G.UIT.R, nodes = {
