@@ -99,6 +99,15 @@ SynthB.Credits.Contributor{
 
 
 
+---@diagnostic disable-next-line: missing-fields
+SynthB.Credits.Contributor{
+	key = "credits_stwuart",
+	colour = HEX("d0d0d0"),
+	synthb_role = {artists2 = true},
+	mini_atlas = 'pjsk_placeholder_mini_icon',
+	--atlas = 'ghostsalt_full_credits',
+	--mini_atlas = 'ghostsalt_mini_credits',
+}
 
 ---@diagnostic disable-next-line: missing-fields
 SynthB.Credits.Contributor{

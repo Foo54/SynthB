@@ -2589,6 +2589,12 @@ local descriptions = {
 					' ',
 					"{element:1} "
 				}
+			},
+			credits_stwuart = {
+				name = "Drugged Stwuart",
+				text = {
+					"told ya"
+				}
 			}
 		},
 		Blind = {
@@ -2792,6 +2798,7 @@ local descriptions = {
 			credits_missingno = "My wife left me!",
 			credits_ghostsalt = "too good to be true",
 			credits_incognito = "I'm in this episode",
+			credits_stwuart = "Nothing to see here",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

@@ -363,7 +363,7 @@ SynthB.Joker{
 	atlas = "joker_placeholders",
 	pos = {x = 7, y = 2},
 	synthb_credits = {
-		Artist = "Stwuart"
+		Artist = "Drugged Stwuart"
 	},
 	blueprint_compat = true,
 	eternal_compat = false,

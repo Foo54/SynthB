@@ -306,7 +306,11 @@ SynthB.Joker{
 -- Clone Clone
 SynthB.Joker{
 	key = "clone_clone",
-	pos = {x = 2, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 1, y = 3},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	rarity = 3,
 	cost = 9,
 	config = {
