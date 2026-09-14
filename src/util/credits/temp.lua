@@ -23,13 +23,6 @@ SynthB.Credits.Contributor{
 function G.FUNCS.synthb_walkies_shill(e)
 	print("insert walkies link")
 end
-
----@diagnostic disable-next-line: missing-fields
-SynthB.Credits.Contributor{
-	key = "credits_guarana",
-	synthb_role = {artists2 = true},
-	mini_atlas = 'pjsk_placeholder_mini_icon'
-}
 ---@diagnostic disable-next-line: missing-fields
 SynthB.Credits.Contributor{
 	key = "credits_missingno",
@@ -96,6 +89,7 @@ SynthB.Credits.Contributor{
 	key = "credits_incognito",
 	colour = HEX("d0d0d0"),
 	synthb_role = {artists2 = true},
+	mini_atlas = 'pjsk_placeholder_mini_icon',
 	--atlas = 'ghostsalt_full_credits',
 	--mini_atlas = 'ghostsalt_mini_credits',
 	credit_vars = function (self)
@@ -104,3 +98,11 @@ SynthB.Credits.Contributor{
 }
 
 
+
+
+---@diagnostic disable-next-line: missing-fields
+SynthB.Credits.Contributor{
+	key = "credits_guarana",
+	synthb_role = {artists2 = true},
+	mini_atlas = 'pjsk_placeholder_mini_icon'
+}
