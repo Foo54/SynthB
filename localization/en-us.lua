@@ -2750,7 +2750,7 @@ local descriptions = {
 					"playing Balatro for?"
 				}
 			},
-			fear_garden = {
+			feargarden = {
 				rows = {
 					"Why complain about running out of hands?",
 					"Don't you know you naturally have 2 extra ones?"
@@ -2759,7 +2759,8 @@ local descriptions = {
 			},
 			medicine = {
 				rows = {
-					"My face cards → didn't die against the Plant"
+					"My face cards",
+					"didn't die against the Plant"
 				},
 				scale = 0.45
 			},
@@ -2775,7 +2776,7 @@ local descriptions = {
 					"I fumbled a run because I",
 					"got too greedy fishing for",
 					"Mail-in Rebate.",
-					"I really know when I'm",
+					"I don't know when I'm",
 					"supposed to stop..."
 				}
 			}
