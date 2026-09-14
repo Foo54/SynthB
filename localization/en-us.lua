@@ -2720,6 +2720,64 @@ local descriptions = {
 					"Meow"
 				},
 				scale = 6
+			},
+			brain_implosion_energy = {
+				rows = {
+					"Try our NEW",
+					"Brain Implosion Energy Drink!",
+					"Only $6.99!"
+				}
+			},
+			caramel_airfryer = {
+				rows = {
+					"Are you wanting to leave",
+					"the garden as well?"
+				}
+			},
+			retry_now_change = {
+				rows = {
+					"What?",
+					"You don't reset your runs",
+					"until you get an",
+					"Ante 1 Investment Tag?"
+				}
+			},
+			monitoring = {
+				rows = {
+					"Hello?",
+					"I'm just checking up on you,",
+					"how long have you been",
+					"playing Balatro for?"
+				}
+			},
+			fear_garden = {
+				rows = {
+					"Why complain about running out of hands?",
+					"Don't you know you naturally have 2 extra ones?"
+				},
+				scale = 0.45
+			},
+			medicine = {
+				rows = {
+					"My face cards → didn't die against the Plant"
+				},
+				scale = 0.45
+			},
+			contradictions = {
+				rows = {
+					"Who needs Shortcut and",
+					"Smeared Joker when you",
+					"can just LIE???"
+				}
+			},
+			birdbrain = {
+				rows = {
+					"I fumbled a run because I",
+					"got too greedy fishing for",
+					"Mail-in Rebate.",
+					"I really know when I'm",
+					"supposed to stop..."
+				}
 			}
 		},
 		synthb_credits_desc = {

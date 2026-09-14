@@ -493,6 +493,7 @@ function SynthB.PJSK:transition(type, extra)
 					"card_quip_box",
 					"content_button",
 					"card_quip_card",
+					"card_quip_card_soul",
 					"main_phone",
 					"credits_button",
 					"content_button_text"
@@ -627,7 +628,7 @@ function SynthB.PJSK:card_quip(force_card)
 		card.children.front = nil
 	end
 
-	local target = force_card and G.P_CENTERS[force_card] or pseudorandom_element(G.P_CENTERS, "synthb_modmenu_quip", {
+	local target = (G.synthb_force_quip and G.P_CENTERS[G.synthb_force_quip]) or force_card and G.P_CENTERS[force_card] or pseudorandom_element(G.P_CENTERS, "synthb_modmenu_quip", {
 		in_pool = function (v, args)
 			if not v.discovered then return false end
 			if v.mod ~= SynthB.mod then return false end
@@ -649,7 +650,7 @@ function SynthB.PJSK:card_quip(force_card)
 
 	local cardarea = CardArea(0, 0, w, h, {type = 'title_2', card_limit = 1, highlight_limit = 0})
 	cardarea:emplace(card)
-
+	
 	local extra_h = 0.7
 	local offset = G.ROOM_ATTACH.T.h + extra_h + 2
 	self.UI.card_quip_card = UIBox{
@@ -666,7 +667,39 @@ function SynthB.PJSK:card_quip(force_card)
 		}
 	}
 	ease_value(self.UI.card_quip_card.alignment.offset, "y", -offset, nil, nil, true, 0.1)
+	
+	if target.soul_pos or target.soul_atlas then
+		
+		local card2 = Card(0, 0, w, h, nil, "c_base")
+		if card2.children.front then
+			card2.children.front:remove()
+			card2.children.front = nil
+		end
+		card2.children.center:remove()
+		card2.children.center = SMODS.create_sprite(0, 0, w, h, target.soul_atlas or target.atlas, target.soul_pos or {x = 0, y = 0})
+		card2.states.collide.can = false
+		function card2:update()
+			card2.states.collide.can = false
+			card2.T.r = math.sin(G.TIMERS.REAL) * 0.05
+		end
+		card2.synthb_quip = true
+		card2.children.center.states.collide.can = false
+		card2.children.center:set_role({major = card, role_type = 'Glued', draw_major = card})
 
+		local cardarea2 = CardArea(0, 0, w, h, {type = 'title_2', card_limit = 1, highlight_limit = 0})
+		cardarea2:emplace(card2)
+		self.UI.card_quip_card_soul = UIBox{
+			definition = {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}, nodes = {
+				{n = G.UIT.O, config = {object = cardarea2}}
+			}},
+			config = {
+				major = self.UI.card_quip_card,
+				r_bond = "Weak",
+				align = "cli",
+			}
+		}
+	end
+	
 	local text = {}
 	local info = localize((target.synthb_quip_key or target.original_key) .. (force_card and "_forced" or ""), "synthb_song_quips")
 	local rows = info.rows
