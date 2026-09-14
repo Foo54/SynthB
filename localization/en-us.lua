@@ -2580,7 +2580,15 @@ local descriptions = {
 				}
 			},
 			credits_incognito = {
-				name = "Incognito"
+				name = "Incognito",
+				text = {
+					"I made {C:d0d0d0}Incognito{}, worked on {C:green}Alloy{} (My mod now I guess),",
+					"{C:FCB3EA}Hyperfixation{} (Art and Code), {C:FCB3EA}Hypererfixation{} (Art and Code), {C:D94169}This Mod{} (Hello),",
+					"{C:spades}Quintessence{} (Art), {C:inactive}[Redacted]{} ([Redacted]),",
+					"{C:spectral}LushedUp{} (Code), and {C:red}MoreFluff{} (Art)",
+					' ',
+					"{element:1} "
+				}
 			}
 		},
 		Blind = {
@@ -2706,10 +2714,16 @@ local descriptions = {
 				rows = {
 					"sqrk! :3"
 				}
+			},
+			credits_incognito = {
+				rows = {
+					"Meow"
+				},
+				scale = 6
 			}
 		},
 		synthb_credits_desc = {
-			credits_foo54 = "Lead Developer",
+			credits_foo54 = "I love UI",
 			credits_placeholder = "???",
 			credits_inky = "Squimbo's guy",
 			credits_pepix = "#3 teto fan",
@@ -2717,6 +2731,7 @@ local descriptions = {
 			credits_aiko = "my shenanigans",
 			credits_missingno = "My wife left me!",
 			credits_ghostsalt = "too good to be true",
+			credits_incognito = "I'm in this episode",
 		},
 		v_dictionary = {
 			k_synthb_plus_mistuning = "ing Card#2#+#1# Tun"

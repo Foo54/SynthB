@@ -688,7 +688,7 @@ function SynthB.PJSK:card_quip(force_card)
 	local quip_w = 8
 	local quip_h = 3.5
 	self.UI.card_quip_box = UIBox{
-		definition = {n = G.UIT.ROOT, config = {colour = adjust_alpha(self.C.PHONE.QUIP, 0.8), r = true, res = 2, minw = quip_w, minh = quip_h}, nodes = {
+		definition = {n = G.UIT.ROOT, config = {colour = adjust_alpha(self.C.PHONE.QUIP, 0.8), r = true, res = 2, minw = quip_w, minh = quip_h, maxw = quip_w, maxh = quip_h}, nodes = {
 			{n = G.UIT.C, config = {minw = 0.25}},
 			{n = G.UIT.C, nodes = {
 				{n = G.UIT.R, config = {minh = 0.25}},

@@ -316,3 +316,13 @@ SMODS.Atlas{
 	px = 41,
 	py = 41
 }
+
+SMODS.Atlas {
+	key = "incognito_corobo",
+	path = "credits/incognito/corobo.png",
+	atlas_table = 'ANIMATION_ATLAS',
+	frames = 13,
+	fps = 20,
+	px = 350,
+	py = 350
+}
