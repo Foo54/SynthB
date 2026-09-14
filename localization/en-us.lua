@@ -2753,7 +2753,8 @@ local descriptions = {
 			feargarden = {
 				rows = {
 					"Why complain about running out of hands?",
-					"Don't you know you naturally have 2 extra ones?"
+					"Don't you know you",
+					"naturally have 2 extra ones?"
 				},
 				scale = 0.45
 			},
