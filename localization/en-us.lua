@@ -2578,7 +2578,10 @@ local descriptions = {
 				},
 			},
 			credits_aiko = {
-				name = "Aikoyori"
+				name = "aikoyori",
+				text = {
+					"aiko description text goes here"
+				}
 			},
 			credits_ghostsalt = {
 				name = "GhostSalt",
