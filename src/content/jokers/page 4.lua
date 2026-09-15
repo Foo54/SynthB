@@ -1237,6 +1237,9 @@ SynthB.WHODUNIT_CHANGES = {
 -- WHODUNIT
 SynthB.Joker{
 	key = "whodunit",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	config = {
 		extra = {
 			xmult = 3,

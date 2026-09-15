@@ -190,6 +190,9 @@ SynthB.Tuning{
 SynthB.Tuning{
 	key = "tuning_portamento",
 	pos = {x = 5, y = 0},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	config = {max_highlighted = 2, min_highlighted = 2},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}
@@ -451,6 +454,9 @@ SynthB.Tuning{
 -- Modulation
 SynthB.Tuning{
 	key = "tuning_modulation",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 3, y = 1},
 	config = {max_highlighted = 5, gain = 5},
 	loc_vars = function(self, info_queue, card)
@@ -468,6 +474,9 @@ SynthB.Tuning{
 -- Direct
 SynthB.Tuning{
 	key = "tuning_direct",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	pos = {x = 4, y = 1},
 	config = {max_highlighted = 5},
 	loc_vars = function(self, info_queue, card)

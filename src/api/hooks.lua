@@ -49,7 +49,18 @@ function CardArea.shuffle (self, _seed)
 				self.cards[#self.cards] = card
 			end
 		end
-		self:set_ranks() --- idk what this does but the original function has it and it seems important
+		self:set_ranks()
+	end
+	if SMODS.find_card("j_synthb_setsuna_trip") then
+		local target = #self.cards
+		for index, card in ipairs(self.cards) do
+			if card.ability.synthb_setsuna then
+				self.cards[index] = self.cards[target]
+				self.cards[target] = card
+				target = target - 1
+			end
+		end
+		self:set_ranks()
 	end
 	return ret
 end

@@ -106,7 +106,7 @@ end
 -- Planet Webstar
 SynthB.Joker{
     key = "planet_webstar",
-    pos = {x = 7, y = 1},
+    pos = {x = 1, y = 3},
     atlas = "joker_placeholders",
     synthb_credits = {
         Artist = "Foo54",
@@ -130,6 +130,50 @@ SynthB.Joker{
         end
         if context.after then
             card.synthb_target = nil
+        end
+    end,
+}
+
+-- Setsuna Trip
+SynthB.Joker{
+    key = "setsuna_trip",
+    pos = {x = 2, y = 3},
+    atlas = "joker_placeholders",
+    synthb_credits = {
+        Artist = "Foo54",
+    },
+    rarity = 2,
+    cost = 6,
+    perishable_compat = true,
+    eternal_compat = true,
+    blueprint_compat = false,
+    demicolon_compat = true,
+    config = {immutable = {prep = false}},
+    attributes = {"discard", "passive", "song", "vocaloid song", "Last Note", "GUMI"},
+    loc_vars = function(self, info_queue, card)
+        SynthB.song_info(info_queue, card, "setsuna_trip")
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            card.ability.immutable.prep = true
+        end
+        if context.before and card.ability.immutable.prep then
+            card.ability.immutable.prep = false
+            for _, _card in ipairs(G.playing_cards) do
+                _card.ability.synthb_setsuna = nil
+            end
+        end
+        if context.pre_discard and not context.hook and G.GAME.current_round.discards_left == 1 then
+            for _, _card in ipairs(context.full_hand) do
+                _card.ability.synthb_setsuna = true
+            end
+        end
+        if context.forcetrigger then
+            for _, _card in ipairs(G.playing_cards) do
+                if _card.ability.synthb_setsuna then
+                    draw_card(_card.area, G.hand, 0.1, "up", true, _card)
+                end
+            end
         end
     end,
 }

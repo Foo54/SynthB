@@ -743,6 +743,15 @@ local descriptions = {
 					"{C:inactive,f:5,s:0.8}10年経ったって忘れない"
 				}
 			},
+			j_synthb_setsuna_trip = {
+				name = {"{f:5}セツナトリップ", "{s:0.7}Setsuna Trip"},
+				text = {
+					"Cards in the {C:attention}last{} discard",
+					"of round are drawn {C:attention}first",
+					"next round",
+					"{f:5,s:0.8,C:inactive}手札なんて自分次第なんだ、って"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1604,6 +1613,18 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}初音ミク",
 					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
+			setsuna_trip = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}セツナトリップ",
+					"{C:inactive,s:0.8}Setsuna Trip",
+					"{C:attention}Producer:",
+					"Last Note",
+					"{C:attention}Voice:",
+					"{f:5}グミ",
+					"{C:inactive,s:0.8}GUMI"
 				}
 			},
 		},
