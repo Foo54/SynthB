@@ -2200,10 +2200,6 @@ function SynthB.PJSK:gogogadget_ui_blocker_2()
 	}
 end
 
-function G.FUNCS.synthb_pjsk_credits_inky_kofi(e)
-	love.system.openURL("https://ko-fi.com/inkystanderson")
-end
-
 function SynthB.PJSK:remove()
 	for _ , element in pairs(self.UI) do
 		element:remove()

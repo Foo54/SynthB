@@ -8,3 +8,7 @@ SynthB.Credits.Contributor{
 	atlas = "inky_full_credits",
 	soul_pos = {x = 1, y = 0}
 }
+
+function G.FUNCS.synthb_pjsk_credits_inky_kofi(e)
+	love.system.openURL("https://ko-fi.com/inkystanderson")
+end
