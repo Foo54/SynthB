@@ -63,7 +63,8 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=J0rxCobJs0A", key = "whodunit", pos = {x = 6, y = 1}},
 	{link = "https://www.youtube.com/watch?v=dB8QCac8FSM", key = "song_synthb_shogi", prefix = "", pos = {x = 7, y = 1}, set = "Other", voicebanks = {"Yuki"}},
 	{link = "https://www.youtube.com/watch?v=ZVFfeTIWWco", key = "feargarden", pos = {x = 8, y = 1}},
-	{link = "https://www.youtube.com/watch?v=UlhFuCzxNbk", key = "planet_webstar", pos = {x = 9, y = 1}}
+	{link = "https://www.youtube.com/watch?v=UlhFuCzxNbk", key = "planet_webstar", pos = {x = 9, y = 1}},
+	{link = "https://www.youtube.com/watch?v=7zwCIz-Ohn4", key = "song_synthb_dissection", prefix = "", pos = {x = 5, y = 2}, set = "Other", voicebanks = {"Miku"}},
 	--[[
 	for cross mod do this
 	

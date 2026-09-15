@@ -1592,7 +1592,20 @@ local descriptions = {
 					"{f:5}蒼姫ラピス{C:inactive} & {f:5}メルリ",
 					"{C:inactive,s:0.8}Aoki Lapis & Merli"
 				}
-			}
+			},
+			otome_dissection = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}乙女解剖",
+					"{C:inactive,s:0.8}Otome Dissection",
+					"{C:attention}Producer:",
+					"{f:5}デコニーナ",
+					"{C:inactive,s:0.8}Deco*27",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
+				}
+			},
 		},
 		Enhanced = {
 			m_synthb_purple = {
@@ -1618,7 +1631,7 @@ local descriptions = {
 				}
 			}
 		},
-		MiscInfoQueue = {
+		MiscInfoQueue = { -- why did I make this am I stupid
 			idea_credits = {
 				name = "Concept",
 				text = {
@@ -1792,25 +1805,24 @@ local descriptions = {
 		Other = {
 			song_synthb_approve_please_genie = {
 				name = {"{f:4}승인해주세요지니님!", "{s:0.7}Approve Please, Genie!"},
-				text = {}
+				text = {},
 			},
 			song_synthb_empurple = {
 				name = {"{f:5}エンパープル", "{s:0.7}Empurple"},
-				text = {}
 			},
 			song_synthb_streetcat = {
 				name = "streetcat",
-				text = {
-					"\"I HAVE NO IDEA\"",
-					"- Medic, TF2"
-				}
 			},
 			song_synthb_pink = {
-				name = "Cutie Mew Mew Magic"
+				name = "Cutie Mew Mew Magic",
 			},
 			song_synthb_shogi = {
 				name = {"{f:5}将棋一番！", "{s:0.7}Shogi Ichiban!"},
-				text = {}
+				text = {},
+			},
+			song_synthb_dissection = {
+				name = {"{f:5}乙女解剖", "{s:0.7}Otome Dissection"},
+				text = {},
 			},
 
 			synthb_fake = {
@@ -2238,6 +2250,15 @@ local descriptions = {
 					"{f:5,s:0.8,C:inactive}三手先まで分かります"
 				}
 			},
+			c_synthb_tarot_maiden = {
+				name = "The Maiden",
+				text = {
+					"{C:attention}Split{} selected card",
+					"into {C:attention}#1#{} cards",
+					"with lower rank",
+					"{f:5,s:0.8,C:inactive}乙女解剖であそぼうよ"
+				}
+			}
 		},
 		Spectral = {
 			c_synthb_spectral_voicebank = {
