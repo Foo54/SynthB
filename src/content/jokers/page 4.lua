@@ -1185,6 +1185,9 @@ SynthB.Joker{
 	key = "looping_the_rooms",
 	atlas = "joker_placeholders",
 	pos = {x = 8, y = 5},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	rarity = 2,
 	cost = 6,
 	config = {

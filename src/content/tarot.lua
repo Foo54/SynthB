@@ -176,8 +176,9 @@ SMODS.Tarot{
 							_first_dissolve = true
 							new_cards[#new_cards + 1] = _card
 					end
-					return true
 				end
+				return true
+			end
 			}))
 		end
 		G.E_MANAGER:add_event(Event{
