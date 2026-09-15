@@ -162,6 +162,7 @@ SMODS.Tarot{
 							end
 
 							local rank = math.max(1, math.floor(_card.base.nominal * pseudorandom(pseudoseed("synthb_maiden_rank"))))
+							if _card.base.nominal > 3 then rank = math.max(3, rank)
 							local rank2 = _card.base.nominal - rank
 ---@diagnostic disable-next-line: cast-local-type
 							rank = rank == 1 and "Ace" or tostring(rank)
