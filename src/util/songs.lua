@@ -68,6 +68,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=2BkFI1bqA2o", key = "setsuna_trip", pos = {x = 6, y = 2}},
 	{link = "https://www.nicovideo.jp/watch/sm17720979", key = "hontono", pos = {x = 7, y = 2}},
 	{link = "https://www.youtube.com/watch?v=9QLT1Aw_45s", key = "phony", pos = {x = 8, y = 2}},
+	{link = "https://www.youtube.com/watch?v=OSYmTw6_bjc", key = "ego_renegade_boy", pos = {x = 9, y = 2}},
 	--[[
 	for cross mod do this
 	

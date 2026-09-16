@@ -775,6 +775,14 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}嘘に絡まっている　ただ"
 				}
 			},
+			j_synthb_ego_renegade_boy = {
+				name = "Ego Renegade Boy",
+				text = {
+					"{C:attention}Queens{} are treated",
+					"as {C:attention}Kings{} instead",
+					"{C:inactive,s:0.8}Did you know her?"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1675,7 +1683,18 @@ local descriptions = {
 					"{f:5}可不",
 					"{C:inactive,s:0.8}KAFU"
 				}
-			}
+			},
+			ego_renegade_boy = {
+				text = {
+					"{C:attention}Title",
+					"{f:5}Ego Renegade Boy",
+					"{C:attention}Producer:",
+					"FLAVOR FOLEY",
+					"{C:attention}Voice:",
+					"{f:5}鏡音レン{C:inactive} & {f:5}鏡音リン",
+					"{C:inactive,s:0.8}Kagamine Len & Kagamine Rin"
+				}
+			},
 		},
 		Enhanced = {
 			m_synthb_purple = {

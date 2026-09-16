@@ -516,6 +516,7 @@ function create_UIBox_mods(args)
 		G.E_MANAGER:add_event(Event{
 			func = function()
 				if G.OVERLAY_MENU then
+---@diagnostic disable-next-line: undefined-field
 					G.OVERLAY_MENU:remove()
 				end
 				return true
@@ -524,4 +525,14 @@ function create_UIBox_mods(args)
 		return {n = G.UIT.ROOT, config = {colour = G.C.CLEAR}}
 	end
 	return modBox(args)
+end
+
+local card_get_id_ref = Card.get_id
+function Card:get_id(...)
+	local ret = card_get_id_ref(self, ...)
+	if self.base.id == 12 and not (ret >= -1000000 and ret <= -100) and SynthB.effect.erb()then
+		return 13
+	else
+		return ret
+	end
 end

@@ -312,3 +312,22 @@ SynthB.Joker{
 		}
 	end
 }
+
+-- Ego Renegade Boy
+SynthB.Joker{
+    key = "ego_renegade_boy",
+    pos = {x = 5, y = 3},
+    atlas = "joker_placeholders",
+    synthb_credits = {
+        Artist = "Foo54",
+    },
+    cost = 5,
+    perishable_compat = true,
+    eternal_compat = true,
+    blueprint_compat = false,
+    demicolon_compat = false,
+    attributes = {"king", "queen", "rank", "song", "vocaloid song", "Flavor Foley", "Rin", "Len"},
+    loc_vars = function(self, info_queue, card)
+        SynthB.song_info(info_queue, card, "ego_renegade_boy")
+    end,
+}
