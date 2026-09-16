@@ -249,6 +249,14 @@ SynthB.Joker{
             dem = 2
         }
     },
+	in_pool = function (self, args)
+		for _, card in ipairs(G.playing_cards) do
+			if card.ability.synthb_fake then
+				return true
+			end
+		end
+		return false
+	end,
     attributes = {"xmult", "stickers", "song", "vocaloid song", "Tsumiki", "KAFU"},
     loc_vars = function(self, info_queue, card)
         SynthB.song_info(info_queue, card, "phony")

@@ -682,6 +682,18 @@ SynthB.Joker{
 		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
 		SynthB.song_info(info_queue, card, "glass_girl")
 	end,
+	in_pool = function (self, args)
+		local glass_count = 0
+		for _, card in ipairs(G.playing_cards) do
+			if SMODS.has_enhancement(card, "m_glass") then
+				glass_count = glass_count + 1
+				if glass_count >= 2 then
+					return true
+				end
+			end
+		end
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.forcetrigger then
 			if G.hand and G.hand.cards then

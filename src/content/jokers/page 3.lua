@@ -432,6 +432,14 @@ SynthB.Joker{
 	perishable_compat = true,
 	demicolon_compat = false,
 	attributes = {"modify_card", "enhancement", "song", "vocaloid", "Len", "Rin", "Miyamori Bungaku"},
+	in_pool = function (self, args)
+		for _, card in ipairs(G.playing_cards) do
+			if SMODS.has_enhancement(card, "m_glass") then
+				return true
+			end
+		end
+		return false
+	end,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = G.P_CENTERS.m_glass
 		info_queue[#info_queue+1] = G.P_CENTERS.m_gold
@@ -638,6 +646,14 @@ SynthB.Joker{
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "feedback")
 		return {vars = {card.ability.extra.mult, card.ability.extra.scaling}}
+	end,
+	in_pool = function (self, args)
+		for _, card in ipairs(G.playing_cards) do
+			if card.base.suit == "Spades" and card:get_id() == 14 and SMODS.has_enhancement(card, "m_wild") then
+				return true
+			end
+		end
+		return false
 	end,
 	calculate = function(self, card, context)
 		if (context.before or context.forcetrigger) and not context.blueprint then

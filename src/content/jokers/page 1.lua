@@ -588,6 +588,13 @@ SynthB.Joker{
 	perishable_compat = true,
 	eternal_compat = false,
 	attributes = {"on_sell", "destroy_card", "song", "vocaloid song", "Miku", "EMIRI"},
+	in_pool = function (self, args)
+		if args.source == "jud" then return false end
+		for _, card in ipairs(G.jokers.cards) do
+			if card.ability.eternal then return true end
+		end
+		return false
+	end,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "self_destructive_girl")
 	end,
