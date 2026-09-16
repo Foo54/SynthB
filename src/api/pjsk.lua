@@ -1727,6 +1727,10 @@ function SynthB.PJSK:collection_card(index, prototype)
 		card:set_seal(prototype.key, true, true)
 	elseif prototype:is(SMODS.Center) then
 		card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.empty, prototype)
+		if prototype:is(SMODS.Booster) then
+			card.T.w = card.T.w * 1.27
+			card.T.h = card.T.h * 1.27
+		end
 	elseif prototype:is(SMODS.Blind) then
 		local atlas_key = prototype.discovered and prototype.atlas or 'blind_chips'
 		local temp_blind = SMODS.create_sprite(0, 0, 1.3, 1.3, atlas_key, prototype.discovered and prototype.pos or G.b_undiscovered.pos, prototype.sprite_args)
