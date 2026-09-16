@@ -536,33 +536,24 @@ SynthB.Joker{
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
-	demicolon_compat = false,
+	demicolon_compat = true,
 	attributes = {"generation", "modify_card", "hands", "song", "vocaloid song", "Teto", "flower", "Azari"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "synthb_linked", vars = {"N/A"}}
 		SynthB.song_info(info_queue, card, "dna")
 	end,
 	calculate = function(self, card, context)
-		if context.first_hand_drawn and not context.blueprint then
-			local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
-			juice_card_until(card, eval, true)
-		end
-		if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint and #context.full_hand == 1 then
+		if context.before and G.GAME.current_round.hands_left == 0 then
 			G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-			local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
-			card_copied:add_to_deck()
-			SynthB.link_cards{context.full_hand[1], card_copied}
-			G.deck.config.card_limit = G.deck.config.card_limit + 1
-			table.insert(G.playing_cards, card_copied)
-			G.discard:emplace(card_copied)
-			card_copied.states.visible = nil
-
+			local target = pseudorandom_element(context.full_hand, "synthb_dna")
+			local card_copied = SMODS.copy_card(target, {area = G.discard})
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					card_copied:start_materialize()
+						SynthB.link_cards{target, card_copied}
 					return true
 				end
 			}))
+			SMODS.calculate_effect({message = localize("ph_synthb_linked_ex"), colour = G.C.BLUE}, target)
 			return {
 				message = localize('k_copied_ex'),
 				colour = G.C.CHIPS,

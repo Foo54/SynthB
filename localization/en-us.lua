@@ -454,9 +454,9 @@ local descriptions = {
 			j_synthb_dna = {
 				name = "D/N/A",
 				text = {
-					"If {C:attention}first hand{} of round",
-					"has only {C:attention}1{} card,",
-					"Create a {C:attention}linked{} copy of it",
+					"Create a {C:attention}linked{} copy of",
+					"random card in",
+					"last hand of round",
 					"{C:inactive,s:0.8,f:5}繋がれたまま　夢を見る"
 				}
 			},
@@ -2737,6 +2737,9 @@ local descriptions = {
 			k_worm_diva_pack = "Diva Pack",
 			k_synthb_whodunit_dead_ex = "Dead!",
 			k_synthb_whodunit_miss_ex = "Miss!",
+			k_synthb_cloned_ex = "Cloned!",
+			ph_synthb_stupid = "君はじつに馬鹿だな",
+			ph_synthb_linked_ex = "Linked!",
 
 			-- mod page
 			ph_synthb_card_game = "CARD GAME",
@@ -2755,8 +2758,6 @@ local descriptions = {
 			ph_synthb_missing_label = "MISSING LABEL",
 			b_synthb_off = "Off",
 			b_synthb_on = "On",
-			k_synthb_cloned_ex = "Cloned!",
-			ph_synthb_stupid = "君はじつに馬鹿だな",
 
 			ph_synthb_triple_click_for_song = "Triple Click to View Song",
 			ph_synthb_mizuki_zoomies = "Give Mizuki Zoomies",
