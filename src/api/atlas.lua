@@ -137,6 +137,13 @@ SMODS.Atlas{
 }
 
 SMODS.Atlas{
+	key = "credits_stwuart_mini",
+	path = "credits/stwuart/mini.png",
+	px = 40,
+	py = 160,
+}
+
+SMODS.Atlas{
 	key = "credits_aiko_mini",
 	path = "credits/aiko/aiko_mini.png",
 	px = 35,
