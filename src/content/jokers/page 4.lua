@@ -694,7 +694,7 @@ SynthB.Joker{
 	cost = 7,
 	config = {
 		extra = {
-			scale = 0.25,
+			scale = 0.4,
 			reset = 1,
 			xmult = 1
 		},

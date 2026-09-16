@@ -270,7 +270,7 @@ SynthB.Joker{
     demicolon_compat = false,
     config = {
         extra = {
-            xmult = 1.5,
+            xmult = 2,
             num = 1,
             dem = 2
         }
