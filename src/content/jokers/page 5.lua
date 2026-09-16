@@ -228,3 +228,50 @@ SynthB.Joker{
         end
     end,
 }
+
+-- Phony
+SynthB.Joker{
+    key = "phony",
+    pos = {x = 4, y = 3},
+    atlas = "joker_placeholders",
+    synthb_credits = {
+        Artist = "Foo54",
+    },
+    cost = 6,
+    perishable_compat = true,
+    eternal_compat = true,
+    blueprint_compat = true,
+    demicolon_compat = false,
+    config = {
+        extra = {
+            xmult = 1.5,
+            num = 1,
+            dem = 2
+        }
+    },
+    attributes = {"xmult", "song", "vocaloid song", "Tsumiki", "KAFU"},
+    loc_vars = function(self, info_queue, card)
+        SynthB.song_info(info_queue, card, "phony")
+		info_queue[#info_queue + 1] = {set = "Other", key = "synthb_fake"}
+        local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_phony")
+        return {vars = {localize{type = "name_text", set = "Other", key = "synthb_fake"}, card.ability.extra.xmult, num, dem}}
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == "unscored" then
+            if context.other_card.ability.synthb_fake then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+        end
+        if context.prevent_destroy_card then
+            if context.prevent_destroy_card.ability.synthb_fake then
+                if SMODS.pseudorandom_probability(card, "synthb_phony", card.ability.extra.num, card.ability.extra.dem) then
+                    return {
+                        prevent_destroy = true
+                    }
+                end
+            end
+        end
+    end,
+}

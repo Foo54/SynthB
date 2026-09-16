@@ -4,9 +4,9 @@ The Vocaloid Themed Balatro Mod, featuring art from FurretWalk, aikoyori, Pepix,
 <img width="3344" height="1728" alt="image" src="https://github.com/user-attachments/assets/13b85def-3a8b-4e43-8597-b6bcfe625d7e" />
 
 ## Content
-- 63 New Jokers!
+- 65 New Jokers!
 	- 25 Voicebanks
-	- 57 Artists
+	- 58 Artists
 	- Links to all the songs
 - 8 New Tags!
 - 4 New Editions!

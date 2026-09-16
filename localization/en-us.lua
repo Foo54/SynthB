@@ -764,6 +764,17 @@ local descriptions = {
 					"{C:inactive,f:5,s:0.8}ニセモノみたい"
 				}
 			},
+			j_synthb_phony = {
+				name = {"{f:5}フォニイ", "{s:0.7}Phony"},
+				text = {
+					"Played {C:attention}#1#s{} give",
+					"{B:mult,C:white}X#2#{} Mult and",
+					"have a {C:green}#3# in #4#",
+					"chance to not",
+					"be destroyed",
+					"{C:inactive,s:0.8,f:5}嘘に絡まっている　ただ"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1652,6 +1663,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}Kasane Teto"
 				}
 			},
+			phony = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}フォニイ",
+					"{C:inactive,s:0.8}Phony",
+					"{C:attention}Producer:",
+					"{f:5}ツミキ)",
+					"{C:inactive,s:0.8}Tsumiki",
+					"{C:attention}Voice:",
+					"{f:5}可不",
+					"{C:inactive,s:0.8}KAFU"
+				}
+			}
 		},
 		Enhanced = {
 			m_synthb_purple = {

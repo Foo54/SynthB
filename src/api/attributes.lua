@@ -106,3 +106,4 @@ SynthB.Producer{key = "MINTi"}
 SynthB.Producer{key = "rusino"}
 SynthB.Producer{key = "Chaa"}
 SynthB.Producer{key = "Last Note"}
+SynthB.Producer{key = "Tsumiki"}
