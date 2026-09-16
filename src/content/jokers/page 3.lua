@@ -192,6 +192,7 @@ SynthB.Joker{
 -- Spoken For
 SynthB.Joker{
 	key = "spoken_for",
+	synthb_song = "spoken_for_mult",
 	cost = 5,
 	synthb_credits = {
 		Artist = "Pepix"
