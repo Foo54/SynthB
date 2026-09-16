@@ -57,6 +57,9 @@ SynthB.Joker{
                     break
                 end
             end
+            if not context.blueprint then
+                card.ability.immutable.scaled = true
+            end
             if my_pos and G.jokers.cards[my_pos + 1] and not SMODS.is_eternal(G.jokers.cards[my_pos + 1], card) and not G.jokers.cards[my_pos + 1].getting_sliced then
                 if context.blueprint then
                     if not card.ability.immutable.scaled then
@@ -73,7 +76,6 @@ SynthB.Joker{
                         end
                     end
                 else
-                    card.ability.immutable.scaled = true
                     local sliced_card = G.jokers.cards[my_pos + 1]
                     sliced_card.getting_sliced = true 
                     G.GAME.joker_buffer = G.GAME.joker_buffer - 1
