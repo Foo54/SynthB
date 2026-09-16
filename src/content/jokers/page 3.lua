@@ -325,8 +325,8 @@ SynthB.Joker{
 	demicolon_compat = false,
 	attributes = {"generation", "chance", "stickers", "song", "vocaloid song", "Atena", "GUMI", "Rin"},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = {set = "Other", key = "synthb_fake"}
 		SynthB.song_info(info_queue, card, "clone_clone")
+		info_queue[#info_queue + 1] = {set = "Other", key = "synthb_fake"}
 		local num, dem = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.dem, "synthb_clone_clone")
 		return {vars = {num, dem}}
 	end,

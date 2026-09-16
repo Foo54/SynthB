@@ -177,3 +177,54 @@ SynthB.Joker{
         end
     end,
 }
+
+-- Hontono
+SynthB.Joker{
+    key = "hontono",
+    pos = {x = 3, y = 3},
+    atlas = "joker_placeholders",
+    synthb_credits = {
+        Artist = "Foo54",
+    },
+    cost = 4,
+    perishable_compat = true,
+    eternal_compat = false,
+    blueprint_compat = false,
+    demicolon_compat = true,
+    config = {
+        extra = {
+            hands = 1
+        }
+    },
+    attributes = {"hands", "prevents_death", "song", "vocaloid song", "Haraguchi", "Teto"},
+    loc_vars = function(self, info_queue, card)
+        SynthB.song_info(info_queue, card, "hontono")
+		info_queue[#info_queue + 1] = {set = "Other", key = "synthb_fake"}
+        return {vars = {card.ability.extra.hands}}
+    end,
+    calculate = function(self, card, context)
+		if (context.after and G.GAME.current_round.hands_left == 0) or context.forcetrigger then
+			if G.GAME.chips + SMODS.calculate_round_score() < G.GAME.blind.chips or context.forcetrigger then
+				ease_hands_played(card.ability.extra.hands)
+                local targets = SMODS.shallow_copy(context.full_hand or G.play.cards)
+                SMODS.destroy_cards(card)
+                return {
+                    message = localize("ph_synthb_stupid"),
+                    font = 5,
+                    func = function()
+                        G.E_MANAGER:add_event(Event{
+                            func = function()
+                                for _, _card in ipairs(context.full_hand or G.play.cards) do
+                                    _card:add_sticker("synthb_fake", true)
+                                    _card:juice_up()
+                                end
+                                return true
+                            end
+                        })
+                        return true
+                    end
+                }
+            end
+        end
+    end,
+}

@@ -752,6 +752,18 @@ local descriptions = {
 					"{f:5,s:0.8,C:inactive}手札なんて自分次第なんだ、って"
 				}
 			},
+			j_synthb_hontono = {
+				name = {"{f:5}ホントノ", "{s:0.7}hontono"},
+				text = {
+					"If you were to",
+					"run out of hands,",
+					"gain {C:blue}+#1#{} hand",
+					"and apply {C:attention}Fake{}",
+					"to last played hand",
+					"{C:red,E:2}Self Destructs",
+					"{C:inactive,f:5,s:0.8}ニセモノみたい"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1627,6 +1639,19 @@ local descriptions = {
 					"{C:inactive,s:0.8}GUMI"
 				}
 			},
+			hontono = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}ホントノ",
+					"{C:inactive,s:0.8}Hontono",
+					"{C:attention}Producer:",
+					"{f:5}原口沙輔",
+					"{C:inactive,s:0.8}Sasuke Haraguchi",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
 		},
 		Enhanced = {
 			m_synthb_purple = {
@@ -1849,8 +1874,10 @@ local descriptions = {
 			synthb_fake = {
 				name = "Fake Card",
 				text = {
-					"This card cannot score",
-					"{C:red,E:2}Self Destructs{} after being played"
+					"This card",
+					"cannot score",
+					"{C:red,E:2}Self Destructs{}",
+					"after being played"
 				}
 			},
 			synthb_safe = {
@@ -2705,6 +2732,7 @@ local descriptions = {
 			b_synthb_off = "Off",
 			b_synthb_on = "On",
 			k_synthb_cloned_ex = "Cloned!",
+			ph_synthb_stupid = "君はじつに馬鹿だな",
 
 			ph_synthb_triple_click_for_song = "Triple Click to View Song",
 			ph_synthb_mizuki_zoomies = "Give Mizuki Zoomies",
