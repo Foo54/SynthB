@@ -152,7 +152,11 @@ SynthB.Joker{
             card.synthb_target = context.other_card
         end
         if (context.final_scoring_step or context.forcetrigger) and card.synthb_target then
-            SMODS.score_card(card.synthb_target, {cardarea = G.play})
+            local _context = SMODS.shallow_copy(context)
+            _context.cardarea = G.play
+            _context.final_scoring_step = nil
+            _context.forcetrigger = nil
+            SMODS.score_card(card.synthb_target, _context)
         end
         if context.after then
             card.synthb_target = nil
