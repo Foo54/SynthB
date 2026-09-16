@@ -1672,6 +1672,11 @@ function G.FUNCS.synthb_pjsk_content_section(e)
 					prototypes[#prototypes+1] = tag
 				end
 			end
+			for _, booster in pairs(G.P_CENTER_POOLS.Booster) do
+				if booster.mod == SynthB.mod then
+					prototypes[#prototypes+1] = booster
+				end
+			end
 			if SynthB.mod.config.experimental_features then
 				for _, center in ipairs(G.P_CENTER_POOLS.synthb_Character) do
 					if center.mod == SynthB.mod then
