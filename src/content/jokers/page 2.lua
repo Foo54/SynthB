@@ -192,49 +192,30 @@ SynthB.Joker{
 	synthb_credits = {
 		Artist = 'Foo54'
 	},
-	rarity = 2,
-	cost = 6,
+	rarity = 1,
+	cost = 5,
 	attributes = {"generation", "enhancements", "song", "vocaloid song", "Teto", "Tokyo Manaka"},
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	demicolon_compat = false,
+	config = {
+		extra = {
+			mult = 1
+		}
+	},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = G.P_CENTERS.m_stone
 		SynthB.song_info(info_queue, card, "brainrot")
+		info_queue[#info_queue+1] = G.P_CENTERS.m_stone
+		return {vars = {localize{type = "name_text", set = "Enhanced", key = "m_stone"}, card.ability.extra.mult}}
 	end,
 	calculate = function(self, card, context)
-		if context.remove_playing_cards then
-			local copied = {}
-			for _, _card in ipairs(context.removed) do
-				G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-				local card_copied = copy_card(_card, nil, nil, G.playing_card)
-				card_copied:set_ability("m_stone", nil, true)
-				copied[#copied+1] = card_copied
-				card_copied:add_to_deck()
-				G.deck.config.card_limit = G.deck.config.card_limit + 1
-				table.insert(G.playing_cards, card_copied)
-				G.hand:emplace(card_copied)
-				card_copied.states.visible = nil
-
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						card_copied:start_materialize()
-						return true
-					end
-				}))
+		if context.individual and (context.cardarea == G.hand or context.cardarea == G.play) then
+			if SMODS.has_enhancement(context.other_card, "m_stone") then
+				return {
+					mult = card.ability.extra.mult
+				}
 			end
-			return {
-				message = localize('k_copied_ex'),
-				colour = G.C.CHIPS,
-				func = function() -- This is for timing purposes, it runs after the message
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							SMODS.calculate_context({ playing_card_added = true, cards = { copied } })
-							return true
-						end
-					}))
-				end
-			}
 		end
 	end,
 }
