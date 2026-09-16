@@ -545,7 +545,9 @@ SynthB.Joker{
 	calculate = function(self, card, context)
 		if context.before and G.GAME.current_round.hands_left == 0 then
 			G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-			local target = pseudorandom_element(context.full_hand, "synthb_dna")
+			local target = pseudorandom_element(context.full_hand, "synthb_dna", {in_pool = function(v, args)
+				return not v.ability.synthb_linked
+			end})
 			local card_copied = SMODS.copy_card(target, {area = G.discard})
 			G.E_MANAGER:add_event(Event({
 				func = function()

@@ -223,8 +223,8 @@ local descriptions = {
 			j_synthb_brainrot = {
 				name = {"{f:5}ブレインロット", "{s:0.7}Brain Rot"},
 				text = {
-					"Create a {C:attention}Stone{} copy",
-					"of destroyed cards",
+					"{C:attention}#1#s{} give",
+					"{C:mult}+#2#{} Mult",
 					"{C:inactive,s:0.8,f:5}Brain rot　もっと　灰になるまでHigh"
 				}
 			},
