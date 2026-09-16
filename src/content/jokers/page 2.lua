@@ -413,144 +413,37 @@ SynthB.Joker{
 -- Copycat
 SynthB.Joker{
 	key = "copycat",
-	pos = {x = 2, y = 0},
-	rarity = 3,
-	cost = 9,
+	cost = 4,
 	config = {
-		immutable = {
-			suit = "Hearts"
+		extra = {
+			score = 100
 		}
 	},
-	attributes = {"modify_card", "suit", "song", "vocaloid song", "GUMI", "CircusP"},
-	blueprint_compat = false,
+	attributes = {"modify_card", "score", "song", "vocaloid song", "GUMI", "CircusP"},
+	blueprint_compat = true,
 	perishable_compat = true,
 	eternal_compat = true,
 	demicolon_compat = true,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "copycat")
-		return {vars = {localize(card.ability.immutable.suit, "suits_singular")}}
+		return {vars = {card.ability.extra.score}}
 	end,
 	calculate = function(self, card, context)
-		if context.forcetrigger then
-			if G.hand and G.hand.cards then
-				for _i, _card in ipairs(G.hand.cards) do
-					if _card:is_suit(card.ability.immutable.suit) then
-						local index = _i - 1
-						if index ~= 0 then
-							local target = G.hand.cards[index]
-							G.E_MANAGER:add_event(Event{
-								trigger = "after",
-								delay = 0.15,
-								func = function()
-									target:flip()
-									play_sound('card1')
-									target:juice_up(0.3, 0.3)
-									return true
-								end
-							})
-							delay(0.2)
-							local other_card = _card
-							G.E_MANAGER:add_event(Event{
-								trigger = "after",
-								delay = 0.1,
-								func = function()
-									copy_card(other_card, target)
-									return true
-								end
-							})
-							G.E_MANAGER:add_event(Event{
-								trigger = "after",
-								delay = 0.15,
-								func = function()
-									G.hand.cards[index]:flip()
-									play_sound('tarot2', nil, 0.6)
-									G.hand.cards[index]:juice_up(0.3, 0.3)
-									return true
-								end
-							})
-						end
-					end
+		if context.forcetrigger or context.before then
+			local active = true
+			local rank = context.full_hand[1]:get_id()
+			for _, _card in ipairs(context.full_hand) do
+				if _card:get_id() ~= rank then active = false; break end
+			end
+			active = active or context.forcetrigger
+			if active then
+				local targets = SMODS.shallow_copy(context.full_hand)
+				for _, _card in ipairs(context.full_hand) do
+					_card.ability.perma_score = _card.ability.perma_score + card.ability.extra.score
+					SMODS.calculate_effect({message = localize("k_upgrade_ex"), colour = G.C.PURPLE}, _card)
 				end
 			end
 		end
-		if context.end_of_round and context.individual and context.cardarea == G.hand and not context.blueprint then
-			if context.other_card:is_suit(card.ability.immutable.suit) then
-				local index = 0
-				for i, _card in ipairs(G.hand.cards) do
-					if _card == context.other_card then
-						index = i - 1
-						break
-					end
-				end
-				if index ~= 0 then
-					local target = G.hand.cards[index]
-					G.E_MANAGER:add_event(Event{
-						trigger = "after",
-						delay = 0.15,
-						func = function()
-							target:flip()
-							play_sound('card1')
-							target:juice_up(0.3, 0.3)
-							return true
-						end
-					})
-					delay(0.2)
-					local other_card = context.other_card
-					G.E_MANAGER:add_event(Event{
-						trigger = "after",
-						delay = 0.1,
-						func = function()
-							copy_card(other_card, target)
-							return true
-						end
-					})
-					G.E_MANAGER:add_event(Event{
-						trigger = "after",
-						delay = 0.15,
-						func = function()
-							G.hand.cards[index]:flip()
-							play_sound('tarot2', nil, 0.6)
-							G.hand.cards[index]:juice_up(0.3, 0.3)
-							return true
-						end
-					})
-				end
-			end
-		end
-		if context.round_eval and not context.blueprint then
-			local suits = {}
-			for key, _ in pairs(SMODS.Suits) do
-				if key ~= card.ability.immutable.suit then
-					suits[#suits+1] = key
-				end
-			end
-			card.ability.immutable.suit = pseudorandom_element(suits, "synthb_hontono")
-		end
-	end,
-	set_ability = function (self, card, initial, delay_sprites)
-		local suits = {}
-		for key, _ in pairs(SMODS.Suits) do
-			suits[#suits+1] = key
-		end
-		card.ability.immutable.suit = pseudorandom_element(suits, "synthb_hontono_initial")
-	end,
-	joker_display_def = function(JokerDisplay)
-		---@type JDJokerDefinition
-		return {
-			reminder_text = {
-				{ text = "(" },
-				{ ref_table = "card.joker_display_values", ref_value = "suit", colour = G.C.ORANGE },
-				{ text = ")" },
-			},
-			calc_function = function(card)
-				card.joker_display_values.suit = localize(card.ability.immutable.suit, "suits_plural")
-			end,
-			style_function = function(card, text, reminder_text, extra)
-				if reminder_text and reminder_text.children[2] then
-					reminder_text.children[2].config.colour = lighten(G.C.SUITS[card.ability.immutable.suit], 0.35)
-				end
-			end
-		}
 	end
 }
 

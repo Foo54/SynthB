@@ -252,11 +252,10 @@ local descriptions = {
 			j_synthb_copycat = {
 				name = "Copycat",
 				text = {
-					"Cards with {C:attention}#1#{} suit held in hand",
-					"convert the card to their {C:attention}left",
-					"into a {C:attention}copy{} of themselves",
-					"at end of round",
-					"Suit changes at end of round",
+					"If all played cards",
+					"are the same rank,",
+					"All scoring cards",
+					"permanently gain {C:purple}+#1#{} score",
 					"{C:inactive,s:0.8}Copy that, Copycat"
 				}
 			},
