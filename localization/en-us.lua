@@ -2470,16 +2470,16 @@ local descriptions = {
 				name = "Vibrato",
 				text = {
 					"{C:attention}#1#{} selected",
-					"cards permanently gain between",
-					"{C:chips}-#3#{} and {C:chips}#2#{} Chips"
+					"cards permanently gain",
+					"up to {C:chips}#2#{} Chips"
 				}
 			},
 			c_synthb_tuning_modulation = {
 				name = "Modulation",
 				text = {
 					"{C:attention}#1#{} selected",
-					"cards permanently gain between",
-					"{C:mult}-#3#{} and {C:mult}#2#{} Mult"
+					"cards permanently gain",
+					"up to {C:mult}#2#{} Mult"
 				}
 			},
 			c_synthb_tuning_direct = {
