@@ -196,7 +196,7 @@ SynthB.Joker{
             hands = 1
         }
     },
-    attributes = {"hands", "prevents_death", "song", "vocaloid song", "Haraguchi", "Teto"},
+    attributes = {"hands", "stickers", "prevents_death", "song", "vocaloid song", "Haraguchi", "Teto"},
     loc_vars = function(self, info_queue, card)
         SynthB.song_info(info_queue, card, "hontono")
 		info_queue[#info_queue + 1] = {set = "Other", key = "synthb_fake"}
@@ -249,7 +249,7 @@ SynthB.Joker{
             dem = 2
         }
     },
-    attributes = {"xmult", "song", "vocaloid song", "Tsumiki", "KAFU"},
+    attributes = {"xmult", "stickers", "song", "vocaloid song", "Tsumiki", "KAFU"},
     loc_vars = function(self, info_queue, card)
         SynthB.song_info(info_queue, card, "phony")
 		info_queue[#info_queue + 1] = {set = "Other", key = "synthb_fake"}

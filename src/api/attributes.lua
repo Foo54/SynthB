@@ -16,7 +16,6 @@ SynthB.Producer{key = "otetsu"} -- feli's jokeria
 
 
 --#region EVENTUAL PR
-SMODS.Attribute{key = "position"}
 SMODS.Attribute{key = "debuff"}
 SMODS.Attribute{key = "stickers"}
 
