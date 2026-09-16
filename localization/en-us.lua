@@ -723,11 +723,13 @@ local descriptions = {
 				name = {"{f:5}恐怖ガーデン", "{s:0.7}Fear Garden"},
 				text = {
 					{
-						"When {C:attention}Blind{} is selected, destroy {C:attention}Joker{} to the right",
-						"{C:inactive,s:0.8,f:5}ひとつ、ふたつ、みっつ、よっつ、いつつ"
+						"When {C:attention}Blind{} is selected,",
+						"destroy {C:attention}Joker{} to the right",
+						"{C:inactive,s:0.7,f:5}ひとつ、ふたつ、みっつ、よっつ、いつつ"
 					},
 					{
-						"For every {C:attention}#2# Jokers{} destroyed, gain {C:blue}+#3#{} Hand",
+						"For every {C:attention}#2# Jokers{} destroyed,",
+						"gain {C:blue}+#3#{} Hand",
 						"when {C:attention}Blind{} is selected",
 						"{C:inactive}(#1#/#2#, {C:blue}+#4#{C:inactive} Hands)",
 						"{C:inactive,s:0.8,f:5}お庭には綺麗なオテテが沢山咲いてて"
