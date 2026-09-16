@@ -120,12 +120,6 @@ SynthB.Joker{
             end
         end
     end,
-    joker_display_def = function(JokerDisplay)
-        ---@type JDJokerDefinition
-        return {
-            
-        }
-    end
 }
 
 -- furret why
