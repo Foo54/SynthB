@@ -274,4 +274,33 @@ SynthB.Joker{
             end
         end
     end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{ text = "X" },
+						{ ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp" }
+					}
+				}
+			},
+			reminder_text = {
+					{ text = "(Fake Cards)" },
+			},
+			calc_function = function(card)
+					local xmult = 1
+					local text, _, _ = JokerDisplay.evaluate_hand()
+					if text ~= 'Unknown' then
+						for _, _card in ipairs(JokerDisplay.current_hand) do
+---@diagnostic disable-next-line: undefined-field
+							if _card.ability.synthb_fake then
+								xmult = xmult * card.ability.extra.xmult
+							end
+						end
+					end
+					card.joker_display_values.xmult = xmult
+			end,
+		}
+	end
 }
