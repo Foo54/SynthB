@@ -261,9 +261,9 @@ SynthB.Joker{
 			for _, scored_card in ipairs(context.full_hand or G.play.cards or {}) do
 				if SMODS.pseudorandom_probability(card, "synthb_airfryer_stone", card.ability.extra.num, card.ability.extra.dem) then
 					stoned = stoned + 1
-					scored_card:set_ability(card.ability.extra.enhancement, nil, true)
 					G.E_MANAGER:add_event(Event({
 						func = function()
+							scored_card:set_ability(card.ability.extra.enhancement, nil)
 							scored_card:juice_up()
 							return true
 						end
