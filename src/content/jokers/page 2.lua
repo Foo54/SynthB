@@ -152,7 +152,7 @@ SynthB.Joker{
 				end
 			end
 		end
-		if context.before then
+		if context.before and G.GAME.current_round.hands_left == 0 then
 			if context.full_hand[1]:get_id() ~= 13 then 
 				assert(SMODS.modify_rank(context.full_hand[1], 1))
 				context.full_hand[1]:juice_up()

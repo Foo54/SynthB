@@ -204,7 +204,8 @@ local descriptions = {
 			j_synthb_king = {
 				name = "KING",
 				text = {
-					"{C:attention}Leftmost{} and {C:attention}rightmost{} played cards",
+					"On {C:attention}last{} hand of round,",
+					"{C:attention}leftmost{} and {C:attention}rightmost{} played cards",
 					"increase their rank by {C:attention}1{}",
 					"unless they are {C:attention}Kings{}",
 					"{C:inactive,s:0.8,f:5}レフトサイド　ライトサイド"
