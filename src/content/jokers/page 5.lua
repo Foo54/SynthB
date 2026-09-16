@@ -106,7 +106,7 @@ end
 -- Planet Webstar
 SynthB.Joker{
     key = "planet_webstar",
-    pos = {x = 1, y = 3},
+    pos = {x = 7, y = 1},
     atlas = "joker_placeholders",
     synthb_credits = {
         Artist = "Foo54",
