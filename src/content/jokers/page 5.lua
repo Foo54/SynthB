@@ -362,6 +362,7 @@ SynthB.Joker{
 SynthB.Joker{
     key = "i_wish_that_i_could_fall",
     pos = {x = 7, y = 3},
+    soul_pos = {x = 7, y = 4},
     atlas = "joker_placeholders",
     synthb_credits = {
         Artist = "Foo54",

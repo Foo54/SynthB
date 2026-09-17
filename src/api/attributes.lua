@@ -45,6 +45,7 @@ SynthB.Voicebank{key = "Iroha"}
 SynthB.Voicebank{key = "Haku"}
 SynthB.Voicebank{key = "Lapis"}
 SynthB.Voicebank{key = "Merli"}
+SynthB.Voicebank{key = "Ui"}
 
 
 --#region ARTISTS
@@ -106,3 +107,4 @@ SynthB.Producer{key = "rusino"}
 SynthB.Producer{key = "Chaa"}
 SynthB.Producer{key = "Last Note"}
 SynthB.Producer{key = "Tsumiki"}
+SynthB.Producer{key = "Somethings wrong with my vocaloid"}
