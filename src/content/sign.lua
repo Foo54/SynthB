@@ -83,7 +83,7 @@ SynthB.Sign{
 SynthB.Sign{
 	key = "sign_no_parking",
 	pos = {x = 1, y = 0},
-	config = {money_loss = 1, discards = 2},
+	config = {money_loss = 2, discards = 1},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.discards, card.ability.money_loss}}
 	end,
