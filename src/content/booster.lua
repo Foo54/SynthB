@@ -142,7 +142,7 @@ SMODS.Booster{
 		local cfg = (card and card.ability) or self.config
 		return {
 ---@diagnostic disable-next-line: need-check-nil
-			vars = { cfg.choose, cfg.extra, "Jumbo " },
+			vars = { cfg.choose, cfg.extra, localize("k_synthb_jumbo") },
 			key = self.key:sub(1, -9)
 		}
 	end,
@@ -174,8 +174,40 @@ SMODS.Booster{
 		local cfg = (card and card.ability) or self.config
 		return {
 ---@diagnostic disable-next-line: need-check-nil
-			vars = { cfg.choose, cfg.extra, "Jumbo " },
+			vars = { cfg.choose, cfg.extra, localize("k_synthb_jumbo") },
 			key = self.key:sub(1, -9)
+		}
+	end,
+	ease_background_colour = SynthB.ease_background_colour_diva_pack,
+	particles = SynthB.diva_pack_particles,
+	create_card = function(self, card, i)
+		return {
+			attributes = {"vocaloid song"},
+			area = G.pack_cards,
+			skip_materialize = true,
+			--soulable = true,
+		}
+	end,
+}
+
+SMODS.Booster{
+	key = "diva_mega_1",
+	weight = 0.75,
+	kind = "synthb_diva",
+	cost = 6,
+	pos = {x=2, y=2},
+	atlas = "booster",
+	group_key = "k_worm_diva_pack",
+	config = {extra = 4, choose = 2},
+	synthb_credits = {
+		Artist = "Pepix",
+	},
+	loc_vars = function(self, info_queue, card)
+		local cfg = (card and card.ability) or self.config
+		return {
+---@diagnostic disable-next-line: need-check-nil
+			vars = { cfg.choose, cfg.extra, localize("k_synthb_mega") },
+			key = self.key:sub(1, -8)
 		}
 	end,
 	ease_background_colour = SynthB.ease_background_colour_diva_pack,

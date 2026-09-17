@@ -2760,6 +2760,8 @@ local descriptions = {
 			k_synthb_cloned_ex = "Cloned!",
 			ph_synthb_stupid = "君はじつに馬鹿だな",
 			ph_synthb_linked_ex = "Linked!",
+			k_synthb_jumbo = "Jumbo ",
+			k_synthb_mega = "Mega ",
 
 			-- mod page
 			ph_synthb_card_game = "CARD GAME",
