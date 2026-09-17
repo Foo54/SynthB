@@ -201,7 +201,7 @@ SynthB.Joker{
 	demicolon_compat = false,
 	config = {
 		extra = {
-			mult = 1
+			mult = 2
 		}
 	},
 	loc_vars = function(self, info_queue, card)
