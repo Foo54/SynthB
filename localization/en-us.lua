@@ -1688,7 +1688,7 @@ local descriptions = {
 			ego_renegade_boy = {
 				text = {
 					"{C:attention}Title",
-					"{f:5}Ego Renegade Boy",
+					"Ego Renegade Boy",
 					"{C:attention}Producer:",
 					"FLAVOR FOLEY",
 					"{C:attention}Voice:",
