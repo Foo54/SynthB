@@ -157,3 +157,35 @@ SMODS.Booster{
 		}
 	end,
 }
+
+SMODS.Booster{
+	key = "diva_jumbo_2",
+	weight = 1.5,
+	kind = "synthb_diva",
+	cost = 6,
+	pos = {x=1, y=2},
+	atlas = "booster",
+	group_key = "k_worm_diva_pack",
+	config = {extra = 4, choose = 1},
+	synthb_credits = {
+		Artist = "GhostSalt",
+	},
+	loc_vars = function(self, info_queue, card)
+		local cfg = (card and card.ability) or self.config
+		return {
+---@diagnostic disable-next-line: need-check-nil
+			vars = { cfg.choose, cfg.extra, "Jumbo " },
+			key = self.key:sub(1, -9)
+		}
+	end,
+	ease_background_colour = SynthB.ease_background_colour_diva_pack,
+	particles = SynthB.diva_pack_particles,
+	create_card = function(self, card, i)
+		return {
+			attributes = {"vocaloid song"},
+			area = G.pack_cards,
+			skip_materialize = true,
+			--soulable = true,
+		}
+	end,
+}
