@@ -214,6 +214,7 @@ SMODS.Consumable{
 						end
 					end
 					target:set_debuff(false)
+					SMODS.debuff_card(target, "prevent_debuff", "synthb_exorcised")
 					has_negative = true
 				end
 				if not has_negative then

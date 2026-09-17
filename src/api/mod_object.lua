@@ -275,6 +275,13 @@ function SynthB.mod.calculate(self, context)
 		for _, card in ipairs(G.playing_cards) do
 			card.ability.bl_synthb_hold = nil
 		end
+
+		-- exorcism reset prevent debuff
+		for _, card in ipairs(G.I.CARD) do
+			if card.ability and card.ability.debuff_sources.synthb_exorcised then
+				SMODS.debuff_card(card, nil, "synthb_exorcised")
+			end
+		end
 	end
 
 	-- heat debuff hand
