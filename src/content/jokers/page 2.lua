@@ -201,7 +201,7 @@ SynthB.Joker{
 	demicolon_compat = false,
 	config = {
 		extra = {
-			mult = 2
+			mult = 3
 		}
 	},
 	loc_vars = function(self, info_queue, card)
@@ -509,7 +509,7 @@ SynthB.Joker{
 	attributes = {"face", "mult", "song", "vocaloid song", "Sasuke Haraguchi", "Teto"},
 	config = {
 		extra = {
-			mult = 1
+			mult = 2
 		}
 	},
 	loc_vars = function(self, info_queue, card)
