@@ -784,6 +784,15 @@ local descriptions = {
 					"{C:inactive,s:0.8}Did you know her?"
 				}
 			},
+			j_synthb_i_wish_that_i_could_fall = {
+				name = "I Wish That I Could Fall",
+				text = {
+					"This Joker gains {X:mult,C:white}X#1#{} Mult",
+					"when money is lost",
+					"{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive} Mult]",
+					"{C:inactive,s:0.8}But you just stand so tall,"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1694,6 +1703,17 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}鏡音レン{C:inactive} & {f:5}鏡音リン",
 					"{C:inactive,s:0.8}Kagamine Len & Kagamine Rin"
+				}
+			},
+			i_wish_that_i_could_fall = {
+				text = {
+					"{C:attention}Title",
+					"I Wish That I Could Fall",
+					"{C:attention}Producer:",
+					"Jamie Paige",
+					"{C:attention}Voice:",
+					"{f:5}グミ",
+					"{C:inactive,s:0.8}GUMI"
 				}
 			},
 		},

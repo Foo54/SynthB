@@ -357,3 +357,54 @@ SynthB.Joker{
         SynthB.song_info(info_queue, card, "ego_renegade_boy")
     end,
 }
+
+-- I Wish That I Could Fall
+SynthB.Joker{
+    key = "i_wish_that_i_could_fall",
+    pos = {x = 7, y = 3},
+    atlas = "joker_placeholders",
+    synthb_credits = {
+        Artist = "Foo54",
+    },
+    rarity = 2,
+    cost = 7,
+    perishable_compat = true,
+    eternal_compat = true,
+    blueprint_compat = true,
+    demicolon_compat = true,
+    config = {
+        extra = {
+            xmult = 1,
+            scale = 0.05
+        }
+    },
+    attributes = {"economy", "xmult", "song", "vocaloid song", "Jamie Paige", "GUMI"},
+    loc_vars = function(self, info_queue, card)
+        SynthB.song_info(info_queue, card, "i_wish_that_i_could_fall")
+        return {vars = {card.ability.extra.scale, card.ability.extra.xmult}}
+    end,
+    calculate = function(self, card, context)
+        if context.forcetrigger then
+            SMODS.scale_card(card, {
+                ref_value = "xmult",
+                scalar_value = "scale"
+            })
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+        if context.money_altered and not context.blueprint then
+            if context.amount < 0 then
+                SMODS.scale_card(card, {
+                    ref_value = "xmult",
+                    scalar_value = "scale"
+                })
+            end
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+}
