@@ -168,7 +168,7 @@ SMODS.Booster{
 	group_key = "k_worm_diva_pack",
 	config = {extra = 4, choose = 1},
 	synthb_credits = {
-		Artist = "GhostSalt",
+		Artist = "FurretWalk",
 	},
 	loc_vars = function(self, info_queue, card)
 		local cfg = (card and card.ability) or self.config
