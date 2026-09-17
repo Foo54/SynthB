@@ -131,6 +131,135 @@ SMODS.Consumable{
 	end
 }
 
+-- Excorism
+SMODS.Consumable{
+	key = "spectral_exorcism",
+	atlas = "placeholder",
+	pos = {x = 1, y = 1},
+	-- synthb_credits = {
+	-- 	Artist = "Foo54"
+	-- },
+	synthb_song = "song_synthb_exorcist",
+	synthb_count = 0,
+	synthb_timer = 0,
+	set = "Spectral",
+	config = {effects = 2},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = 'Other', key = "synthb_negative_effects"}
+		SynthB.song_info(info_queue, card, "exorcist")
+		return {vars = {card.ability.effects}}
+	end,
+	can_use = function (self, card)
+		local selected = 0
+		for _, _card in ipairs(G.I.CARD) do
+			if _card.highlighted and _card ~= card then
+				selected = selected + 1
+				if selected > 1 then
+					return false
+				end
+			end
+		end
+		return selected == 1
+	end,
+	use = function(self, card, area, copier)
+		---@type Card
+		local target
+		for _, _card in ipairs(G.I.CARD) do
+			if _card.highlighted and _card ~= card then
+				target = _card
+				break
+			end
+		end
+		if not target then SynthB.debug("No target somehow?"); return end
+		local bad = {"eternal", "perishable", "rental", "pinned", "synthb_pinned_right", "synthb_fake", "synthb_not_safe"}
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.15,
+			func = function()
+				target:flip()
+				play_sound('card1')
+				target:juice_up(0.3, 0.3)
+				return true
+			end
+		}))
+		delay(0.2)
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.1,
+			func = function()
+				local has_negative = false
+				for _, sticker in ipairs(bad) do
+					if target.ability[sticker] then
+						has_negative = true
+						target:remove_sticker(sticker)
+					end
+				end
+				if target.pinned then
+					target.pinned = nil
+					has_negative = true
+				end
+				if target.debuff then
+					for source, val in pairs(target.ability.debuff_sources) do
+						if val ~= "prevent_debuff" then
+							SMODS.debuff_card(target, nil, source)
+						end
+					end
+					target:set_debuff(false)
+					has_negative = true
+				end
+				if not has_negative then
+					if target.area ~= G.hand then
+						bad[#bad] = nil
+						bad[#bad] = nil
+					else
+						table.remove(bad, 1)
+						table.remove(bad, 1)
+						table.remove(bad, 1)
+					end
+					for i = 1, card.ability.effects do
+						if not bad[1] then break end
+						local effect, index = pseudorandom_element(bad, "synthb_exorcism_failed")
+						table.remove(bad, index)
+						if effect == "eternal" or effect == "perishable" then
+							table.remove(bad, 1)
+						end
+						target:add_sticker(effect, true)
+					end
+				end
+				return true
+			end
+		}))
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.15,
+			func = function()
+				target:flip()
+				play_sound('tarot2', nil, 0.6)
+				target:juice_up(0.3, 0.3)
+				return true
+			end
+		}))
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				target.area:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end,
+}
+
 if SynthB.mod.config.experimental_features then
 	-- Training
 	SMODS.Consumable{

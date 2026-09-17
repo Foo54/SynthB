@@ -1716,6 +1716,18 @@ local descriptions = {
 					"{C:inactive,s:0.8}GUMI"
 				}
 			},
+			exorcist = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}アクマバライ",
+					"{C:inactive,s:0.8}Exorcist",
+					"{C:attention}Producer:",
+					"Something's off with my Vocaloid",
+					"{C:attention}Voice:",
+					"{f:5}うい{C:inactive} & {f:5}初音ミク{C:inactive}& Google Translate",
+					"{C:inactive,s:0.8}Ui & Hatsune Miku"
+				}
+			}
 		},
 		Enhanced = {
 			m_synthb_purple = {
@@ -1933,6 +1945,19 @@ local descriptions = {
 			song_synthb_dissection = {
 				name = {"{f:5}乙女解剖", "{s:0.7}Otome Dissection"},
 				text = {},
+			},
+			song_synthb_exorcist = {
+				name = {"{f:5}アクマバライ", "{s:0.7}Exorcist"},
+				text = {}
+			},
+
+			synthb_negative_effects = {
+				name = "Negative Effects",
+				text = {
+					"{C:attention}Debuffed, {C:attention}Eternal{}, {C:attention}Rental{}",
+					"{C:attention}Perishable{}, {C:attention}Fake Card{}, {C:attention}Locked Out{}",
+					"{C:attention}Pinned{}, {C:attention}Pinned Right{}"
+				}
 			},
 
 			synthb_fake = {
@@ -2414,6 +2439,17 @@ local descriptions = {
 					"Levels up Selected Character"
 				}
 			},
+			c_synthb_spectral_exorcism = {
+				name = "Exorcism",
+				text = {
+					"Remove all {C:attention}negative{} effects",
+					"from selected card if it has any.",
+					"Otherwise, add {C:attention}#1#{} random",
+					"{C:attention}negative{} effects to selected card",
+					"{C:inactive}Jokers will not be debuffed",
+					"{C:inactive,s:0.8,f:5}"
+				}
+			}
 		},
 		Tuning = {
 			c_synthb_tuning_pitch_bend = {
