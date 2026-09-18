@@ -151,6 +151,7 @@ function G.UIDEF.synthb_wish_full_menu ()
 	return SMODS.card_collection_UIBox(G.GAME.synthb_wish_options, {5,5,5}, {
 		no_materialize = true,
 		h_mod = 0.95,
+		back_func = "exit_overlay_menu",
 	})
 end
 
