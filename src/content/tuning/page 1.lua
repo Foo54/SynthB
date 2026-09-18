@@ -112,6 +112,9 @@ SynthB.Tuning{
 SynthB.Tuning{
 	key = "tuning_gender",
 	pos = {x = 4, y = 0},
+	synthb_credits = {
+		Artist = "aikoyori"
+	},
 	config = {max_highlighted = 3},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}
@@ -581,6 +584,9 @@ SynthB.Tuning{
 SynthB.Tuning{
 	key = "tuning_tone_shift",
 	pos = {x = 5, y = 1},
+	synthb_credits = {
+		Artist = "aikoyori"
+	},
 	config = {max_highlighted = 3},
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.max_highlighted}}
