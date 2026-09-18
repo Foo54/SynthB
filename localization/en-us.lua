@@ -1724,7 +1724,7 @@ local descriptions = {
 					"{C:attention}Producer:",
 					"Something's off with my Vocaloid",
 					"{C:attention}Voice:",
-					"{f:5}うい{C:inactive} & {f:5}初音ミク{C:inactive}& Google Translate",
+					"{f:5}うい{C:inactive} & {f:5}初音ミク{C:inactive} & Google Translate",
 					"{C:inactive,s:0.8}Ui & Hatsune Miku"
 				}
 			}
