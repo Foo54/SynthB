@@ -422,3 +422,52 @@ SynthB.Joker{
 		}
 	end
 }
+
+-- Ai Ai Umbrella
+SynthB.Joker{
+    key = "ai_ai_umbrella",
+    pos = {x = 2, y = 4},
+    synthb_credits = {
+        Artist = "Foo54"
+    },
+    atlas = "joker_placeholders",
+    rarity = 2,
+    cost = 6,
+    config = {
+        extra = {
+            xmult = 1.5
+        }
+    },
+    perishable_compat = true,
+    eternal_compat = true,
+    blueprint_compat = true,
+    demicolon_compat = false,
+    attributes = {"xmult", "joker", "passive", "face_down", "song", "vocaloid song", "Ui", "Ham"},
+    loc_vars = function(self, info_queue, card)
+        SynthB.song_info(info_queue, card, "ai_ai_umbrella")
+        return {vars = {card.ability.extra.xmult}}
+    end,
+    calculate = function(self, card, context)
+        if (context.setting_blind or context.round_eval) and not context.blueprint then
+            local cardareas = {G.jokers}
+            -- patch target
+            for _, area in ipairs(cardareas) do
+                for _, _card in ipairs(area.cards) do
+                    G.E_MANAGER:add_event(Event{
+                        func = function()
+                            if _card.facing == "front" and _card.config.center.key ~= self.key then
+                                _card:flip()
+                            end
+                            return true
+                        end
+                    })
+                end
+            end
+        end
+        if (context.other_main and context.other_main.facing == "back") or (context.individual and (context.cardarea == G.hand or context.cardarea == G.play or context.cardarea == "unscored") and context.other_card.facing == "back" and not context.end_of_round) then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+}

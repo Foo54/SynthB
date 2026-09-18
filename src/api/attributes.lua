@@ -108,3 +108,4 @@ SynthB.Producer{key = "Chaa"}
 SynthB.Producer{key = "Last Note"}
 SynthB.Producer{key = "Tsumiki"}
 SynthB.Producer{key = "Somethings wrong with my vocaloid"}
+SynthB.Producer{key = "Ham"}

@@ -793,6 +793,14 @@ local descriptions = {
 					"{C:inactive,s:0.8}But you just stand so tall,"
 				}
 			},
+			j_synthb_ai_ai_umbrella = {
+				name = {"{f:5}アイアイ傘", "{s:0.7}Ai Ai Umbrella"},
+				text = {
+					"Other Jokers are flipped face down",
+					"Face down cards give {X:mult,C:white}X#1#{} Mult",
+					"{C:inactive,s:0.8,f:5}わたしの知らないことも　見せてよ"
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1726,6 +1734,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}うい{C:inactive} & {f:5}初音ミク{C:inactive} & Google Translate",
 					"{C:inactive,s:0.8}Ui & Hatsune Miku"
+				}
+			},
+			ai_ai_umbrella = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}アイアイ傘",
+					"{C:inactive,s:0.8}Ai Ai Umbrella",
+					"{C:attention}Producer:",
+					"{f:5}ハム",
+					"{C:inactive,s:0.8}Ham",
+					"{C:attention}Voice:",
+					"{f:5}うい",
+					"{C:inactive,s:0.8}Ui"
 				}
 			}
 		},
