@@ -267,7 +267,11 @@ SynthB.Joker{
 -- Hello, World!
 SynthB.Joker{
 	key = "hello_world",
-	pos = {x = 1, y = 0},
+	pos = {x = 9, y = 3},
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	rarity = 2,
 	cost = 7,
 	config = {
