@@ -771,7 +771,11 @@ SynthB.Joker{
 -- on the rocks
 SynthB.Joker{
 	key = "song_synthb_on_the_rocks",
-	pos = {x = 1, y = 0},
+	pos = {x = 1, y = 4},
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	rarity  = 2,
 	cost = 6,
 	config = {

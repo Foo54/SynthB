@@ -895,7 +895,8 @@ SynthB.Joker{
 -- Matryoshka
 SynthB.Joker{
 	key = "matryoshka",
-	pos = {x = 1, y = 0},
+	pos = {x = 6, y = 3},
+	atlas = "joker_placeholders",
 	rarity = 2,
 	cost = 4,
 	config = {
