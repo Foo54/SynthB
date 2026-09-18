@@ -444,8 +444,10 @@ SynthB.Joker{
 	synthb_song = "song_synthb_pink",
 	atlas = "joker_placeholders",
 	pos = {x = 9, y = 4},
+	soul_pos = {x = 0, y = 6},
 	synthb_credits = {
 		Background = "Foo54",
+		Pink = "Incognito",
 	},
 	rarity = 4,
 	cost = 20,
@@ -459,6 +461,7 @@ SynthB.Joker{
 	set_sprites = function (self, card, front)
 		if SynthB.mod.config.spoilers.deltarune then
 			card.children.center:set_sprite_pos({x = 4, y = 1}) -- replace this with a spoiler sprite
+			card.children.floating_sprite:remove()
 		end
 	end,
 	in_pool = function (self, args)
@@ -509,9 +512,11 @@ SynthB.Joker{
 	atlas = "joker_placeholders",
 	synthb_credits = {
 		Background = "Foo54",
+		Body = "Incognito",
 	},
 	synthb_song = "song_synthb_pink",
 	pos = {x = 0, y = 5},
+	soul_pos = {x = 0, y = 6},
 	rarity = 4,
 	cost = 20,
 	config = {
@@ -530,6 +535,7 @@ SynthB.Joker{
 	set_sprites = function (self, card, front)
 		if SynthB.mod.config.spoilers.deltarune then
 			card.children.center:set_sprite_pos({x = 4, y = 1}) -- replace this with a spoiler sprite
+			card.children.floating_sprite:remove()
 		end
 	end,
 	attributes = {"xmult", "hearts", "suit", "song", "vocaloid song", "Camellia", "Toby Fox", "Miku"},
@@ -575,9 +581,11 @@ SynthB.Joker{
 	atlas = "joker_placeholders",
 	synthb_credits = {
 		Background = "Foo54",
+		Ghost = "Incognito",
 	},
 	attributes = {"suit", "hearts", "diamonds", "song", "vocaloid song", "Camellia", "Toby Fox", "Miku"},
 	pos = {x = 1, y = 5},
+	soul_pos = {x = 1, y = 6},
 	rarity = 4,
 	cost = 20,
 	eternal_compat = false,
@@ -603,6 +611,7 @@ SynthB.Joker{
 	set_sprites = function (self, card, front)
 		if SynthB.mod.config.spoilers.deltarune then
 			card.children.center:set_sprite_pos({x = 4, y = 1}) -- replace this with a spoiler sprite
+			card.children.floating_sprite:remove()
 		end
 	end,
 	use = function(self, card, area, copier)
@@ -619,6 +628,8 @@ SynthB.Joker{
 			card.T.w = G.CARD_W
 			card.T.h = G.CARD_H
 			card.area:remove_from_highlighted(card)
+			card.children.center:set_sprite_pos({x = 1, y = 5})
+			card.children.floating_sprite:set_sprite_pos({x = 1, y = 6})
 		else
 			local possess
 			for i, _card in ipairs(G.jokers.cards) do
@@ -636,6 +647,8 @@ SynthB.Joker{
 				draw_card(G.jokers, G.synthb_ghost_area, 0, "up", nil, card)
 				card.synthb_orbit_timer = 0
 				card.area:remove_from_highlighted(card)
+				card.children.center:set_sprite_pos({x = 1, y = 6})
+				card.children.floating_sprite:set_sprite_pos({x = 2, y = 5})
 			end
 		end
 	end,
