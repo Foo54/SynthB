@@ -589,7 +589,7 @@ SynthB.Joker{
 	eternal_compat = false,
 	attributes = {"on_sell", "destroy_card", "song", "vocaloid song", "Miku", "EMIRI"},
 	in_pool = function (self, args)
-		if args.source == "jud" then return false end
+		if args and args.source == "jud" then return false end
 		for _, card in ipairs(G.jokers.cards) do
 			if card.ability.eternal then return true end
 		end
