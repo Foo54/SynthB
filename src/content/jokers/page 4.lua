@@ -1237,9 +1237,9 @@ SynthB.WHODUNIT_CHANGES = {
 -- WHODUNIT
 SynthB.Joker{
 	key = "whodunit",
-	synthb_credits = {
-		Artist = "Foo54"
-	},
+	-- synthb_credits = {
+	-- 	Artist = "Foo54"
+	-- },
 	config = {
 		extra = {
 			xmult = 3,
@@ -1286,11 +1286,11 @@ SynthB.Joker{
 
 			-- set sprites
 			local imposter_center = imposter.config.center
-			card.children.center.atlas = G.ASSET_ATLAS[imposter_center.atlas or "Joker"]
+			card.children.center.atlas = G.ASSET_ATLAS[imposter_center.atlas or "Joker"] or G.ANIMATION_ATLAS[imposter_center.atlas]
 			card.children.center:set_sprite_pos(imposter_center.pos or {x = 0, y = 0})
 
 			if imposter_center.soul_pos or imposter_center.soul_atlas then
-				card.children.floating_sprite.atlas = G.ASSET_ATLAS[imposter_center.soul_atlas or "Joker"]
+				card.children.floating_sprite.atlas = G.ASSET_ATLAS[imposter_center.soul_atlas or imposter_center.atlas or "Joker"] or G.ANIMATION_ATLAS[imposter_center.soul_atlas or imposter_center.atlas]
 				card.children.floating_sprite:set_sprite_pos(imposter_center.soul_pos or {x = 0, y = 0})
 			end
 		end
