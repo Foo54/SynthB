@@ -435,7 +435,7 @@ SynthB.Joker{
     cost = 6,
     config = {
         extra = {
-            xmult = 1.5
+            xchips = 1.5
         }
     },
     perishable_compat = true,
@@ -445,7 +445,7 @@ SynthB.Joker{
     attributes = {"xmult", "joker", "passive", "face_down", "song", "vocaloid song", "Ui", "Ham"},
     loc_vars = function(self, info_queue, card)
         SynthB.song_info(info_queue, card, "ai_ai_umbrella")
-        return {vars = {card.ability.extra.xmult}}
+        return {vars = {card.ability.extra.xchips}}
     end,
     calculate = function(self, card, context)
         if (context.setting_blind or context.round_eval) and not context.blueprint then
@@ -466,7 +466,7 @@ SynthB.Joker{
         end
         if (context.other_main and context.other_main.facing == "back") or (context.individual and (context.cardarea == G.hand or context.cardarea == G.play or context.cardarea == "unscored") and context.other_card.facing == "back" and not context.end_of_round) then
             return {
-                xmult = card.ability.extra.xmult
+                xmult = card.ability.extra.xchips
             }
         end
     end,

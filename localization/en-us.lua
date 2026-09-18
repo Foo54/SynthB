@@ -797,7 +797,7 @@ local descriptions = {
 				name = {"{f:5}アイアイ傘", "{s:0.7}Ai Ai Umbrella"},
 				text = {
 					"Other Jokers are flipped face down",
-					"Face down cards give {X:mult,C:white}X#1#{} Mult",
+					"Face down cards give {X:chips,C:white}X#1#{} Chips",
 					"{C:inactive,s:0.8,f:5}わたしの知らないことも　見せてよ"
 				}
 			},
