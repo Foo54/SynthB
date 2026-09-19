@@ -134,10 +134,10 @@ SMODS.Consumable{
 -- Excorism
 SMODS.Consumable{
 	key = "spectral_exorcism",
-	atlas = "placeholder",
-	pos = {x = 1, y = 1},
+	atlas = "spectral",
+	pos = {x = 3, y = 0},
 	synthb_credits = {
-		Artist = "FurretWalk, eventually"
+		Artist = "Foo54"
 	},
 	synthb_song = "song_synthb_exorcist",
 	synthb_count = 0,

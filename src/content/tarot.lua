@@ -42,8 +42,11 @@ SMODS.Consumable{
 -- empurple tarot I don't know what to call this
 SMODS.Tarot{
 	key = "tarot_empurple",
-	atlas = "placeholder",
-	pos = {x = 0, y = 1},
+	atlas = "tarot",
+	synthb_credits = {
+		Artist = "Foo54"
+	},
+	pos = {x = 2, y = 0},
 	synthb_song = "song_synthb_empurple",
 	synthb_count = 0,
 	synthb_timer = 0,
