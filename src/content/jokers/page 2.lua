@@ -4,7 +4,11 @@
 -- Fire Dance
 SynthB.Joker{
 	key = "fire_dance",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 5, y = 4},
+	synthb_credits = {
+		Artist = "aikoyori"
+	},
 	rarity = 2,
 	cost = 6,
 	config = {
@@ -223,6 +227,14 @@ SynthB.Joker{
 -- Shrimp Fried Rice
 SynthB.Joker{
 	key = "shrimp_fried_rice",
+	atlas = "joker_placeholders",
+	pos = {
+		x = 3,
+		y = 4
+	},
+	synthb_credits = {
+		Artist = "FurretWalk"
+	},
 	cost = 4,
 	config = {
 		extra = {

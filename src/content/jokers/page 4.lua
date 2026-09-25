@@ -774,7 +774,7 @@ SynthB.Joker{
 	pos = {x = 1, y = 4},
 	atlas = "joker_placeholders",
 	synthb_credits = {
-		Artist = "Foo54"
+		Artist = "Stwuart"
 	},
 	rarity  = 2,
 	cost = 6,

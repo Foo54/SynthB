@@ -801,6 +801,22 @@ local descriptions = {
 					"{C:inactive,s:0.8,f:5}わたしの知らないことも　見せてよ"
 				}
 			},
+			j_synthb_rot_for_trout = {
+				name = "Rot for Trout",
+				text = {
+					{
+						"This Joker gains {X:mult,C:white}X#1#{} Mult",
+						"if played hand contains a {C:attention}#2#{}.",
+						"{s:0.8}Rank changes every round",
+						"{C:inactive}[Currently {X:mult,C:white}X#4#{C:inactive} Mult]"
+					},
+					{
+						"Lose {X:mult,C:white}X#3#{} Mult",
+						"per unscoring card",
+						"{C:inactive,s:0.8}I'm not getting off of here"
+					}
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1748,7 +1764,18 @@ local descriptions = {
 					"{f:5}うい",
 					"{C:inactive,s:0.8}Ui"
 				}
-			}
+			},
+			rot_for_trout = {
+				text = {
+					"{C:attention}Title:",
+					"Rot for Trout",
+					"{C:attention}Producer:",
+					"0mni",
+					"{C:attention}Voice:",
+					"{f:5}重音テト",
+					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
 		},
 		Enhanced = {
 			m_synthb_purple = {
@@ -2839,6 +2866,7 @@ local descriptions = {
 			ph_synthb_linked_ex = "Linked!",
 			k_synthb_jumbo = "Jumbo ",
 			k_synthb_mega = "Mega ",
+			k_synthb_downgrade_ex = "Downgrade!",
 
 			-- mod page
 			ph_synthb_card_game = "CARD GAME",

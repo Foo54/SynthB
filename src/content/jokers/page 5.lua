@@ -471,3 +471,113 @@ SynthB.Joker{
         end
     end,
 }
+
+-- Rot For Trout
+SynthB.Joker{
+	key = "rot_for_trout",
+	atlas = "joker_placeholders",
+	pos = {x = 6, y = 4},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
+	rarity = 2,
+	cost = 7,
+	config = {
+		extra = {
+			xmult = 1,
+            gain = 0.5,
+            loss = 0.1,
+        },
+        immutable = {
+            rank = 2
+		}
+	},
+	attributes = {"ranks", "xmult", "scaling", "temperature", "song", "vocaloid song", "0mni", "Teto"},
+	blueprint_compat = true,
+	eternal_compat = true,
+	demicolon_compat = true,
+	perishable_compat = false,
+	loc_vars = function(self, info_queue, card)
+		SynthB.song_info(info_queue, card, "rot_for_trout")
+        local rank = card.area and card.area.config.collection and "[rank]" or nil
+        if not rank then
+            for key, _rank in pairs(SMODS.Ranks) do
+                if _rank.id == card.ability.immutable.rank then
+---@diagnostic disable-next-line: cast-local-type
+                    rank = localize(key, "ranks")
+                    break
+                end
+            end
+            if not rank then
+                rank = "ERROR"
+            end
+        end
+		return {vars = {
+			card.ability.extra.gain,
+			rank,
+			card.ability.extra.loss,
+			card.ability.extra.xmult
+		}}
+	end,
+    set_ability = function (self, card, initial, delay_sprites)
+        card.ability.immutable.rank = pseudorandom_element(G.playing_cards, "synthb_rot_for_trout").base.id
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval and not context.blueprint then
+            card.ability.immutable.rank = pseudorandom_element(G.playing_cards, "synthb_rot_for_trout").base.id
+        end
+        if context.forcetrigger then
+            SMODS.scale_card(card, {
+                ref_value = "xmult",
+                scalar_value = "gain"
+            })
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+        if context.before then
+            local unscoring = 0
+            local found = false
+            for _, _card in ipairs(context.full_hand) do
+                if _card:get_id() == card.ability.immutable.rank then
+                    found = true
+                end
+                local _found = false
+                for _, __card in ipairs(context.scoring_hand) do
+                    if __card == _card then
+                        _found = true
+                        break
+                    end
+                end
+                if not _found then
+                    unscoring = unscoring + 1
+                end
+            end
+            if found then
+                SMODS.scale_card(card, {
+                    ref_value = "xmult",
+                    scalar_value = "gain"
+                })
+            end
+            for _ = 1, unscoring do
+                if card.ability.extra.xmult - card.ability.extra.loss > 1 then
+                    SMODS.scale_card(card, {
+                        ref_value = "xmult",
+                        scalar_value = "loss",
+                        scalar_factor = -1,
+                        scaling_message = {
+                            message = localize("k_synthb_downgrade_ex")
+                        }
+                    })
+                    card.ability.extra.xmult = math.max(card.ability.extra.xmult, 1)
+                end
+            end
+            return nil, true
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+}

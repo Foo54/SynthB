@@ -72,6 +72,7 @@ SynthB.songs = {
 	{link = "https://www.youtube.com/watch?v=FftLImzl1-k", key = "i_wish_that_i_could_fall", pos = {x = 5, y = 3}},
 	{link = "https://www.youtube.com/watch?v=TzH5BsJj81Y", key = "song_synthb_exorcist", prefix = "", set = "Other", pos = {x = 6, y = 3}, voicebanks = {"Miku", "Ui"}},
 	{link = "https://www.youtube.com/watch?v=e5_XSeN9Y4k", key = "ai_ai_umbrella", pos = {x = 7, y = 3}},
+	{link = "https://www.youtube.com/watch?v=n4ffsegpWFc", key = "rot_for_trout", pos = {x = 8, y = 3}},
 	--[[
 	for cross mod do this
 	
