@@ -499,7 +499,7 @@ SynthB.Joker{
 	perishable_compat = false,
 	loc_vars = function(self, info_queue, card)
 		SynthB.song_info(info_queue, card, "rot_for_trout")
-        local rank = card.area and card.area.config.collection and "[rank]" or nil
+        local rank = card.area and card.area.config and card.area.config.collection and "[rank]" or nil
         if not rank then
             for key, _rank in pairs(SMODS.Ranks) do
                 if _rank.id == card.ability.immutable.rank then
@@ -520,7 +520,7 @@ SynthB.Joker{
 		}}
 	end,
     set_ability = function (self, card, initial, delay_sprites)
-        card.ability.immutable.rank = pseudorandom_element(G.playing_cards, "synthb_rot_for_trout").base.id
+        card.ability.immutable.rank = pseudorandom_element(G.playing_cards or {{base = {id = 2}}}, "synthb_rot_for_trout").base.id
     end,
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and not context.blueprint then
