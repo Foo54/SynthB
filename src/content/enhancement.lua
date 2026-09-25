@@ -2,7 +2,7 @@ SMODS.Enhancement{
 	key = "purple",
 	atlas = "enhancements",
 	config = {
-		score = 100,
+		score = 300,
 		xscore = 1.5
 	},
 	synthb_credits = {
