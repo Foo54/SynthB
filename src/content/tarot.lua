@@ -52,7 +52,7 @@ SMODS.Tarot{
 	synthb_timer = 0,
 	config = {max_highlighted = 2, mod_conv = 'm_synthb_purple'},
 	loc_vars = function(self, info_queue, card)
-		SynthB.song_info(info_queue, card, "empurple")
+		--SynthB.song_info(info_queue, card, "empurple") enhancement covers this
 		info_queue[#info_queue+1] = G.P_CENTERS.m_synthb_purple
 		return {vars = {card.ability.max_highlighted, localize{type = "name_text", set = "Enhanced", key = card.ability.mod_conv}}}
 	end,
