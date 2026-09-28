@@ -450,7 +450,7 @@ SynthB.Joker{
     calculate = function(self, card, context)
         if (context.setting_blind or context.round_eval) and not context.blueprint then
             local cardareas = {G.jokers}
-            -- patch target
+            -- patch target ai ai umbrella card areas
             for _, area in ipairs(cardareas) do
                 for _, _card in ipairs(area.cards) do
                     G.E_MANAGER:add_event(Event{
@@ -470,6 +470,34 @@ SynthB.Joker{
             }
         end
     end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{text = "X"},
+						{ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp"}
+					},
+                    border_colour = G.C.BLUE
+				}
+			},
+            calc_function = function (card)
+                local xmult = 1
+                local cardareas = {G.jokers, G.play, G.hand}
+                -- patch target ai ai umbrella card areas joker display
+                for _, area in ipairs(cardareas) do
+                    for _, _card in ipairs(area.cards) do
+                        if _card.facing == "back" then
+                            -- if I understand the code right these should be 1 if its the wrong type of card
+                            xmult = xmult * (card.ability.extra.xchips ^ (JokerDisplay.calculate_joker_triggers(card) * JokerDisplay.calculate_card_triggers(card)))
+                        end
+                    end
+                end
+                card.joker_display_values.xmult = xmult
+            end
+		}
+	end
 }
 
 -- Rot For Trout
@@ -492,7 +520,7 @@ SynthB.Joker{
             rank = 2
 		}
 	},
-	attributes = {"ranks", "xmult", "scaling", "temperature", "song", "vocaloid song", "0mni", "Teto"},
+	attributes = {"ranks", "xmult", "scaling", "song", "vocaloid song", "0mni", "Teto"},
 	blueprint_compat = true,
 	eternal_compat = true,
 	demicolon_compat = true,
@@ -580,4 +608,68 @@ SynthB.Joker{
             }
         end
     end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{text = "X"},
+						{ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp"}
+					}
+				}
+			}
+		}
+	end
+}
+
+
+-- Future of Beginnings
+SynthB.Joker{
+	key = "future_of_beginnings",
+	atlas = "joker_placeholders",
+	pos = {x = 8, y = 4},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
+	rarity = 2,
+	cost = 8,
+	config = {
+		extra = {
+			xmult = 0.75,
+        },
+	},
+	attributes = {"shop", "voucher", "xmult", "scaling", "song", "vocaloid song", "40mP", "sasakure.UK", "Miku"},
+	blueprint_compat = true,
+	eternal_compat = true,
+	demicolon_compat = true,
+	perishable_compat = true,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.v_blank
+        SynthB.song_info(info_queue, card, "future_of_beginnings")
+        return {vars = {card.ability.extra.xmult, localize{type = "name_text", set = "Voucher", key = "v_blank"}, 1 + card.ability.extra.xmult * (G.GAME.synthb_blanks_used or 0)}}
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main or context.forcetrigger then
+            return {
+                xmult = 1 + card.ability.extra.xmult * G.GAME.synthb_blanks_used
+            }
+        end
+    end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+				{
+					border_nodes = {
+						{text = "X"},
+						{ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp"}
+					}
+				}
+			},
+            calc_function = function (card)
+                card.joker_display_values.xmult = 1 + card.ability.extra.xmult * G.GAME.synthb_blanks_used
+            end
+		}
+	end
 }

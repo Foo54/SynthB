@@ -536,3 +536,13 @@ function Card:get_id(...)
 		return ret
 	end
 end
+
+local create_shop_card_ui_ref = create_shop_card_ui
+function create_shop_card_ui(card, type, area)
+	if type == "Voucher" and SynthB.effect.future_of_beginnings() and card.config.center.key ~= "v_blank" then
+		G.GAME.current_round.voucher.spawn[card.config.center.key] = nil
+		G.GAME.current_round.voucher.spawn.v_blank = true
+		card:set_ability("v_blank")
+	end
+	return create_shop_card_ui_ref(card, type, area)
+end

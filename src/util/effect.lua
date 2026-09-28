@@ -11,3 +11,7 @@ end
 function SynthB.effect.erb()
 	return next(SMODS.find_card("j_synthb_ego_renegade_boy", false))
 end
+
+function SynthB.effect.future_of_beginnings()
+	return next(SMODS.find_card("j_synthb_future_of_beginnings", false))
+end

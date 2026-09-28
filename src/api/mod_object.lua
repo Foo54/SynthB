@@ -171,6 +171,13 @@ function SynthB.mod.config_tab()
 end
 
 function SynthB.mod.calculate(self, context)
+	-- keep track of number of blank vouchers used
+	if context.buying_card and context.card.config.center.set == "Voucher" then
+		if context.card.config.center.key == "v_blank" then
+			G.GAME.synthb_blanks_used = G.GAME.synthb_blanks_used + 1
+		end
+	end
+
 	-- store destroyed cards
 	if context.remove_playing_cards then
 		for _, card in ipairs(context.removed) do
@@ -348,6 +355,7 @@ function SynthB.mod.reset_game_globals(run_start)
 		G.GAME.synthb_character_rate = 0
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit + 1
 		G.GAME.synthb_destroyed = {}
+		G.GAME.synthb_blanks_used = 0
 	end
 	if SynthB.mod.config.experimental_features then
 		_, G.GAME.synthb_current_banner_key = pseudorandom_element(SynthB.banners, "synthb_round_banner")

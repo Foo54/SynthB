@@ -110,3 +110,5 @@ SynthB.Producer{key = "Tsumiki"}
 SynthB.Producer{key = "Somethings wrong with my vocaloid"}
 SynthB.Producer{key = "Ham"}
 SynthB.Producer{key = "Omni"}
+SynthB.Producer{key = "40mP"}
+SynthB.Producer{key = "sasakure.UK"}

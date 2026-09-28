@@ -817,6 +817,21 @@ local descriptions = {
 					}
 				}
 			},
+			j_synthb_future_of_beginnings = {
+				name = {"{f:5}はじまりの未来", "{s:0.7}Future of Beginnings"},
+				text = {
+					{
+						"{X:mult,C:white}X#1#{} Mult per {C:attention}#2# Voucher",
+						"redeemed this run",
+						"{C:inactive}[Currently {X:mult,C:white}X#3#{C:inactive} Mult]"
+					},
+					{
+						"{C:attention}All{} vouchers in the shop",
+						"are replaced with {C:attention}#2# Voucher",
+						"{C:inactive,f:5,s:0.8}無題 デモワンフレーズの衝動"
+					}
+				}
+			},
 
 			--- spoilers
 			j_synthb_spoiler = {
@@ -1774,6 +1789,19 @@ local descriptions = {
 					"{C:attention}Voice:",
 					"{f:5}重音テト",
 					"{C:inactive,s:0.8}Kasane Teto"
+				}
+			},
+			future_of_beginnings = {
+				text = {
+					"{C:attention}Title:",
+					"{f:5}エンパープル",
+					"{C:inactive,s:0.8}Future of Beginnings",
+					"{C:attention}Producer:",
+					"{f:5}40㍍P{C:inactive} & {f:5}ささくれUK",
+					"{C:inactive,s:0.8}40mP & sasakure.UK",
+					"{C:attention}Voice:",
+					"{f:5}初音ミク",
+					"{C:inactive,s:0.8}Hatsune Miku"
 				}
 			},
 		},
