@@ -1278,6 +1278,9 @@ SynthB.Joker{
 	eternal_compat = false,
 	perishable_compat = true,
 	demicolon_compat = true,
+	in_pool = function (self, args)
+		return args.source == "shop"
+	end,
 	attributes = {"copying", "xmult", "scaling", "song", "vocaloid song", "MonochroMenace", "Miku", "Teto", "Rin", "Len", "Haku", "KAITO", "MEIKO", "Luka"},
 	set_ability = function (self, card, initial, delay_sprites)
 		-- get imposter
