@@ -212,12 +212,35 @@ function SynthB.manip_card(card, func, filter)
 	end
 end
 
+local excluded_keys = {
+	order = true,
+	hands_played_at_create = true,
+	played_this_ante = true,
+	debuff_sources = true,
+	set = true,
+	effect = true,
+	type = true,
+	name = true,
+	delay_seal = true,
+	seal = true,
+	extra_value = true,
+	extra_slots_used = true,
+	d_size = true,
+	card_limit = true
+}
+local stupid_annoying_keys = {
+	x_chips = true,
+	x_mult = true,
+	h_x_chips = true,
+	h_x_mult = true
+}
+
 --- Base filter for SynthB.manip_card
 --- @param key any
 --- @param val any
 --- @return boolean
 function SynthB.base_manip_filter(key, val)
-	return SynthB.is_number(val)
+	return SynthB.is_number(val) and not excluded_keys[key] and not (stupid_annoying_keys[key] and val == 1 or val == 0)
 end
 
 --- Check if value is number
