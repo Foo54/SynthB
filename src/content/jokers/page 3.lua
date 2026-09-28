@@ -756,7 +756,11 @@ SynthB.Joker{
 -- SHANTI
 SynthB.Joker{
 	key = "shanti",
-	pos = {x = 1, y = 0},
+	atlas = "joker_placeholders",
+	pos = {x = 3, y = 0},
+	synthb_credits = {
+		Artist = "Foo54"
+	},
 	rarity = 2,
 	cost = 3,
 	eternal_compat = true,
