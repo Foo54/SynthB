@@ -513,7 +513,7 @@ SynthB.Joker{
 	config = {
 		extra = {
 			xmult = 1,
-            gain = 0.5,
+            gain = 0.2,
             loss = 0.1,
         },
         immutable = {
