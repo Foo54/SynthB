@@ -2853,6 +2853,17 @@ local descriptions = {
 					"until last hand of round"
 				}
 			}
+		},
+		Back = {
+			b_synthb_utau = {
+				name = "Open UTAU Deck",
+				text = {
+					"When blind is selected,",
+					"create an {C:attention}eternal",
+					"{C:synthb_tuning_dark}Tuning Card{}.",
+					"{C:attention}+#1#{} Consumable slot"
+				}
+			}
 		}
 	},
 	misc = {
@@ -2895,6 +2906,7 @@ local descriptions = {
 			k_synthb_jumbo = "Jumbo ",
 			k_synthb_mega = "Mega ",
 			k_synthb_downgrade_ex = "Downgrade!",
+			k_synthb_deck = "Deck",
 
 			-- mod page
 			ph_synthb_card_game = "CARD GAME",

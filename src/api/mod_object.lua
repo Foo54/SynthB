@@ -353,7 +353,6 @@ function SynthB.mod.reset_game_globals(run_start)
 		G.GAME.synthb_temp = 0
 		G.GAME.synthb_linked_id = 0
 		G.GAME.synthb_character_rate = 0
-		G.consumeables.config.card_limit = G.consumeables.config.card_limit + 1
 		G.GAME.synthb_destroyed = {}
 		G.GAME.synthb_blanks_used = 0
 	end

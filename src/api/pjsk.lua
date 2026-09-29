@@ -1677,6 +1677,11 @@ function G.FUNCS.synthb_pjsk_content_section(e)
 					prototypes[#prototypes+1] = booster
 				end
 			end
+			for _, back in pairs(G.P_CENTER_POOLS.Back) do
+				if back.mod == SynthB.mod then
+					prototypes[#prototypes+1] = back
+				end
+			end
 			if SynthB.mod.config.experimental_features then
 				for _, center in ipairs(G.P_CENTER_POOLS.synthb_Character) do
 					if center.mod == SynthB.mod then
@@ -1780,6 +1785,8 @@ function SynthB.PJSK:collection_card(index, prototype)
 				card.hovering = false; Node.stop_hover(card); card.hover_tilt = 0
 			end
 		end
+	elseif prototype:is(SMODS.Back) then
+		card = SMODS.RunSelectPage.obj_table.deck_choice:create_selection_card(prototype.key, -1, {T = {x = 0, y = 0}})
 	else
 		card = Card(0, 0, 1.3, 1.3, G.P_CARDS.empty, G.P_CENTERS.c_base)
 		if card.children.front then
