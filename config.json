@@ -10,11 +10,11 @@
   "main_file": "main.lua",
   "priority": 0,
   "badge_colour": "D94169",
-  "version": "1.9.0-260928f",
+  "version": "1.9.0-260929a",
   "icon_path": "modicon.png",
   "no_marquee": true,
   "dependencies": [
-    "Steamodded (>=1.0.0~BETA-2003b)",
+    "Steamodded (>=26.829.0)",
     "Lovely (>=0.9.0)"
   ]
 }
