@@ -464,9 +464,9 @@ SynthB.Joker{
                 end
             end
         end
-        if (context.other_main and context.other_main.facing == "back") or (context.individual and (context.cardarea == G.hand or context.cardarea == G.play or context.cardarea == "unscored") and context.other_card.facing == "back" and not context.end_of_round) then
+        if (context.other_joker and context.other_joker.facing == "back") or (context.individual and (context.cardarea == G.hand or context.cardarea == G.play or context.cardarea == "unscored") and context.other_card.facing == "back" and not context.end_of_round) then
             return {
-                xmult = card.ability.extra.xchips
+                xchips = card.ability.extra.xchips
             }
         end
     end,
@@ -484,13 +484,21 @@ SynthB.Joker{
 			},
             calc_function = function (card)
                 local xmult = 1
-                local cardareas = {G.jokers, G.play, G.hand}
-                -- patch target ai ai umbrella card areas joker display
+                local cardareas = {G.jokers}
+                -- patch target ai ai umbrella joker card areas joker display
                 for _, area in ipairs(cardareas) do
                     for _, _card in ipairs(area.cards) do
                         if _card.facing == "back" then
-                            -- if I understand the code right these should be 1 if its the wrong type of card
-                            xmult = xmult * (card.ability.extra.xchips ^ (JokerDisplay.calculate_joker_triggers(card) * JokerDisplay.calculate_card_triggers(card)))
+                            xmult = xmult * (card.ability.extra.xchips ^ JokerDisplay.calculate_joker_triggers(card))
+                        end
+                    end
+                end
+                local playingcard_areas = {G.hand, G.play}
+                -- patch target ai ai umbrella playing card areas joker display
+                for _, area in ipairs(playingcard_areas) do
+                    for _, _card in ipairs(area.cards) do
+                        if _card.facing == "back" then
+                            xmult = xmult * (card.ability.extra.xchips ^ JokerDisplay.calculate_card_triggers(card))
                         end
                     end
                 end
