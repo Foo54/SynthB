@@ -191,9 +191,10 @@ if SynthB.mod.config.experimental_features then
 end
 
 SynthB.debug("Loading Credits")
+SynthB.load_file("util/credits/inky")
+SynthB.load_file("util/credits/artists2")
 SynthB.load_file("util/credits/foo")
 SynthB.load_file("util/credits/pepix")
-SynthB.load_file("util/credits/inky")
 SynthB.load_file("util/credits/temp")
 
 SynthB.debug("Loading Crossmod and Compatibility Files")
