@@ -89,9 +89,8 @@ SynthB.Credits.Contributor{
 	key = "credits_incognito",
 	colour = HEX("d0d0d0"),
 	synthb_role = {artists2 = true},
-	mini_atlas = 'pjsk_placeholder_mini_icon',
 	--atlas = 'ghostsalt_full_credits',
-	--mini_atlas = 'ghostsalt_mini_credits',
+	mini_atlas = 'credits_incognito_mini',
 	credit_vars = function (self)
 		return {elements = {SMODS.create_sprite(0, 0, 5, 5, "synthb_incognito_corobo")}}
 	end

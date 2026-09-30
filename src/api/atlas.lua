@@ -336,3 +336,10 @@ SMODS.Atlas {
 	px = 350,
 	py = 350
 }
+
+SMODS.Atlas{
+	key = "credits_incognito_mini",
+	path = "credits/incognito/mini.png",
+	px = 20,
+	py = 80,
+}
