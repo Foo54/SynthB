@@ -343,3 +343,10 @@ SMODS.Atlas{
 	px = 20,
 	py = 80,
 }
+
+SMODS.Atlas{
+	key = "credits_incognito_full",
+	path = "credits/incognito/full.png",
+	px = 71,
+	py = 95,
+}
