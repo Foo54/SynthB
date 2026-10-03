@@ -328,6 +328,7 @@ function Game:main_menu(...)
 			card.children.floating_sprite.T.w = card.children.floating_sprite.T.w * s
 			card.children.floating_sprite.T.h = card.children.floating_sprite.T.h * s
 		end
+		card:set_sprites(card.config.center)
 	end
 	for _, spoiler in pairs(SynthB.mod.config.seen_spoilers) do
 		if not spoiler then
