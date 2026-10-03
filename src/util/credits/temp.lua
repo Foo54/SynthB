@@ -17,7 +17,8 @@ SynthB.Credits.Contributor{
 	key = "credits_aiko",
 	colour = HEX("FF00FF"),
 	synthb_role = {artists = true, coders = true},
-	mini_atlas = 'credits_aiko_mini'
+	mini_atlas = 'credits_aiko_mini',
+	atlas = 'credits_aiko_full',
 }
 
 function G.FUNCS.synthb_walkies_shill(e)
