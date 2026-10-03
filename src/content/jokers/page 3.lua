@@ -709,7 +709,6 @@ SynthB.Joker{
 SynthB.Joker{
 	key = "tell_your_world",
 	rarity = 4,
-	pos = {x = 3, y = 0},
 	cost = 25,
 	config = {
 		extra = {
@@ -718,6 +717,11 @@ SynthB.Joker{
 		immutable = {
 			tarot = "c_world",
 		}
+	},
+	pos = {x = 4, y = 6},
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Aikoyori"
 	},
 	attributes = {"generation", "tarot", "stickers", "modify_card", "song", "vocaloid song", "Miku", "kz"},
 	blueprint_compat = true,
