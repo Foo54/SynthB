@@ -440,6 +440,11 @@ SynthB.Joker{
 			score = 100
 		}
 	},
+	atlas = "joker_placeholders",
+	pos = {x = 3, y = 6},
+	synthb_credits = {
+		Artist = 'GhostSalt'
+	},
 	attributes = {"modify_card", "score", "song", "vocaloid song", "GUMI", "CircusP"},
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -690,9 +695,13 @@ SynthB.Joker{
 -- Glass Girl
 SynthB.Joker{
 	key = "glass_girl",
-	pos = {x=1,y=0},
+	pos = {x=2,y=6},
 	rarity = 2,
 	cost = 7,
+	atlas = "joker_placeholders",
+	synthb_credits = {
+		Artist = "Pepix"
+	},
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
