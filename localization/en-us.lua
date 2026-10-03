@@ -2781,9 +2781,17 @@ local descriptions = {
 				},
 			},
 			credits_aiko = {
-				name = "aikoyori",
+				name = "Aikoyori",
 				text = {
-					"aiko description text goes here"
+					"Hello! I {E:1}helped{} this mod come to fruition",
+					"by doing the bare minimum...",
+					"To be fair, I did some art for this",
+					"and I hope you enjoy them",
+					"You should also check projects of others who helped this mod possible",
+					"As for me {E:1,C:blue}Vocalatro{} for Vocaloid-themed cards",
+					"to go along with this mod",
+					"And also check out {E:1,C:purple}Aikoyori's Shenanigans{} for more crazy stuff",
+					"which includes {E:1,C:purple}Vocaloid{} stuff too!",
 				}
 			},
 			credits_ghostsalt = {
