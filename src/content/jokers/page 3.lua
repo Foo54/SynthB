@@ -718,7 +718,7 @@ SynthB.Joker{
 			tarot = "c_world",
 		}
 	},
-	pos = {x = 4, y = 6},
+	pos = {x = 4, y = 7},
 	atlas = "joker_placeholders",
 	synthb_credits = {
 		Artist = "Aikoyori"
